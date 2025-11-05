@@ -1,0 +1,45 @@
+route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
+1203,vivi,,Rīga - Aizkraukle,,2,,bf9ac6,000000
+1230,vivi,,Rīga - Carnikava,,2,,f8db22,000000
+1233,vivi,,Rīga - Cēsis,,2,,8bc540,000000
+1243,vivi,,Rīga - Daugavpils,,2,,bf9ac6,000000
+1252,vivi,,Rīga - Dubulti,,2,,04abe8,000000
+1269,vivi,,Rīga - Krāslava,,2,,bf9ac6,000000
+1291,vivi,,Rīga - Gulbene,,2,,bf9ac6,000000
+1298,vivi,,Rīga - Lielvārde,,2,,bf9ac6,000000
+1300,vivi,,Rīga - Liepāja,,2,,ea6449,000000
+1313,vivi,,Rīga - Indra,,2,,bf9ac6,000000
+1315,vivi,,Rīga - Madona,,2,,bf9ac6,000000
+1339,vivi,,Rīga - Ogre,,2,,bf9ac6,000000
+1349,vivi,,Rīga - Jelgava,,2,,ea6449,000000
+1372,vivi,,Rīga - Rēzekne 2,,2,,bf9ac6,000000
+1394,vivi,,Rīga - Sloka,,2,,04abe8,000000
+1397,vivi,,Rīga - Tukums 2,,2,,04abe8,000000
+1398,vivi,,Rīga - Saulkrasti,,2,,f8db22,000000
+1399,vivi,,Rīga - Skulte,,2,,f8db22,000000
+1408,vivi,,Rīga - Sigulda,,2,,8bc540,000000
+1432,vivi,,Rīga - Valmiera,,2,,8bc540,000000
+1446,vivi,,Rīga - Zilupe,,2,,bf9ac6,000000
+1460,vivi,,Rīga - Valga,,2,,8bc540,000000
+2031,vivi,,Aizkraukle - Rīga,,2,,bf9ac6,000000
+2301,vivi,,Carnikava - Rīga,,2,,f8db22,000000
+2331,vivi,,Cēsis - Rīga,,2,,8bc540,000000
+2431,vivi,,Daugavpils - Rīga,,2,,bf9ac6,000000
+2521,vivi,,Dubulti - Rīga,,2,,04abe8,000000
+2691,vivi,,Krāslava - Rīga,,2,,bf9ac6,000000
+2911,vivi,,Gulbene - Rīga,,2,,bf9ac6,000000
+2981,vivi,,Lielvārde - Rīga,,2,,bf9ac6,000000
+3001,vivi,,Liepāja - Rīga,,2,,ea6449,000000
+3131,vivi,,Indra - Rīga,,2,,bf9ac6,000000
+3151,vivi,,Madona - Rīga,,2,,bf9ac6,000000
+3391,vivi,,Ogre - Rīga,,2,,bf9ac6,000000
+3491,vivi,,Jelgava - Rīga,,2,,ea6449,000000
+3721,vivi,,Rēzekne 2 - Rīga,,2,,bf9ac6,000000
+3941,vivi,,Sloka - Rīga,,2,,04abe8,000000
+3971,vivi,,Tukums 2 - Rīga,,2,,04abe8,000000
+3981,vivi,,Saulkrasti - Rīga,,2,,f8db22,000000
+3991,vivi,,Skulte - Rīga,,2,,f8db22,000000
+4081,vivi,,Sigulda - Rīga,,2,,8bc540,000000
+4321,vivi,,Valmiera - Rīga,,2,,8bc540,000000
+4461,vivi,,Zilupe - Rīga,,2,,bf9ac6,000000
+4601,vivi,,Valga - Rīga,,2,,8bc540,000000
