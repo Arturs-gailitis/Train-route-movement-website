@@ -2,6 +2,7 @@
 #logo {
     height: 50px;
     margin-right: 10px;
+    padding-left: 10px;
 }
 
 /* #grozs, #lietotajs un .nav-link img ir priekš navigācijā groza un lietotāja ikonas */
@@ -19,9 +20,10 @@
 }
 
 /* nodrošina to, ka div būs virs fona bildes */
-div.position-relative {
+#galvenaSekcija, #maršrutuMeklēšana {
     z-index: 1;
     position: relative;
+    text-align: center;
 }
 
 /* galvenās sekcijas fona bilde */
@@ -39,10 +41,14 @@ div.position-relative {
 /* nodrošina to, ka funkcijas saraksts būs pa vidu */
 #funkcijas {
     max-width: 720px;
+    text-align: left;
+    font-size: 125%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* nodrošina to, ka galvenās div elementi būs virs fona bildes*/
-div.position-relative > *:not(#vilcienaSkats) {
+#funkcijas, #sveiciens, #apraksts, #funkcijuSākums, #meklet{
     z-index: 1;
     position: relative;
     font-weight: bold;
@@ -61,7 +67,7 @@ footer p {
    color: white;
 }
 
-/* pašanas mājaslapas fons */
+/* pašas mājaslapas fons */
 body {
     background-color: #1f7a1f;
 }
@@ -69,6 +75,53 @@ body {
 /* vilciena maršruta meklēšanas funkcijas parādīšanas pogas fons */
 #meklet {
     background-color: #1f7a1f;
+    border-color: #1f7a1f;
+}
+
+/* pašas mājaslapas galvenes sadaļa */
+.galvene {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border: solid, 1px;
+    background-color: #34cb34;
+    display: flex;
+}
+
+/* pašas mājaslapas navigācijas sadaļa */
+nav {
+    padding-left: 50%;
+    padding-right: -50%;
+}
+
+/* pašas mājaslapas nosaukums */
+.nosaukums {
+    display: flex;
+    align-items: center;
+}
+
+/* pašas mājaslapas portāla nosaukums */
+#portālaNosaukums {
+    margin-bottom: -1px;
+    color: #6c757d;
+    white-space: nowrap;
+}
+
+/* pašas mājaslapas apraksts */
+#apraksts {
+    font-size: 125%;
+}
+
+/* pašas mājaslapas footer */
+footer {
+    border: solid, 1px;
+    background-color: #34cb34;
+    margin-bottom: -20px;
+}
+
+/* par maršruta meklēšanas sadaļu */
+#maršrutuMeklēšana {
+    display: none;
+    background-color: grey;
 }
 
 /* ekrāniem kas ir vizamz 1200 x 80 izmērā*/
