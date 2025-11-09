@@ -1,0 +1,83 @@
+/* mājaslapas logo kas ir navigācijas sadaļā */
+#logo {
+    height: 50px;
+    margin-right: 10px;
+}
+
+/* #grozs, #lietotajs un .nav-link img ir priekš navigācijā groza un lietotāja ikonas */
+#grozs, #lietotajs {
+    height: 30px;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.nav-link img {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0;
+}
+
+/* nodrošina to, ka div būs virs fona bildes */
+div.position-relative {
+    z-index: 1;
+    position: relative;
+}
+
+/* galvenās sekcijas fona bilde */
+#vilcienaSkats {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: blur(5px);
+}
+
+/* nodrošina to, ka funkcijas saraksts būs pa vidu */
+#funkcijas {
+    max-width: 720px;
+}
+
+/* nodrošina to, ka galvenās div elementi būs virs fona bildes*/
+div.position-relative > *:not(#vilcienaSkats) {
+    z-index: 1;
+    position: relative;
+    font-weight: bold;
+}
+
+/* nodrošina to, ka footer teksts būs ekrāna kreisajā pusē un baltā krāsā*/
+footer p {
+    display: flex;
+    margin-left: auto;
+    margin-right: 0;
+    color:white;
+}
+
+/* nomaina navigācijas sadaļas tekstu */
+.nav-link {
+   color: white;
+}
+
+/* pašanas mājaslapas fons */
+body {
+    background-color: #1f7a1f;
+}
+
+/* vilciena maršruta meklēšanas funkcijas parādīšanas pogas fons */
+#meklet {
+    background-color: #1f7a1f;
+}
+
+/* ekrāniem kas ir vizamz 1200 x 80 izmērā*/
+@media (min-width: 1280px) {
+
+    /* nodrošina to, ka footer tukšumus nerādīs */    
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+}
