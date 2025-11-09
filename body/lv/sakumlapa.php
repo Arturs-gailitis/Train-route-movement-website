@@ -43,30 +43,23 @@
             <h1 class="display-4 fw-bold">Sveicināti Latvijas vilcienu maršrutu kustības portālā</h1>
 
             <p class="lead mb-4">
-                Latvijas vilcienu maršrutu kustības portāls ir tiešsaistes portāls, kur dati tiek ņemti no
-                Latvijas atvērtā datu portāla — skatīt avotu zemāk.
-            </p>
-
-            <p class="mb-4">
-                Skatīt datus: 
-                <a href="https://data.gov.lv/dati/lv/dataset/iekszemes-dzelzcela-vilcienu-kustibas-saraksts-gtfs-formata">
-                    data.gov.lv
-                </a>
+                Latvijas vilcienu maršrutu kustības portāls ir tiešsaistes risinājums, kur nepieciešamie dati tiek ņemti no
+                Latvijas atvērtā datu portāla. <br> Skatīt avotu lapas kājenē.
             </p>
 
             <h2 class="h4 fw-bold mt-4">Šajā portālā lietotājs var:</h2>
 
             <ul class="text-start lead mx-auto mb-4" id ="funkcijas">
-                <li>Meklēt vilciena maršrutu pēc sākuma un beigu pieturām;</li>
+                <li>Meklēt vilciena maršrutu pēc sākuma un beigu pieturām, norādot datumu;</li>
                 <li>Iegūt papildus informāciju par vilciena maršrutu;</li>
                 <li>Reāllaikā uzzināt maršruta statusu un paziņojumus;</li>
-                <li>Skatīt konkrētā maršruta vizualizāciju interaktīvā kartē;</li>
-                <li>Nopirkt konkrētā maršruta biļeti.</li>
-                <li>Un citas funkcijas.</li>
+                <li>Skatīt konkrētā maršruta ceļu un staciju vizualizāciju interaktīvā kartē;</li>
+                <li>Nopirkt konkrētā maršruta biļeti;</li>
+                <li>Un citas izveidotās funkcijas.</li>
             </ul>
 
             <p>
-                <a class="btn btn-success btn-lg" href="#" role="button" id="meklet">Meklēt vilciena maršrutu</a>
+                <a class="btn btn-success btn-lg" href="#" role="button" id="meklet">Sākt meklēt vilciena maršrutus</a>
             </p>
         </div>
 
@@ -77,5 +70,10 @@
 </body>
 <footer class="footer mt-5 py-3 border-top">
     <p class="mb-0 text-center">© Latvijas vilcienu maršrutu kustības portāls 2025</p>
+    <p class="mb-4">
+        Izmantotie dati: <a href="https://data.gov.lv/dati/lv/dataset/iekszemes-dzelzcela-vilcienu-kustibas-saraksts-gtfs-formata">
+            data.gov.lv
+        </a>
+    </p>
 </footer>
 </html>
