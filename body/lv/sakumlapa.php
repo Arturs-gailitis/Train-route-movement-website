@@ -16,7 +16,7 @@
         </div>
 
         <nav>
-            <ul class="nav nav-pills">
+            <ul class="nav nav-pills" id="pogas">
                 <li class="nav-item">
                     <a class="nav-link" href="#">Paziņojumi</a>
                 </li>
@@ -28,6 +28,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><img src="/icons/noAccount.svg" alt="Lietotājs" id="lietotajs"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><img src="/icons/settings.svg" alt="Opcijas" id="opcijas"></a>
                 </li>
             </ul>
         </nav>

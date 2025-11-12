@@ -5,8 +5,8 @@
     padding-left: 10px;
 }
 
-/* #grozs, #lietotajs un .nav-link img ir priekš navigācijā groza un lietotāja ikonas */
-#grozs, #lietotajs {
+/* #grozs, #lietotajs un .nav-link img ir priekš navigācijā groza, lietotāja un opciju iconām */
+#grozs, #lietotajs, #opcijas {
     height: 30px;
     width: auto;
     display: inline-block;
@@ -16,7 +16,7 @@
 .nav-link img {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 0;
+    margin-right: 10%;
 }
 
 /* nodrošina to, ka div būs virs fona bildes */
@@ -122,6 +122,12 @@ footer {
 #maršrutuMeklēšana {
     display: none;
     background-color: grey;
+}
+
+/* par navigācijas sadaļas izskārtojumu */
+ul {
+    width: 110%;
+    margin-left: -10%;
 }
 
 /* ekrāniem kas ir vizamz 1200 x 80 izmērā*/
