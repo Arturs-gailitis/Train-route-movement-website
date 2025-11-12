@@ -6,12 +6,12 @@
     <title>Latvijas vilcienu maršrutu kustības portāls</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style/main.css">
-    <link rel="icon" type="image/svg+xml" href="/icons/websiteIcon.svg">
+    <link rel="icon" type="image/svg+xml" href="/icons/website icons/websiteIconTab.svg">
 </head>
 <body>
     <div class="galvene">
         <div class="nosaukums">
-            <img src="/icons/websiteIcon.svg" alt="Portāla logo" id="logo">
+            <img src="/icons/website icons/websiteIconLight.svg" alt="Portāla logo" id="logo">
             <h3 id="portālaNosaukums">Latvijas vilcienu maršrutu kustības portāls</h3>
         </div>
 
@@ -27,7 +27,8 @@
                     <a class="nav-link" href="#"><img src="/icons/shoppingCart.png" alt="Grozs" id="grozs"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="/icons/noAccount.svg" alt="Lietotājs" id="lietotajs"></a>
+                    <a class="nav-link" href="#"><img src="/icons/account icons/noAccountLight.svg" alt="Lietotājs" 
+                        id="lietotajs"></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><img src="/icons/settings.svg" alt="Opcijas" id="opcijas"></a>
