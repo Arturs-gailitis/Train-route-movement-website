@@ -66,20 +66,35 @@
         </div>
 
         <div class="p-5 my-4" id="maršrutuMeklēšana">
-            <h2 class="mb-4">Meklēšana</h2>
-            <form>
-                <label for="sākumstacija">Sākumstacija:</label>
-                <select disabled name="sākumstacija">
 
-                </select>
-                <label for="beigustacija">Beigustacija:</label>
-                <select disabled name="beigustacija">
+            <img src="/icons/trainView.jpg" id="vilcienaSkats">
 
-                </select>
-                <label for="datums">Datums:</label>
-                <input type="date" name="datums">
-                <input type="submit" value="Meklēt">
-            </form>
+            <div class= "p-2 mx-4" id="maršrutuMeklēšanasSadaļa">
+                <button type="button" class="btn btn-secondary" id="atcelt">
+                    <img src="/icons/cross.svg" alt="Atcелt" id="atceltIcona">
+                </button>
+
+                <h2 class="mb-4" id="meklesanasTituls">Meklēšana</h2>
+                <form id="meklesanasForma">
+                    <div class="mb-3">
+                        <label for="sākumstacija">Sākuma stacija:</label>
+                        <input type="text" class="form-control" name="sākumstacija" id="sākumstacija" required>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="beigustacija">Beigu stacija:</label>
+                        <input type="text" class="form-control" name="beigustacija" id="beigustacija" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="datums">Datums:</label>
+                        <input type="date" class="form-control" name="datums" id="datums" required>
+                    </div>
+
+                    <input type="submit" value="Meklēt" class="btn btn-primary" id ="meklet">
+                </form>
+            </div>
         </div>
 
         <!-- paziņojumus būs jāievada šeit -->

@@ -83,7 +83,7 @@ body {
     padding-top: 1rem;
     padding-bottom: 1rem;
     border: solid, 1px;
-    background-color: #015224; /* #328d5a #015224 */
+    background-color: #015224;
     display: flex;
 }
 
@@ -114,20 +114,81 @@ nav {
 /* pašas mājaslapas footer */
 footer {
     border: solid, 1px;
-    background-color: #015224; /*#328d5a #015224 */
+    background-color: #015224;
     margin-bottom: -20px;
 }
 
 /* par maršruta meklēšanas sadaļu */
 #maršrutuMeklēšana {
     display: none;
-    background-color: grey;
+    height: 400%;
+    position: relative;
 }
 
 /* par navigācijas sadaļas izskārtojumu */
 ul {
     width: 110%;
     margin-left: -10%;
+}
+
+/* par meklēšanas sadaļu */
+#maršrutuMeklēšanasSadaļa {
+    z-index: 1;
+    position: relative;
+    background-color: #1f7a1f;
+    border-color: #1f7a1f;
+    width: 50%;
+    display: block;
+    left: 23%;
+    top: 20%;
+}
+
+/* padarīt meklēšanu titulu un meklēšanas formu redzamu */
+#meklesanasTituls, #meklesanasForma {
+    z-index: 1;
+    position: relative;
+}
+
+/* izmainīt meklēšanas formu vienā rindā */
+#meklesanasForma {
+    display: flex;
+    justify-content: center;
+    gap:10px;
+
+}
+
+/* izmainīt meklēšanas formu teksta krāsu */
+#meklesanasForma label {
+    color:white;
+}
+
+/* nokonfigurēt meklēšanas pogu */
+#meklet {
+    height: 100%;
+    align-self: center;
+    margin-top: 10px;
+    background-color: #015224;
+    border: black solid 1px;
+}
+
+/* nokonfigurē atcelt pogu */
+#atcelt {
+    position: relative;
+    top: 5px;
+    left: 47%;
+    background-color: #1f7a1f;
+    border: none;
+}
+
+#atceltIcona {
+    object-fit: cover;
+    width: 25px;
+    height: 25px;
+}
+
+/* izmaina meklēšanas sadaļas titula tekstu */
+#meklesanasTituls {
+    color:white;
 }
 
 /* ekrāniem kas ir vizamz 1200 x 80 izmērā*/
