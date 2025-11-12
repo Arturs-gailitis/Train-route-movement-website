@@ -2,15 +2,12 @@ const button = document.getElementById("meklet");
 const box = document.getElementById("galvenaSekcija");
 const meklesana = document.getElementById("maršrutuMeklēšana");
 const iziet = document.getElementById("atcelt");
+const garums = box.offsetHeight;
 
 button.addEventListener("click", () => {
-
-    const garums = box.offsetHeight;
-
     box.style.display = "none";
     meklesana.style.display = "block";
     meklesana.style.height = `${garums}px`;
-    
 });
 
 iziet.addEventListener("click", () => {

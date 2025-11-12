@@ -1,22 +1,16 @@
-/* mājaslapas logo kas ir navigācijas sadaļā */
+/* mājaslapas logo, kas ir navigācijas sadaļā */
 #logo {
     height: 50px;
     margin-right: 10px;
     padding-left: 10px;
 }
 
-/* #grozs, #lietotajs un .nav-link img ir priekš navigācijā groza, lietotāja un opciju iconām */
+/* #grozs, #lietotajs un #opcijas ir priekš navigācijā groza, lietotāja un opciju iconām */
 #grozs, #lietotajs, #opcijas {
     height: 30px;
     width: auto;
     display: inline-block;
-    vertical-align: middle;
-}
-
-.nav-link img {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 10%;
+    margin-right: 10%
 }
 
 /* nodrošina to, ka div būs virs fona bildes */
@@ -121,7 +115,6 @@ footer {
 /* par maršruta meklēšanas sadaļu */
 #maršrutuMeklēšana {
     display: none;
-    height: 400%;
     position: relative;
 }
 
@@ -180,6 +173,7 @@ ul {
     border: none;
 }
 
+/* nokonfigurē atcelt pogas ikonu */
 #atceltIcona {
     object-fit: cover;
     width: 25px;
