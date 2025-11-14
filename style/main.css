@@ -1,16 +1,18 @@
 /* mājaslapas logo, kas ir navigācijas sadaļā */
 #logo {
-    height: 50px;
+    max-height: 50px;
+    height: auto;
     margin-right: 10px;
     padding-left: 10px;
 }
 
 /* #grozs, #lietotajs un #opcijas ir priekš navigācijā groza, lietotāja un opciju iconām */
 #grozs, #lietotajs, #opcijas {
-    height: 30px;
+    max-height: 30px;
+    height: auto;
     width: auto;
     display: inline-block;
-    margin-right: 10%
+    margin-right: 10px;
 }
 
 /* nodrošina to, ka div būs virs fona bildes */
@@ -35,10 +37,20 @@
 /* nodrošina to, ka funkcijas saraksts būs pa vidu */
 #funkcijas {
     max-width: 720px;
+    width: auto;
     text-align: left;
-    font-size: 125%;
+    font-size: 1.25rem;
     margin-left: auto;
     margin-right: auto;
+    list-style-type: disc;
+    padding-left: 20px;
+    display: block;
+    column-count: 1;
+}
+
+/* katra funkcija saraksta elements */
+#funkcijas li {
+    margin-bottom: 10px;
 }
 
 /* nodrošina to, ka galvenās div elementi būs virs fona bildes*/
@@ -74,17 +86,21 @@ body {
 
 /* pašas mājaslapas galvenes sadaļa */
 .galvene {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 1rem;
     border: solid, 1px;
     background-color: #015224;
     display: flex;
+    align-items: center;
 }
 
 /* pašas mājaslapas navigācijas sadaļa */
 nav {
-    padding-left: 50%;
-    padding-right: -50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 1rem;
+    margin-left: auto;
+    gap: 10px;
 }
 
 /* pašas mājaslapas nosaukums */
@@ -120,8 +136,12 @@ footer {
 
 /* par navigācijas sadaļas izskārtojumu */
 ul {
-    width: 110%;
-    margin-left: -10%;
+    display : flex;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    align-items: center;
 }
 
 /* par meklēšanas sadaļu */
@@ -190,7 +210,7 @@ ul {
 
     /* nodrošina to, ka footer tukšumus nerādīs */    
     footer {
-        position: fixed;
+        position: static;
         bottom: 0;
         width: 100%;
     }
