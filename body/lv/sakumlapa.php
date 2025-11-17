@@ -44,6 +44,14 @@
                     <img src="/icons/theme.svg" alt="Opcijas" id="themeIkona"></button>
             </div>
 
+            <div class="fonaIzmaiņas" id="valodaIzmaiņas">
+                <label for="valoda">Valoda -></label>
+                <select name="valoda" id="valoda">
+                    <option value="Latviešu">Latviešu</option>
+                    <option value="Angļu">Angļu</option>
+                </select>
+            </div>
+
         </div>
     </div>
     <div class="container-fluid">

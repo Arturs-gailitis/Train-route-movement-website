@@ -4,7 +4,7 @@ let statuss = false;
 
 opcijuPoga.addEventListener("click", () => {
     if (statuss == false) {
-        opcijas.style.height = "150px";
+        opcijas.style.height = "145px";
         statuss = true;
     } else {
         opcijas.style.height = "0px";

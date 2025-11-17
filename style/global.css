@@ -69,14 +69,14 @@ ul {
     position: fixed;
     top: 55px;
     right: 0;
-    width: 400px;
+    width: 250px;
     height: 0;
     background-color: #1f7a1f;
     color: white;
     border: 3px solid #015224;
     overflow: hidden;
     transition: 0.4s;
-    z-index: 3;
+    z-index: 2;
 }
 
 /* Skatās opcijas sadaļā fona izmaiņu daļu */
@@ -85,16 +85,17 @@ ul {
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 10px;
+    top: 0;
     gap: 3px;
     border: 3px solid black;
+    border-top: none;
 }
 
 /* Skatās opcijas sadaļā fona izmaiņu pogu */
 #fonaIzmaiņasPoga {
     display: flex;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -106,6 +107,19 @@ ul {
     max-height: 70px;
     width: auto;
     height: auto;
+}
+
+/* Skatās opcijas sadaļā valoda izmaiņu daļu */
+#valodaIzmaiņas {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Skatās opcijas sadaļā valoda izmaiņu selektoru */
+#valoda {
+    background-color: #015224;
+    color: white;
+    border: 1px solid black;
 }
 
 /* Skatās visu footer elementu */
