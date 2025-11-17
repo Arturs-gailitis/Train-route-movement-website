@@ -32,10 +32,19 @@
                         id="lietotajs"></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="/icons/settings.svg" alt="Opcijas" id="opcijas"></a>
+                    <button class="nav-link"><img src="/icons/settings.svg" alt="Opcijas" id="opcijas"></button>
                 </li>
             </ul>
         </nav>
+        <div id="opcijuLaukums">
+
+            <div class="fonaIzmaiņas">
+                <label for="fonaIzmaiņas">Izmainīt fonu -></label>
+                <button type="button" id="fonaIzmaiņasPoga" class="btn btn-primary">
+                    <img src="/icons/theme.svg" alt="Opcijas" id="themeIkona"></button>
+            </div>
+
+        </div>
     </div>
     <div class="container-fluid">
         
@@ -98,6 +107,7 @@
             </div>
         </div>
     </div>
+    <script src="/javascript/global.js"></script>
     <script src="/javascript/main.js"></script>
 </body>
 <footer class="mt-5 py-3">
