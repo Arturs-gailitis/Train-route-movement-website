@@ -1,0 +1,77 @@
+/* Skatās visu body elementu */
+body {
+    background-color:#1f7a1f;
+}
+
+/* Skatās visu header elementu */
+.galvene {
+    display: flex;
+    align-items: center;
+    background-color: #015224;
+    border: 1px solid #015224;
+    padding: 10px;
+}
+
+/* Skatās mājaslapas logo un nosaukumu, kā kopumu */
+.nosaukums {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Skatās mājaslapas logo */
+#logo {
+    max-height: 50px;
+    max-width: 50px;
+    height: auto;
+    width: auto;
+    margin: 5px 0 5px 20px;
+}
+
+/* Skatās mājaslapas nosaukumu */
+#portālaNosaukums {
+    color: white; /* #6c757d white */
+}
+
+/* Skatās visus navigācijas pogas kopumu */
+nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: relative;
+    left: 450px;
+}
+
+/* Skatās navigācijas pogas kopumu */
+ul {
+    gap: 5px;
+    list-style: none;
+}
+
+/* Skatās navigācijas pogas */
+.nav-link {
+    color: white;
+}
+
+/* Skatās nopirktā groza, lietotāja un opciju ikonām navigācijā */
+#grozs, #lietotajs, #opcijas {
+    display: inline-block;
+    max-height: 30px;
+    max-width: 30px;
+    height: auto;
+    width: auto;
+}
+
+/* Skatās visu footer elementu */
+footer {
+    position: static;
+    background-color: #015224;
+    border: 1px, solid #015224;
+}
+
+/* Skatās footer tekstu */
+footer p {
+    color: white;
+    padding-left: 10px;
+}

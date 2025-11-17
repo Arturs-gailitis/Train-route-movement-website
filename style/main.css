@@ -1,28 +1,13 @@
-/* mājaslapas logo, kas ir navigācijas sadaļā */
-#logo {
-    max-height: 50px;
-    height: auto;
-    margin-right: 10px;
-    padding-left: 10px;
-}
-
-/* #grozs, #lietotajs un #opcijas ir priekš navigācijā groza, lietotāja un opciju iconām */
-#grozs, #lietotajs, #opcijas {
-    max-height: 30px;
-    height: auto;
-    width: auto;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-/* nodrošina to, ka div būs virs fona bildes */
+/* Skatās gan mājaslapas ievada sadaļu, gan arī maršruta meklēšanas sadaļu */
 #galvenaSekcija, #maršrutuMeklēšana {
-    z-index: 1;
     position: relative;
     text-align: center;
+    margin: auto;
+    z-index: 1;
+    color: white;
 }
 
-/* galvenās sekcijas fona bilde */
+/* Skatās mājaslapas aizmugures bildi */
 #vilcienaSkats {
     position: absolute;
     top: 0;
@@ -34,184 +19,107 @@
     filter: blur(5px);
 }
 
-/* nodrošina to, ka funkcijas saraksts būs pa vidu */
-#funkcijas {
-    max-width: 720px;
-    width: auto;
-    text-align: left;
-    font-size: 1.25rem;
-    margin-left: auto;
-    margin-right: auto;
-    list-style-type: disc;
-    padding-left: 20px;
+/* Skatās mājaslapas ievada sadaļu */
+#galvenaSekcija {
     display: block;
-    column-count: 1;
 }
 
-/* katra funkcija saraksta elements */
-#funkcijas li {
-    margin-bottom: 10px;
-}
-
-/* nodrošina to, ka galvenās div elementi būs virs fona bildes*/
-#funkcijas, #sveiciens, #apraksts, #funkcijuSākums, #meklet{
-    z-index: 1;
+/* Skatās mājaslapas sākuma tekstu */
+#sveiciens, #apraksts, #funkcijuSākums {
     position: relative;
+    z-index: 1;
+    color: black;
     font-weight: bold;
 }
 
-/* nodrošina to, ka footer teksts būs ekrāna kreisajā pusē un baltā krāsā*/
-footer p {
-    display: flex;
-    margin-left: auto;
-    margin-right: 0;
-    color:white;
+/* Skatās mājaslapas sākuma tekstu */
+#sveiciens {
+    font-size: 45px;
 }
 
-/* nomaina navigācijas sadaļas tekstu */
-.nav-link {
-   color: white;
+/* Skatās par mājaslapas funkciju sarakstu */
+#funkcijas {
+    position: relative;
+    z-index: 1;
+    color: black;
+    list-style-type: disc;
+    text-align: justify;
+    justify-self: center;
+    font-weight: bold;
+    max-width: 650px;
+    height: auto;
 }
 
-/* pašas mājaslapas fons */
-body {
-    background-color: #1f7a1f;
+/* Skatās par mājaslapas funkciju saraksta elementiem */
+#funkcijas li {
+    padding-bottom: 10px;
 }
 
-/* vilciena maršruta meklēšanas funkcijas parādīšanas pogas fons */
+/* Skatās par pogu, kas nomaina no sākuma sadaļas uz meklēšanas sadaļu */
 #meklet {
-    background-color: #1f7a1f;
-    border-color: #1f7a1f;
-}
-
-/* pašas mājaslapas galvenes sadaļa */
-.galvene {
-    padding: 1rem;
-    border: solid, 1px;
+    position: relative;
+    z-index: 1;
     background-color: #015224;
-    display: flex;
-    align-items: center;
+    border: 1px solid black;
 }
 
-/* pašas mājaslapas navigācijas sadaļa */
-nav {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0 1rem;
-    margin-left: auto;
-    gap: 10px;
-}
-
-/* pašas mājaslapas nosaukums */
-.nosaukums {
-    display: flex;
-    align-items: center;
-}
-
-/* pašas mājaslapas portāla nosaukums */
-#portālaNosaukums {
-    margin-bottom: 3px;
-    color: white; /* #6c757d white */
-    white-space: nowrap;
-}
-
-/* pašas mājaslapas apraksts */
-#apraksts {
-    font-size: 125%;
-}
-
-/* pašas mājaslapas footer */
-footer {
-    border: solid, 1px;
-    background-color: #015224;
-    margin-bottom: -20px;
-}
-
-/* par maršruta meklēšanas sadaļu */
+/* Skatās maršruta meklēšanas sadaļu */
 #maršrutuMeklēšana {
     display: none;
-    position: relative;
 }
 
-/* par navigācijas sadaļas izskārtojumu */
-ul {
-    display : flex;
-    gap: 10px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    align-items: center;
-}
-
-/* par meklēšanas sadaļu */
+/* Skatās maršruta meklēšanas sadaļu */
 #maršrutuMeklēšanasSadaļa {
+    display: block;
     z-index: 1;
     position: relative;
     background-color: #1f7a1f;
     border-color: #1f7a1f;
-    width: 50%;
-    display: block;
-    left: 23%;
-    top: 20%;
+    max-width: 700px;
+    width: auto;
+    left: 310px;
+    top: 80px;
+    max-height: 200px;
+    height: auto;
 }
 
-/* padarīt meklēšanu titulu un meklēšanas formu redzamu */
-#meklesanasTituls, #meklesanasForma {
-    z-index: 1;
+/* Skatās maršruta meklēšanas sadaļas atcelt pogu */
+#atcelt {
     position: relative;
+    top: 2px;
+    left: 325px;
+    background-color: transparent;
+    border: none;
 }
 
-/* izmainīt meklēšanas formu vienā rindā */
+/* SKatās maršruta meklēšanas sadaļas atcelt pogas ikonu */
+#atceltIcona {
+    object-fit: cover;
+    max-width: 25px;
+    max-height: 25px;
+    width: auto;
+    height: auto;
+}
+
+/* Skatās maršruta meklēšanas formu */
 #meklesanasForma {
     display: flex;
     justify-content: center;
-    gap:10px;
-
+    gap: 10px;
+    padding: 0 10px;
 }
 
-/* izmainīt meklēšanas formu teksta krāsu */
+/* Skatās maršruta meklēšanas formas labels */
 #meklesanasForma label {
-    color:white;
+    color: white;
+    padding-bottom: 5px;
 }
 
-/* nokonfigurēt meklēšanas pogu */
+/* Skatās maršruta meklēšanas formas pogu */
 #meklet {
     height: 100%;
     align-self: center;
     margin-top: 10px;
     background-color: #015224;
     border: black solid 1px;
-}
-
-/* nokonfigurē atcelt pogu */
-#atcelt {
-    position: relative;
-    top: 5px;
-    left: 47%;
-    background-color: #1f7a1f;
-    border: none;
-}
-
-/* nokonfigurē atcelt pogas ikonu */
-#atceltIcona {
-    object-fit: cover;
-    width: 25px;
-    height: 25px;
-}
-
-/* izmaina meklēšanas sadaļas titula tekstu */
-#meklesanasTituls {
-    color:white;
-}
-
-/* ekrāniem kas ir vizamz 1200 x 80 izmērā*/
-@media (min-width: 1280px) {
-
-    /* nodrošina to, ka footer tukšumus nerādīs */    
-    footer {
-        position: static;
-        bottom: 0;
-        width: 100%;
-    }
 }

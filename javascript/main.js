@@ -6,7 +6,7 @@ const garums = box.offsetHeight;
 
 button.addEventListener("click", () => {
     box.style.display = "none";
-    meklesana.style.display = "block";
+    meklesana.style.display = "flex";
     meklesana.style.height = `${garums}px`;
 });
 

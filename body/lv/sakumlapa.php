@@ -6,6 +6,7 @@
     <title>Latvijas vilcienu maršrutu kustības portāls</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="/style/global.css">
     <link rel="icon" type="image/svg+xml" href="/icons/website icons/websiteIconTab.svg">
 </head>
 <body>
@@ -95,10 +96,6 @@
                     <input type="submit" value="Meklēt" class="btn btn-primary" id ="meklet">
                 </form>
             </div>
-        </div>
-
-        <!-- paziņojumus būs jāievada šeit -->
-        <div class="row marketing">
         </div>
     </div>
     <script src="/javascript/main.js"></script>
