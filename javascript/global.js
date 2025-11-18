@@ -2,6 +2,7 @@ const opcijas = document.getElementById("opcijuLaukums");
 const opcijuPoga = document.getElementById("opcijas");
 let statuss = false;
 
+// Nomaina opciju sadaļas augstumu nospiežzot pogu
 opcijuPoga.addEventListener("click", () => {
     if (statuss == false) {
         opcijas.style.height = "145px";
