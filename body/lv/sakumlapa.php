@@ -93,7 +93,7 @@
                 </button>
 
                 <h2 class="mb-4" id="meklesanasTituls">Meklēšana</h2>
-                <form id="meklesanasForma">
+                <form id="meklesanasForma" method="post" action="marsruti.php">
                     <div class="mb-3">
                         <label for="sākumstacija">Sākuma stacija:</label>
                         <input type="text" class="form-control" name="sākumstacija" id="sākumstacija" required>

@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/initializeDB.php';
+require_once __DIR__.'/../db/initializeDB.php';
 
 $database = __DIR__ . '/../storage/database/trains.sqlite';
 $info = __DIR__.'/../open info/calendar.csv';

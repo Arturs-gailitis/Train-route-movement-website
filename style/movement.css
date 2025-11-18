@@ -1,0 +1,24 @@
+/* Skatās maršruta tabulas sadaļu */
+#marsrutuTabulasLaukums {
+    display: flex;
+    position: relative;
+    justify-self: center;
+    margin: 150px 0;
+}
+
+/* Skatās pašu maršruta tabulas */
+#marsrutuTabula {
+    border: 3px solid black;
+    background-color: #015224;
+    color: white;
+}
+
+/* Skatās maršruta tabulas kolonnu nosaukumus */
+#marsrutuTabula thead tr th {
+    border: 3px solid black;
+}
+
+/* Skatās maršruta tabulas vērtības */
+#marsrutuTabula tbody tr td {
+    border: 3px solid black;
+}
