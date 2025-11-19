@@ -92,7 +92,7 @@
 
             <div class= "p-2 mx-4" id="maršrutuMeklēšanasSadaļa">
                 <button type="button" class="btn btn-secondary" id="atcelt">
-                    <img src="/icons/cross.svg" alt="Atcелt" id="atceltIcona">
+                    <img src="/icons/cross.svg" alt="Atcelt" id="atceltIcona">
                 </button>
 
                 <h2 class="mb-4" id="meklesanasTituls">Meklēšana</h2>
