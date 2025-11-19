@@ -38,9 +38,8 @@ body {
 nav {
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
     position: relative;
-    left: 450px;
+    left: 380px;
 }
 
 /* Skatās navigācijas pogas kopumu */

@@ -19,6 +19,9 @@
         <nav>
             <ul class="nav nav-pills" id="pogas">
                 <li class="nav-item">
+                    <a class="nav-link" href="sakumlapa.php">Sākumlapa</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Paziņojumi</a>
                 </li>
                 <li class="nav-item">

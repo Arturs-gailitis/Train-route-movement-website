@@ -77,8 +77,12 @@ try {
             $hours = floor(((strtotime($endTime['arrival_time']) - strtotime($startTime['departure_time'])) / 3600));
             $tripTime = $hours . ':' . $minutes . ':' . $seconds;
 
+            // iegūst pašreizējo laiku stundās, minūtēs un sekundēs
+            $currentTime = date('H:i:s');
+
             // ieliek datus organizētā masīvā
-            if (!empty($calendar) && ($startTime['stop_sequence'] < $endTime['stop_sequence'])) {
+            if (!empty($calendar) && ($startTime['stop_sequence'] < $endTime['stop_sequence']) && 
+                (strtotime($startTime['departure_time']) > strtotime($currentTime))) {
                 $trips[] = [
                     'trip_id' => $trip['trip_id'],
                     'routeName' => $route['name'],
@@ -117,6 +121,9 @@ try {
 
         <nav>
             <ul class="nav nav-pills" id="pogas">
+                <li class="nav-item">
+                    <a class="nav-link" href="sakumlapa.php">Sākumlapa</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Paziņojumi</a>
                 </li>
@@ -157,29 +164,36 @@ try {
         <table id="marsrutuTabula">
             <thead>
                 <tr>
-                    <th>Atiešanas laiks</th>
-                    <th>Ierašanās laiks</th>
-                    <th>Maršruta nosaukums</th>
-                    <th>Maršruta nummurs</th>
-                    <th>Ceļa ilgums</th>
+                    <th class="tukšs" id="sakums"><label id="sakumaTeksts">Atiešanas laiks</label></th>
+                    <th class="tukšs" id="beigas"><label id="beigasTeksts">Pienākšanas laiks</label></th>
+                    <th class="tukšs" id="nosaukums"><label id="nosaukumaTeksts">Maršruta nosaukums</label></th>
+                    <th class="tukšs" id="marsrutaIdentifikators"><label id="identifikatorsTeksts">Maršruta nr.</label></th>
+                    <th class="tukšs" id="laiks"><label id="laikaTeksts">Maršruta laiks</label></th>
+                    <th class="tukšs" id="pirkt"><label id="pirktTeksts">Pirkt biļeti</label></th>
+                    <th class="tukšs" id="info"><label id="infoTeksts">Vairāk info</label></th>
+                    <th id="statuss">Statuss</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($organisedTrips as $trip) : ?>
                     <tr>
-                        <td><?= $trip['startTime'] ?></td>
-                        <td><?= $trip['endTime'] ?></td>
-                        <td><?= $trip['routeName'] ?></td>
-                        <td><?= $trip['trip_id'] ?></td>
-                        <td><?= $trip['tripTime'] ?></td>
-                        <td><button class="btn btn-primary" id="pirktPogas">Pirkt</button></td>
-                        <td><button class="btn btn-primary" id="infoPogas">Vairāk info</button></td>
+                        <td id="sakumaLaiks"><?= $trip['startTime'] ?></td>
+                        <td id="beigasLaiks"><?= $trip['endTime'] ?></td>
+                        <td id="marsrutaNosaukums"><?= $trip['routeName'] ?></td>
+                        <td id="identifikators"><?= $trip['trip_id'] ?></td>
+                        <td id="marsrutaLaiks"><?= $trip['tripTime'] ?></td>
+                        <td id="pirktPoga"><button class="btn btn-primary" id="pirktPogas"><img src="/icons/buy.svg"
+                            alt="Pirkt" id="pirktIkona"></button></td>
+                        <td id="infoPoga"><button class="btn btn-primary" id="infoPogas"><img src="/icons/info.svg"
+                            alt="Vairāk info" id="infoIkona"></button></td>
+                        <td></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
     <script src="/javascript/global.js"></script>
+    <script src="/javascript/marsruti.js"></script>
 </body>
 <footer class="mt-5 py-3">
     <p class="mb-0">© Latvijas vilcienu maršrutu kustības portāls 2025</p>

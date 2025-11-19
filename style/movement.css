@@ -13,12 +13,62 @@
     color: white;
 }
 
+/* Skatās tukšās maršruta tabulas kolonnu nosaukumus */
+.tukšs {
+    padding: 0 40px;
+}
+
 /* Skatās maršruta tabulas kolonnu nosaukumus */
-#marsrutuTabula thead tr th {
-    border: 3px solid black;
+#nosaukumaTeksts, #sakumaTeksts, #beigasTeksts, #identifikatorsTeksts, #laikaTeksts, #pirktTeksts, #infoTeksts {
+    display: none;
+    font-weight: none;
+}
+
+/* Skatās maršruta tabulas maršruta nosaukumus */
+#marsrutaNosaukums {
+    padding: 0 25px;
+}
+
+/* Skatās maršruta tabulas statusa kolonnu nosaukumu */
+#statuss {
+    padding: 10px 50px;
+    border-left: 3px solid black;
 }
 
 /* Skatās maršruta tabulas vērtības */
 #marsrutuTabula tbody tr td {
     border: 3px solid black;
+    text-align: center;
+}
+
+/* Skatās pirkt biļetes pogas */
+#pirktPogas {
+    display: flex;
+    background-color: transparent;
+    border: none;
+    justify-self: center;
+}
+
+/* Skatās pirkt biļetes ikonas */
+#pirktIkona {
+    max-height: 35px;
+    max-width: 35px;
+    height: auto;
+    width: auto;
+}
+
+/* Skatās vairāk informācijas sadaļas pogas */
+#infoPogas {
+    display: flex;
+    background-color: transparent;
+    border: none;
+    justify-self: center;
+}
+
+/* Skatās vairāk informācijas ikonas */
+#infoIkona {
+    max-height: 35px;
+    max-width: 35px;
+    height: auto;
+    width: auto;
 }
