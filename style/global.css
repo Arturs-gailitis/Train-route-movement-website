@@ -63,18 +63,23 @@ ul {
     width: auto;
 }
 
+/* Skatās opciju ikonu navigācijā */
+#opcijas {
+    transition: 0.4s;
+}
+
 /* Skatās pašu opciju sadaļu */
 #opcijuLaukums {
-    display: block;
+    display: none;
     position: fixed;
     top: 55px;
     right: 0;
     width: 250px;
     height: 0;
-    background-color: #1f7a1f;
+    background-color: #1f7a1f; 
     color: white;
     border: 3px solid #015224;
-    overflow: hidden;
+    border-top: 3px solid #015224;
     transition: 0.4s;
     z-index: 2;
 }

@@ -41,11 +41,11 @@
             <div class="fonaIzmaiņas">
                 <label for="fonaIzmaiņas">Izmainīt fonu -></label>
                 <button type="button" id="fonaIzmaiņasPoga" class="btn btn-primary">
-                    <img src="/icons/theme.svg" alt="Opcijas" id="themeIkona"></button>
+                    <img src="/icons/lightTheme.svg" alt="Opcijas" id="themeIkona"></button>
             </div>
 
             <div class="fonaIzmaiņas" id="valodaIzmaiņas">
-                <label for="valoda">Valoda -></label>
+                <label for="valoda">Valodas maiņa -></label>
                 <select name="valoda" id="valoda">
                     <option value="Latviešu">Latviešu</option>
                     <option value="Angļu">Angļu</option>
