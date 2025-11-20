@@ -77,8 +77,24 @@ try {
             $hours = floor(((strtotime($endTime['arrival_time']) - strtotime($startTime['departure_time'])) / 3600));
             $tripTime = $hours . ':' . $minutes . ':' . $seconds;
 
-            // iegūst pašreizējo laiku stundās, minūtēs un sekundēs
-            $currentTime = date('H:i:s');
+            // iegūst pašreizējo laiku mēnesī, stundās, minūtēs un sekundēs
+            $currentHours = date('H');
+            $currentMinutes = date('i');
+            $currentSeconds = date('s');
+            $currentMonth = date('F');
+            $adding = 'hours';
+
+            // skatās vai pašreizējā mēnesī nav jāmaina pulsktenis uz ziemas laiku
+            if (($currentMonth == 'November') || ($currentMonth == 'December') || ($currentMonth == 'January') 
+            || ($currentMonth == 'February') || ($currentMonth == 'March')) {
+                $currentTime = $currentHours . ':' . $currentMinutes . ':' . $currentSeconds;
+                $winterTime = strtotime($currentTime . ' +'. 1 . ' ' . $adding);
+                $currentTime = date('H:i:s', $winterTime); 
+
+            } else {
+                $currentTime = $currentHours . ':' . $currentMinutes . ':' . $currentSeconds;
+            }
+
 
             // ieliek datus organizētā masīvā
             if (!empty($calendar) && ($startTime['stop_sequence'] < $endTime['stop_sequence']) && 
