@@ -78,7 +78,6 @@
                 <li>Reāllaikā uzzināt maršruta statusu un paziņojumus;</li>
                 <li>Skatīt konkrētā maršruta ceļu un staciju vizualizāciju interaktīvā kartē;</li>
                 <li>Nopirkt konkrētā maršruta biļeti;</li>
-                <li>Un citas izveidotās funkcijas.</li>
             </ul>
 
             <p>

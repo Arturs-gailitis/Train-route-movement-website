@@ -13,15 +13,10 @@
     color: white;
 }
 
-/* Skatās tukšās maršruta tabulas kolonnu nosaukumus */
-.tukšs {
-    padding: 0 40px;
-}
-
 /* Skatās maršruta tabulas kolonnu nosaukumus */
-#nosaukumaTeksts, #sakumaTeksts, #beigasTeksts, #identifikatorsTeksts, #laikaTeksts, #pirktTeksts, #infoTeksts {
-    display: none;
-    font-weight: none;
+.marsruti {
+    padding: 0 40px;
+    border-left: 3px solid black;
 }
 
 /* Skatās maršruta tabulas maršruta nosaukumus */
@@ -71,4 +66,16 @@
     max-width: 35px;
     height: auto;
     width: auto;
+}
+
+/* Skatās statusa kolonnu maršruta sadaļā */
+#statuss, #statusaTeksts, #statusaLaukums {
+    display: none;
+}
+
+/* Skatās kājeni tikai vilciena maršruta lapā */
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }

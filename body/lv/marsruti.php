@@ -180,14 +180,14 @@ try {
         <table id="marsrutuTabula">
             <thead>
                 <tr>
-                    <th class="tukšs" id="sakums"><label id="sakumaTeksts">Atiešanas laiks</label></th>
-                    <th class="tukšs" id="beigas"><label id="beigasTeksts">Pienākšanas laiks</label></th>
-                    <th class="tukšs" id="nosaukums"><label id="nosaukumaTeksts">Maršruta nosaukums</label></th>
-                    <th class="tukšs" id="marsrutaIdentifikators"><label id="identifikatorsTeksts">Maršruta nr.</label></th>
-                    <th class="tukšs" id="laiks"><label id="laikaTeksts">Maršruta laiks</label></th>
-                    <th class="tukšs" id="pirkt"><label id="pirktTeksts">Pirkt biļeti</label></th>
-                    <th class="tukšs" id="info"><label id="infoTeksts">Vairāk info</label></th>
-                    <th id="statuss">Statuss</th>
+                    <th class="marsruti" id="sakums"><label id="sakumaTeksts">Atiešanas laiks</label></th>
+                    <th class="marsruti" id="beigas"><label id="beigasTeksts">Pienākšanas laiks</label></th>
+                    <th class="marsruti" id="nosaukums"><label id="nosaukumaTeksts">Maršruta nosaukums</label></th>
+                    <th class="marsruti" id="marsrutaIdentifikators"><label id="identifikatorsTeksts">Maršruta nr.</label></th>
+                    <th class="marsruti" id="laiks"><label id="laikaTeksts">Maršruta laiks</label></th>
+                    <th class="marsruti" id="pirkt"><label id="pirktTeksts">Pirkt biļeti</label></th>
+                    <th class="marsruti" id="info"><label id="infoTeksts">Vairāk info</label></th>
+                    <th id="statuss"><label id="statusaTeskts">Statuss</label></th>
                 </tr>
             </thead>
             <tbody>
@@ -203,6 +203,7 @@ try {
                         <td id="infoPoga"><button class="btn btn-primary" id="infoPogas"><img src="/icons/info.svg"
                             alt="Vairāk info" id="infoIkona"></button></td>
                         <td></td>
+                        <td id="statussLaukums"> </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
