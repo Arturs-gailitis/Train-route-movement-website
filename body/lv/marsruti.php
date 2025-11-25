@@ -187,7 +187,7 @@ try {
                     <th class="marsruti" id="laiks"><label id="laikaTeksts">Maršruta laiks</label></th>
                     <th class="marsruti" id="pirkt"><label id="pirktTeksts">Pirkt biļeti</label></th>
                     <th class="marsruti" id="info"><label id="infoTeksts">Vairāk info</label></th>
-                    <th id="statuss"><label id="statusaTeskts">Statuss</label></th>
+                    <th id="statuss"><label id="statusaTeksts">Statuss</label></th>
                 </tr>
             </thead>
             <tbody>
