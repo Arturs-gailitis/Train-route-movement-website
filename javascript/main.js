@@ -28,7 +28,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(visualMap);
 
-
+// Pievieno vizuālajā mapē stacijas
 let i = 0;
 while (i < stations.length) {
     let station = L.marker([stations[i].lat, stations[i].long]).addTo(visualMap);

@@ -1,3 +1,4 @@
+// Objekts par stacijas datiem, ko ņems lai ieliktu vizuālajā mapē stacijas
 export const stations = [
     {sname: "Aizkraukle", lat: 56.62231695351155, long: 25.275909304618835},
     {sname: "Alotene", lat: 56.63318415708704, long: 25.585302114486694},
@@ -23,7 +24,7 @@ export const stations = [
     {sname: "Daugmale", lat: 56.91039196297177, long: 24.19979363679886},
     {sname: "Depo", lat: 56.94658051522536, long: 24.039250016212463},
     {sname: "Dziravas", lat: 56.95720930260088, long: 23.95353063941002},
-    {sname: "Dobele", lat: 56.62874130890819, long: 23.95353063941002},
+    {sname: "Dobele", lat: 56.62874130890819, long: 23.284779489040375},
     {sname: "Dole", lat: 56.86436759394585, long: 24.32376399636269},
     {sname: "Dubulti", lat: 56.968793643715145, long: 23.77526968717575},
     {sname: "Dzintari", lat: 56.9736082639757, long: 23.821835853159428}, 
