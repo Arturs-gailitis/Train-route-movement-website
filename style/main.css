@@ -123,3 +123,31 @@
     background-color: #015224;
     border: black solid 1px;
 }
+
+/* Skatās vizualizācijas mapes sadaļu */
+#vizuālāMapesLaukums {
+    display: inline-block;
+    position: relative;
+    border: 2px solid black;
+    max-width: 800px;
+    width: auto;
+    margin-left: 500px;
+    padding: 20px 20px;
+    background-color: #015224;
+}
+
+/* Skatās vizualizācijas mapes virsrakstu */
+#vilcienaMapesVirsraksts {
+    display: flex;
+    justify-self: center;
+    text-align: center;
+    color: white;
+}
+
+/* Skatās pašu leaflet vizualizācijas mapi */
+#vilcienaMape {
+    display: flex;
+    justify-self: center;
+    height: 500px;
+    width: 690px;
+}

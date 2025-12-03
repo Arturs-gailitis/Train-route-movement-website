@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style/main.css">
     <link rel="stylesheet" href="/style/global.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="icon" type="image/svg+xml" href="/icons/website icons/websiteIconTab.svg">
 </head>
 <body>
@@ -117,8 +118,13 @@
             </div>
         </div>
     </div>
+    <div id="vizuālāMapesLaukums" class = "container-fluid">
+        <h1 id="vilcienaMapesVirsraksts">Vilcienu kustības interaktīva mape</h1>
+        <div id="vilcienaMape"></div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="/javascript/global.js"></script>
-    <script src="/javascript/main.js"></script>
+    <script type="module" src="/javascript/main.js"></script>
 </body>
 <footer class="mt-5 py-3">
     <p class="mb-0">© Latvijas vilcienu maršrutu kustības portāls 2025</p>
