@@ -176,6 +176,39 @@ try {
 
         </div>
     </div>
+    <div id="paradītMeklēšanasSadaļu">
+        <button type="button" id="atvērtMeklšanuPoga" title="Atvērt meklēšanas sadaļu">
+            <img src="/icons/arrow-down.svg" alt="Atvērt meklēšanas sadaļu" id="atvērtmeklēšanuIkona">
+        </button>
+    </div>
+    <div class= "p-2 mx-4" id="maršrutuMeklēšanasSadaļa">
+        <button type="button" class="btn btn-secondary" id="atcelt">
+            <img src="/icons/cross.svg" alt="Atcelt" id="atceltIcona">
+        </button>
+
+        <h2 class="mb-4" id="meklesanasTituls">Meklēšana</h2>
+        <form id="meklesanasForma" method="post">
+            <div class="mb-3">
+                <label for="sākumstacija">Sākuma stacija:</label>
+                <input type="text" class="form-control" name="sākumstacija" id="sākumstacija" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="beigustacija">Beigu stacija:</label>
+                <input type="text" class="form-control" name="beigustacija" id="beigustacija" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="datums">Datums:</label>
+                <input type="date" class="form-control" name="datums" id="datums" required>
+            </div>
+
+            <input type="submit" value="Meklēt" class="btn btn-primary" id ="meklet">
+        </form>
+    </div>
+    <div id="tabulasNosaukums">
+        <h1 id="marsrutuTabulasNosaukums">Vilcienu kustības grafiks</h1>
+    </div>
     <div id="marsrutuTabulasLaukums">
         <table id="marsrutuTabula">
             <thead>
@@ -209,6 +242,7 @@ try {
             </tbody>
         </table>
     </div>
+</body>
 <footer class="mt-5 py-3">
     <p class="mb-0">© Latvijas vilcienu maršrutu kustības portāls <span id=projektaGads></span></p>
     <p class="mb-4" id="dati">

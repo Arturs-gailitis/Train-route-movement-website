@@ -1,9 +1,101 @@
+/* Skatās pogu kura parādīs meklēšanas sadaļu */
+#atvērtMeklšanuPoga {
+    display: flex;
+    position: relative;
+    background-color: transparent;
+    max-height: 50px;
+    height: auto;
+    max-width: 75px;
+    width: auto;
+    border: none;
+    left: 810px;
+}
+
+/* Skatās pogas ikonu kura parādīs meklēšanas sadaļu */
+#atvērtmeklēšanuIkona {
+    object-fit: cover;
+    max-width: 75px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+}
+
+/* Skatās maršruta meklēšanas sadaļu */
+#maršrutuMeklēšanasSadaļa {
+    display: none;
+    position: relative;
+    justify-self: center;
+    max-width: 750px;
+    width: auto;
+    max-height: 200px;
+    height: auto;
+    border: 2px solid black;
+    background-color: #015224;
+    color: white;
+    margin-top: 20px;
+}
+
+/* Skatās meklēšanas sadaļas titulu */
+#meklesanasTituls {
+    text-align: center;
+}
+
+/* Skatās maršruta meklēšanas sadaļas atcelt pogu */
+#atcelt {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    background-color: transparent;
+    border: none;
+}
+
+/* SKatās maršruta meklēšanas sadaļas atcelt pogas ikonu */
+#atceltIcona {
+    object-fit: cover;
+    max-width: 25px;
+    max-height: 25px;
+    width: auto;
+    height: auto;
+}
+
+/* Skatās maršruta meklēšanas formu */
+#meklesanasForma {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 10px;
+}
+
+/* Skatās meklēšanas formas meklēt pogu */
+#meklet {
+    background-color: #1f7a1f;
+    border: 2px solid black;
+    color: white;
+    margin-bottom: 40px;
+    position: relative;
+    top: 23px;
+}
+
+/* Skatās vilciena kustības grafika nosaukuma sadaļu */
+#tabulasNosaukums {
+    display: block;
+    justify-self: center;
+    max-width: 450px;
+    width: auto;
+    margin-top: 20px;
+}
+
+/* Skatās vilciena kustības grafika nosaukumu */
+#marsrutuTabulasNosaukums {
+    color: white;
+}
+
 /* Skatās maršruta tabulas sadaļu */
 #marsrutuTabulasLaukums {
     display: flex;
     position: relative;
     justify-self: center;
-    margin: 150px 0;
+    margin: 30px 0;
 }
 
 /* Skatās pašu maršruta tabulas */
