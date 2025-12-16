@@ -35,9 +35,13 @@ try {
         $endStationTime = getStopTime($connection, $endStopID);
         $TripID = [];
         $validTrips = [];
+
+        // atrod visa sākumstaciju trip_id
         foreach ($startStationTime as $i => $time) {
             $TripID[$i] = $time['trip_id'];
         }
+
+        // validē vai beigu staciju trip_id ir vienāds sākuma stacijas trip_id
         foreach ($endStationTime as $time) {
             $j = 0;
             for ($j = 0; $j < count($TripID); $j++) {
@@ -77,35 +81,35 @@ try {
             $hours = floor(((strtotime($endTime['arrival_time']) - strtotime($startTime['departure_time'])) / 3600));
             $tripTime = $hours . ':' . $minutes . ':' . $seconds;
 
-            // iegūst pašreizējo laiku mēnesī, stundās, minūtēs un sekundēs
-            $currentHours = date('H');
-            $currentMinutes = date('i');
-            $currentSeconds = date('s');
-            $currentMonth = date('F');
-            $adding = 'hours';
-
-            // skatās vai pašreizējā mēnesī nav jāmaina pulsktenis uz ziemas laiku
-            if (($currentMonth == 'November') || ($currentMonth == 'December') || ($currentMonth == 'January') 
-            || ($currentMonth == 'February') || ($currentMonth == 'March')) {
-                $currentTime = $currentHours . ':' . $currentMinutes . ':' . $currentSeconds;
-                $winterTime = strtotime($currentTime . ' +'. 1 . ' ' . $adding);
-                $currentTime = date('H:i:s', $winterTime); 
-
-            } else {
-                $currentTime = $currentHours . ':' . $currentMinutes . ':' . $currentSeconds;
-            }
-
+            // iegūst pašreizējo laiku un datumu
+            date_default_timezone_set('Europe/Riga');
+            $currentTime = date('H:i:s');
+            $currentDate = date('Y-m-d');
 
             // ieliek datus organizētā masīvā
-            if (!empty($calendar) && ($startTime['stop_sequence'] < $endTime['stop_sequence']) && 
+            if (!empty($calendar) && ($startTime['stop_sequence'] < $endTime['stop_sequence'])) {
+                
+                // skatās vai izvēlētais datums vienāds/lielāks/mazāks par pašreizējo laiku
+                if ((strtotime($currentDate) == strtotime($date)) && 
                 (strtotime($startTime['departure_time']) > strtotime($currentTime))) {
-                $trips[] = [
-                    'trip_id' => $trip['trip_id'],
-                    'routeName' => $route['name'],
-                    'startTime' => $startTime['departure_time'],
-                    'endTime' => $endTime['arrival_time'],
-                    'tripTime' => $tripTime,
-                ];
+                    $trips[] = [
+                        'trip_id' => $trip['trip_id'],
+                        'routeName' => $route['name'],
+                        'startTime' => $startTime['departure_time'],
+                        'endTime' => $endTime['arrival_time'],
+                        'tripTime' => $tripTime,
+                    ];
+                } else if (strtotime($currentDate) < strtotime($date)) {
+                    $trips[] = [
+                        'trip_id' => $trip['trip_id'],
+                        'routeName' => $route['name'],
+                        'startTime' => $startTime['departure_time'],
+                        'endTime' => $endTime['arrival_time'],
+                        'tripTime' => $tripTime,
+                    ];
+                } else {
+                    continue;
+                }
             }
         }
 
@@ -235,7 +239,7 @@ try {
                             alt="Pirkt" id="pirktIkona"></button></td>
                         <td id="infoPoga"><button class="btn btn-primary" id="infoPogas"><img src="/icons/info.svg"
                             alt="Vairāk info" id="infoIkona"></button></td>
-                        <td></td>
+                        </td>
                         <td id="statussLaukums"> </td>
                     </tr>
                 <?php endforeach; ?>
