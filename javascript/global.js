@@ -38,3 +38,25 @@ themeChanger.addEventListener("click", () => {
         themeIcon.src = "http://localhost:8000/icons/lightTheme.svg";
     }
 })
+
+// iegūst šī brīža datums
+const date = new Date();
+const day = date.getDate();
+const month = date.getMonth();
+const year = date.getFullYear();
+
+// saraksts ar mēnešiem
+const months = ["Janvārī", "Februārī", "Martā", "Aprīlī", "Maijā", "Jūnijā", "Jūlijā", "Augustā", "Septembrī", "Oktobrī", 
+    "Novembrī", "Decembrī"
+];
+
+// iegūst mēneša nosaukumu
+const monthName = months[month]; 
+
+// parāda kad tiek iegūts no atvērtajiem datiem informācija un kad tika izstrādāts šis darbs
+document.addEventListener("DOMContentLoaded", () => {
+    const loadDate = document.getElementById("ielādesDatums");
+    const projectDate = document.getElementById("projektaGads");
+    loadDate.textContent = year + ". gada " + day + ". " + monthName;
+    projectDate.textContent = year;
+})
