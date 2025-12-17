@@ -28,10 +28,44 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(visualMap);
 
-// Pievieno vizuālajā mapē stacijas
+// skatoties pēc staciju krāsas izvēlās atbilstošu ikonu
 let i = 0;
+let icons = [];
+let pictureLocation;
+
 while (i < stations.length) {
-    let station = L.marker([stations[i].lat, stations[i].long]).addTo(visualMap);
+
+    if (stations[i].color == "#8bc540") {
+        pictureLocation = "http://localhost:8000/icons/station-Icons/yellowGreenMarker.svg";
+    } else if (stations[i].color == "#f8db22") {
+        pictureLocation = "http://localhost:8000/icons/station-Icons/goldenYellowMarker.svg";
+    } else if (stations[i].color == "#04abe8") {
+        pictureLocation = "http://localhost:8000/icons/station-Icons/skyBlueMarker.svg";
+    } else if (stations[i].color == "#ea6449") {
+        pictureLocation = "http://localhost:8000/icons/station-Icons/corolRedMarker.svg";
+    } else if (stations[i].color == "#bf9ac6") {
+        pictureLocation = "http://localhost:8000/icons/station-Icons/lavenderPurpleMarker.svg";
+    } else if (stations[i].color == "#000000") {
+        pictureLocation = "http://localhost:8000/icons/station-Icons/blackMarker.svg";
+    }
+
+    icons.push(pictureLocation);
+    i++;
+}
+
+// Pievieno vizuālajā mapē staciju ar ikonu un nosaukumu
+i = 0;
+
+while (i < stations.length) {
+
+    // nokonfigurē stacijas ikonu
+    let stationIcon = L.icon({
+        iconUrl: icons[i],
+        iconSize: [45, 48]
+    })
+
+    // ieliek kartē visas stacijas ar ikonu un tās nosaukumu
+    let station = L.marker([stations[i].lat, stations[i].long], {icon: stationIcon}).addTo(visualMap);
     station.bindPopup(stations[i].sname);
     i = i + 1;
 }
