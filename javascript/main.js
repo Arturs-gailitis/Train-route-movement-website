@@ -1,4 +1,5 @@
 import {stations} from "../storage/visual data/stations.js";
+import { railtrack } from "../storage/visual data/railways/unite.js";
 
 const button = document.getElementById("meklet");
 const box = document.getElementById("galvenaSekcija");
@@ -69,3 +70,22 @@ while (i < stations.length) {
     station.bindPopup(stations[i].sname);
     i = i + 1;
 }
+
+let trackColor;
+
+// Ieliek interaktīvajā kartē dzelzceļa posmus
+railtrack.forEach(rail => {
+
+    // Nosaka kāda krāsa būs katram dzelzceļa posmam
+    if (rail.features[0].properties.railways == "Skulte - Zvejniekciems") {
+        trackColor = "#f8db22";
+    }
+
+    // ieliek interaktīvajā kartē dzelzceļa posmu
+    L.geoJSON(rail, {
+            style: {
+                color: trackColor,
+                weight: 8
+            }
+    }).addTo(visualMap);
+})

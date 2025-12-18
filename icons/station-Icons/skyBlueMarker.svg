@@ -6,7 +6,7 @@
 	 width="800px" height="800px" viewBox="0 0 512 512"  xml:space="preserve">
 <style type="text/css">
 <![CDATA[
-	.st0{fill:#04abe8;}
+	.st0{fill:#04abe8; stroke: black; stroke-width: 6;}
 ]]>
 </style>
 <g>
