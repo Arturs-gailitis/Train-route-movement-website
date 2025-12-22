@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../../db/getingTrainRoute.php';
 require_once __DIR__ . '/../../db/initializeDB.php';
-$database = __DIR__ . '/../../storage/database/trains.sqlite';
+$database = __DIR__ . '/../../storage/database/LatvianTrains.sqlite';
 $trips = [];
 $organisedTrips = [];
 
