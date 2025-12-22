@@ -3,7 +3,7 @@
 require_once __DIR__.'/../db/initializeDB.php';
 
 $database = __DIR__ . '/../storage/database/trains.sqlite';
-$info = __DIR__.'/../open info/stop_times.csv';
+$info = __DIR__.'/../openInfo/Latvian/stop_times.csv';
 
 $db = getConnection($database);
 

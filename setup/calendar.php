@@ -3,7 +3,7 @@
 require_once __DIR__.'/../db/initializeDB.php';
 
 $database = __DIR__ . '/../storage/database/trains.sqlite';
-$info = __DIR__.'/../open info/calendar.csv';
+$info = __DIR__.'/../openInfo/Latvian/calendar.csv';
 
 $db = getConnection($database);
 
@@ -14,7 +14,7 @@ $db->exec($deleteTable);
 // sagatavo Calendar tabulas izveidošanas vaicājumu
 $createCalendarQuerry = 'CREATE TABLE IF NOT EXISTS Calendar (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    service_id TEXT,
+    service_id TEXT UNIQUE,
     monday INTEGER,
     tuesday INTEGER,
     wednesday INTEGER,
@@ -23,8 +23,7 @@ $createCalendarQuerry = 'CREATE TABLE IF NOT EXISTS Calendar (
     saturday INTEGER,
     sunday INTEGER,
     start_date INTEGER,
-    end_date INTEGER,
-    FOREIGN KEY (service_id) REFERENCES Trips(service_id)
+    end_date INTEGER
 )';
 
 // izveido Calendar tabulu

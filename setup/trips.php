@@ -3,7 +3,7 @@
 require_once __DIR__.'/../db/initializeDB.php';
 
 $database = __DIR__ . '/../storage/database/trains.sqlite';
-$info = __DIR__.'/../open info/trips.csv';
+$info = __DIR__.'/../openInfo/Latvian/trips.csv';
 
 $db = getConnection($database);
 
@@ -18,7 +18,8 @@ $createTripsQuerry = 'CREATE TABLE IF NOT EXISTS Trips (
     service_id TEXT,
     trip_id INTEGER UNIQUE,
     headsign TEXT,
-    FOREIGN KEY (route_id) REFERENCES Routes(route_id)
+    FOREIGN KEY (route_id) REFERENCES Routes(route_id),
+    FOREIGN KEY (service_id) REFERENCES Calendar(service_id)
 )';
 
 // izveido Trips tabulu
