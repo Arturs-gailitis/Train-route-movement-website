@@ -79,6 +79,8 @@ railtrack.forEach(rail => {
     // Nosaka kāda krāsa būs katram dzelzceļa posmam
     if (rail.features[0].properties.railways == "Skulte - Zvejniekciems") {
         trackColor = "#f8db22";
+    } else if (rail.features[0].properties.railways == "Tukums II - Tukums I") {
+        trackColor = "#04abe8";
     }
 
     // ieliek interaktīvajā kartē dzelzceļa posmu
