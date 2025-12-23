@@ -85,7 +85,7 @@ railtrack.forEach(rail => {
     L.geoJSON(rail, {
             style: {
                 color: trackColor,
-                weight: 8
+                weight: 10
             }
     }).addTo(visualMap);
 })
