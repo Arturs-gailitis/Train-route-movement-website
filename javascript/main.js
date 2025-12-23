@@ -81,6 +81,8 @@ railtrack.forEach(rail => {
         trackColor = "#f8db22";
     } else if (rail.features[0].properties.railways == "Tukums II - Tukums I") {
         trackColor = "#04abe8";
+    } else if (rail.features[0].properties.railways == "Liepāja - Skrunde") {
+        trackColor = "#ea6449";
     }
 
     // ieliek interaktīvajā kartē dzelzceļa posmu

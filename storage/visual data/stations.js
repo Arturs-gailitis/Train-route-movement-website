@@ -64,7 +64,7 @@ export const stations = [
     {sname: "Kūkas", lat: 56.54013824362703, long: 26.059763431549072, color: "#bf9ac6"},
     {sname: "Lielupe", lat: 56.98210405887414, long: 23.870320469141006, color: "#04abe8"},
     {sname: "Lielvārde", lat: 56.72207923104426, long: 24.80822592973709, color: "#bf9ac6"},
-    {sname: "Liepāja", lat: 56.524123423711806, long: 21.01658821105957, color: "#ea6449"},
+    {sname: "Liepāja", lat: 56.52445064324817, long: 21.017065127139716, color: "#ea6449"},
     {sname: "Lilaste", lat: 57.18170611811678, long: 24.33575883507729, color: "#f8db22"},
     {sname: "Lode", lat: 57.38825224776999, long: 25.41439175605774, color: "#8bc540"},
     {sname: "Ludza", lat: 56.53326987336033, long: 27.72171914577484, color: "#bf9ac6"},
