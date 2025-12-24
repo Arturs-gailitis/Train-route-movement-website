@@ -16,7 +16,7 @@ export const stations = [
     {sname: "Cesvaine", lat: 56.95805545362706, long: 26.331594586372375, color: "#bf9ac6"},
     {sname: "Ciemupe", lat: 56.78175609097516, long: 24.654149785637856, color: "#bf9ac6"},
     {sname: "Cirma", lat: 56.53391476041953, long: 27.533363699913025, color: "#bf9ac6"},
-    {sname: "Cukurfabrika", lat: 56.65313916981387, long: 23.758787512779236, color: "#ea6449"},
+    {sname: "Cukurfabrika", lat: 56.6529661254786, long: 23.75839267001126, color: "#ea6449"},
     {sname: "Cēsis", lat: 57.31319945183685, long: 25.282149463891983, color: "#8bc540"},
     {sname: "Dalbe", lat: 56.74158783596442, long: 23.87545555830002, color: "#ea6449"},
     {sname: "Dauderi", lat: 57.001851308505216, long: 24.126226854913913, color: "#f8db22"},

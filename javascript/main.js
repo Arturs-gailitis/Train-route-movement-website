@@ -81,7 +81,9 @@ railtrack.forEach(rail => {
         trackColor = "#f8db22";
     } else if (rail.features[0].properties.railways == "Tukums II - Tukums I") {
         trackColor = "#04abe8";
-    } else if (rail.features[0].properties.railways == "Liepāja - Skrunde") {
+    } else if ((rail.features[0].properties.railways == "Liepāja - Skrunde") || 
+    (rail.features[0].properties.railways == "Skrunde - Liepāja") || 
+    (rail.features[0].properties.railways == "Dobele - Jelgava")) {
         trackColor = "#ea6449";
     }
 
