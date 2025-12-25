@@ -84,7 +84,7 @@ export const stations = [
     {sname: "Mārciena", lat: 56.77192309025862, long: 26.097032725811005, color: "#bf9ac6"},
     {sname: "Nerza", lat: 56.43076513152943, long: 27.95918583869934, color: "#bf9ac6"},
     {sname: "Nīcgale", lat: 56.13534861091715, long: 26.371757984161377, color: "#bf9ac6"},
-    {sname: "Ogre", lat: 56.815459117139866, long: 24.602503180503845, color: "#bf9ac6"},
+    {sname: "Ogre", lat: 56.815613862819816, long: 24.60260728088477, color: "#bf9ac6"},
     {sname: "Olaine", lat: 56.78610524389427, long: 23.946158587932587, color: "#ea6449"},
     {sname: "Ozolnieki", lat: 56.686903162873335, long: 23.806761503219604, color: "#ea6449"},
     {sname: "Pabaži", lat: 57.24214248307095, long: 24.40828048499327, color: "#f8db22"},

@@ -85,6 +85,8 @@ railtrack.forEach(rail => {
     (rail.features[0].properties.railways == "Skrunde - Liepāja") || 
     (rail.features[0].properties.railways == "Dobele - Jelgava")) {
         trackColor = "#ea6449";
+    } else if (rail.features[0].properties.railways == "Vagonu parks - Jāņavārti") {
+        trackColor = "#bf9ac6";
     }
 
     // ieliek interaktīvajā kartē dzelzceļa posmu
