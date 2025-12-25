@@ -1584,7 +1584,9 @@ export let vToP = {
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "railways": "Alotene - Pļaviņas"
+      },
       "geometry": {
         "coordinates": [
           [
