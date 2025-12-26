@@ -48,7 +48,7 @@ export const stations = [
     {sname: "Jaunogre", lat: 56.82180946448918, long: 24.581995010375977, color: "#bf9ac6"},
     {sname: "Jaunolaine", lat: 56.806332461641105, long: 23.984286189079285, color: "#ea6449"}, 
     {sname: "Jelgava", lat: 56.640595607913234, long: 23.732324838638306, color: "#ea6449"},
-    {sname: "Jersika", lat: 56.254556199717726, long: 26.210503578186035, color: "#bf9ac6"},
+    {sname: "Jersika", lat: 56.25453177054945, long: 26.210251808278514, color: "#bf9ac6"},
     {sname: "Jugla", lat: 56.992123017002655, long: 24.23511564731598, color: "#8bc540"},
     {sname: "Jumprava", lat: 56.679531017134806, long: 24.969756603240967, color: "#bf9ac6"},
     {sname: "Jāņamuiža", lat: 57.343895922275514, long: 25.33960372209549, color: "#8bc540"},
