@@ -1,12 +1,11 @@
 1. uzzīmēt blokshēmu, ceļš, datu plūsma utt.
-2. Pievieno Aglonas staciju
-3. ieliec maršruti uz Aglonu.
-4. Salabo koordinātes.
-5. Ieliec stacijām bildes.
-6. Ieliec dzelzceļa ceļu kartē.
-7. Ieliec iespēju filtrēt maršrutus vizuālajā kartē.
-8. Ja maršrutu tabulā nebūs dati ko parādīt, tad norādi message.
-9. Ielikt marsruti.php pulksteni. 
-10. izņem lieko ikonu no header
-11. Nomaini staciju ikonas, no kurām izmanto divām maršrutu posmiem
+2. ieliec maršruti uz Aglonu.
+3. Salabo koordinātes.
+4. Ieliec stacijām bildes.
+5. Ieliec dzelzceļa ceļu kartē.
+6. Ieliec iespēju filtrēt maršrutus vizuālajā kartē.
+7. Ja maršrutu tabulā nebūs dati ko parādīt, tad norādi message.
+8. Ielikt marsruti.php pulksteni. 
+9. izņem lieko ikonu no header
+10. Nomaini staciju ikonas, no kurām izmanto divām maršrutu posmiem
 
