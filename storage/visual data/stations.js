@@ -1,5 +1,6 @@
 // Objekts par stacijas datiem, ko ņems lai ieliktu vizuālajā mapē stacijas
 export const stations = [
+    {sname: "Aglona", lat: 56.17820165995562, long: 26.890887964676125, color: "#bf9ac6"},
     {sname: "Aizkraukle", lat: 56.62231695351155, long: 25.275909304618835, color: "#bf9ac6"},
     {sname: "Alotene", lat: 56.63318415708704, long: 25.585302114486694, color: "#bf9ac6"},
     {sname: "Asari", lat: 56.95721086063085, long: 23.689389377832413, color: "#04abe8"},
