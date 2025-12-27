@@ -1145,7 +1145,7 @@ export let cToV = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Melnturi - Āraiši"
+        "railways": "Melturi - Āraiši"
       },
       "geometry": {
         "coordinates": [
