@@ -90,6 +90,8 @@ railtrack.forEach(rail => {
     (rail.features[0].properties.railways == "Krustpils - Kūkas") || 
     (rail.features[0].properties.railways == "Pļaviņas - Jaunkalsnava")) {
         trackColor = "#bf9ac6";
+    } else if (rail.features[0].properties.railways == "Čiekurkalns - Šmerlis") {
+        trackColor = "#8bc540";
     }
 
     // ieliek interaktīvajā kartē dzelzceļa posmu

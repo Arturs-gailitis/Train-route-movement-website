@@ -102,7 +102,7 @@ export const stations = [
     {sname: "Sarkandaugava", lat: 56.99330708386458, long: 24.1337692363673, color: "#f8db22"},
     {sname: "Saulkalne", lat: 56.84953521193246, long: 24.435927271842957, color: "#bf9ac6"},
     {sname: "Saulkrasti", lat: 57.269171334839285, long: 24.426791121035706, color: "#f8db22"},
-    {sname: "Sigulda", lat: 57.153130706978494, long: 24.85462546348572, color: "#8bc540"},
+    {sname: "Sigulda", lat: 57.15320565700489, long: 24.85537848975858, color: "#8bc540"},
     {sname: "Skrunda", lat: 56.680615420058146, long: 22.012165188789368, color: "#ea6449"},
     {sname: "Skrīveri", lat: 56.6469667132887, long: 25.12369394302368, color: "#bf9ac6"},
     {sname: "Skulte", lat: 57.33329141449526, long: 24.463095366954803, color: "#f8db22"},
