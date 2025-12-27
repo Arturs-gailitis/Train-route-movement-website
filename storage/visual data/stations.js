@@ -56,7 +56,7 @@ export const stations = [
     {sname: "Jāņavārti", lat: 56.91899696812112, long: 24.1858434677124, color: "#bf9ac6"},
     {sname: "Kaibala", lat: 56.703292322461174, long: 24.888453483581543, color: "#bf9ac6"},
     {sname: "Kalngale", lat: 57.08619076776596, long: 24.152865707874295, color: "#f8db22"},
-    {sname: "Kalsnava", lat: 56.73380267566737, long: 26.01863443851471, color: "#bf9ac6"},
+    {sname: "Kalsnava", lat: 56.7336846409747, long: 26.018431359735047, color: "#bf9ac6"},
     {sname: "Koknese", lat: 56.65093926058105, long: 25.43932020664215, color: "#bf9ac6"},
     {sname: "Krievupe", lat: 57.06481110170964, long: 24.510192275047302, color: "#8bc540"},
     {sname: "Krustpils", lat: 56.520630237518525, long: 25.859735012054443, color: "#bf9ac6"},

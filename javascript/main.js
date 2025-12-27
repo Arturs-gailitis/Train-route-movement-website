@@ -87,7 +87,8 @@ railtrack.forEach(rail => {
         trackColor = "#ea6449";
     } else if ((rail.features[0].properties.railways == "Vagonu parks - Jāņavārti") || 
     (rail.features[0].properties.railways == "Krustpils - Trepe") || 
-    (rail.features[0].properties.railways == "Krustpils - Kūkas")) {
+    (rail.features[0].properties.railways == "Krustpils - Kūkas") || 
+    (rail.features[0].properties.railways == "Pļaviņas - Jaunkalsnava")) {
         trackColor = "#bf9ac6";
     }
 
