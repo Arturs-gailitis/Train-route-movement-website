@@ -1,3 +1,4 @@
+// glabā dzelzceļa posma Dobele - Bieriņi ceļa koordinātes
 export let dToB = {
   "type": "FeatureCollection",
   "features": [
@@ -997,6 +998,37 @@ export let dToB = {
           [
             24.08157649859959,
             56.92201344557276
+          ]
+        ],
+        "type": "LineString"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "railways": "Savieno Bieriņus/Bērnu slimnīcu"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            24.08157991730519,
+            56.92201027718218
+          ],
+          [
+            24.08458028813257,
+            56.927741523901744
+          ],
+          [
+            24.084862663259003,
+            56.92812666376386
+          ],
+          [
+            24.085098134612196,
+            56.92837588795359
+          ],
+          [
+            24.085065106968926,
+            56.92851102397077
           ]
         ],
         "type": "LineString"

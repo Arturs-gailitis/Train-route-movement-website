@@ -8,6 +8,7 @@ import { pToI } from "./PlavinasIndraRailwats.js";
 import { kToZ } from "./KrustpilsZilupeRailways.js";
 import { pToG } from "./PlavinasGulbeneRailways.js";
 import { cToV } from "./CiekurkalnsValgaRailways.js";
+import { tornToZ } from "./TornkalnsZemitaniRailways.js";
 
 // apvieno visus dzelzceļa posmus vienā masīvā
-export const railtrack = [bToS, tToZ, lToS, sToD, dToB, vToP, pToI, kToZ, pToG, cToV];
+export const railtrack = [bToS, tToZ, lToS, sToD, dToB, vToP, pToI, kToZ, pToG, cToV, tornToZ];

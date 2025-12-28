@@ -92,6 +92,8 @@ railtrack.forEach(rail => {
         trackColor = "#bf9ac6";
     } else if (rail.features[0].properties.railways == "Čiekurkalns - Šmerlis") {
         trackColor = "#8bc540";
+    } else if (rail.features[0].properties.railways == "Torņkalns - Rīga") {
+        trackColor = "#000000";
     }
 
     // ieliek interaktīvajā kartē dzelzceļa posmu
