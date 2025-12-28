@@ -1372,7 +1372,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Majori- Dzintari"
+        "railways": "Majori - Dzintari"
       },
       "geometry": {
         "coordinates": [
