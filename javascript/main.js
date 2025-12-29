@@ -65,9 +65,14 @@ while (i < stations.length) {
         iconSize: [45, 48]
     })
 
-    // ieliek kartē visas stacijas ar ikonu un tās nosaukumu
+    // ieliek kartē visas stacijas ar ikonu un tās nosaukumu papildus arī stacijas bildi
     let station = L.marker([stations[i].lat, stations[i].long], {icon: stationIcon}).addTo(visualMap);
-    station.bindPopup(stations[i].sname);
+    station.bindPopup(
+        "<div align=center>" +
+        "<h5><b>" + stations[i].sname + "</b></h5><br>" +
+        "<img src = " + stations[i].image + " width=315 hight=80>" +
+        "</div>"
+    );
     i = i + 1;
 }
 

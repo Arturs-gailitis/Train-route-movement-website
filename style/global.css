@@ -10,6 +10,7 @@ body {
     background-color: #015224;
     border: 1px solid #015224;
     padding: 10px;
+    width: auto;
 }
 
 /* Skatās mājaslapas logo un nosaukumu, kā kopumu */
@@ -44,7 +45,7 @@ nav {
 
 /* Skatās navigācijas pogas kopumu */
 ul {
-    gap: 3px;
+    gap: 5px;
     list-style: none;
 }
 
@@ -52,7 +53,10 @@ ul {
 .nav-link {
     color: white;
     position: relative;
-    left: 66px;
+    right: 28px;
+    max-width: 100px;
+    width: auto;
+    margin-right: -18px;
 }
 
 /* Skatās lietotāja un opciju ikonām navigācijā */
