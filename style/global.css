@@ -44,17 +44,19 @@ nav {
 
 /* Skatās navigācijas pogas kopumu */
 ul {
-    gap: 5px;
+    gap: 3px;
     list-style: none;
 }
 
 /* Skatās navigācijas pogas */
 .nav-link {
     color: white;
+    position: relative;
+    left: 66px;
 }
 
-/* Skatās nopirktā groza, lietotāja un opciju ikonām navigācijā */
-#grozs, #lietotajs, #opcijas {
+/* Skatās lietotāja un opciju ikonām navigācijā */
+#lietotajs, #opcijas {
     display: inline-block;
     max-height: 30px;
     max-width: 30px;

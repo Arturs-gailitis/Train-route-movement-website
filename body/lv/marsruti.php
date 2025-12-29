@@ -150,14 +150,11 @@ try {
                 <li class="nav-item">
                     <a class="nav-link" href="#">Kontakti</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><img src="/icons/shoppingCart.png" alt="Grozs" id="grozs"></a>
-                </li>
-                <li class="nav-item">
+                <li class="nav-item" title="Profils">
                     <a class="nav-link" href="#"><img src="/icons/account icons/noAccountLight.svg" alt="Lietotājs" 
                         id="lietotajs"></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" title="Opcijas">
                     <button class="nav-link"><img src="/icons/settings.svg" alt="Opcijas" id="opcijas"></button>
                 </li>
             </ul>
@@ -186,7 +183,7 @@ try {
         </button>
     </div>
     <div class= "p-2 mx-4" id="maršrutuMeklēšanasSadaļa">
-        <button type="button" class="btn btn-secondary" id="atcelt">
+        <button type="button" class="btn btn-secondary" id="atcelt" title="Aizvērt meklēšanas sadaļu">
             <img src="/icons/cross.svg" alt="Atcelt" id="atceltIcona">
         </button>
 

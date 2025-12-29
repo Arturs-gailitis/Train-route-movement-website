@@ -4,6 +4,4 @@
 4. Ieliec iespēju filtrēt maršrutus vizuālajā kartē.
 5. Ja maršrutu tabulā nebūs dati ko parādīt, tad norādi message.
 6. Ielikt marsruti.php pulksteni. 
-7. izņem lieko ikonu no header
-8. Nomaini staciju ikonas, no kurām izmanto divām maršrutu posmiem
-
+7. Nomaini staciju ikonas, no kurām izmanto divām maršrutu posmiem
