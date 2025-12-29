@@ -133,10 +133,10 @@ export const stations = [
     {sname: "Zolitūde", lat: 56.949263128645754, long: 24.022375705602485, color: "#04abe8", image: "http://localhost:8000/icons/station-Images/Zolitude.png"},
     {sname: "Zvejniekciems", lat: 57.30700289635051, long: 24.442691802978516, color: "#f8db22", image: "http://localhost:8000/icons/station-Images/Zvejniekciems.png"}, 
     {sname: "Āraiši", lat: 57.23810489031663, long: 25.301127433776855, color: "#8bc540", image: "http://localhost:8000/icons/station-Images/Araisi.png"},
-    {sname: "Čiekurkalns", lat: 56.98029389972582, long: 24.168606251478195, color: "#8bc540", image: "http://localhost:8000/icons/station-Images/Ciekurkalns.png"},
+    {sname: "Čiekurkalns", lat: 56.98029389972582, long: 24.168606251478195, color: "#8bc540", image: "http://localhost:8000/icons/station-Images/ciekurkalns.png"},
     {sname: "Ķegums", lat: 56.74152458435779, long: 24.725825786590576, color: "#bf9ac6", image: "http://localhost:8000/icons/station-Images/Kegums.png"},
     {sname: "Ķemeri", lat: 56.93833159002263, long: 23.489938974380493, color: "#04abe8", image: "http://localhost:8000/icons/station-Images/Kemeri.png"},
     {sname: "Ķīšupe", lat: 57.28629136597179, long: 24.432950019836422, color: "#f8db22", image: "http://localhost:8000/icons/station-Images/Kisupe.png"},
     {sname: "Šmerlis", lat: 56.985691761319885, long: 24.200789366694472, color: "#8bc540", image: "http://localhost:8000/icons/station-Images/Smerlis.png"},
-    {sname: "Šķirotava", lat: 56.90493685313791, long: 24.210948944091797, color: "#bf9ac6", image: "http://localhost:8000/icons/station-Images/Skrotava.png"},
+    {sname: "Šķirotava", lat: 56.90493685313791, long: 24.210948944091797, color: "#bf9ac6", image: "http://localhost:8000/icons/station-Images/Skirotava.png"},
 ];
