@@ -27,94 +27,99 @@ try {
         // iegūst un apstrādā datus no Stops tabulas
         $startStation = getStops($connection, $startS);
         $endStation = getStops($connection, $endS);
-        $startStopID = $startStation['stop_id'];
-        $endStopID = $endStation['stop_id'];
 
-        // iegūst un apstrādā datus no Stop_Times tabulas
-        $startStationTime = getStopTime($connection, $startStopID);
-        $endStationTime = getStopTime($connection, $endStopID);
-        $TripID = [];
-        $validTrips = [];
+        if ($startStation != false && $endStation != false) {
 
-        // atrod visa sākumstaciju trip_id
-        foreach ($startStationTime as $i => $time) {
-            $TripID[$i] = $time['trip_id'];
-        }
+            $startStopID = $startStation['stop_id'];
+            $endStopID = $endStation['stop_id'];
 
-        // validē vai beigu staciju trip_id ir vienāds sākuma stacijas trip_id
-        foreach ($endStationTime as $time) {
-            $j = 0;
-            for ($j = 0; $j < count($TripID); $j++) {
-                if ($time['trip_id'] == $TripID[$j]) {
-                    $validTrips[] = $time['trip_id'];
-                }   
-            }
-        }
+            // iegūst un apstrādā datus no Stop_Times tabulas
+            $startStationTime = getStopTime($connection, $startStopID);
+            $endStationTime = getStopTime($connection, $endStopID);
+            $TripID = [];
+            $validTrips = [];
 
-
-        foreach($validTrips as $tripID) {
-            
-            // iegūst datus no Trips, Routes un Calendar tabulas
-            $trip = getTrips($connection, $tripID);
-            $route = getRoutes($connection, $trip['route_id']);
-            $calendar = getCalendar($connection, $trip['service_id'], $dayName);
-            
-            // atrod vienādu sākuma stacijas trip_id no $validTrips masīva 
-            foreach ($startStationTime as $time) {
-                if ($time['trip_id'] == $trip['trip_id']) {
-                    $startTime = $time;
-                    break;
-                }
+            // atrod visa sākumstaciju trip_id
+            foreach ($startStationTime as $i => $time) {
+                $TripID[$i] = $time['trip_id'];
             }
 
-            // atrod vienādu beigu stacijas trip_id no $validTrips masīva 
+            // validē vai beigu staciju trip_id ir vienāds sākuma stacijas trip_id
             foreach ($endStationTime as $time) {
-                if ($time['trip_id'] == $trip['trip_id']) {
-                    $endTime = $time;
-                    break;
+                $j = 0;
+                for ($j = 0; $j < count($TripID); $j++) {
+                    if ($time['trip_id'] == $TripID[$j]) {
+                        $validTrips[] = $time['trip_id'];
+                    }   
                 }
             }
 
-            // aprēķina dotās kustības laika posmu
-            $seconds = ((strtotime($endTime['arrival_time']) - strtotime($startTime['departure_time'])) % 60);
-            $minutes = floor(((strtotime($endTime['arrival_time']) - strtotime($startTime['departure_time'])) % 3600) / 60);
-            $hours = floor(((strtotime($endTime['arrival_time']) - strtotime($startTime['departure_time'])) / 3600));
-            $tripTime = $hours . ':' . $minutes . ':' . $seconds;
 
-            // iegūst pašreizējo laiku un datumu
-            date_default_timezone_set('Europe/Riga');
-            $currentTime = date('H:i:s');
-            $currentDate = date('Y-m-d');
-
-            // ieliek datus organizētā masīvā
-            if (!empty($calendar) && ($startTime['stop_sequence'] < $endTime['stop_sequence'])) {
+            foreach($validTrips as $tripID) {
                 
-                // skatās vai izvēlētais datums vienāds/lielāks/mazāks par pašreizējo laiku
-                if ((strtotime($currentDate) == strtotime($date)) && 
-                (strtotime($startTime['departure_time']) > strtotime($currentTime))) {
-                    $trips[] = [
-                        'trip_id' => $trip['trip_id'],
-                        'routeName' => $route['name'],
-                        'startTime' => $startTime['departure_time'],
-                        'endTime' => $endTime['arrival_time'],
-                        'tripTime' => $tripTime,
-                    ];
-                } else if (strtotime($currentDate) < strtotime($date)) {
-                    $trips[] = [
-                        'trip_id' => $trip['trip_id'],
-                        'routeName' => $route['name'],
-                        'startTime' => $startTime['departure_time'],
-                        'endTime' => $endTime['arrival_time'],
-                        'tripTime' => $tripTime,
-                    ];
-                } else {
-                    continue;
+                // iegūst datus no Trips, Routes un Calendar tabulas
+                $trip = getTrips($connection, $tripID);
+                $route = getRoutes($connection, $trip['route_id']);
+                $calendar = getCalendar($connection, $trip['service_id'], $dayName);
+            
+                // atrod vienādu sākuma stacijas trip_id no $validTrips masīva 
+                foreach ($startStationTime as $time) {
+                    if ($time['trip_id'] == $trip['trip_id']) {
+                        $startTime = $time;
+                        break;
+                    }
                 }
-            }
-        }
 
-        // organizē maršruta masīvu pēc atiešana laika
-        $organisedTrips = organiseArray($trips);
+                // atrod vienādu beigu stacijas trip_id no $validTrips masīva 
+                foreach ($endStationTime as $time) {
+                    if ($time['trip_id'] == $trip['trip_id']) {
+                        $endTime = $time;
+                        break;
+                    }
+                }
+
+                // aprēķina dotās kustības laika posmu
+                $seconds = ((strtotime($endTime['arrival_time']) - strtotime($startTime['departure_time'])) % 60);
+                $minutes = floor(((strtotime($endTime['arrival_time']) - strtotime($startTime['departure_time'])) % 3600) / 60);
+                $hours = floor(((strtotime($endTime['arrival_time']) - strtotime($startTime['departure_time'])) / 3600));
+                $tripTime = $hours . ':' . $minutes . ':' . $seconds;
+
+                // iegūst pašreizējo laiku un datumu
+                date_default_timezone_set('Europe/Riga');
+                $currentTime = date('H:i:s');
+                $currentDate = date('Y-m-d');
+
+                // ieliek datus organizētā masīvā
+                if (!empty($calendar) && ($startTime['stop_sequence'] < $endTime['stop_sequence'])) {
+                
+                    // skatās vai izvēlētais datums vienāds/lielāks/mazāks par pašreizējo laiku
+                    if ((strtotime($currentDate) == strtotime($date)) && 
+                    (strtotime($startTime['departure_time']) > strtotime($currentTime))) {
+                        $trips[] = [
+                            'trip_id' => $trip['trip_id'],
+                            'routeName' => $route['name'],
+                            'startTime' => $startTime['departure_time'],
+                            'endTime' => $endTime['arrival_time'],
+                            'tripTime' => $tripTime,
+                        ];
+                    } else if (strtotime($currentDate) < strtotime($date)) {
+                        $trips[] = [
+                            'trip_id' => $trip['trip_id'],
+                            'routeName' => $route['name'],
+                            'startTime' => $startTime['departure_time'],
+                            'endTime' => $endTime['arrival_time'],
+                            'tripTime' => $tripTime,
+                        ];
+                    } else {
+                        continue;
+                    }
+                }
+            
+            }
+
+            // organizē maršruta masīvu pār atiešana laika
+            $organisedTrips = organiseArray($trips);
+        }
     }
 } catch (Exception $e) {
     echo $e->getMessage();
@@ -210,39 +215,50 @@ try {
     <div id="tabulasNosaukums">
         <h1 id="marsrutuTabulasNosaukums">Vilcienu kustības grafiks</h1>
     </div>
-    <div id="marsrutuTabulasLaukums">
-        <table id="marsrutuTabula">
-            <thead>
-                <tr>
-                    <th class="marsruti" id="sakums"><label id="sakumaTeksts">Atiešanas laiks</label></th>
-                    <th class="marsruti" id="beigas"><label id="beigasTeksts">Pienākšanas laiks</label></th>
-                    <th class="marsruti" id="nosaukums"><label id="nosaukumaTeksts">Maršruta nosaukums</label></th>
-                    <th class="marsruti" id="marsrutaIdentifikators"><label id="identifikatorsTeksts">Maršruta nr.</label></th>
-                    <th class="marsruti" id="laiks"><label id="laikaTeksts">Maršruta laiks</label></th>
-                    <th class="marsruti" id="pirkt"><label id="pirktTeksts">Pirkt biļeti</label></th>
-                    <th class="marsruti" id="info"><label id="infoTeksts">Vairāk info</label></th>
-                    <th id="statuss"><label id="statusaTeksts">Statuss</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($organisedTrips as $trip) : ?>
+    <?php if ($startStation == false || $endStation == false): ?>
+        <div id="navStacijuZinojums">
+            <img src="/icons/error.svg" alt="Klūdas zīme" id="kluda">
+            <p id="navStacijuTeksts">Viena no ievadītās stacijām <b><?php echo $s ?> </b> un <b> <?php echo $b ?> </b> 
+                nav pieejama informācija vai arī tās neeksistē. <br> Pārbaudiet vai neesat uzrakstījuši nepareizi 
+                stacijas nosaukumu un mēģiniet vēlreiz.
+            </p>
+        </div>
+    <?php else: ?>
+        <div id="marsrutuTabulasLaukums">
+            <table id="marsrutuTabula">
+                <thead>
                     <tr>
-                        <td id="sakumaLaiks"><?= $trip['startTime'] ?></td>
-                        <td id="beigasLaiks"><?= $trip['endTime'] ?></td>
-                        <td id="marsrutaNosaukums"><?= $trip['routeName'] ?></td>
-                        <td id="identifikators"><?= $trip['trip_id'] ?></td>
-                        <td id="marsrutaLaiks"><?= $trip['tripTime'] ?></td>
-                        <td id="pirktPoga"><button class="btn btn-primary" id="pirktPogas"><img src="/icons/buy.svg"
-                            alt="Pirkt" id="pirktIkona"></button></td>
-                        <td id="infoPoga"><button class="btn btn-primary" id="infoPogas"><img src="/icons/info.svg"
-                            alt="Vairāk info" id="infoIkona"></button></td>
-                        </td>
-                        <td id="statussLaukums"> </td>
+                        <th class="marsruti" id="sakums"><label id="sakumaTeksts">Atiešanas laiks</label></th>
+                        <th class="marsruti" id="beigas"><label id="beigasTeksts">Pienākšanas laiks</label></th>
+                        <th class="marsruti" id="nosaukums"><label id="nosaukumaTeksts">Maršruta nosaukums</label></th>
+                        <th class="marsruti" id="marsrutaIdentifikators">
+                            <label id="identifikatorsTeksts">Maršruta nr.</label></th>
+                        <th class="marsruti" id="laiks"><label id="laikaTeksts">Maršruta laiks</label></th>
+                        <th class="marsruti" id="pirkt"><label id="pirktTeksts">Pirkt biļeti</label></th>
+                        <th class="marsruti" id="info"><label id="infoTeksts">Vairāk info</label></th>
+                        <th id="statuss"><label id="statusaTeksts">Statuss</label></th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    <?php foreach ($organisedTrips as $trip) : ?>
+                        <tr>
+                            <td id="sakumaLaiks"><?= $trip['startTime'] ?></td>
+                            <td id="beigasLaiks"><?= $trip['endTime'] ?></td>
+                            <td id="marsrutaNosaukums"><?= $trip['routeName'] ?></td>
+                            <td id="identifikators"><?= $trip['trip_id'] ?></td>
+                            <td id="marsrutaLaiks"><?= $trip['tripTime'] ?></td>
+                            <td id="pirktPoga"><button class="btn btn-primary" id="pirktPogas"><img src="/icons/buy.svg"
+                                alt="Pirkt" id="pirktIkona"></button></td>
+                            <td id="infoPoga"><button class="btn btn-primary" id="infoPogas"><img src="/icons/info.svg"
+                                alt="Vairāk info" id="infoIkona"></button></td>
+                            </td>
+                            <td id="statussLaukums"> </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    <?php endif; ?>
 </body>
 <footer class="mt-5 py-3">
     <p class="mb-0">© Latvijas vilcienu maršrutu kustības portāls <span id=projektaGads></span></p>
