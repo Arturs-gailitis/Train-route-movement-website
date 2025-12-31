@@ -28,6 +28,7 @@ try {
         $startStation = getStops($connection, $startS);
         $endStation = getStops($connection, $endS);
 
+        // Darbosies ja ir atrodamas abas stacijas
         if ($startStation != false && $endStation != false) {
 
             $startStopID = $startStation['stop_id'];
