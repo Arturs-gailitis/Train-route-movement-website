@@ -76,8 +76,8 @@
     top: 23px;
 }
 
-/* Skatās kļūdas ziņojuma par nepareizu staciju laukumu */
-#navStacijuZinojums {
+/* Skatās kļūdas ziņojumu */
+.kluduZinojums {
     display: block;
     justify-self: center;
     max-height: 250px;
@@ -93,21 +93,23 @@
 }
 
 /* Skatās par kļūdas ziņojuma ikonu */
-#kluda {
+.kluda {
     display: flex;
     max-height: 50px;
     max-width: 50px;
     height: auto;
     width: auto;
     justify-self: center;
-    margin-top: 35px;
+    margin-top: 20px;
 }
 
-/* Skatās par kļūdas ziņojumu ja stacija neeksistē */
-#navStacijuZinojums p {
-    margin-top: 25px;
-    margin-left: 20px;
-    margin-right: 20px;
+/* Skatās par kļūdas ziņojumu */
+.kluduTeksts {
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 /* Skatās vilciena kustības grafika nosaukuma sadaļu */

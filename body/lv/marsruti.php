@@ -217,11 +217,20 @@ try {
         <h1 id="marsrutuTabulasNosaukums">Vilcienu kustības grafiks</h1>
     </div>
     <?php if ($startStation == false || $endStation == false): ?>
-        <div id="navStacijuZinojums">
-            <img src="/icons/error.svg" alt="Klūdas zīme" id="kluda">
-            <p id="navStacijuTeksts">Viena no ievadītās stacijām <b><?php echo $s ?> </b> un <b> <?php echo $b ?> </b> 
+        <div class="kluduZinojums">
+            <img src="/icons/error.svg" alt="Klūdas zīme" class="kluda">
+            <p class="kluduTeksts">
+                Viena no ievadītās stacijām <b><?php echo $s ?> </b> un <b> <?php echo $b ?> </b> 
                 nav pieejama informācija vai arī tās neeksistē. <br> Pārbaudiet vai neesat uzrakstījuši nepareizi 
                 stacijas nosaukumu un mēģiniet vēlreiz.
+            </p>
+        </div>
+    <?php elseif (empty($organisedTrips) == true): ?>
+        <div class="kluduZinojums">
+            <img src="/icons/error.svg" alt="Klūdas zīme" class="kluda">
+            <p class="kluduTeksts">
+                Jūsu izvēlētajā dienā vairs nav pieejami maršruti no <b><?php echo $s ?> </b> uz <b> <?php echo $b ?> </b> <br>
+                Mēģiniet izvēlēties citas dienas. Piemēram, nākošajā dienā vai pēc nedēļas utt.
             </p>
         </div>
     <?php else: ?>
