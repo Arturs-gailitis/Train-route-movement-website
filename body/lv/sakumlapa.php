@@ -117,6 +117,22 @@
     </div>
     <div id="vizuālāMapesLaukums" class = "container-fluid">
         <h1 id="vilcienaMapesVirsraksts">Vilcienu kustības interaktīva karte</h1>
+        <div>
+            <button type="button" id="atvertFiltresanuPoga" title="Atvērt maršrutu filtrēšanas sadaļu">
+                <img src="/icons/arrow-down.svg" alt="Atvērt maršrtuta filtēšanas sadaļu" id="atvertFiltresanuIkona">
+            </button>
+            <div id=filtresanasSadala>
+                <h3 id="filtresanasTituls">Maršrutu ceļu filtrēšana</h3>
+                <ul>
+                    <li><label><input type="checkbox" id="Tukums" checked> - Tukums II : Torņakalns</label></li>
+                    <li><label><input type="checkbox" id="Liepaja" checked> - Liepāja : Torņakalns</label></li>
+                    <li><label><input type="checkbox" id="Skulte" checked> - Skulte : Zemitāni</label></li>
+                    <li><label><input type="checkbox" id="Valga" checked> - Valga : Zemitāni</label></li>
+                    <li><label><input type="checkbox" id="Latgale" checked> - Indra, Zilupe, Gulbene : Rīga</label></li>
+                    <li><label><input type="checkbox" id="Riga" checked> - Torņakalns - Zemitāni</label></li>
+                </ul>
+            </div>
+        </div>
         <div id="vilcienaMape"></div>
     </div>
 </body>

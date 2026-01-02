@@ -145,6 +145,52 @@
     color: white;
 }
 
+/* Skatās uz pogas kura atver vai aizver dzelzceļa filtrēšanu */
+#atvertFiltresanuPoga {
+    display: flex;
+    position: relative;
+    background-color: transparent;
+    max-height: 50px;
+    height: auto;
+    max-width: 75px;
+    width: auto;
+    border: none;
+    justify-self: center;
+    margin-bottom: 20px;
+}
+
+/* Skatās uz dzelzceļa filtrēšanas sadaļas atvēršanas un aizvēršanas pogas ikonu*/
+#atvertFiltresanuIkona {
+    object-fit: cover;
+    max-height: 50px;
+    max-width: 75px;
+    height: auto;
+    width: auto;
+}
+
+/* Skatās uz dzelzceļa filtrēšanas sadaļu */
+#filtresanasSadala {
+    display: none;
+    background-color: #1f7a1f;
+    color: white;
+    transition: 0.5s;
+    border: 2px solid black;
+    max-height: 250px;
+    max-width: 400px;
+    min-width: 350px;
+    width: auto;
+    justify-items: center;
+    margin-bottom: 10px;
+    justify-self: center;
+}
+
+/* Skatās uz dzelzceļa filtrēšanas virsrakstu */
+#filtresanasTituls {
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
 /* Skatās pašu leaflet vizualizācijas mapi */
 #vilcienaMape {
     display: flex;
