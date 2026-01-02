@@ -1,6 +1,4 @@
 1. uzzīmēt blokshēmu, ceļš, datu plūsma utt.
 2. ieliec maršruti uz Aglonu.
-3. Ieliec stacijām bildes.
-4. Ieliec iespēju filtrēt maršrutus vizuālajā kartē.
-5. Ielikt marsruti.php pulksteni. 
-6. Nomaini staciju ikonas, no kurām izmanto divām maršrutu posmiem
+3. Ieliec iespēju filtrēt maršrutus vizuālajā kartē.
+4. Ielikt marsruti.php pulksteni. 

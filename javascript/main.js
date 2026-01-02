@@ -62,7 +62,7 @@ while (i < stations.length) {
     // nokonfigurē stacijas ikonu
     let stationIcon = L.icon({
         iconUrl: icons[i],
-        iconSize: [45, 48]
+        iconSize: [35, 38]
     })
 
     // ieliek kartē visas stacijas ar ikonu un tās nosaukumu papildus arī stacijas bildi
