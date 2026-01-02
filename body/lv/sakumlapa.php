@@ -129,7 +129,7 @@
                     <li><label><input type="checkbox" id="Skulte" checked> - Skulte : Zemitāni</label></li>
                     <li><label><input type="checkbox" id="Valga" checked> - Valga : Zemitāni</label></li>
                     <li><label><input type="checkbox" id="Latgale" checked> - Indra, Zilupe, Gulbene : Rīga</label></li>
-                    <li><label><input type="checkbox" id="Riga" checked> - Torņakalns - Zemitāni</label></li>
+                    <li><label><input type="checkbox" id="Riga" checked> - Torņakalns : Zemitāni</label></li>
                 </ul>
             </div>
         </div>
