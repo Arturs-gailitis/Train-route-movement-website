@@ -40,12 +40,12 @@ nav {
     display: flex;
     justify-content: flex-end;
     position: relative;
-    left: 560px;
+    left: 510px;
 }
 
 /* Skatās navigācijas pogas kopumu */
 ul {
-    gap: 5px;
+    gap: 15px;
     list-style: none;
 }
 
