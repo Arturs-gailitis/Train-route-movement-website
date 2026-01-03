@@ -14,12 +14,12 @@ try {
 }
 
 try {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
         // Iegūst un apstrādā datus no sakumlapa.php formas
-        $s = $_POST['sākumstacija'];
-        $b = $_POST['beigustacija'];
-        $date = $_POST['datums'];
+        $s = $_GET['sākumstacija'];
+        $b = $_GET['beigustacija'];
+        $date = $_GET['datums'];
         $startS = trim($s);
         $endS = trim($b);
         $dayName = strtolower(date('l', strtotime($date))); 
@@ -194,7 +194,7 @@ try {
         </button>
 
         <h2 class="mb-4" id="meklesanasTituls">Meklēšana</h2>
-        <form id="meklesanasForma" method="post">
+        <form id="meklesanasForma" method="get">
             <div class="mb-3">
                 <label for="sākumstacija">Sākuma stacija:</label>
                 <input type="text" class="form-control" name="sākumstacija" id="sākumstacija" required>
