@@ -1,6 +1,6 @@
 <?php
 
-    // iegūst apstāšanās vietu no datubāzes
+    // iegūst apstāšanās vietu no datubāzes pēc tās nosaukuma
     function getStops($connection,$stopName) {
         $querry = 'SELECT * FROM Stops WHERE name = ?';
         $statement = $connection->prepare($querry);
@@ -8,7 +8,7 @@
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    // iegūst apstāšanās un izbraukšanas laiku no datubāzes
+    // iegūst apstāšanās un izbraukšanas laiku no datubāzes izmantojot stop_id
     function getStopTime($connection, $stopID) {
         $querry = 'SELECT * FROM Stop_Times WHERE stop_id = ?';
         $statement = $connection->prepare($querry);
@@ -56,5 +56,28 @@
         });
 
         return $array;
+    }
+
+    // iegūst apstāšanās un izbraukšanas laiku no datubāzes izmantojot trip_id
+    function getingStopTime($conn, $trip, $order) {
+
+        if ($order == true) {
+            $querry = "SELECT * FROM Stop_Times WHERE trip_id = ? ORDER BY stop_sequence";
+        } else {
+            $querry = "SELECT * FROM Stop_Times WHERE trip_id = ? ORDER BY stop_sequence DESC";
+        }
+
+        $statement = $conn->prepare($querry);
+        $statement->execute([$trip['trip_id']]);
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // iegūst apstāšanās vietu no datubāzes izmantojot stop_id
+    function getingStations($conn, $stops) {
+        $querry = "SELECT * FROM Stops WHERE stop_id = ?";
+        $statement = $conn->prepare($querry);
+        $statement->execute([$stops['stop_id']]);
+        return $statement->fetch(PDO::FETCH_ASSOC);
     }
 ?>

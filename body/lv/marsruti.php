@@ -247,7 +247,8 @@ try {
                         <th class="marsruti" id="beigas"><label id="beigasTeksts">Pienākšanas laiks</label></th>
                         <th class="marsruti" id="nosaukums"><label id="nosaukumaTeksts">Maršruta nosaukums</label></th>
                         <th class="marsruti" id="marsrutaIdentifikators">
-                            <label id="identifikatorsTeksts">Maršruta nr.</label></th>
+                            <label id="identifikatorsTeksts">Maršruta nr.</label>
+                        </th>
                         <th class="marsruti" id="laiks"><label id="laikaTeksts">Maršruta laiks</label></th>
                         <th class="marsruti" id="pirkt"><label id="pirktTeksts">Pirkt biļeti</label></th>
                         <th class="marsruti" id="info"><label id="infoTeksts">Vairāk info</label></th>
@@ -263,9 +264,11 @@ try {
                             <td id="identifikators"><?= $trip['trip_id'] ?></td>
                             <td id="marsrutaLaiks"><?= $trip['tripTime'] ?></td>
                             <td id="pirktPoga"><button class="btn btn-primary" id="pirktPogas"><img src="/icons/buy.svg"
-                                alt="Pirkt" id="pirktIkona"></button></td>
-                            <td id="infoPoga"><button class="btn btn-primary" id="infoPogas"><img src="/icons/info.svg"
-                                alt="Vairāk info" id="infoIkona"></button></td>
+                                alt="Pirkt" id="pirktIkona"></button>
+                            </td>
+                            <td id="infoPoga"><a class="info" id="infoPogas" 
+                                href="info.php?id=<?php echo $trip['trip_id'] ?>&sakumstacija=<?php echo $s ?>&beigustacija=<?php echo $b ?>&datums=<?php echo $date ?>&marsruts=<?php echo $trip['routeName'] ?>">
+                                <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona"></a>
                             </td>
                             <td id="statussLaukums"> </td>
                         </tr>

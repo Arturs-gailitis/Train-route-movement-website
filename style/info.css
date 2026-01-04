@@ -1,0 +1,91 @@
+/* Skatās lapas nosaukumu */
+#infoNosaukums {
+    color: white;
+    display: flex;
+    justify-self: center;
+    margin-top: 50px;
+}
+
+/* Skatās vietu kurā ir sākuma un beigu stacijas, datums un to ikonas */
+#info {
+    color: white;
+    display: flex;
+    justify-self: center;
+    margin-top: 50px;
+    max-width: 400px;
+    width: auto;
+    white-space: nowrap;
+}
+
+/* Skatās sākuma, beigu staciju undatuma ikonas */
+.ikona {
+    max-width: 25px;
+    max-height: 25px;
+    height: auto;
+    width: auto;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+/* Skatās vietu kur stāv karte un tabula */
+#tabulaUnMape {
+    display: flex;
+}
+
+/* Skatās tabulas vietu */
+#Tabula {
+    flex: 1;
+}
+
+/* Skatās pašu tabulu */
+#tabula {
+    position: relative;
+    top: 100px;
+    left: 200px;
+    border: 2px solid black;
+    max-width: 500px;
+    width: auto;
+    height: auto;
+    background-color: #015224;
+    margin-bottom: 100px;
+}
+
+/* Skatās tabulu kolonnu nosaukumus un to vērtības */
+.kollonuNosaukums, .vertibas {
+    border: 2px solid black;
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+/* Skatās tabulu kolonnu nosaukumus un konkrēti tikai staciju vērtības */
+.stacijas, .kollonuNosaukums {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Skatās interaktīvu karti */
+#karte {
+    flex: 1;
+    max-height: 500px;
+    max-width: 680px;
+    height: auto;
+    width: auto;
+    position: relative;
+    left: 300px;
+    top: 100px;
+}
+
+/* Skatās pogu ar kuru var doties atpakaļ */
+#iziet {
+    display: flex;
+    position: relative;
+    justify-self: center;
+    color: white;
+    background-color: #015224;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
