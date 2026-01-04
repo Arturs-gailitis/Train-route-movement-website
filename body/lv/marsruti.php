@@ -220,6 +220,14 @@ try {
     </div>
     <div id="tabulasNosaukums">
         <h1 id="marsrutuTabulasNosaukums">Vilcienu kustības grafiks</h1>
+        <div id="virsInfo">
+            <img src="/icons/train-station.svg" alt="Sākuma stacija" class="ikona" title="Sākuma stacija">
+            <span id="sakumaStacija"><?php echo $s ?></span>
+            <img src="/icons/train-station.svg" alt="Beigu stacija" class="ikona" title="Beigu stacija">
+            <span id=beiguStacija><?php echo $b ?></span>
+            <img src="/icons/date.svg" alt="Datums" class="ikona" title="Datums">
+            <span id=datumaInfo><?php echo $date ?></span>
+        </div>
     </div>
     <?php if ($startStation == false || $endStation == false): ?>
         <div class="kluduZinojums">
@@ -263,8 +271,8 @@ try {
                             <td id="marsrutaNosaukums"><?= $trip['routeName'] ?></td>
                             <td id="identifikators"><?= $trip['trip_id'] ?></td>
                             <td id="marsrutaLaiks"><?= $trip['tripTime'] ?></td>
-                            <td id="pirktPoga"><button class="btn btn-primary" id="pirktPogas"><img src="/icons/buy.svg"
-                                alt="Pirkt" id="pirktIkona"></button>
+                            <td id="pirktPoga"><a class=pirktPogas href=""><img src="/icons/buy.svg"
+                                alt="Pirkt" id="pirktIkona"></a>
                             </td>
                             <td id="infoPoga"><a class="info" id="infoPogas" 
                                 href="info.php?id=<?php echo $trip['trip_id'] ?>&sakumstacija=<?php echo $s ?>&beigustacija=<?php echo $b ?>&datums=<?php echo $date ?>&marsruts=<?php echo $trip['routeName'] ?>">
@@ -286,5 +294,5 @@ try {
     </p>
 </footer>
 <script src="/javascript/global.js"></script>
-<script src="/javascript/marsruti.js"></script>
+<script type="module" src="/javascript/marsruti.js"></script>
 </html>

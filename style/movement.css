@@ -76,6 +76,27 @@
     top: 23px;
 }
 
+/* Skatās vietu kurā ir sākuma un beigu stacijas, datums un to ikonas */
+#virsInfo {
+    color: white;
+    display: flex;
+    justify-self: center;
+    margin-top: 50px;
+    max-width: 400px;
+    width: auto;
+    white-space: nowrap;
+}
+
+/* Skatās sākuma, beigu staciju un datuma ikonas */
+.ikona {
+    max-width: 25px;
+    max-height: 25px;
+    height: auto;
+    width: auto;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
 /* Skatās kļūdas ziņojumu */
 .kluduZinojums {
     display: block;
@@ -145,6 +166,8 @@
 .marsruti {
     padding: 0 40px;
     border-left: 3px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /* Skatās maršruta tabulas maršruta nosaukumus */
@@ -165,11 +188,13 @@
 }
 
 /* Skatās pirkt biļetes pogas */
-#pirktPogas {
+.pirktPogas {
     display: flex;
     background-color: transparent;
     border: none;
     justify-self: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /* Skatās pirkt biļetes ikonas */
