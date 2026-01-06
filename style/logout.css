@@ -1,0 +1,38 @@
+/* Skatās profila iziešanas laukumu */
+#iziesanasLaukums {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    top: 150px;
+    gap: 10px;
+    border: 2px solid black;
+    max-width: 700px;
+    max-height: 500px;
+    height: auto;
+    width: auto;
+    margin-bottom: 388px; 
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    background-color: #015224;
+    color: white;
+}
+
+/* Skatās profila iziešanas abas pogas */
+#iziesanasPoga, #ietUzSakumu {
+    display: flex;
+    justify-self: center;
+    background-color: #1f7a1f;
+    color: white;
+    border: 2px solid black;
+    position: relative;
+    margin-top: 40px;
+}
+
+/* Skatās footer elementu šajā failā */
+footer {
+    position: relative;
+}

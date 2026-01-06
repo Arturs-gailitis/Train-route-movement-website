@@ -1,3 +1,9 @@
+<?php
+
+// saglabā sesiju
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="lv">
 <head>
@@ -29,14 +35,37 @@
                     <a class="nav-link" href="#">Kontakti</a>
                 </li>
                 <li class="nav-item" title="Profils">
-                    <a class="nav-link" href="#"><img src="/icons/account icons/noAccountLight.svg" alt="Lietotājs" 
-                        id="lietotajs"></a>
+                    <button class="nav-link" id="lietotajs">
+                        <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "lietotajs"): ?>
+                            <img src="/icons/account icons/user.svg" alt="Lietotājs" class="lietotajaIcona">
+                        <?php elseif (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
+                            <img src="/icons/account icons/admin.svg" alt="Administrators" class="lietotajaIcona">
+                        <?php else: ?>
+                            <img src="/icons/account icons/noAccountLight.svg" alt="Bez lietotāja" class="lietotajaIcona">
+                        <?php endif ?>
+                    </button>
                 </li>
                 <li class="nav-item" title="Opcijas">
                     <button class="nav-link"><img src="/icons/settings.svg" alt="Opcijas" id="opcijas"></button>
                 </li>
             </ul>
         </nav>
+        <div id="profilaLaukums">
+            <ul>
+                <?php if (isset($_SESSION['lietotajvards']) == false): ?>
+                    <li>
+                        <a class = "profilaStatuss" href="pieteikties.php">Pieslēdzies savā kontā</a>
+                    </li>
+                    <li>
+                        <a class = "profilaStatuss" href="registracija.php">Izveido jaunu kontu</a>
+                    </li>
+                <?php elseif (isset($_SESSION['lietotajvards'])): ?>
+                    <li>
+                        <a class = "profilaStatuss" id="iziesana" href="iziet.php">Iziet ārā no sava konta</a>
+                    </li>
+                <?php endif ?>
+            </ul>
+        </div>
         <div id="opcijuLaukums">
 
             <div class="fonaIzmaiņas">

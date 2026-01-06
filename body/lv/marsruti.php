@@ -1,5 +1,8 @@
 <?php
 
+// saglabā sesiju
+session_start();
+
 require_once __DIR__ . '/../../db/getingTrainRoute.php';
 require_once __DIR__ . '/../../db/initializeDB.php';
 $database = __DIR__ . '/../../storage/database/LatvianTrains.sqlite';
@@ -9,6 +12,7 @@ $organisedTrips = [];
 // automātiski leitotāju aizmet uz sakumlapa.php ja nav visi vajadzīgie dati
 if (isset($_GET['sākumstacija']) == false || isset($_GET['beigustacija']) == false || isset($_GET['datums']) == false) {
     header("Location: sakumlapa.php");
+    exit;
 }
 
 // izveido savienojumu ar datubāzi
@@ -131,7 +135,6 @@ try {
     echo $e->getMessage();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="lv">
 <head>
@@ -162,14 +165,37 @@ try {
                     <a class="nav-link" href="#">Kontakti</a>
                 </li>
                 <li class="nav-item" title="Profils">
-                    <a class="nav-link" href="#"><img src="/icons/account icons/noAccountLight.svg" alt="Lietotājs" 
-                        id="lietotajs"></a>
+                    <button class="nav-link" id="lietotajs">
+                        <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "lietotajs"): ?>
+                            <img src="/icons/account icons/user.svg" alt="Lietotājs" class="lietotajaIcona">
+                        <?php elseif (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
+                            <img src="/icons/account icons/admin.svg" alt="Administrators" class="lietotajaIcona">
+                        <?php else: ?>
+                            <img src="/icons/account icons/noAccountLight.svg" alt="Bez lietotāja" class="lietotajaIcona">
+                        <?php endif ?>
+                    </button>
                 </li>
                 <li class="nav-item" title="Opcijas">
                     <button class="nav-link"><img src="/icons/settings.svg" alt="Opcijas" id="opcijas"></button>
                 </li>
             </ul>
         </nav>
+        <div id="profilaLaukums">
+            <ul>
+                <?php if (isset($_SESSION['lietotajvards']) == false): ?>
+                    <li>
+                        <a class = "profilaStatuss" href="pieteikties.php">Pieslēdzies savā kontā</a>
+                    </li>
+                    <li>
+                        <a class = "profilaStatuss" href="registracija.php">Izveido jaunu kontu</a>
+                    </li>
+                <?php elseif (isset($_SESSION['lietotajvards'])): ?>
+                    <li>
+                        <a class = "profilaStatuss" id="iziesana" href="iziet.php">Iziet ārā no sava konta</a>
+                    </li>
+                <?php endif ?>
+            </ul>
+        </div>
         <div id="opcijuLaukums">
 
             <div class="fonaIzmaiņas">
@@ -271,13 +297,24 @@ try {
                             <td id="marsrutaNosaukums"><?= $trip['routeName'] ?></td>
                             <td id="identifikators"><?= $trip['trip_id'] ?></td>
                             <td id="marsrutaLaiks"><?= $trip['tripTime'] ?></td>
-                            <td id="pirktPoga"><a class=pirktPogas href=""><img src="/icons/buy.svg"
-                                alt="Pirkt" id="pirktIkona"></a>
-                            </td>
-                            <td id="infoPoga"><a class="info" id="infoPogas" 
+                            <?php if (isset($_SESSION['lietotajvards'])): ?>
+                                <td id="pirktPoga">
+                                    <a class=pirktPogas href="">
+                                        <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona">
+                                    </a>
+                                </td>
+                                <td id="infoPoga"><a class="info" id="infoPogas" 
                                 href="info.php?id=<?php echo $trip['trip_id'] ?>&sakumstacija=<?php echo $s ?>&beigustacija=<?php echo $b ?>&datums=<?php echo $date ?>&marsruts=<?php echo $trip['routeName'] ?>">
-                                <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona"></a>
-                            </td>
+                                    <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona"></a>
+                                </td>
+                            <?php else: ?>
+                                <td id="pirktPoga">
+                                    <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona" title="Tikai reģistrētiem lietotājiem">
+                                </td>
+                                <td id="infoPoga">
+                                    <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona" title="Tikai reģistrētiem lietotājiem">
+                                </td>
+                            <?php endif ?>
                             <td id="statussLaukums"> </td>
                         </tr>
                     <?php endforeach; ?>

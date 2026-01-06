@@ -60,7 +60,7 @@ ul {
 }
 
 /* Skatās lietotāja un opciju ikonām navigācijā */
-#lietotajs, #opcijas {
+.lietotajaIcona, #opcijas {
     display: inline-block;
     max-height: 30px;
     max-width: 30px;
@@ -71,6 +71,49 @@ ul {
 /* Skatās opciju ikonu navigācijā */
 #opcijas {
     transition: 0.4s;
+}
+
+/* Skatās profila sekciju */
+#profilaLaukums {
+    display: none;
+    position: fixed;
+    top: 55px;
+    right: 35px;
+    max-width: 250px;
+    width: auto;
+    height: 0;
+    background-color: #1f7a1f; 
+    border: 3px solid #015224;
+    border-top: 3px solid #015224;
+    transition: 0.4s;
+    z-index: 2;
+}
+
+/* Skatās profila sekcijā esošās pogas dizainu kopumu */
+#profilaLaukums ul {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 30px;
+}
+
+/* Skatās profila sekcijā esošās pogas dizainu individuāli*/
+.profilaStatuss {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    border: 2px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #015224;
+}
+
+/* Skatās profila sekcijā esošās pogu kas ļauj izrakstīties no profila*/
+#iziesana {
+    position: relative;
+    top: 25px;
 }
 
 /* Skatās pašu opciju sadaļu */

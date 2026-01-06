@@ -1,31 +1,63 @@
+const profilButton = document.getElementById("lietotajs");
+const profilArea = document.getElementById("profilaLaukums");
 const opcijas = document.getElementById("opcijuLaukums");
 const opcijuPoga = document.getElementById("opcijas");
+const optionLogo = document.getElementById("opcijas");
+let profilStatuss = false;
+
+// parāda vai aizver profila sadaļu
+profilButton.addEventListener("click", () => {
+    if (profilStatuss == false) {
+        profilArea.style.height = "120px";
+        profilArea.style.display = "block";
+
+        opcijas.style.height = "0px";
+        opcijas.style.display = "none";
+
+        optionLogo.style.transform = "rotate(-180deg)";
+
+        profilStatuss = true;
+    } else {
+        profilArea.style.height = "0px";
+        profilArea.style.display = "none";
+        profilStatuss = false;
+    }
+})
+
+const profilLinks = document.querySelectorAll(".profilaStatuss");
+
+// ja kursoru pieliec pie linkiem, tie nomaina krāsu
+profilLinks.forEach(link => {
+    link.addEventListener("mouseover", function() {
+        link.style.color = "#0d6efd";
+    })
+
+    link.addEventListener("mouseout", function() {
+        link.style.color = "white";
+    })
+});
+
 let statuss = false;
 
-// Nomaina opciju sadaļas augstumu nospiežzot pogu
+// Nomaina opciju sadaļas augstumu nospiežzot pogu un pagriež logo
 opcijuPoga.addEventListener("click", () => {
     if (statuss == false) {
         opcijas.style.height = "145px";
         opcijas.style.display = "block";
+
+        profilArea.style.height = "0px";
+        profilArea.style.display = "none";
+
+        optionLogo.style.transform = "rotate(180deg)";
+        
         statuss = true;
     } else {
         opcijas.style.height = "0px";
         opcijas.style.display = "none";
+        optionLogo.style.transform = "rotate(-180deg)";
         statuss = false;
     }
 });
-
-const optionLogo = document.getElementById("opcijas");
-
-// Kad uzpiež opciju pogu navigācijā, tad tas logo griežās
-opcijuPoga.addEventListener("click", () => {
-    if (statuss == false) {
-        optionLogo.style.transform = "rotate(180deg)";
-    } else {
-        optionLogo.style.transform = "rotate(-180deg)";
-    }
-})
-
 
 const themeChanger = document.getElementById("fonaIzmaiņasPoga");
 const themeIcon = document.getElementById("themeIkona");
