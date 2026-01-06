@@ -155,6 +155,11 @@ try {
 
         <nav>
             <ul class="nav nav-pills" id="pogas">
+                <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
+                    <li class="nav-item" id="datubaze">
+                        <a class="nav-link" href="datubaze.php">Datubāze</a>
+                    </li>
+                <?php endif ?>
                 <li class="nav-item">
                     <a class="nav-link" href="sakumlapa.php">Sākumlapa</a>
                 </li>

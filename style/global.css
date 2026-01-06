@@ -38,9 +38,7 @@ body {
 /* Skatās visus navigācijas pogas kopumu */
 nav {
     display: flex;
-    justify-content: flex-end;
-    position: relative;
-    left: 510px;
+    margin-left: auto;
 }
 
 /* Skatās navigācijas pogas kopumu */

@@ -30,4 +30,11 @@ function getUser($conn, $param) {
     $statment->execute([$param, $param]);
     return $statment->fetch(PDO::FETCH_ASSOC);
 }
+
+// iegūst visus datus no Users tabulas
+function getAllUsers($conn) {
+    $querry = 'SELECT * FROM Users';
+    $statement = $conn->query($querry);
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>

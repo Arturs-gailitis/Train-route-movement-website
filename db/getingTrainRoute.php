@@ -80,4 +80,39 @@
         $statement->execute([$stops['stop_id']]);
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+
+    // iegūst visus datus no Calendar tabulas
+    function getAllCalendar($conn) {
+        $querry = 'SELECT * FROM Calendar';
+        $statement = $conn->query($querry);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // iegūst visus datus no Routes tabulas
+    function getAllRoutes($conn) {
+        $querry = 'SELECT * FROM Routes';
+        $statement = $conn->query($querry);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // iegūst visus datus no Stop_times tabulas
+    function getAllStopTimes($conn) {
+        $querry = 'SELECT * FROM Stop_Times';
+        $statement = $conn->query($querry);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // iegūst visus datus no Stops tabulas
+    function getAllStops($conn) {
+        $querry = 'SELECT * FROM Stops';
+        $statement = $conn->query($querry);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // iegūst visus datus no Trips tabulas
+    function getAllTrips($conn) {
+        $querry = 'SELECT * FROM Trips';
+        $statement = $conn->query($querry);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 ?>

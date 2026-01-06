@@ -1,0 +1,50 @@
+/* Skatās šī faila pogu laukumu */
+#tabuluPogas {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    position: relative;
+    top: 100px;
+    margin-bottom: 50px;
+}
+
+/* Skatās šī faila pogas */
+#tabuluPogas li button {
+    background-color: #015224;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+/* SKatās visas datubāžu datu tabulas */
+.tabulas {
+    display: block;
+    justify-self: center;
+    margin-bottom: 80px;
+    border: 2px solid black;
+    background-color: #015224;
+    margin-top: 130px;
+    margin-right: auto;
+    margin-bottom: 197px;
+    margin-left: auto;
+    color: white;
+    max-width: 1100px;
+    width: auto;
+}
+
+/* SKatās visas datubāžu datu tabulas kolonnu nosaukumus un to vērtības */
+.tabulas table thead tr th, .tabulas table tbody tr td {
+    border: 2px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+
+/* Skatās footer elementu šajā failā */
+footer {
+    position: relative;
+}
