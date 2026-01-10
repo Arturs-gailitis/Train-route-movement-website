@@ -2455,7 +2455,7 @@ export let cToV = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Luguži - Valga"
+        "railways": "Lugaži - Valga"
       },
       "geometry": {
         "coordinates": [

@@ -912,7 +912,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Vecdaugava - Ziemeļblāsma"
+        "railways": "Vecdaugava - Ziemeļblāzma"
       },
       "geometry": {
         "coordinates": [
@@ -983,7 +983,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Ziemeļblāsma - Mangaļi"
+        "railways": "Ziemeļblāzma - Mangaļi"
       },
       "geometry": {
         "coordinates": [
