@@ -88,11 +88,37 @@ try {
                     }
                 }
 
+                $arrivalTime = null;
+                $departureTime = null;
+
+                // Pārvērš stacijas ierašanās laiku pareizā stundu formātā
+                if (substr($endTime['arrival_time'], 0, 2) == "25") {
+                    $oldHour = "23";
+                    $minutesAndSeconds = substr($endTime['arrival_time'], 2);
+                    $t = $oldHour . $minutesAndSeconds;
+                    $arrivalTime = strtotime("+2 hours", strtotime($t));
+                } else {
+                    $arrivalTime = strtotime($endTime['arrival_time']);
+                }
+
+                // Pārvērš stacijas izbraukšanas laiku pareizā stundu formātā
+                if (substr($startTime['departure_time'], 0, 2) == "25") {
+                    $oldHour = "23";
+                    $minutesAndSeconds = substr($startTime['departure_time'], 2);
+                    $t = $oldHour . $minutesAndSeconds;
+                    $departureTime = strtotime("+2 hours", strtotime($t));
+                } else {
+                    $departureTime = strtotime($startTime['departure_time']);
+                }
+
+                $tripTime = "";
+
                 // aprēķina dotās kustības laika posmu
-                $seconds = ((strtotime($endTime['arrival_time']) - strtotime($startTime['departure_time'])) % 60);
-                $minutes = floor(((strtotime($endTime['arrival_time']) - strtotime($startTime['departure_time'])) % 3600) / 60);
-                $hours = floor(((strtotime($endTime['arrival_time']) - strtotime($startTime['departure_time'])) / 3600));
-                $tripTime = $hours . ':' . $minutes . ':' . $seconds;
+                $seconds = (($arrivalTime - $departureTime) % 60);
+                $minutes = floor((($arrivalTime - $departureTime) % 3600) / 60);
+                $hours = floor((($arrivalTime - $departureTime) / 3600));
+                
+                $tripTime = $hours . ' h ' . $minutes . ' min ' . $seconds . ' s';
 
                 // iegūst pašreizējo laiku un datumu
                 date_default_timezone_set('Europe/Riga');
@@ -108,16 +134,16 @@ try {
                         $trips[] = [
                             'trip_id' => $trip['trip_id'],
                             'routeName' => $route['name'],
-                            'startTime' => $startTime['departure_time'],
-                            'endTime' => $endTime['arrival_time'],
+                            'startTime' => date("H:i:s", $departureTime),
+                            'endTime' => date("H:i:s", $arrivalTime),
                             'tripTime' => $tripTime,
                         ];
                     } else if (strtotime($currentDate) < strtotime($date)) {
                         $trips[] = [
                             'trip_id' => $trip['trip_id'],
                             'routeName' => $route['name'],
-                            'startTime' => $startTime['departure_time'],
-                            'endTime' => $endTime['arrival_time'],
+                            'startTime' => date("H:i:s", $departureTime),
+                            'endTime' => date("H:i:s", $arrivalTime),
                             'tripTime' => $tripTime,
                         ];
                     } else {
@@ -233,17 +259,17 @@ try {
         <form id="meklesanasForma" method="get">
             <div class="mb-3">
                 <label for="sākumstacija">Sākuma stacija:</label>
-                <input type="text" class="form-control" name="sākumstacija" id="sākumstacija" required>
+                <input type="text" class="form-control" name="sākumstacija" id="sākumstacija" value= "<?php echo $s ?>" required>
             </div>
 
             <div class="mb-3">
                 <label for="beigustacija">Beigu stacija:</label>
-                <input type="text" class="form-control" name="beigustacija" id="beigustacija" required>
+                <input type="text" class="form-control" name="beigustacija" id="beigustacija" value= "<?php echo $b ?>" required>
             </div>
 
             <div class="mb-3">
                 <label for="datums">Datums:</label>
-                <input type="date" class="form-control" name="datums" id="datums" required>
+                <input type="date" class="form-control" name="datums" id="datums" value= "<?php echo $date ?>" required>
             </div>
 
             <input type="submit" value="Meklēt" class="btn btn-primary" id ="meklet">

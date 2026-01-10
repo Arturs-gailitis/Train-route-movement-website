@@ -56,11 +56,41 @@ try {
         // iegūst konkrētu pieturu un to savieno ar pārējo saistošo informāciju
         foreach($stopTimes as $time) {
             $station = getingStations($connection, $time);
+
+            $corectArrivalTime = "";
+            $corectDepartureTime = "";
+            $oldHour = "23";
+
+            // Pārvērš stacijas ierašanās laiku pareizā stundu formātā
+            if (substr($time['arrival_time'], 0, 2) == "25") {
+                $minutesAndSeconds = substr($time['arrival_time'], 2);
+                $t = $oldHour . $minutesAndSeconds;
+                $corectArrivalTime = date("H:i:s", strtotime("+2 hours", strtotime($t)));
+            } else if (substr($time['arrival_time'], 0, 2) == "24") {
+                $minutesAndSeconds = substr($time['arrival_time'], 2);
+                $t = $oldHour . $minutesAndSeconds;
+                $corectArrivalTime = date("H:i:s", strtotime("+1 hours", strtotime($t)));
+            } else {
+                $corectArrivalTime = $time['arrival_time'];
+            }
+
+            // Pārvērš stacijas izbraukšanas laiku pareizā stundu formātā
+            if (substr($time['departure_time'], 0, 2) == "25") {
+                $minutesAndSeconds = substr($time['departure_time'], 2);
+                $t = $oldHour . $minutesAndSeconds;
+                $corectDepartureTime = date("H:i:s", strtotime("+2 hours", strtotime($t)));
+            } else if (substr($time['departure_time'], 0, 2) == "24") {
+                $minutesAndSeconds = substr($time['departure_time'], 2);
+                $t = $oldHour . $minutesAndSeconds;
+                $corectDepartureTime = date("H:i:s", strtotime("+1 hours", strtotime($t)));
+            } else {
+                $corectDepartureTime = $time['departure_time'];
+            }
             
             $list[] = [
                 "station" => $station['name'],
-                "arrival" => $time['arrival_time'],
-                "departute" => $time['departure_time'],
+                "arrival" => $corectArrivalTime,
+                "departute" => $corectDepartureTime,
             ];
 
         }
@@ -200,7 +230,7 @@ try {
                 <thead>
                     <tr>
                         <th class=kollonuNosaukums><label>Stacija</label></th>
-                        <th class=kollonuNosaukums><label>Atiešanas laiks</label></th>
+                        <th class=kollonuNosaukums><label>Ierašanās laiks</label></th>
                         <th class=kollonuNosaukums><label>Izbraukšanas laiks</label></th>
                     </tr>
                 </thead>
