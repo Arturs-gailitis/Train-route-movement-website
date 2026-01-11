@@ -27,6 +27,8 @@ if (messsageBox != null && errorArea != null && submitButton != null) {
 const goBackButton = document.getElementById("atgriezties");
 
 // nospiežot pogu aizsūta uz sakumlapa.php
-goBackButton.addEventListener("click", () => {
-    window.location.href = "sakumlapa.php";
-})
+if (goBackButton != null) {
+    goBackButton.addEventListener("click", () => {
+        window.location.href = "sakumlapa.php";
+    })
+}
