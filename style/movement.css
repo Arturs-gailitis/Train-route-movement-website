@@ -85,6 +85,8 @@
     max-width: 400px;
     width: auto;
     white-space: nowrap;
+    position: relative;
+    right: 27px;
 }
 
 /* Skatās sākuma, beigu staciju un datuma ikonas */

@@ -15,6 +15,8 @@
     max-width: 400px;
     width: auto;
     white-space: nowrap;
+    position: relative;
+    right: 27px;
 }
 
 /* Skatās sākuma, beigu staciju undatuma ikonas */
@@ -35,6 +37,14 @@
 /* Skatās tabulas vietu */
 #Tabula {
     flex: 1;
+}
+
+#tabulasTituls {
+    position: relative;
+    left: 236px;
+    color: white;
+    margin-bottom: -43px;
+    top: 30px;
 }
 
 /* Skatās pašu tabulu */
@@ -65,6 +75,13 @@
     padding-right: 20px;
 }
 
+#kartesTituls {
+    position: relative;
+    left: 600px;
+    color: white;
+    top: 30px;
+}
+
 /* Skatās interaktīvu karti */
 #karte {
     flex: 1;
@@ -73,8 +90,8 @@
     height: auto;
     width: auto;
     position: relative;
-    left: 300px;
-    top: 100px;
+    left: 150px;
+    top: 97px;
 }
 
 /* Skatās pogu ar kuru var doties atpakaļ */

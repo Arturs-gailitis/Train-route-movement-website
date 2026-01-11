@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     footer.style.position = "relative";
 
     if (table.offsetHeight < map.offsetHeight) {
-        table.style.marginBottom = "350px";
+        table.style.marginBottom = "450px";
     } else {
         table.style.marginBottom = "265px";
     }
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // nokonfigurē stacijas ikonu
         let stationIcon = L.icon({
             iconUrl: icons[i],
-            iconSize: [45, 48]
+            iconSize: [35, 38]
         })
 
         // ieliek kartē visas stacijas ar ikonu un tās nosaukumu papildus arī stacijas bildi

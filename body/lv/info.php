@@ -226,6 +226,7 @@ try {
     </div>
     <div id="tabulaUnMape">
         <div id="Tabulas">
+            <h2 id="tabulasTituls">Vilciena ierašanās stacijās</h2>
             <table id="tabula">
                 <thead>
                     <tr>
@@ -245,6 +246,7 @@ try {
                 </tbody>
             </table>
         </div>
+        <h2 id="kartesTituls">Vizuālā karte</h2>
         <div id="karte"></div>
     </div>
     <button id="iziet">
