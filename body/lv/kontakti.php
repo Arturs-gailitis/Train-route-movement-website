@@ -4,9 +4,9 @@
 session_start();
 
 require_once __DIR__ . '/../../db/initializeDB.php';
-require_once __DIR__ . '/../../db/getingUsers.php';
-$database = __DIR__ . '/../../storage/database/Users.sqlite';
-$error = "";
+require_once __DIR__ . '/../../db/gettingMesages.php';
+$database = __DIR__ . '/../../storage/database/UserMessages.sqlite';
+$statuss = false;
 
 // izveido savienojumu ar datubāzi
 try {
@@ -19,43 +19,30 @@ try {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
-        // iegūst paroli, lietotājvārdu vai epastu no šīs lapas formas
-        $usernameOrEmail = trim($_POST['lietotajvardsEpasts']);
-        $password = $_POST['parole'];
+        // iegūstu epastu un ziņu
+        $email = trim($_POST['epasts']);
+        $message = trim($_POST['zina']);
 
-        // no dotajiem formas parametriem iegūst infromāciju par lietotāju 
-        $user = getUser($connection, $usernameOrEmail);
+        // ielieku epastu un ziņu Message datubāzes tabulā
+        insertMessage($connection, $email, $message);
 
-        // validē vai lietotājs eksistē un pārbauda vai abas paroles sakrīt
-        if ($user == false) {
-            $error = "Lietotājvārds vai epasts ir nepareizs. Mēģini vēlreiz.";
-        } else if (password_verify($password, $user['password']) == false) {
-            $error = "Parole ir nepareiza. Mēģini vēlreiz";
-        } else {
-            // ieliek sesijā vajadzīgo informāciju
-            $_SESSION['lietotajvards'] = $user['username'];
-            $_SESSION['tiesibas'] = $user['rights'];
-            $_SESSION['epasts'] = $user['email'];
-
-            // nosūta uz sākumlapu
-            header("Location: sakumlapa.php");
-            exit;
-        }
+        $statuss = true;
     }
 
 } catch (Exception $e) {
     $e->getMessage();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="lv">
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latvijas vilcienu maršrutu kustības portāls</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style/contact.css">
     <link rel="stylesheet" href="/style/global.css">
-    <link rel="stylesheet" href="/style/login.css">
     <link rel="icon" type="image/svg+xml" href="/icons/website icons/websiteIconTab.svg">
 </head>
 <body>
@@ -79,7 +66,7 @@ try {
                     <a class="nav-link" href="#">Paziņojumi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="kontakti.php">Kontakti</a>
+                    <a class="nav-link" href="#">Kontakti</a>
                 </li>
                 <li class="nav-item" title="Profils">
                     <button class="nav-link" id="lietotajs">
@@ -131,21 +118,34 @@ try {
 
         </div>
     </div>
-    <div id="pieteiksanas">
-        <h2>Pieteikšanās forma</h2>
-        <span id="errors"><?php echo $error; ?></span>
-        <form method="POST">
-            <div class="mb-3">
-                <label for="lietotajvardsEpasts">Lietotājvārds vai epasts:</label>
-                <input type="text" name="lietotajvardsEpasts" id="lietotajvardsEpasts" required>
+    <div>
+        <?php if ($statuss == false): ?>
+            <div id="formasLaukums">
+                <h2>Iespēja kontaktēties ar mums nosūtot ziņu</h2>
+                <form method="post" id="forma">
+                    <span id="kluda"></span>
+                    <div class="mb-3">
+                        <label for="epasts">Epasts:</label>
+                        <?php if (isset($_SESSION['lietotajvards'])): ?>
+                            <input type="email" name="epasts" id="epasts" value="<?php echo $_SESSION['epasts'] ?>" required>
+                        <?php else: ?>
+                            <input type="email" name="epasts" id="epasts" required>
+                        <?php endif ?>
+                    </div>
+                    <div class="mb-3">
+                        <label for="zina">Ziņa: </label>
+                        <textarea name="zina" id="zina" title="maksimāli 250 simboli" required></textarea>
+                    </div>
+                    <button type="submit" id="sutitZinu" disabled>Aizsūtīt ziņu</button>
+                </form>
             </div>
-            <div class="mb-3">
-                <label for="parole">Parole:</label>
-                <input type="password" name="parole" id="parole" required>
+        <?php elseif ($statuss == true): ?>
+            <div id="nosutits">
+                <h2>Ziņa ir veikmīgi nosūtīta</h2>
+                <P>Variet atgriezties uz sākumlapu.</P>
+                <button id="atgriezties">Iet uz sākumlapu</button>
             </div>
-
-            <button type="submit" id="pieteiksanasPoga">Pieteikties</button>
-        </form>
+        <?php endif ?>
     </div>
 </body>
 <footer class="mt-5 py-3">
@@ -156,4 +156,5 @@ try {
     </p>
 </footer>
 <script src="/javascript/global.js"></script>
+<script src="/javascript/contact.js"></script>
 </html>

@@ -37,7 +37,7 @@ session_start();
                     <a class="nav-link" href="#">Paziņojumi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Kontakti</a>
+                    <a class="nav-link" href="kontakti.php">Kontakti</a>
                 </li>
                 <li class="nav-item" title="Profils">
                     <button class="nav-link" id="lietotajs">

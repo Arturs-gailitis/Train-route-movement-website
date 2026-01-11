@@ -1,0 +1,97 @@
+/* Skatās formas laukumu */
+#formasLaukums {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    top: 150px;
+    gap: 10px;
+    border: 2px solid black;
+    max-width: 750px;
+    max-height: 750px;
+    min-height: 450px;
+    height: auto;
+    width: auto;
+    margin-bottom: 330px; 
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    background-color: #015224;
+    color: white;
+}
+
+/* SKatās ziņas kļūdu */
+#kluda {
+    display: flex;
+    position: relative;
+    justify-self: center;
+    margin-bottom: 20px;
+}
+
+/* Skatās ziņas izveidošanas formas elementus */
+#formasLaukums form div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Skatās ziņas rakstīšanas elementu */
+#zina {
+    width: 250px;
+    height: 100px;
+    resize: none;
+}
+
+/* Skatās ziņas izveidošanas formas sūtīšanas pogu */
+#sutitZinu {
+    display: flex;
+    position: relative;
+    justify-self: center;
+    background-color: #1f7a1f;
+    color: white;
+    border: 2px solid black;
+    top: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Skatās veiksmīgas ziņas nosūtīšanas laukumu */
+#nosutits {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    top: 150px;
+    gap: 10px;
+    border: 2px solid black;
+    max-width: 800px;
+    max-height: 400px;
+    height: auto;
+    width: auto;
+    margin-bottom: 330px; 
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    background-color: #015224;
+    color: white;
+}
+
+/* Skatās veiksmīgas ziņas nosūtīšanas laukuma pogu */
+#atgriezties {
+    display: flex;
+    position: relative;
+    background-color: #1f7a1f;
+    color: white;
+    border: 2px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+}
