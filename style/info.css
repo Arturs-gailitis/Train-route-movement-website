@@ -39,6 +39,7 @@
     flex: 1;
 }
 
+/* Skatās maršruta staciju apstāšanās tabulas virsrakstu */
 #tabulasTituls {
     position: relative;
     left: 236px;
@@ -75,6 +76,7 @@
     padding-right: 20px;
 }
 
+/* Skatās vizuālās kartes virsrakstu */
 #kartesTituls {
     position: relative;
     left: 600px;
