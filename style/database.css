@@ -1,21 +1,94 @@
-/* Skatās šī faila pogu laukumu */
-#tabuluPogas {
+/* Skatās pogu ar kuru var atvērt vai aizvērt pogu sadaļu */
+#atvertPoguSadaļasPoga {
+    display: flex;
+    position: relative;
+    background-color: transparent;
+    max-height: 50px;
+    height: auto;
+    max-width: 75px;
+    width: auto;
+    border: none;
+    justify-self: center;
+}
+
+/* Skatās pogas ikonu ar kuru var atvērt vai aizvērt pogu sadaļu */
+#atvērtPoguSadaļasIkona {
+    object-fit: cover;
+    max-width: 75px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+}
+
+/* Skatās pašu pogas laukumu */
+#poguLaukums {
+    display: none;
+    justify-self: center;
+    align-content: center;
+    max-width: 1000px;
+    max-height: 900px;
+    min-height: 400px;
+    height: auto;
+    width: auto;
+    color: white;
+    border: 3px solid black;
+    background-color: #015224;
+}
+
+/* Skatās pirmo pogu nodaļu virsrakstu */
+#pirmais {
+    margin-top: 20px;
+}
+
+/* Skatās pogu sadaļas nodaļu virsrakstus */
+#poguLaukums h3 {
+    justify-self: center;
+}
+
+/* Skatās pogu sadaļas nodaļu atdalītājus */
+#poguLaukums hr {
+    border: 3px solid black;
+}
+
+/* Skatās pogu sadaļas pašus laukumus kur atrodās tās pogas */
+#tabuluPogas, #restartet {
     display: flex;
     flex-direction: row;
     justify-self: center;
     position: relative;
-    top: 100px;
+    top: 20px;
     margin-bottom: 50px;
+    margin-right: 25px;
 }
 
-/* Skatās šī faila pogas */
-#tabuluPogas li button {
-    background-color: #015224;
+/* Skatāspogu sadaļas pašas pogas */
+#tabuluPogas li button, #restartet li button {
+    background-color: #1f7a1f;
     color: white;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 15px;
     margin-right: 15px;
+    max-width: 200px;
+    width: auto;
+    border-color: black;
+}
+
+/* Skatās pašu izveidot ieraksta pogu pogas sadaļā */
+#izveidot {
+    background-color: #1f7a1f;
+    border-color: black;
+    display: flex;
+    position: relative;
+    justify-self: center;
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* Skatās pogas pogu sadaļā, ja uz tām pieliks kursoru */
+#tabuluPogas li button:hover, #restartet li button:hover,  #izveidot:hover{
+    border-color: blue;
 }
 
 /* SKatās visas datubāžu datu tabulas */
@@ -25,12 +98,12 @@
     margin-bottom: 80px;
     border: 2px solid black;
     background-color: #015224;
-    margin-top: 130px;
+    margin-top: 50px;
     margin-right: auto;
-    margin-bottom: 197px;
+    margin-bottom: 272px;
     margin-left: auto;
     color: white;
-    max-width: 1100px;
+    max-width: 1300px;
     width: auto;
 }
 
@@ -42,6 +115,36 @@
     padding-left: 15px;
     padding-right: 15px;
     text-align: center;
+}
+
+/* SKatās darbības kolonnu tabulās */
+.darbibas {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+/* Skatās rediģēt pogu tabulās */
+.rediget  {
+    margin-bottom: 10px;
+    background-color: #1f7a1f;
+    border-color: #1f7a1f;
+}
+
+/* Skatās rediģēt pogu tabulās, ja uz tām pieliks kursoru */
+.rediget:hover {
+    background-color: #1f7a1f;
+}
+
+/* SKatās dzēst pogu tabulās */
+.dzest {
+    background-color: red;
+    border-color: red;
+}
+
+/* SKatās dzēst pogu tabulās, ja uz tām pieliks kursoru */
+.dzest:hover {
+    background-color: red;
 }
 
 /* Skatās footer elementu šajā failā */

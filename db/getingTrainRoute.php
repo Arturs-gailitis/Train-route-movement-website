@@ -115,4 +115,153 @@
         $statement = $conn->query($querry);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Iegūst konkrētu ierakstu Calendar tabulā pēc tās id
+    function getCalendarByID($conn, $id) {
+        $querry = 'SELECT * FROM Calendar WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$id]);
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Iegūst konkrētu ierakstu Routes tabulā pēc tās id
+    function getRoutesByID($conn, $id) {
+        $querry = 'SELECT * FROM Routes WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$id]);
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Iegūst konkrētu ierakstu Stops tabulā pēc tās id
+    function getStopsByID($conn, $id) {
+        $querry = 'SELECT * FROM Stops WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$id]);
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Iegūst konkrētu ierakstu Stop_Times tabulā pēc tās id
+    function getStopTimesByID($conn, $id) {
+        $querry = 'SELECT * FROM Stop_Times WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$id]);
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Iegūst konkrētu ierakstu Trips tabulā pēc tās id
+    function getTripsByID($conn, $id) {
+        $querry = 'SELECT * FROM Trips WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$id]);
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Atjaunina konkrēto ierakstu Calendar tabulā
+    function updateCalendar($conn, $id, $serviceId, $mon, $tue, $wed, $thu, $fri, $sat, $sun, $start, $end) {
+        $querry = 'UPDATE Calendar 
+            SET
+                service_id = ?,
+                monday = ?,
+                tuesday = ?,
+                wednesday = ?,
+                thursday = ?,
+                friday = ?,
+                saturday = ?,
+                sunday = ?,
+                start_date = ?,
+                end_date = ?
+            WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$serviceId, $mon, $tue, $wed, $thu, $fri, $sat, $sun, $start, $end, $id]);
+    }
+
+    // Atjaunina konkrēto ierakstu Routes tabulā
+    function updateRoutes($conn, $id, $routeId, $agency, $name, $type, $color, $text) {
+        $querry = 'UPDATE Routes 
+            SET
+                route_id = ?,
+                agency = ?,
+                name = ?,
+                type = ?,
+                color = ?,
+                text_color = ?,
+            WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$routeId, $agency, $name, $type, $color, $text, $id]);
+    }
+
+    // Atjaunina konkrēto ierakstu Stops tabulā
+    function updateStations($conn, $id, $stopId, $name, $lat, $long) {
+        $querry = 'UPDATE Stops
+            SET
+                stop_id = ?,
+                name = ?,
+                latitude = ?,
+                longitude = ?,
+            WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$stopId, $name, $lat, $long, $id]);
+    }
+
+    // Atjaunina konkrēto ierakstu Stop_Times tabulā
+    function updateStopTimes($conn, $id, $tripId, $arr, $dep, $stopId, $seq) {
+        $querry = 'UPDATE Stop_Times 
+            SET
+                trip_id = ?,
+                arrival_time = ?,
+                departure_time = ?,
+                stop_id = ?,
+                stop_sequence = ?,
+            WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$tripId, $arr, $dep, $stopId, $seq, $id]);
+    }
+
+    // Atjaunina konkrēto ierakstu Trips tabulā
+    function updateTrips($conn, $id, $routeId, $serviceId, $tripId, $headsign) {
+        $querry = 'UPDATE Stops
+            SET
+                route_id = ?,
+                service_id = ?,
+                trip_id = ?,
+                headsign = ?,
+            WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$routeId, $serviceId, $tripId, $headsign, $id]);
+    }
+
+    // Izdzēš konkrēto ierakstu no Calendar tabulas 
+    function deleteCalendar($conn, $id) {
+        $querry = 'DELETE FROM Calendar WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$id]);
+    }
+
+    // Izdzēš konkrēto ierakstu no Routes tabulas
+    function deleteRoute($conn, $id) {
+        $querry = 'DELETE FROM Routes WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$id]);
+    }
+
+    // Izdzēš konkrēto ierakstu no Stop_Times tabulas
+    function deleteStopTime($conn, $id) {
+        $querry = 'DELETE FROM Stop_Times WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$id]);
+    }
+
+    // Izdzēš konkrēto ierakstu no Stops tabulas
+    function deleteStop($conn, $id) {
+        $querry = 'DELETE FROM Stops WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$id]);
+    }
+
+    // Izdzēš konkrēto ierakstu no Trips tabulas
+    function deleteTrip($conn, $id) {
+        $querry = 'DELETE FROM Trips WHERE id = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$id]);
+    }
 ?>

@@ -37,4 +37,18 @@ function getAllUsers($conn) {
     $statement = $conn->query($querry);
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
+
+// Izmaina konkrētajam lietotājam tiesības
+function changeRights($conn, $id, $rights) {
+    $querry = 'UPDATE Users SET rights = ? WHERE id = ?';
+    $statment = $conn->prepare($querry);
+    $statment->execute([$rights, $id]);
+}
+
+// Izdzēš konkrēto ierakstu no Users tabulas
+function deleteUser($conn, $id) {
+    $querry = 'DELETE FROM Users WHERE id = ?';
+    $statement = $conn->prepare($querry);
+    $statement->execute([$id]);
+}
 ?>
