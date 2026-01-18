@@ -362,7 +362,7 @@ try {
                 <div class="mb-3">
                     <label>
                         Parole: <span><?php echo $record['password'] ?></span>
-                    </label>>
+                    </label>
                 </div>
             <?php endif ?>
             <a class="btn btn-primary" href="datubaze.php">Atcelt</a>

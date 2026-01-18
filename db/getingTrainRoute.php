@@ -184,7 +184,7 @@
                 name = ?,
                 type = ?,
                 color = ?,
-                text_color = ?,
+                text_color = ?
             WHERE id = ?';
         $statement = $conn->prepare($querry);
         $statement->execute([$routeId, $agency, $name, $type, $color, $text, $id]);
@@ -197,7 +197,7 @@
                 stop_id = ?,
                 name = ?,
                 latitude = ?,
-                longitude = ?,
+                longitude = ?
             WHERE id = ?';
         $statement = $conn->prepare($querry);
         $statement->execute([$stopId, $name, $lat, $long, $id]);
@@ -211,7 +211,7 @@
                 arrival_time = ?,
                 departure_time = ?,
                 stop_id = ?,
-                stop_sequence = ?,
+                stop_sequence = ?
             WHERE id = ?';
         $statement = $conn->prepare($querry);
         $statement->execute([$tripId, $arr, $dep, $stopId, $seq, $id]);
@@ -219,12 +219,12 @@
 
     // Atjaunina konkrēto ierakstu Trips tabulā
     function updateTrips($conn, $id, $routeId, $serviceId, $tripId, $headsign) {
-        $querry = 'UPDATE Stops
+        $querry = 'UPDATE Trips
             SET
                 route_id = ?,
                 service_id = ?,
                 trip_id = ?,
-                headsign = ?,
+                headsign = ?
             WHERE id = ?';
         $statement = $conn->prepare($querry);
         $statement->execute([$routeId, $serviceId, $tripId, $headsign, $id]);
