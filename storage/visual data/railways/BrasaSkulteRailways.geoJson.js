@@ -5,7 +5,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Skulte - Zvejniekciems"
+        "railways": "Zvejniekciems - Skulte"
       },
       "geometry": {
         "coordinates": [
@@ -48,7 +48,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Zvejniekciems - Ķīšupe"
+        "railways": "Ķīšupe - Zvejniekciems"
       },
       "geometry": {
         "coordinates": [
@@ -75,7 +75,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Ķīšupe - Saulkrasti"
+        "railways": "Saulkrasti - Ķīšupe"
       },
       "geometry": {
         "coordinates": [
@@ -106,7 +106,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Saulkrasti - Pabaži"
+        "railways": "Pabaži - Saulkrasti"
       },
       "geometry": {
         "coordinates": [
@@ -189,7 +189,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Pabaži - Inčupe"
+        "railways": "Inčupe - Pabaži"
       },
       "geometry": {
         "coordinates": [
@@ -268,7 +268,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Inčupe - Lilaste"
+        "railways": "Lilaste - Inčupe"
       },
       "geometry": {
         "coordinates": [
@@ -459,7 +459,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Lilaste - Gauja"
+        "railways": "Gauja - Lilaste"
       },
       "geometry": {
         "coordinates": [
@@ -530,7 +530,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Gauja - Carnikava"
+        "railways": "Carnikava - Gauja "
       },
       "geometry": {
         "coordinates": [
@@ -617,7 +617,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Carnikava - Garupe"
+        "railways": "Garupe - Carnikava"
       },
       "geometry": {
         "coordinates": [
@@ -676,7 +676,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Garupe - Garciems"
+        "railways": "Garciems - Garupe"
       },
       "geometry": {
         "coordinates": [
@@ -699,7 +699,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Garciems - Kalngale"
+        "railways": "Kalngale - Garciems"
       },
       "geometry": {
         "coordinates": [
@@ -806,7 +806,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Kalngale - Vecāķi"
+        "railways": "Vecāķi - Kalngale"
       },
       "geometry": {
         "coordinates": [
@@ -853,7 +853,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Vecāķi - Vecdaugava"
+        "railways": "Vecdaugava - Vecāķi"
       },
       "geometry": {
         "coordinates": [
@@ -912,7 +912,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Vecdaugava - Ziemeļblāzma"
+        "railways": "Ziemeļblāzma - Vecdaugava"
       },
       "geometry": {
         "coordinates": [
@@ -983,7 +983,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Ziemeļblāzma - Mangaļi"
+        "railways": "Mangaļi - Ziemeļblāzma"
       },
       "geometry": {
         "coordinates": [
@@ -1122,7 +1122,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Mangaļi - Dauderi"
+        "railways": "Dauderi - Mangaļi"
       },
       "geometry": {
         "coordinates": [
@@ -1241,7 +1241,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Dauderi - Sarkandaugava"
+        "railways": "Sarkandaugava - Dauderi"
       },
       "geometry": {
         "coordinates": [
@@ -1276,7 +1276,7 @@ export let bToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Sarkandaugava - Brasa"
+        "railways": "Brasa - Sarkandaugava"
       },
       "geometry": {
         "coordinates": [

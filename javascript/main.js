@@ -138,7 +138,7 @@ function newRailway(trackColor, RailLayer, rail) {
 railtrack.forEach(rail => {
 
     // Nosaka kāda krāsa būs katram dzelzceļa posmam
-    if (rail.features[0].properties.railways == "Skulte - Zvejniekciems") {
+    if (rail.features[0].properties.railways == "Zvejniekciems - Skulte") {
         trackColor = "#f8db22";
     } else if (rail.features[0].properties.railways == "Tukums II - Tukums I") {
         trackColor = "#04abe8";

@@ -282,7 +282,7 @@ export let tornToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Savieno - Torņkalnu"
+        "railways": "Savieno Torņkalnu"
       },
       "geometry": {
         "coordinates": [
