@@ -1,4 +1,5 @@
 import {stations} from "../storage/visual data/stations.js";
+import { railtrack, valgaStations, valgaRoutes } from "../storage/visual data/railways/unite.js";
 
 const footer = document.getElementById("footer");
 const table = document.getElementById("tabula");
@@ -151,4 +152,148 @@ goBackButton.addEventListener("click", () => {
     // lietotājs tiek aizsūtīs uz šo url
     window.location.href = url;
 
+})
+
+const startStation = document.getElementById("sakumaStacija").innerText;
+const endStation = document.getElementById("beiguStacija").innerText;
+
+// Funkkcija kas iegūst un ieliek dzelzceļa ceļu vizuālajā kartē
+function getTracks(stationArray, routeArray, railColor) {
+
+    let startIndex = 0;
+    let endIndex = 0;
+
+    // Iegūst sākuma stacijas un beigu staciju indeksus 
+    for (let i = 0; i < stationArray.length; i++) {
+        if (stationArray[i] == startStation) {
+            startIndex = i;
+        }
+
+        if (stationArray[i] == endStation) {
+            endIndex = i;
+        }
+    }
+
+    let newStartIndex = 0;
+    let newEndIndex = 0;
+
+    // Pārmaina indeksus otrādāk, skatoties kādā virzienā maršruts ir
+    if (startIndex <= endIndex) {
+        newStartIndex = startIndex;
+        newEndIndex = endIndex;
+    } else {
+        newStartIndex = endIndex;
+        newEndIndex = startIndex;
+    }
+
+    let correctStations = [];
+
+    // Atrod visas stacijas kas atbilst starp sākuma un beigu stacijām
+    for (let i = newStartIndex; i <= newEndIndex; i++) {
+        correctStations.push(stationArray[i]);
+    }
+
+    let correctRoutes = [];
+
+    // Atrod visas atbilstošās dzelzceļa posmus
+    for (let i = 0; i < correctStations.length - 1; i++) {
+        routeArray.forEach(route => {
+            if (route.startsWith(correctStations[i] + " - ") || route == correctStations[i]) {
+                
+                if (correctRoutes.includes(route) == false) {
+                    correctRoutes.push(route);
+                }
+            }
+        }) 
+    }
+
+    let correctRigaRoutes = [];
+    const deafaultRigaRoutes = ["Torņkalns - Rīga", "Rīga - Zemitāni", "Savieno Zemitānus", "Savieno - Torņkalnu"];
+    let filteredRoutes = [];
+
+    // filtē dzelceļa posmus skatoties vai konkrētais dzelzceļa posms ir Rīgas apgabals
+    correctRoutes.forEach(route => {
+        if (deafaultRigaRoutes.includes(route)) {
+            correctRigaRoutes.push(route);
+        } else {
+            filteredRoutes.push(route);
+        }
+    });
+
+    correctRoutes = filteredRoutes;
+
+    let fullTrack = []
+    let fullRIgaTrack = []
+
+    // skatās vai izfiltētais pārējās daļas dzelzceļa maršruta masīvs nav tukšs
+    if (correctRoutes.length > 0) {
+
+        // Atrod visu pārējās daļas masīva elementu GeoJSON informāciju
+        railtrack.forEach(rail => {
+            const railInfo =  {
+                ...rail,
+                features: rail.features.filter(f =>
+                    correctRoutes.includes(f.properties.railways)
+                )
+            };
+
+            if (railInfo.features.length > 0) {
+                fullTrack.push(railInfo);
+            }
+        });
+
+        // ieliek ceļu vizuālajā kartē
+        fullTrack.forEach(track => {
+
+            const railway = L.geoJSON(track, {
+                style: {
+                    color: railColor,
+                    weight: 10
+                }
+            })
+
+            railway.addTo(visualMap);
+        })
+
+    }
+
+    // skatās vai izfiltētais Rīgas daļas dzelzceļa maršruta masīvs nav tukšs
+    if (correctRigaRoutes.length > 0) {
+
+        // Atrod visu Rīgas daļas masīva elementu GeoJSON informāciju 
+        railtrack.forEach(rail => {
+            const railInfo =  {
+                ...rail,
+                features: rail.features.filter(f =>
+                    correctRigaRoutes.includes(f.properties.railways)
+                )
+            };
+
+            if (railInfo.features.length > 0) {
+                fullRIgaTrack.push(railInfo);
+            }
+        });
+
+        // ieliek ceļu vizuālajā kartē
+        fullRIgaTrack.forEach(track => {
+
+            const railway = L.geoJSON(track, {
+                style: {
+                    color: "black",
+                    weight: 10
+                }
+            })
+
+            railway.addTo(visualMap);
+        })
+    }
+
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // Ieliek atbilstošo ceļu vizuālajā kartē
+    if (valgaStations.includes(startStation) && valgaStations.includes(endStation)) {
+        getTracks(valgaStations, valgaRoutes, "#8bc540");
+    }
 })
