@@ -5,7 +5,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Tukums II - Tukums I"
+        "railways": "Tukums I - Tukums II"
       },
       "geometry": {
         "coordinates": [
@@ -152,7 +152,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Tukums I - Milzkalne"
+        "railways": "Milzkalne - Tukums I"
       },
       "geometry": {
         "coordinates": [
@@ -331,7 +331,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Milzkalne - Smārde"
+        "railways": "Smārde - Milzkalne"
       },
       "geometry": {
         "coordinates": [
@@ -458,7 +458,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Smārde - Ķemeri"
+        "railways": "Ķemeri - Smārde"
       },
       "geometry": {
         "coordinates": [
@@ -669,7 +669,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Ķemeri - Kūdra"
+        "railways": "Kūdra - Ķemeri"
       },
       "geometry": {
         "coordinates": [
@@ -740,7 +740,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Kūdra - Sloka"
+        "railways": "Sloka - Kūdra"
       },
       "geometry": {
         "coordinates": [
@@ -915,7 +915,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Sloka - Vaivari"
+        "railways": "Vaivari - Sloka"
       },
       "geometry": {
         "coordinates": [
@@ -954,7 +954,7 @@ export let tToZ = {
 {
       "type": "Feature",
       "properties": {
-        "railways": "Vaivari - Asari"
+        "railways": "Asari - Vaivari"
       },
       "geometry": {
         "coordinates": [
@@ -1009,7 +1009,7 @@ export let tToZ = {
         {
       "type": "Feature",
       "properties": {
-        "railways": "Asari - Melluži"
+        "railways": "Melluži - Asari"
       },
       "geometry": {
         "coordinates": [
@@ -1060,7 +1060,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Melluži - Pumpuri"
+        "railways": "Pumpuri - Melluži"
       },
       "geometry": {
         "coordinates": [
@@ -1079,7 +1079,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Pumpuri - Jaundubulti"
+        "railways": "Jaundubulti - Pumpuri"
       },
       "geometry": {
         "coordinates": [
@@ -1098,7 +1098,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Jaundubulti - Dubulti"
+        "railways": "Dubulti - Jaundubulti"
       },
       "geometry": {
         "coordinates": [
@@ -1253,7 +1253,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Dubulti - Majori"
+        "railways": "Majori - Dubulti"
       },
       "geometry": {
         "coordinates": [
@@ -1372,7 +1372,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Majori - Dzintari"
+        "railways": "Dzintari - Majori"
       },
       "geometry": {
         "coordinates": [
@@ -1491,7 +1491,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Dzintari - Bulduri"
+        "railways": "Bulduri - Dzintari"
       },
       "geometry": {
         "coordinates": [
@@ -1526,7 +1526,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Bulduri - Lielupe"
+        "railways": "Lielupe - Bulduri"
       },
       "geometry": {
         "coordinates": [
@@ -1653,7 +1653,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Lielupe - Priedaine"
+        "railways": "Priedaine - Lielupe"
       },
       "geometry": {
         "coordinates": [
@@ -1716,7 +1716,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Priedaine - Babīte"
+        "railways": "Babīte - Priedaine"
       },
       "geometry": {
         "coordinates": [
@@ -1775,7 +1775,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Babīte - Imanta"
+        "railways": "Imanta - Babīte"
       },
       "geometry": {
         "coordinates": [
@@ -1862,7 +1862,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Imanta - Zolitūte"
+        "railways": "Zolitūde - Imanta"
       },
       "geometry": {
         "coordinates": [
@@ -1929,7 +1929,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Zolitūte - Depo"
+        "railways": "Depo - Zolitūde"
       },
       "geometry": {
         "coordinates": [
@@ -1948,7 +1948,7 @@ export let tToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Depo - Zasulauks"
+        "railways": "Zasulauks - Depo"
       },
       "geometry": {
         "coordinates": [

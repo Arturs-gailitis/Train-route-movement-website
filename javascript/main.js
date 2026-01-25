@@ -140,7 +140,7 @@ railtrack.forEach(rail => {
     // Nosaka kāda krāsa būs katram dzelzceļa posmam
     if (rail.features[0].properties.railways == "Zvejniekciems - Skulte") {
         trackColor = "#f8db22";
-    } else if (rail.features[0].properties.railways == "Tukums II - Tukums I") {
+    } else if (rail.features[0].properties.railways == "Tukums I - Tukums II") {
         trackColor = "#04abe8";
     } else if ((rail.features[0].properties.railways == "Liepāja - Skrunde") || 
     (rail.features[0].properties.railways == "Skrunde - Liepāja") || 
@@ -153,7 +153,7 @@ railtrack.forEach(rail => {
         trackColor = "#bf9ac6";
     } else if (rail.features[0].properties.railways == "Čiekurkalns - Šmerlis") {
         trackColor = "#8bc540";
-    } else if (rail.features[0].properties.railways == "Torņkalns - Rīga") {
+    } else if (rail.features[0].properties.railways == "Rīga - Torņakalns") {
         trackColor = "#000000";
     }
 

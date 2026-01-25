@@ -18,23 +18,40 @@ const riga = tornToZ.features.map(f => f.properties.railways);
 
 let rigaForValga = [];
 let rigaForSkulte = [];
-let rigaStations = [];
+let rigaForTukums = [];
+let rigaStationsForVidzeme = [];
+let rigaStationsForKurzeme = [];
 
 // Iegūst visus Rīgas apgabala dzelzceļa posmus, stacijas nosaukumus skatoties pēc kādi posmi ir aizliegti  
 for (let i = 0; i < riga.length; i++) {
-    if (riga[i] != "Torņkalns - Rīga" && riga[i] != "Savieno Torņkalnu") {
+    if (riga[i] != "Rīga - Torņakalns" && riga[i] != "Savieno Torņakalnu") {
 
         if (riga[i].includes(" - ")) {
             const firstStation = riga[i].split(" - ")[0];
             const secondStation = riga[i].split(" - ")[1];
-            rigaStations.push(firstStation);
-            rigaStations.push(secondStation);
+            rigaStationsForVidzeme.push(firstStation);
+            rigaStationsForVidzeme.push(secondStation);
         } else {
-            rigaStations.push(riga[i]);
+            rigaStationsForVidzeme.push(riga[i]);
         }
 
         rigaForValga.push(riga[i]);
         rigaForSkulte.push(riga[i]);
+    
+    }
+    
+    if (riga[i] != "Savieno Zemitānus" && riga[i] != "Rīga - Zemitāni") {
+        
+        if (riga[i].includes(" - ")) {
+            const firstStation = riga[i].split(" - ")[0];
+            const secondStation = riga[i].split(" - ")[1];
+            rigaStationsForKurzeme.push(firstStation);
+            rigaStationsForKurzeme.push(secondStation);
+        } else {
+            rigaStationsForKurzeme.push(riga[i]);
+        }
+
+        rigaForTukums.push(riga[i]);
     }
 }
 
@@ -81,28 +98,54 @@ for (let i = 0; i < skulte.length; i++) {
     }
 }
 
+// Iegūst visas dzelzceļa nosaukumus no TukumsZasulauksRailways.geoJson.js un elementus sagriež otrādi
+let tukums = tToZ.features.map(f => f.properties.railways);
+tukums.reverse();
+
+let tempTukumsStations = [];
+
+// Iegūs visas Tukums II - Zasulauks stacijas nosaukumus
+for (let i = 0; i < tukums.length; i++) {
+    if (i == tukums.length - 1) {
+        const firstStation = tukums[i].split(" - ")[0];
+        const secondStation = tukums[i].split(" - ")[1];
+        tempTukumsStations.push(firstStation);
+        tempTukumsStations.push(secondStation);
+    } else {
+        const station = tukums[i].split(" - ")[0];
+        tempTukumsStations.push(station);
+    }
+}
+
 export let valgaStations = [];
 export let skulteStations = [];
+export let tukumsStations = [];
 
 // Apvieno visas stacijas kopā
-rigaStations.forEach(riga => {
+rigaStationsForVidzeme.forEach(riga => {
     valgaStations.push(riga);
+    skulteStations.push(riga);
 })
 
 tempValgaStations.forEach(temp => {
     valgaStations.push(temp);
 })
 
-rigaStations.forEach(riga => {
-    skulteStations.push(riga);
-})
-
 tempSkulteStations.forEach(temp => {
     skulteStations.push(temp);
 })
 
+rigaStationsForKurzeme.forEach(riga => {
+    tukumsStations.push(riga);
+})
+
+tempTukumsStations.forEach(temp => {
+    tukumsStations.push(temp);
+})
+
 export let valgaRoutes = [];
 export let skulteRoutes = [];
+export let tukumsRoutes = [];
 
 // Apvieno visas dzelzceļa posmus kopā
 rigaForValga.forEach(r => {
@@ -119,4 +162,12 @@ rigaForSkulte.forEach(r => {
 
 skulte.forEach(s => {
     skulteRoutes.push(s);
+})
+
+rigaForTukums.forEach(r => {
+    tukumsRoutes.push(r);
+})
+
+tukums.forEach(t => {
+    tukumsRoutes.push(t);
 })

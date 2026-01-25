@@ -5,7 +5,7 @@ export let tornToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Torņkalns - Rīga"
+        "railways": "Rīga - Torņakalns"
       },
       "geometry": {
         "coordinates": [
@@ -282,7 +282,7 @@ export let tornToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Savieno Torņkalnu"
+        "railways": "Savieno Torņakalnu"
       },
       "geometry": {
         "coordinates": [

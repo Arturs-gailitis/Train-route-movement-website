@@ -1,5 +1,7 @@
 import {stations} from "../storage/visual data/stations.js";
-import { railtrack, valgaStations, valgaRoutes, skulteStations, skulteRoutes } from "../storage/visual data/railways/unite.js";
+import { 
+    railtrack, valgaStations, valgaRoutes, skulteStations, skulteRoutes, tukumsStations, tukumsRoutes
+} from "../storage/visual data/railways/unite.js";
 
 const footer = document.getElementById("footer");
 const table = document.getElementById("tabula");
@@ -208,7 +210,7 @@ function getTracks(stationArray, routeArray, railColor) {
     }
 
     let correctRigaRoutes = [];
-    const deafaultRigaRoutes = ["Torņkalns - Rīga", "Rīga - Zemitāni", "Savieno Zemitānus", "Savieno Torņkalnu"];
+    const deafaultRigaRoutes = ["Rīga - Torņakalns", "Rīga - Zemitāni", "Savieno Zemitānus", "Savieno Torņakalnu"];
     let filteredRoutes = [];
 
     // filtē dzelceļa posmus skatoties vai konkrētais dzelzceļa posms ir Rīgas apgabals
@@ -297,5 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
         getTracks(valgaStations, valgaRoutes, "#8bc540");
     } else if (skulteStations.includes(startStation) && skulteStations.includes(endStation)) {
         getTracks(skulteStations, skulteRoutes, "#f8db22");
+    } else if (tukumsStations.includes(startStation) && tukumsStations.includes(endStation)) {
+        getTracks(tukumsStations, tukumsRoutes, "#04abe8");
     }
 })
