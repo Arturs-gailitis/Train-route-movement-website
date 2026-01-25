@@ -20,12 +20,14 @@ let rigaForValga = [];
 let rigaForSkulte = [];
 let rigaForTukums = [];
 let rigaForLiepaja = [];
+let rigaForLatgale = [];
 let rigaStationsForVidzeme = [];
 let rigaStationsForKurzeme = [];
+let rigaStationForLatgale = [];
 
 // Iegūst visus Rīgas apgabala dzelzceļa posmus, stacijas nosaukumus skatoties pēc kādi posmi ir aizliegti  
 for (let i = 0; i < riga.length; i++) {
-    if (riga[i] != "Rīga - Torņakalns" && riga[i] != "Savieno Torņakalnu") {
+    if (riga[i] != "Rīga - Torņakalns" && riga[i] != "Savieno Torņakalnu" && riga[i] != "Rīga - Vagonu parks") {
 
         if (riga[i].includes(" - ")) {
             const firstStation = riga[i].split(" - ")[0];
@@ -41,7 +43,7 @@ for (let i = 0; i < riga.length; i++) {
     
     }
     
-    if (riga[i] != "Savieno Zemitānus" && riga[i] != "Rīga - Zemitāni") {
+    if (riga[i] != "Savieno Zemitānus" && riga[i] != "Rīga - Zemitāni" && riga[i] != "Rīga - Vagonu parks") {
         
         if (riga[i].includes(" - ")) {
             const firstStation = riga[i].split(" - ")[0];
@@ -55,12 +57,18 @@ for (let i = 0; i < riga.length; i++) {
         rigaForTukums.push(riga[i]);
         rigaForLiepaja.push(riga[i]);
     }
+
+    if (riga[i] == "Rīga - Vagonu parks") {
+        const station = riga[i].split(" - ")[0];
+        rigaStationForLatgale.push(station);
+        rigaForLatgale.push(riga[i]);
+    }
 }
+
+let removed = "";
 
 // Iegūst visas dzelzceļa posmu nosaukumus no CiekurkalnsValgaRailways.js 
 let valga = cToV.features.map(f => f.properties.railways);
-
-let removed = "";
 
 // Pārmaina elementa Savieno Čiekurkalnu vietu masīvā
 removed = valga.splice(valga.length - 1, 1);
@@ -151,10 +159,106 @@ for (let i = 0; i < liepaja.length; i++) {
     }
 }
 
+let gulbene = [];
+let zilupe = [];
+let indra = [];
+
+// Iegūst visas dzelzceļa posmu nosaukumus no VagonuparksPlavinasRailways.js
+let plavinas = vToP.features.map(f => f.properties.railways);
+
+// Pārmaina elementa Savieno Vagona parku vietu masīvā
+removed = plavinas.splice(plavinas.length - 1, 1);
+plavinas.splice(0, 0, removed[0]);
+
+// Iegūst visas dzelzceļa posmu nosaukumus no PlavinasGulbeneRailways.js, KrustpilsZilupeRailways.js
+const g = pToG.features.map(f => f.properties.railways);
+
+// Savieno plaviņu dzelzceļa posmu gulbenes, zilupes, indras masīvos
+plavinas.forEach(p => {
+    gulbene.push(p);
+    zilupe.push(p);
+    indra.push(p);
+})
+
+// savieno gulbenes maršruta posmus masīvā
+g.forEach(gr => {
+    gulbene.push(gr);
+})
+
+let tempGulbeneStations = []
+
+// Iegūs visas Rīga - Gulbene stacijas nosaukumus
+for (let i = 0; i < gulbene.length; i++) {
+    if (i == gulbene.length - 1) {
+        const firstStation = gulbene[i].split(" - ")[0];
+        const secondStation = gulbene[i].split(" - ")[1];
+        tempGulbeneStations.push(firstStation);
+        tempGulbeneStations.push(secondStation);
+    } else {
+        const station = gulbene[i].split(" - ")[0];
+        tempGulbeneStations.push(station);
+    }
+}
+
+// Iegūst visas dzelzceļa posmu nosaukumus no PlavinasIndraRailwats.js
+const i = pToI.features.map(f => f.properties.railways);
+
+// savieno ar plaviņu masīvu un izņem lieko Daugavpils - Aglona maršruta posmu
+i.forEach(ind => {
+    if (ind != 'Daugavpils - Aglona') {
+        indra.push(ind);
+    }
+})
+
+let tempIndraStations = [];
+
+// Iegūs visas Rīga - Indra stacijas nosaukumus
+for (let i = 0; i < indra.length; i++) {
+    if (i == indra.length - 1) {
+        const firstStation = indra[i].split(" - ")[0];
+        const secondStation = indra[i].split(" - ")[1];
+        tempIndraStations.push(firstStation);
+        tempIndraStations.push(secondStation);
+    } else {
+        const station = indra[i].split(" - ")[0];
+        tempIndraStations.push(station);
+    }
+}
+
+// Iegūst visas dzelzceļa posmu nosaukumus no KrustpilsZilupeRailways.js
+const z = kToZ.features.map(f => f.properties.railways);
+
+// Iegūst konkrētus dzelzceļa posmus no indras masīva
+zilupe.push(i[0]);
+zilupe.push(i[1]);
+
+// savieno zilupes maršruta posmus masīvā
+z.forEach(zil => {
+    zilupe.push(zil);
+})
+
+let tempZilupeStations = [];
+
+// Iegūst visas Rīga - Zilupe stacijas nosaukumus
+for (let i = 0; i < zilupe.length; i++) {
+    if (i == zilupe.length - 1) {
+        const firstStation = zilupe[i].split(" - ")[0];
+        const secondStation = zilupe[i].split(" - ")[1];
+        tempZilupeStations.push(firstStation);
+        tempZilupeStations.push(secondStation);
+    } else {
+        const station = zilupe[i].split(" - ")[0];
+        tempZilupeStations.push(station);
+    }
+}
+
 export let valgaStations = [];
 export let skulteStations = [];
 export let tukumsStations = [];
 export let liepajaStations = [];
+export let gulbeneStations = [];
+export let indraStations = [];
+export let zilupeStations = [];
 
 // Apvieno visas stacijas kopā
 rigaStationsForVidzeme.forEach(riga => {
@@ -183,10 +287,31 @@ tempLiepajaStations.forEach(temp => {
     liepajaStations.push(temp);
 })
 
+rigaStationForLatgale.forEach(temp => {
+    gulbeneStations.push(temp);
+    indraStations.push(temp);
+    zilupeStations.push(temp);
+})
+
+tempGulbeneStations.forEach(temp => {
+    gulbeneStations.push(temp);
+})
+
+tempIndraStations.forEach(temp => {
+    indraStations.push(temp);
+})
+
+tempZilupeStations.forEach(temp => {
+    zilupeStations.push(temp);
+})
+
 export let valgaRoutes = [];
 export let skulteRoutes = [];
 export let tukumsRoutes = [];
 export let liepajaRoutes = [];
+export let gulbeneRoute = [];
+export let indraRoute = [];
+export let zilupeRoute = [];
 
 // Apvieno visas dzelzceļa posmus kopā
 rigaForValga.forEach(r => {
@@ -219,4 +344,22 @@ rigaForLiepaja.forEach(r => {
 
 liepaja.forEach(l => {
     liepajaRoutes.push(l);
+})
+
+rigaForLatgale.forEach(r => {
+    gulbeneRoute.push(r);
+    indraRoute.push(r);
+    zilupeRoute.push(r);
+})
+
+gulbene.forEach(g => {
+    gulbeneRoute.push(g);
+})
+
+indra.forEach(i => {
+    indraRoute.push(i);
+})
+
+zilupe.forEach(z => {
+    zilupeRoute.push(z);
 })

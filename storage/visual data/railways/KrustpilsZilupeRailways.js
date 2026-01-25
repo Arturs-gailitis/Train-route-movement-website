@@ -1573,7 +1573,7 @@ export let kToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Rēzekne II -  Taudejāņi"
+        "railways": "Rēzekne II - Taudejāņi"
       },
       "geometry": {
         "coordinates": [
@@ -2943,7 +2943,7 @@ export let kToZ = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Briģi - Zilupe "
+        "railways": "Briģi - Zilupe"
       },
       "geometry": {
         "coordinates": [

@@ -29,6 +29,22 @@ $createCalendarQuerry = 'CREATE TABLE IF NOT EXISTS Calendar (
 // izveido Calendar tabulu
 $db->exec($createCalendarQuerry);
 
+// fukcija kas ieliek trūkstošo Calendar ierakstu
+function createMissingRecords($serviceId, $days, $startEndDates, $statement) {
+    $statement->execute([
+        'service_id' => $serviceId,
+        'monday' => $days[0],
+        'tuesday' => $days[1],
+        'wednesday' => $days[2],
+        'thursday' => $days[3],
+        'friday' => $days[4],
+        'saturday' => $days[5],
+        'sunday' => $days[6],
+        'start_date' => $startEndDates[0],
+        'end_date' => $startEndDates[1],
+    ]);
+}
+
 // sagatavo Calendar tabulas datu ievietošanas vaicājumu
 $addCalendarQuerry = 'INSERT OR REPLACE INTO Calendar (service_id, monday, tuesday, wednesday, thursday, friday, saturday, 
     sunday, start_date, end_date) 
@@ -57,6 +73,9 @@ try {
         }
         fclose($stream);
     }
+
+    // ieliek trūkstošo calendar ierastu
+    createMissingRecords(806, [0, 0, 0, 0, 0, 1, 1], [20260101, 20261231], $temp);
 
 } catch (Exception $e) {
     die('Kļūda apstrādājot datus: ' . $e->getMessage());

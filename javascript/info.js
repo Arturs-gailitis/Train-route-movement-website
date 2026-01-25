@@ -1,7 +1,7 @@
 import {stations} from "../storage/visual data/stations.js";
 import { 
     railtrack, valgaStations, valgaRoutes, skulteStations, skulteRoutes, tukumsStations, tukumsRoutes, liepajaStations, 
-    liepajaRoutes
+    liepajaRoutes, gulbeneStations, gulbeneRoute, indraStations, indraRoute, zilupeStations, zilupeRoute
 } from "../storage/visual data/railways/unite.js";
 
 const footer = document.getElementById("footer");
@@ -211,7 +211,9 @@ function getTracks(stationArray, routeArray, railColor) {
     }
 
     let correctRigaRoutes = [];
-    const deafaultRigaRoutes = ["Rīga - Torņakalns", "Rīga - Zemitāni", "Savieno Zemitānus", "Savieno Torņakalnu"];
+    const deafaultRigaRoutes = ["Rīga - Torņakalns", "Rīga - Zemitāni", "Savieno Zemitānus", "Savieno Torņakalnu",
+        "Rīga - Vagonu parks"
+    ];
     let filteredRoutes = [];
 
     // filtē dzelceļa posmus skatoties vai konkrētais dzelzceļa posms ir Rīgas apgabals
@@ -304,5 +306,11 @@ document.addEventListener("DOMContentLoaded", () => {
         getTracks(tukumsStations, tukumsRoutes, "#04abe8");
     } else if (liepajaStations.includes(startStation) && liepajaStations.includes(endStation)) {
         getTracks(liepajaStations, liepajaRoutes, "#ea6449");
+    } else if (gulbeneStations.includes(startStation) && gulbeneStations.includes(endStation)) {
+        getTracks(gulbeneStations, gulbeneRoute, "#bf9ac6");
+    } else if (indraStations.includes(startStation) && indraStations.includes(endStation)) {
+        getTracks(indraStations, indraRoute, "#bf9ac6");
+    } else if (zilupeStations.includes(startStation) && zilupeStations.includes(endStation)) {
+        getTracks(zilupeStations, zilupeRoute, "#bf9ac6");
     }
 })
