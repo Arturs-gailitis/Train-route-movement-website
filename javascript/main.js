@@ -142,8 +142,8 @@ railtrack.forEach(rail => {
         trackColor = "#f8db22";
     } else if (rail.features[0].properties.railways == "Tukums I - Tukums II") {
         trackColor = "#04abe8";
-    } else if ((rail.features[0].properties.railways == "Skrunde - Liepāja") || 
-    (rail.features[0].properties.railways == "Saldus - Skrunde") || 
+    } else if ((rail.features[0].properties.railways == "Skrunda - Liepāja") || 
+    (rail.features[0].properties.railways == "Saldus - Skrunda") || 
     (rail.features[0].properties.railways == "Jelgava - Dobele")) {
         trackColor = "#ea6449";
     } else if ((rail.features[0].properties.railways == "Vagonu parks - Jāņavārti") || 
