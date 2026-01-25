@@ -38,7 +38,7 @@ filterButton.addEventListener("click", () => {
         filterBox.style.display = "none";
         filterBox.style.height = "0px";
         filterButtonIcon.src = "http://localhost:8000/icons/arrow-down.svg";
-        filterButton.tittle = "Atvērt maršrutu filtrēšanas sadaļu";
+        filterButton.title = "Atvērt maršrutu filtrēšanas sadaļu";
         filterButton.style.marginBottom = "20px"
         statuss = false;
     }
