@@ -5,7 +5,7 @@ export let lToS = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Liepāja - Skrunde"
+        "railways": "Skrunda - Liepāja"
       },
       "geometry": {
         "coordinates": [

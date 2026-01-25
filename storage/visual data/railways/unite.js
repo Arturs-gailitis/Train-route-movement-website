@@ -19,6 +19,7 @@ const riga = tornToZ.features.map(f => f.properties.railways);
 let rigaForValga = [];
 let rigaForSkulte = [];
 let rigaForTukums = [];
+let rigaForLiepaja = [];
 let rigaStationsForVidzeme = [];
 let rigaStationsForKurzeme = [];
 
@@ -52,10 +53,11 @@ for (let i = 0; i < riga.length; i++) {
         }
 
         rigaForTukums.push(riga[i]);
+        rigaForLiepaja.push(riga[i]);
     }
 }
 
-// Iegūst visas dzelzceļa nosaukumus no CiekurkalnsValgaRailways.js 
+// Iegūst visas dzelzceļa posmu nosaukumus no CiekurkalnsValgaRailways.js 
 let valga = cToV.features.map(f => f.properties.railways);
 
 let removed = "";
@@ -79,7 +81,7 @@ for (let i = 0; i < valga.length; i++) {
     }
 }
 
-// Iegūst visas dzelzceļa nosaukumus no BrasaSkulteRailways.geoJson.js un elementus sagriež otrādi 
+// Iegūst visas dzelzceļa posmu nosaukumus no BrasaSkulteRailways.geoJson.js un elementus sagriež otrādi 
 let skulte = bToS.features.map(f => f.properties.railways);
 skulte.reverse();
 
@@ -98,7 +100,7 @@ for (let i = 0; i < skulte.length; i++) {
     }
 }
 
-// Iegūst visas dzelzceļa nosaukumus no TukumsZasulauksRailways.geoJson.js un elementus sagriež otrādi
+// Iegūst visas dzelzceļa posmu nosaukumus no TukumsZasulauksRailways.geoJson.js un elementus sagriež otrādi
 let tukums = tToZ.features.map(f => f.properties.railways);
 tukums.reverse();
 
@@ -117,9 +119,42 @@ for (let i = 0; i < tukums.length; i++) {
     }
 }
 
+// Iegūst visas dzelzceļa posmu nosaukumus no LiepājaSkrundeRailways.js, SkrundeDobeleRailways.js, DobeleBieriniRailways.js
+let liepaja = lToS.features.map(f => f.properties.railways);
+const s = sToD.features.map(f => f.properties.railways);
+const d = dToB.features.map(f => f.properties.railways);
+
+// saliek visus dzelzceļa nosaukumus kopā
+s.forEach(sk => {
+    liepaja.push(sk);
+})
+
+d.forEach(dob => {
+    liepaja.push(dob);
+})
+
+// dzelzceļa nosaukumus masīvā apgriež otrādāk
+liepaja.reverse();
+
+let tempLiepajaStations = [];
+
+// Iegūs visas Liepāja - Bieriņi stacijas nosaukumus
+for (let i = 0; i < liepaja.length; i++) {
+    if (i == liepaja.length - 1) {
+        const firstStation = liepaja[i].split(" - ")[0];
+        const secondStation = liepaja[i].split(" - ")[1];
+        tempLiepajaStations.push(firstStation);
+        tempLiepajaStations.push(secondStation);
+    } else {
+        const station = liepaja[i].split(" - ")[0];
+        tempLiepajaStations.push(station);
+    }
+}
+
 export let valgaStations = [];
 export let skulteStations = [];
 export let tukumsStations = [];
+export let liepajaStations = [];
 
 // Apvieno visas stacijas kopā
 rigaStationsForVidzeme.forEach(riga => {
@@ -137,15 +172,21 @@ tempSkulteStations.forEach(temp => {
 
 rigaStationsForKurzeme.forEach(riga => {
     tukumsStations.push(riga);
+    liepajaStations.push(riga);
 })
 
 tempTukumsStations.forEach(temp => {
     tukumsStations.push(temp);
 })
 
+tempLiepajaStations.forEach(temp => {
+    liepajaStations.push(temp);
+})
+
 export let valgaRoutes = [];
 export let skulteRoutes = [];
 export let tukumsRoutes = [];
+export let liepajaRoutes = [];
 
 // Apvieno visas dzelzceļa posmus kopā
 rigaForValga.forEach(r => {
@@ -170,4 +211,12 @@ rigaForTukums.forEach(r => {
 
 tukums.forEach(t => {
     tukumsRoutes.push(t);
+})
+
+rigaForLiepaja.forEach(r => {
+    liepajaRoutes.push(r);
+})
+
+liepaja.forEach(l => {
+    liepajaRoutes.push(l);
 })

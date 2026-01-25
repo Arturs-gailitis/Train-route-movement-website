@@ -142,9 +142,9 @@ railtrack.forEach(rail => {
         trackColor = "#f8db22";
     } else if (rail.features[0].properties.railways == "Tukums I - Tukums II") {
         trackColor = "#04abe8";
-    } else if ((rail.features[0].properties.railways == "Liepāja - Skrunde") || 
-    (rail.features[0].properties.railways == "Skrunde - Liepāja") || 
-    (rail.features[0].properties.railways == "Dobele - Jelgava")) {
+    } else if ((rail.features[0].properties.railways == "Skrunde - Liepāja") || 
+    (rail.features[0].properties.railways == "Saldus - Skrunde") || 
+    (rail.features[0].properties.railways == "Jelgava - Dobele")) {
         trackColor = "#ea6449";
     } else if ((rail.features[0].properties.railways == "Vagonu parks - Jāņavārti") || 
     (rail.features[0].properties.railways == "Krustpils - Trepe") || 

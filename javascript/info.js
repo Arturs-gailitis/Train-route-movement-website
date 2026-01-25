@@ -1,6 +1,7 @@
 import {stations} from "../storage/visual data/stations.js";
 import { 
-    railtrack, valgaStations, valgaRoutes, skulteStations, skulteRoutes, tukumsStations, tukumsRoutes
+    railtrack, valgaStations, valgaRoutes, skulteStations, skulteRoutes, tukumsStations, tukumsRoutes, liepajaStations, 
+    liepajaRoutes
 } from "../storage/visual data/railways/unite.js";
 
 const footer = document.getElementById("footer");
@@ -301,5 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
         getTracks(skulteStations, skulteRoutes, "#f8db22");
     } else if (tukumsStations.includes(startStation) && tukumsStations.includes(endStation)) {
         getTracks(tukumsStations, tukumsRoutes, "#04abe8");
+    } else if (liepajaStations.includes(startStation) && liepajaStations.includes(endStation)) {
+        getTracks(liepajaStations, liepajaRoutes, "#ea6449");
     }
 })

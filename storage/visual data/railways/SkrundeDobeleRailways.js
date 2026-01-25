@@ -1,11 +1,11 @@
-// Objekts kas satur koordinātes par dzelzceļa posmu no Skrundes uz Dobeli
+// Objekts kas satur koordinātes par dzelzceļa posmu no Skrunda uz Dobeli
 export let sToD = {
   "type": "FeatureCollection",
   "features": [
     {
       "type": "Feature",
       "properties": {
-        "railways": "Skrunde - Saldus"
+        "railways": "Saldus - Skrunda"
       },
       "geometry": {
         "coordinates": [
@@ -560,7 +560,7 @@ export let sToD = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Saldus - Biksti"
+        "railways": "Biksti - Saldus"
       },
       "geometry": {
         "coordinates": [
@@ -1371,7 +1371,7 @@ export let sToD = {
 {
       "type": "Feature",
       "properties": {
-        "railways": "Biksti - Dobele"
+        "railways": "Dobele - Biksti"
       },
       "geometry": {
         "coordinates": [

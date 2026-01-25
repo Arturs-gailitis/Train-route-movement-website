@@ -5,7 +5,7 @@ export let dToB = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Dobele - Jelgava"
+        "railways": "Jelgava - Dobele"
       },
       "geometry": {
         "coordinates": [
@@ -400,7 +400,7 @@ export let dToB = {
         {
       "type": "Feature",
       "properties": {
-        "railways": "Jelgava - Cukurfabrika"
+        "railways": "Cukurfabrika - Jelgava"
       },
       "geometry": {
         "coordinates": [
@@ -443,7 +443,7 @@ export let dToB = {
 {
       "type": "Feature",
       "properties": {
-        "railways": "Cukurfabrika - Ozolnieki"
+        "railways": "Ozolnieki - Cukurfabrika"
       },
       "geometry": {
         "coordinates": [
@@ -518,7 +518,7 @@ export let dToB = {
 {
       "type": "Feature",
       "properties": {
-        "railways": "Ozolnieki - Cena"
+        "railways": "Cena - Ozolnieki"
       },
       "geometry": {
         "coordinates": [
@@ -549,7 +549,7 @@ export let dToB = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Cena - Dalbe"
+        "railways": "Dalbe - Cena"
       },
       "geometry": {
         "coordinates": [
@@ -644,7 +644,7 @@ export let dToB = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Dalbe - Olaine"
+        "railways": "Olaine - Dalbe"
       },
       "geometry": {
         "coordinates": [
@@ -695,7 +695,7 @@ export let dToB = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Olaine - Jaunolaine"
+        "railways": "Jaunolaine - Olaine"
       },
       "geometry": {
         "coordinates": [
@@ -726,7 +726,7 @@ export let dToB = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Jaunolaine - Medemciems"
+        "railways": "Medemciems - Jaunolaine"
       },
       "geometry": {
         "coordinates": [
@@ -865,7 +865,7 @@ export let dToB = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Medemciems - Tīraine"
+        "railways": "Tīraine - Medemciems"
       },
       "geometry": {
         "coordinates": [
@@ -888,7 +888,7 @@ export let dToB = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Tīraine - Biznesa Augstskola Turība"
+        "railways": "Biznesa Augstskola Turība - Tīraine"
       },
       "geometry": {
         "coordinates": [
@@ -987,7 +987,7 @@ export let dToB = {
     {
       "type": "Feature",
       "properties": {
-        "railways": "Biznesa Augstskola Turība - Bieriņi/Bērnu slimnīca"
+        "railways": "Bieriņi/Bērnu slimnīca - Biznesa Augstskola Turība"
       },
       "geometry": {
         "coordinates": [
