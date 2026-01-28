@@ -14,6 +14,7 @@ route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_
 1315,vivi,,Rīga - Madona,,2,,bf9ac6,000000
 1339,vivi,,Rīga - Ogre,,2,,bf9ac6,000000
 1349,vivi,,Rīga - Jelgava,,2,,ea6449,000000
+1358,vivi,,Rīga - Priedaine,,2,,04abe8,000000
 1396,vivi,,Rīga - Tukums 1,,2,,04abe8,000000
 1397,vivi,,Rīga - Tukums 2,,2,,04abe8,000000
 1398,vivi,,Rīga - Saulkrasti,,2,,f8db22,000000
@@ -24,6 +25,7 @@ route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_
 1460,vivi,,Rīga - Valga,,2,,8bc540,000000
 2031,vivi,,Aizkraukle - Rīga,,2,,bf9ac6,000000
 2301,vivi,,Carnikava - Rīga,,2,,f8db22,000000
+230400,vivi,,Carnikava - Zemitāni,,2,,f8db22,000000
 2331,vivi,,Cēsis - Rīga,,2,,8bc540,000000
 2431,vivi,,Daugavpils - Rīga,,2,,bf9ac6,000000
 2521,vivi,,Dubulti - Rīga,,2,,04abe8,000000
@@ -41,8 +43,15 @@ route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_
 3961,vivi,,Tukums 1 - Rīga,,2,,04abe8,000000
 3971,vivi,,Tukums 2 - Rīga,,2,,04abe8,000000
 3981,vivi,,Saulkrasti - Rīga,,2,,f8db22,000000
+398400,vivi,,Saulkrasti - Zemitāni,,2,,f8db22,000000
 3991,vivi,,Skulte - Rīga,,2,,f8db22,000000
+400230,vivi,,Zemitāni - Carnikava,,2,,f8db22,000000
+400398,vivi,,Zemitāni - Saulkrasti,,2,,f8db22,000000
+400408,vivi,,Zemitāni - Sigulda,,2,,8bc540,000000
+400451,vivi,,Zemitāni - Vecāķi,,2,,f8db22,000000
 4081,vivi,,Sigulda - Rīga,,2,,8bc540,000000
 4321,vivi,,Valmiera - Rīga,,2,,8bc540,000000
+432400,vivi,,Valmiera - Zemitāni,,2,,8bc540,000000
 4461,vivi,,Zilupe - Rīga,,2,,bf9ac6,000000
+451400,vivi,,Vecāķi - Zemitāni,,2,,f8db22,000000
 4601,vivi,,Valga - Rīga,,2,,8bc540,000000
