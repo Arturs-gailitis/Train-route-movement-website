@@ -213,7 +213,7 @@
 }
 
 /* Skatās vairāk informācijas sadaļas pogas */
-#infoPogas {
+.infoPogas {
     display: flex;
     background-color: transparent;
     border: none;

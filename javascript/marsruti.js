@@ -30,31 +30,55 @@ boxButton.addEventListener("click", () => {
 // automātiski ieliek url linku uz 1188.lv
 document.addEventListener("DOMContentLoaded", () => {
     const buyButtons = document.querySelectorAll(".pirktPogas");
-
-    const firstStation = document.getElementById("sakumaStacija").innerText;
-    const lastStation = document.getElementById("beiguStacija").innerText;
+    const infoButtons = document.querySelectorAll(".infoPogas");
     const date = document.getElementById("datumaInfo").innerText;
 
-    let firstStationName;
-    let fisrtStationNumber;
-    let lastStationName;
-    let lastStationNumber;
+    let startStations = [];
+    let endStations = [];
 
-    // iegūst nepieciešamo info priekš url
-    stations.forEach(stat => {
-        if (firstStation == stat.sname) {
-            firstStationName = stat.alt;
-            fisrtStationNumber = stat.code;
-        } else if (lastStation == stat.sname) {
-            lastStationName = stat.alt;
-            lastStationNumber = stat.code;
-        }
-    })
+    // Iegūst nepieciešamo sākumstaciju un beigustaciju no infoButtons
+    for (let i = 0; i < infoButtons.length; i++) {
+        // iegūst url un tās daļu, kura mainās pēc GET metodes
+        const url =  infoButtons[i].href;
+        const querry = url.split("?")[1];
 
-    const url = "https://www.1188.lv/satiksme/vilcieni/" + firstStationName + "/" + lastStationName + "/" + fisrtStationNumber +"/" + lastStationNumber + "/diena/" + date;
+        // dabū vajadzīgās url sadaļas
+        const startStation = querry.split("&")[1];
+        const endStation = querry.split("&")[2];
 
-    // ieliek href vērtību katrai pogai
-    buyButtons.forEach(b => {
-        b.href = url;
-    })
+        // Pēc staciju iegūšanas pārtaisi cilvēka saprotamā tekstā
+        const startStationValue = decodeURIComponent(startStation.split("=")[1]);
+        const endStationValue = decodeURIComponent(endStation.split("=")[1]);
+
+        startStations.push(startStationValue);
+        endStations.push(endStationValue);  
+    }
+
+    for (let i = 0; i < buyButtons.length; i++) {
+        const startStation = startStations[i];
+        const endStation = endStations[i];
+
+        let startStationAlt = "";
+        let startStationNumber = null;
+        let endStationAlt = "";
+        let endStationNumber = null;
+
+        // iegūst nepieciešamo info priekš 1188.lv url
+        stations.forEach(stat => {
+            if (startStation == stat.sname) {
+                startStationAlt = stat.alt;
+                startStationNumber = stat.code;
+            }
+
+            if (endStation == stat.sname) {
+                endStationAlt = stat.alt;
+                endStationNumber = stat.code;
+            }
+        })
+
+        // izveido 1188.lv url un ieliek viņu konkrētajā buyButtons
+        const websiteURL = "https://www.1188.lv/satiksme/vilcieni/" + startStationAlt + "/" + endStationAlt + "/" + startStationNumber +"/" + endStationNumber + "/diena/" + date;
+        buyButtons[i].href = websiteURL;
+    
+    }
 })

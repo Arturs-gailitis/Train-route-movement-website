@@ -465,7 +465,7 @@ try {
                                         <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona">
                                     </a>
                                 </td>
-                                <td id="infoPoga"><a class="info" id="infoPogas" 
+                                <td id="infoPoga"><a class="infoPogas" 
                                 href="info.php?id=<?php echo $trip['trip_id'] ?>&sakumstacija=<?php echo $trip['startStation'] ?>&beigustacija=<?php echo $trip['endStation'] ?>&datums=<?php echo $date ?>&marsruts=<?php echo $trip['routeName'] ?>">
                                     <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona"></a>
                                 </td>
