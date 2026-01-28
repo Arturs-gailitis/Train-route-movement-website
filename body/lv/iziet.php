@@ -104,11 +104,11 @@ try {
         <?php if (isset($_SESSION['lietotajvards'])): ?>
             <form method="POST">
                 <h2>Vai tiešām gribat iet ārā no jūsu profila?</h2>
-                <button type="submit" id="iziesanasPoga">Iziet ārā</button>
+                <button type="submit" class="btn btn-primary" id="iziesanasPoga">Iziet ārā</button>
             </form>
         <?php else: ?>
             <h2>Jūs esat izgājis ārā no profila</h2>
-            <button id="ietUzSakumu">Doties uz sākumlapu</button>
+            <button id="ietUzSakumu" class="btn btn-primary">Doties uz sākumlapu</button>
         <?php endif ?>
     </div>
 </body>

@@ -1,9 +1,45 @@
+/* Skatās lauku kur atrodās virsraksts un doties atpakaļ pogu */
+#virsrakstaLauks {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    position: relative;
+    gap: 340px;
+    right: 290px;
+}
+
+/* Skatās pogu ar kuru var doties atpakaļ */
+#iziet {
+    display: flex;
+    position: relative;
+    justify-self: center;
+    color: white;
+    background-color: #015224;
+    border-color: black;
+    max-width: 300px;
+    max-height: 50px;
+    height: auto;
+    height: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    top: 50px;
+}
+
+/* Skatās pogu ar kuru var doties atpakaļ, ja uz tām pieliks kursoru */
+#iziet:hover {
+    border-color: #0a58ca;
+}
+
 /* Skatās lapas nosaukumu */
 #infoNosaukums {
     color: white;
     display: flex;
     justify-self: center;
+    position: relative;
     margin-top: 50px;
+    left: 60px;
 }
 
 /* Skatās vietu kurā ir sākuma un beigu stacijas, datums un to ikonas */
@@ -94,17 +130,4 @@
     position: relative;
     left: 150px;
     top: 97px;
-}
-
-/* Skatās pogu ar kuru var doties atpakaļ */
-#iziet {
-    display: flex;
-    position: relative;
-    justify-self: center;
-    color: white;
-    background-color: #015224;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 10px;
-    padding-top: 10px;
 }

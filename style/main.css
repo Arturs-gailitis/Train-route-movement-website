@@ -124,6 +124,11 @@
     border: black solid 1px;
 }
 
+/* Skatās maršruta meklēšanas formas pogu, ja uz tām pieliks kursoru */
+#meklet:hover {
+    border-color: #0a58ca;
+}
+
 /* Skatās vizualizācijas mapes sadaļu */
 #vizuālāMapesLaukums {
     display: inline-block;

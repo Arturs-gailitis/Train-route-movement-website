@@ -32,6 +32,11 @@
     margin-top: 40px;
 }
 
+/* Skatās profila iziešanas abas pogas, ja uz tām pieliks kursoru */
+#iziesanasPoga:hover, #ietUzSakumu:hover {
+    border-color: #0a58ca;
+}
+
 /* Skatās footer elementu šajā failā */
 footer {
     position: relative;

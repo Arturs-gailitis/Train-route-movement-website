@@ -109,7 +109,7 @@ session_start();
                 <li>Iegūt papildus informāciju par vilciena maršrutu;</li>
                 <li>Reāllaikā uzzināt maršruta statusu un paziņojumus;</li>
                 <li>Skatīt konkrētā maršruta ceļu un staciju vizualizāciju interaktīvā kartē;</li>
-                <li>Nopirkt konkrētā maršruta biļeti;</li>
+                <li>Nopirkt konkrētā maršruta biļeti.</li>
             </ul>
 
             <p>

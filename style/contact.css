@@ -59,6 +59,11 @@
     padding-right: 10px;
 }
 
+/* Skatās ziņas izveidošanas formas sūtīšanas pogu, ja uz tām pieliks kursoru */
+#sutitZinu:hover {
+    border-color: #0a58ca;
+}
+
 /* Skatās veiksmīgas ziņas nosūtīšanas laukumu */
 #nosutits {
     display: flex;
@@ -94,4 +99,9 @@
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 20px;
+}
+
+/* Skatās veiksmīgas ziņas nosūtīšanas laukuma pogu, ja uz tām pieliks kursoru */
+#atgriezties:hover {
+    border-color: #0a58ca;
 }

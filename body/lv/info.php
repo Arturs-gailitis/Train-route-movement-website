@@ -214,7 +214,12 @@ try {
         </div>
     </div>
     <div>
-        <h1 id="infoNosaukums">Vairāk informācijas</h1>
+        <div id="virsrakstaLauks">
+            <button id="iziet" class="btn btn-primary">
+                Iet atpakaļ
+            </button>
+            <h1 id="infoNosaukums">Vairāk informācijas</h1>
+        </div>
         <div id="info">
             <img src="/icons/train-station.svg" alt="Sākuma stacija" class="ikona" title="Sākuma stacija">
             <span id="sakumaStacija"><?php echo $firstStation ?></span>
@@ -249,9 +254,6 @@ try {
         <h2 id="kartesTituls">Vizuālā karte</h2>
         <div id="karte"></div>
     </div>
-    <button id="iziet">
-        Iet atpakaļ uz maršruta tabulu
-    </button>
 </body>
 <footer class="mt-5 py-3" id=footer>
     <p class="mb-0">© Latvijas vilcienu maršrutu kustības portāls <span id=projektaGads></span></p>

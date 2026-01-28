@@ -136,14 +136,14 @@ try {
                         <label for="zina">Ziņa: </label>
                         <textarea name="zina" id="zina" title="maksimāli 250 simboli" required></textarea>
                     </div>
-                    <button type="submit" id="sutitZinu" disabled>Aizsūtīt ziņu</button>
+                    <button type="submit" id="sutitZinu" class = "btn btn-primary" disabled>Aizsūtīt ziņu</button>
                 </form>
             </div>
         <?php elseif ($statuss == true): ?>
             <div id="nosutits">
                 <h2>Ziņa ir veikmīgi nosūtīta</h2>
                 <P>Variet atgriezties uz sākumlapu.</P>
-                <button id="atgriezties">Iet uz sākumlapu</button>
+                <button id="atgriezties" class = "btn btn-primary" >Iet uz sākumlapu</button>
             </div>
         <?php endif ?>
     </div>

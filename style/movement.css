@@ -76,6 +76,11 @@
     top: 23px;
 }
 
+/* Skatās meklēšanas formas meklēt pogu, ja uz tām pieliks kursoru */
+#meklet:hover {
+    border-color: #0a58ca;
+}
+
 /* Skatās vietu kurā ir sākuma un beigu stacijas, datums un to ikonas */
 #virsInfo {
     color: white;
