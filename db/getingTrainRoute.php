@@ -264,4 +264,99 @@
         $statement = $conn->prepare($querry);
         $statement->execute([$id]);
     }
+
+    // Pārbauda vai konkrētais ieraksts eksistē ar konkrētu id variantu
+    function usedId($conn, $table, $id, $idName) {
+        $querry = 'SELECT * FROM '. $table .' WHERE ' . $idName . ' = ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute([$id]);
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($result != false) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    // Izveido ierakstu Calendar tabulā
+    function createCalendar($conn, $serviceId, $mon, $tue, $wed, $thu, $fri, $sat, $sun, $start, $end) {
+        $querry = 'INSERT INTO Calendar (service_id, monday, tuesday, wednesday, thursday, friday, saturday, 
+            sunday, start_date, end_date)
+            VALUES
+        (:service_id, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday, :start_date, :end_date)';
+        $statement = $conn->prepare($querry);
+
+        $statement->execute([
+            ':service_id' => $serviceId,
+            ':monday' => $mon,
+            ':tuesday' => $tue,
+            ':wednesday' => $wed,
+            ':thursday' => $thu,
+            ':friday' => $fri,
+            ':saturday' => $sat,
+            ':sunday' => $sun,
+            ':start_date' => $start,
+            ':end_date' => $end
+        ]);
+    }
+
+    // Izveido ierakstu Routes tabulā
+    function createRoute($conn, $routeId, $agency, $name, $type, $color, $textColor) {
+        $querry = 'INSERT INTO Routes (route_id, agency, name, type, color, text_color)
+        VALUES (:route_id, :agency, :name, :type, :color, :text_color)';
+        $statement = $conn->prepare($querry);
+
+        $statement->execute([
+            'route_id' => $routeId,
+            'agency' => $agency,
+            'name' => $name,
+            'type' => $type,
+            'color' => $color,
+            'text_color' => $textColor
+        ]);
+    }
+
+    // Izveido ierakstu Stops tabulā
+    function createStops($conn, $stopId, $name, $lat, $long) {
+        $querry = 'INSERT INTO Stops (stop_id, name, latitude, longitude) 
+        VALUES (:stop_id, :name, :latitude, :longitude)';
+        $statement = $conn->prepare($querry);
+
+        $statement->execute([
+            'stop_id' => $stopId,
+            'name' => $name,
+            'latitude' => $lat,
+            'longitude' => $long,
+        ]);
+    }
+
+    // Izveido ierakstu Stop_times tabulā
+    function createStopTimes($conn, $tripId, $arrival, $departure, $stopId, $sequence) {
+        $querry = 'INSERT INTO Stop_Times (trip_id, arrival_time, departure_time, stop_id, stop_sequence) 
+        VALUES (:trip_id, :arrival_time, :departure_time, :stop_id, :stop_sequence)';
+        $statement = $conn->prepare($querry);
+
+        $statement->execute([
+            'trip_id' => $tripId,
+            'arrival_time' => $arrival,
+            'departure_time' => $departure,
+            'stop_id' => $stopId,
+            'stop_sequence' => $sequence,
+        ]);
+    }
+
+    // Izveido ierakstu Trip tabulā
+    function createTrip($conn, $routeId, $serviceId, $tripId, $headsign) {
+        $querry = 'INSERT INTO Trips (route_id, service_id, trip_id, headsign) 
+        VALUES (:route_id, :service_id, :trip_id, :headsign)';
+        $statement = $conn->prepare($querry);
+
+        $statement->execute([
+            'route_id' => $routeId,
+            'service_id' => $serviceId,
+            'trip_id' => $tripId,
+            'headsign' => $headsign,
+        ]);
+    }
 ?>

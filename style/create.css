@@ -1,0 +1,60 @@
+/* Skatās izveidošanas formas laukumu */
+#formasLaukums {
+    display: block;
+    position: relative;
+    justify-self: center;
+    align-items: center;
+    border: 3px solid black;
+    background-color: #015224;
+    color: white;
+    max-width: 800px;
+    max-height: 1100px;
+    min-width: 300px;
+    width: auto;
+    height: auto;
+    top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 150px;
+}
+
+/* SKatās izveidošanas formas virsrakstu */
+#formasLaukums h2 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Skatās izveidošanas kļūdas ziņojumu */
+#kluda {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+/* SKatās izveidošanas formu */
+#forma {
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Skatās ierakstīšanas vietas nosaukumu un teksta ierakstīšanās vietu izveidošanas formā */
+#forma div {
+    display: flex;
+    flex-direction: column;
+}
+
+/* SKatās izveidošanas formas abas pogas */
+#forma button, #forma a{
+    margin-bottom: 20px;
+    background-color: #1f7a1f;
+    color: white;
+    border-color: black;
+}
+
+/* SKatās izveidošanas formas abas pogas, ja uz tām pieliks kursoru */
+#forma button:hover, #forma a:hover {
+    border-color: blue;
+}
