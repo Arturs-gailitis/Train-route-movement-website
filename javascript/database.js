@@ -57,6 +57,8 @@ calendarButton.addEventListener("click", () => {
     usersTable.style.display = "none";
     messageTable.style.display = "none";
     newRecord.href = "izveidot.php?tabula=calendar";
+    newRecord.style.pointerEvents = "auto";
+    newRecord.style.backgroundColor = "#1f7a1f";
 })
 
 // kad nospiež pogu parāda tikai maršruta tabulu
@@ -69,6 +71,8 @@ routeButton.addEventListener("click", () => {
     usersTable.style.display = "none";
     messageTable.style.display = "none";
     newRecord.href = "izveidot.php?tabula=routes";
+    newRecord.style.pointerEvents = "auto";
+    newRecord.style.backgroundColor = "#1f7a1f";
 })
 
 // kad nospiež pogu parāda tikai stacijas tabulu
@@ -81,6 +85,8 @@ stationButton.addEventListener("click", () => {
     usersTable.style.display = "none";
     messageTable.style.display = "none";
     newRecord.href = "izveidot.php?tabula=stops";
+    newRecord.style.pointerEvents = "auto";
+    newRecord.style.backgroundColor = "#1f7a1f";
 })
 
 // kad nospiež pogu parāda tikai brauciena apstāšanās tabulu
@@ -93,6 +99,8 @@ stopsButton.addEventListener("click", () => {
     usersTable.style.display = "none";
     messageTable.style.display = "none";
     newRecord.href = "izveidot.php?tabula=stop_times";
+    newRecord.style.pointerEvents = "auto";
+    newRecord.style.backgroundColor = "#1f7a1f";
 })
 
 // kad nospiež pogu parāda tikai brauciena tabulu
@@ -105,6 +113,8 @@ tripsButton.addEventListener("click", () => {
     usersTable.style.display = "none";
     messageTable.style.display = "none";
     newRecord.href = "izveidot.php?tabula=trips";
+    newRecord.style.pointerEvents = "auto";
+    newRecord.style.backgroundColor = "#1f7a1f";
 })
 
 // kad nospiež pogu parāda tikai lietotāja tabulu
@@ -116,7 +126,8 @@ usersButton.addEventListener("click", () => {
     tripsTable.style.display = "none";
     usersTable.style.display = "block";
     messageTable.style.display = "none";
-    newRecord.href = "izveidot.php?tabula=users";
+    newRecord.style.pointerEvents = "none";
+    newRecord.style.backgroundColor = "grey";
 })
 
 // kad nospiež pogu parāda tikai ziņojumu tabulu
@@ -128,5 +139,6 @@ messageButton.addEventListener("click", () => {
     tripsTable.style.display = "none";
     usersTable.style.display = "none";
     messageTable.style.display = "block";
-    newRecord.href = "izveidot.php?tabula=messages";
+    newRecord.style.pointerEvents = "none";
+    newRecord.style.backgroundColor = "grey";
 })
