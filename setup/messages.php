@@ -6,12 +6,6 @@ session_start();
 require_once __DIR__.'/../db/initializeDB.php';
 $database = __DIR__ . '/../storage/database/UserMessages.sqlite';
 
-// automātiski lietotāju aizmet uz sakumlapa.php ja nav iegājis savā profilā un ja tam profilam nav administrātora tiesības
-if (isset($_SESSION['tiesibas']) == false || $_SESSION['tiesibas'] != "administrators") {
-    header("Location: http://localhost:8000/body/lv/sakumlapa.php");
-    exit;
-}
-
 // izveido savienojumu ar datubāzi
 $conection = getConnection($database);
 
