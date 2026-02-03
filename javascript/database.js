@@ -18,6 +18,22 @@ openButtons.addEventListener("click", () => {
     }
 })
 
+const resetTrains = document.getElementById("vilcieni");
+const resetUsers = document.getElementById("lietotaja");
+const resetMessages = document.getElementById("kontakti");
+
+resetTrains.addEventListener("click", () => {
+    window.location.href = "http://localhost:8000/setup/runAll.php";
+})
+
+resetUsers.addEventListener("click", () => {
+    window.location.href = "http://localhost:8000/setup/users.php";
+})
+
+resetMessages.addEventListener("click", () => {
+    window.location.href = "http://localhost:8000/setup/messages.php";
+})
+
 const calendarTable = document.querySelector(".kalendaraTabula");
 const routeTable = document.querySelector(".MarsrutaTabula");
 const stationTable = document.querySelector(".StacijasTabula");

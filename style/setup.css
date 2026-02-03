@@ -1,0 +1,32 @@
+#laukums {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    top: 150px;
+    gap: 10px;
+    border: 2px solid black;
+    max-width: 700px;
+    max-height: 500px;
+    height: auto;
+    width: auto;
+    margin-bottom: 388px; 
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    background-color: #015224;
+    color: white;
+}
+
+#laukums a {
+    position: relative;
+    margin-top: 20px;
+    background-color: #1f7a1f;
+    border: 2px solid black; 
+}
+
+#laukums a:hover {
+    border-color: #0a58ca;
+}

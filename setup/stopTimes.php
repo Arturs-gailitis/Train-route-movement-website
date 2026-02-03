@@ -54,6 +54,4 @@ try {
     die('Kļūda apstrādājot datus: ' . $e->getMessage());
 }
 
-echo "Stop_Times table created successfully\n";
-
 ?>

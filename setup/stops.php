@@ -50,6 +50,4 @@ try {
     die('Kļūda apstrādājot datus: ' . $e->getMessage());
 }
 
-echo "Stops table created successfully\n";
-
 ?>

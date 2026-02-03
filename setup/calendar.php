@@ -81,6 +81,4 @@ try {
     die('Kļūda apstrādājot datus: ' . $e->getMessage());
 }
 
-echo "Calendar table created successfully\n";
-
 ?>

@@ -177,7 +177,7 @@ try {
                     <button class="btn btn-primary" id="vilcieni">Restartē vilciena datus</button>
                 </li>
                 <li>
-                    <button class="btn btn-primary" id="lietotajs">Restartē lietotāja datus</button>
+                    <button class="btn btn-primary" id="lietotaja">Restartē lietotāja datus</button>
                 </li>
                 <li>
                     <button class="btn btn-primary" id="kontakti">Restartē kontaktu datus</button>

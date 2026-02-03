@@ -52,6 +52,4 @@ try {
     die('Kļūda apstrādājot datus: ' . $e->getMessage());
 }
 
-echo "Trips table created successfully\n";
-
 ?>
