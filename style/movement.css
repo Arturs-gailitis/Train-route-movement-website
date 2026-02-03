@@ -258,11 +258,6 @@
     margin-bottom: 10px;
 }
 
-/* Skatās statusa kolonnu maršruta sadaļā */
-#statuss, #statusaTeksts, #statusaLaukums {
-    display: none;
-}
-
 /* Skatās kājeni tikai vilciena maršruta lapā */
 footer {
     width: 100%;
