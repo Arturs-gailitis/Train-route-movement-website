@@ -394,6 +394,12 @@ try {
             </div>
 
             <div class="mb-3">
+                <button id=apgriezt class="btn btn-primary" type="button">
+                    <img src="/icons/reverse.svg" alt="Apgriezt" id=apgireztIcona>
+                </button>
+            </div>
+
+            <div class="mb-3">
                 <label for="beigustacija">Beigu stacija:</label>
                 <input type="text" class="form-control" name="beigustacija" id="beigustacija" value= "<?php echo $b ?>" required>
             </div>

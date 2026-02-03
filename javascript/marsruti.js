@@ -27,6 +27,21 @@ boxButton.addEventListener("click", () => {
     table.style.marginBottom = "200px";
 });
 
+const reverseButton = document.getElementById("apgriezt");
+
+reverseButton.addEventListener("click", () => {
+    const startStationForm = document.getElementById("sākumstacija");
+    const endStationForm = document.getElementById("beigustacija");
+
+    // iegūst sākuma staciju un beigu staciju nosaukumus
+    const startStation = startStationForm.value;
+    const endStation = endStationForm.value;
+
+    // apgriež otrādāk staciju kārtību
+    startStationForm.value = endStation;
+    endStationForm.value = startStation;
+})
+
 // automātiski ieliek url linku uz 1188.lv
 document.addEventListener("DOMContentLoaded", () => {
     const buyButtons = document.querySelectorAll(".pirktPogas");

@@ -66,6 +66,34 @@
     padding: 0 10px;
 }
 
+/* Skatās pogu ar kuru var apgriezt stacijas otrādāk */
+#apgriezt {
+    display: flex;
+    position: relative;
+    background-color: #1f7a1f;
+    max-width: 50px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+    top: 23px;
+    border: 2px solid black;
+}
+
+/* Skatās pogu ar kuru var apgriezt stacijas otrādāk, ja uz tām pieliks kursoru */
+#apgriezt:hover {
+    border-color: #0a58ca;
+}
+
+/* Skatās stacijas apgriešanas pogas ikonu */
+#apgireztIcona {
+    object-fit: cover;
+    max-width: 30px;
+    max-height: 30px;
+    width: auto;
+    height: auto;
+    padding-right: 5px;
+}
+
 /* Skatās meklēšanas formas meklēt pogu */
 #meklet {
     background-color: #1f7a1f;
