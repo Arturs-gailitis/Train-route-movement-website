@@ -111,8 +111,13 @@ const goBackButton = document.getElementById("iziet");
 
 // Nospiežot šo pogu lietotājs tiks aizsūtīts atpakaļ
 goBackButton.addEventListener("click", () => {
-    const firstStation = document.getElementById("sakumaStacija").innerText;
-    const lastStation = document.getElementById("beiguStacija").innerText;
+    // Iegūst visus url get metodes vērtības
+    const getParam = new URLSearchParams(window.location.search);
+
+    // Paņem tikai konkrētās vērtības
+    const firstStation = getParam.get("altstart");
+    const lastStation = getParam.get("altend");
+
     const date = document.getElementById("datums").innerText;
     let firstUrlStation;
     let lastUrlStation;

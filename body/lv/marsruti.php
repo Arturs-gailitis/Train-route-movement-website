@@ -476,9 +476,10 @@ try {
                                         <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona" title="Nav pašreiz vel iespēja nopirkt biļeti">
                                     </td>
                                 <?php endif ?>
-                                <td id="infoPoga"><a class="infoPogas" 
-                                href="info.php?id=<?php echo $trip['trip_id'] ?>&sakumstacija=<?php echo $trip['startStation'] ?>&beigustacija=<?php echo $trip['endStation'] ?>&datums=<?php echo $date ?>&marsruts=<?php echo $trip['routeName'] ?>">
-                                    <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona"></a>
+                                <td id="infoPoga">
+                                    <a class="infoPogas" 
+                                        href="info.php?id=<?php echo $trip['trip_id'] ?>&sakumstacija=<?php echo $trip['startStation'] ?>&beigustacija=<?php echo $trip['endStation'] ?>&datums=<?php echo $date ?>&marsruts=<?php echo $trip['routeName'] ?>&altstart=<?php echo $st ?>&altend=<?php echo $b ?>">
+                                        <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona"></a>
                                 </td>
                             <?php else: ?>
                                 <td id="pirktPoga">
