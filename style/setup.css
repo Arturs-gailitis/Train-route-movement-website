@@ -1,3 +1,4 @@
+/* Skatās centrālo lauku */
 #laukums {
     display: flex;
     position: relative;
@@ -20,6 +21,7 @@
     color: white;
 }
 
+/* Skatās doties atpakaļ pogu */
 #laukums a {
     position: relative;
     margin-top: 20px;
@@ -27,6 +29,7 @@
     border: 2px solid black; 
 }
 
+/* Skatās doties atpakaļ pogu, ja uz tām pieliks kursoru */
 #laukums a:hover {
     border-color: #0a58ca;
 }
