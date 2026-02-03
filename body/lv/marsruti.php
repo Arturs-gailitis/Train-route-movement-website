@@ -466,11 +466,17 @@ try {
                             <td id="identifikators"><?= $trip['trip_id'] ?></td>
                             <td id="marsrutaLaiks"><?= $trip['tripTime'] ?></td>
                             <?php if (isset($_SESSION['lietotajvards'])): ?>
-                                <td id="pirktPoga">
-                                    <a class=pirktPogas href="">
-                                        <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona">
-                                    </a>
-                                </td>
+                                <?php if (strtotime($date) < strtotime($currentDate . "+10 days")): ?>
+                                    <td id="pirktPoga">
+                                        <a class=pirktPogas href="">
+                                            <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona">
+                                        </a>
+                                    </td>
+                                <?php else: ?>
+                                    <td id="pirktPoga">
+                                        <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona" title="Nav pašreiz vel iespēja nopirkt biļeti">
+                                    </td>
+                                <?php endif ?>
                                 <td id="infoPoga"><a class="infoPogas" 
                                 href="info.php?id=<?php echo $trip['trip_id'] ?>&sakumstacija=<?php echo $trip['startStation'] ?>&beigustacija=<?php echo $trip['endStation'] ?>&datums=<?php echo $date ?>&marsruts=<?php echo $trip['routeName'] ?>">
                                     <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona"></a>
