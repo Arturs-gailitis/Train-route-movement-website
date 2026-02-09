@@ -4,11 +4,12 @@
 session_start();
 
 require_once __DIR__ . '/../../db/getingTrainRoute.php';
+require_once __DIR__ . '/../../db/gettingNotifications.php';
 require_once __DIR__ . '/../../db/initializeDB.php';
 
 $trainDatabase = __DIR__ . '/../../storage/database/LatvianTrains.sqlite';
+$notificationDatabase = __DIR__ . '/../../storage/database/Notifications.sqlite';
 
-$record = [];
 $error = null;
 
 // automātiski lietotāju aizmet uz sakumlapa.php ja nav iegājis savā profilā un ja tam profilam nav administrātora tiesības
@@ -20,6 +21,7 @@ if (isset($_SESSION['tiesibas']) == false || $_SESSION['tiesibas'] != "administr
 // izveido savienojumu ar datubāzēm
 try {
     $trainConnection = getConnection($trainDatabase);
+    $notificationConnection = getConnection($notificationDatabase);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -109,6 +111,54 @@ try {
                     $error = "Ievadītais trip_id jau tiek izmantots.";
                 } else {
                     createTrip($trainConnection, $routeId, $serviceId, $tripId, $headsign);
+                }
+
+            } else if ($_GET['tabula'] == "notifications") {
+
+                $title = trim($_POST['virsraksts']);
+                $text = trim($_POST['teksts']);
+                $image = "";
+
+                $notificationError = null;
+
+                // pārbauda vai ievietotā bilde tika veiksmīgi ielikta formā
+                if (isset($_FILES['bilde']) && $_FILES['bilde']['error'] == UPLOAD_ERR_OK) {
+                    $map = 'icons/notifications';
+
+                    // failu formātu saraksts, kuri drīkst ielikt
+                    $allowedFileType = ["image/jpeg", "image/png", "image/svg+xml"];
+                    $allowed = false;
+                    
+                    // pārbauda vai ieliktās bildes failu formāts atbilst
+                    foreach ($allowedFileType as $a) {
+                        if ($a == $_FILES['bilde']['type']) {
+                            $allowed = true;
+                        }
+                    }
+
+                    if ($allowed == true) {
+                        // veido jaunās bildes nosaukumu, kamēr tas neatkārtojās
+                        do {
+                            $picture = rand(1, 9999) . "-" . date("Y.m.j") . "-" . preg_replace('/\s+/u', '_', basename($_FILES['bilde']['name']));
+                        } while (file_exists(__DIR__ . "/../../" . $map . "/" . $picture) == true);
+
+                        // izveido visu bildes lokāciju un to pārvieto uz icons/notifications
+                        $image = $map . "/" . $picture;
+                        move_uploaded_file($_FILES['bilde']['tmp_name'], __DIR__ . '/../../' . $image);
+
+                    } else {
+                        $notificationError = "Nav derīgs failu tips.";
+                    }
+                
+                } else {
+                    $notificationError = "Attēla augšupielāde nav bijusi veiksmīga.";
+                }
+
+                // ja nav kļūdu, tad ieliek paziņojumu datubāzē
+                if ($notificationError == null) {
+                    insertNotification($notificationConnection, $title, $image, $text);
+                } else {
+                    $error = $notificationError;
                 }
             }
 
@@ -214,7 +264,7 @@ try {
         <?php if ($error != null): ?>
             <span id="kluda"><?php echo $error ?></span>
         <?php endif ?>
-        <form method="post" id=forma>
+        <form method="post" id=forma enctype="multipart/form-data">
             <?php if ($_GET['tabula'] == "calendar"): ?>
                 <div class="mb-3">
                     <label for="service_id">Service ID:</label>
@@ -335,6 +385,19 @@ try {
                 <div class="mb-3">
                     <label for="apzimejums">Apzīmējums:</label>
                     <input type="text" name="apzimejums">
+                </div>
+            <?php elseif ($_GET['tabula'] == "notifications"): ?> 
+                <div class="mb-3">
+                    <label for="virsraksts">Virsraksts:</label>
+                    <textarea name="virsraksts"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="bilde">Bildes atrašanās vieta:</label>
+                    <input type="file" name="bilde">
+                </div>
+                <div class="mb-3">
+                    <label for="teksts">Teksts:</label>
+                    <textarea name="teksts"></textarea>
                 </div>
             <?php endif ?>
             <a class="btn btn-primary" href="datubaze.php">Atcelt</a>

@@ -7,10 +7,12 @@ require_once __DIR__ . '/../../db/getingTrainRoute.php';
 require_once __DIR__ . '/../../db/getingUsers.php';
 require_once __DIR__ . '/../../db/gettingMesages.php';
 require_once __DIR__ . '/../../db/initializeDB.php';
+require_once __DIR__ . '/../../db/gettingNotifications.php';
 
 $trainDatabase = __DIR__ . '/../../storage/database/LatvianTrains.sqlite';
 $userDatabase = __DIR__ . '/../../storage/database/Users.sqlite';
 $messageDatabase = __DIR__ . '/../../storage/database/UserMessages.sqlite';
+$notificationDatabase = __DIR__ . '/../../storage/database/Notifications.sqlite';
 
 $calendar = [];
 $route = [];
@@ -19,6 +21,7 @@ $stops = [];
 $trips = [];
 $users = [];
 $messages = [];
+$notifications = [];
 
 // automātiski lietotāju aizmet uz sakumlapa.php ja nav iegājis savā profilā un ja tam profilam nav administrātora tiesības
 if (isset($_SESSION['tiesibas']) == false || $_SESSION['tiesibas'] != "administrators") {
@@ -31,6 +34,7 @@ try {
     $trainConnection = getConnection($trainDatabase);
     $userConnection = getConnection($userDatabase);
     $messagesConnection = getConnection($messageDatabase);
+    $notificationsConnection = getConnection($notificationDatabase);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -56,6 +60,15 @@ try {
                 deleteUser($userConnection, $_GET['id']);
             } else if ($_GET['tabula'] == "message") {
                 deleteMessage($messagesConnection, $_GET['id']);
+            } else if ($_GET['tabula'] == "notification") {
+                $record = getSpecificNotification($notificationsConnection, $_GET['id']);
+
+                // izdzēš veco bildi no icons/notifications
+                if (file_exists(__DIR__ . "/../../" . $record['image'])) {
+                    unlink(__DIR__ . "/../../" . $record['image']);
+                }
+
+                deleteNotification($notificationsConnection, $_GET['id']);
             }
 
             header("Location: datubaze.php");
@@ -72,6 +85,7 @@ try {
     $trips = getAllTrips($trainConnection);
     $users = getAllUsers($userConnection);
     $messages = getAllMessages($messagesConnection);
+    $notifications = getAllNotifications($notificationsConnection);
 
 } catch (Exception $e) {
     $e->getMessage();
@@ -211,6 +225,9 @@ try {
                 </li>
                 <li>
                     <button class="btn btn-primary" id="zinojumi">Ziņojumi</button>
+                </li>
+                <li>
+                    <button class="btn btn-primary" id="paz">Paziņojumi</button>
                 </li>
             </ul>
             <hr>
@@ -442,6 +459,34 @@ try {
                         <td><?= $m['message'] ?></td>
                         <td id="darbibas">
                             <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=message&id=<?php echo $m['id'] ?>">
+                                Dzēst
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+        <table class= "PazinojumuTabula">
+            <thead>
+                <tr>
+                    <th class="kolonnuNosaukumi"><label>ID</label></th>
+                    <th class="kolonnuNosaukumi"><label>Virsraksts</label></th>
+                    <th class="kolonnuNosaukumi"><label>Attēla atrašanās vieta</label></th>
+                    <th class="kolonnuNosaukumi"><label>Paziņojuma teksts</label></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($notifications as $n) :  ?>
+                    <tr>
+                        <td><?= $n['id'] ?></td>
+                        <td><?= $n['title'] ?></td>
+                        <td><?= $n['image'] ?></td>
+                        <td><?= $n['info'] ?></td>
+                        <td id="darbibas">
+                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=notification&id=<?php echo $n['id'] ?>">
+                                Rediģēt
+                            </a>
+                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=notification&id=<?php echo $n['id'] ?>">
                                 Dzēst
                             </a>
                         </td>

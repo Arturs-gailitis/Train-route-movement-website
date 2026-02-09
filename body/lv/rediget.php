@@ -6,9 +6,11 @@ session_start();
 require_once __DIR__ . '/../../db/getingTrainRoute.php';
 require_once __DIR__ . '/../../db/getingUsers.php';
 require_once __DIR__ . '/../../db/initializeDB.php';
+require_once __DIR__ . '/../../db/gettingNotifications.php';
 
 $trainDatabase = __DIR__ . '/../../storage/database/LatvianTrains.sqlite';
 $userDatabase = __DIR__ . '/../../storage/database/Users.sqlite';
+$notificationDatabase = __DIR__ . '/../../storage/database/Notifications.sqlite';
 
 $record = [];
 
@@ -22,6 +24,7 @@ if (isset($_SESSION['tiesibas']) == false || $_SESSION['tiesibas'] != "administr
 try {
     $trainConnection = getConnection($trainDatabase);
     $userConnection = getConnection($userDatabase);
+    $notificationsConnection = getConnection($notificationDatabase);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -43,6 +46,8 @@ try {
             $record = getTripsByID($trainConnection, $_GET['id']);
         } else if ($_GET['tabula'] == "user") {
             $record = checkUserByParam($userConnection, $_GET['id'], "id");
+        } else if ($_GET['tabula'] == "notification") {
+            $record = getSpecificNotification($notificationsConnection, $_GET['id']);
         }
     }
 
@@ -125,6 +130,16 @@ try {
                     // rediģē ierakstu Users tabulā skatoties pēc id un vai izvēlētās tiesībās atbilst lietotājam vai adminim 
                     changeRights($userConnection, $_GET['id'], $rights);
                 }
+            
+            // skatās pēc get metodes izveidotā url vai izvēlētā tabula ir Notifications
+            } else if ($_GET['tabula'] == "notification") {
+
+                $title = $_POST['virsraksts'];
+                $image = $record['image'];
+                $text = $_POST['teksts'];
+
+                // rediģē ierakstu Notifications tabulā skatoties pēc id
+                updateNotification($notificationsConnection, $_GET['id'], $title, $image, $text);
             }
         }
         
@@ -363,6 +378,19 @@ try {
                     <label>
                         Parole: <span><?php echo $record['password'] ?></span>
                     </label>
+                </div>
+            <?php elseif ($_GET['tabula'] == "notification"): ?>
+                <div class="mb-3">
+                    <label for="virsraksts">Virsraksts:</label>
+                    <textarea name="virsraksts"><?php echo $record['title'] ?></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="bilde">Faila atrašanās vieta:</label>
+                    <label name="bilde"><?php echo $record['image'] ?></label>
+                </div>
+                <div class="mb-3">
+                    <label for="teksts">Teksts:</label>
+                    <textarea name="teksts"><?php echo $record['info'] ?></textarea>
                 </div>
             <?php endif ?>
             <a class="btn btn-primary" href="datubaze.php">Atcelt</a>

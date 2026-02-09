@@ -8,7 +8,7 @@
     background-color: #015224;
     color: white;
     max-width: 800px;
-    max-height: 1100px;
+    max-height: 2100px;
     min-width: 300px;
     width: auto;
     height: auto;
@@ -44,6 +44,14 @@
 #forma div {
     display: flex;
     flex-direction: column;
+}
+
+/* Skatās textarea elementus formā */
+textarea {
+    width: 300px;
+    height: 200px;
+    max-height: 500px;
+    resize: vertical;
 }
 
 /* SKatās izveidošanas formas abas pogas */
