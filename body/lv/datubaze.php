@@ -473,6 +473,7 @@ try {
                     <th class="kolonnuNosaukumi"><label>Virsraksts</label></th>
                     <th class="kolonnuNosaukumi"><label>Attēla atrašanās vieta</label></th>
                     <th class="kolonnuNosaukumi"><label>Paziņojuma teksts</label></th>
+                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
                 </tr>
             </thead>
             <tbody>
