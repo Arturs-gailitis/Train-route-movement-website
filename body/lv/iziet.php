@@ -45,7 +45,7 @@ try {
                     <a class="nav-link" href="sakumlapa.php">Sākumlapa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Paziņojumi</a>
+                    <a class="nav-link" href="pazinojumi.php">Paziņojumi</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="kontakti.php">Kontakti</a>

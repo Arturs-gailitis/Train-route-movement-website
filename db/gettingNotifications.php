@@ -45,4 +45,12 @@
         $statement = $conn->prepare($querry);
         $statement->execute([$title, $image, $text, $id]);
     }
+
+    // iegūst paziņojumus kur tituls vai teksts asociējās ar atslēgvārdu 
+    function searchByKeyword($conn, $key) {
+        $querry = 'SELECT * FROM Notifications WHERE title LIKE ? OR info LIKE ?';
+        $statement = $conn->prepare($querry);
+        $statement->execute(["%" . $key . "%", "%" . $key . "%"]);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 ?>

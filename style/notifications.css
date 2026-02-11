@@ -1,0 +1,63 @@
+/* Skatās lapas titulu */
+h2 {
+    display: flex;
+    position: relative;
+    justify-self: center;
+    margin-bottom: 50px;
+    color: white;
+}
+
+/* Skatās paziņojuma filtrēšanas formu */
+form {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Skatās meklēt pogu paziņojuma filtrēšanas formā */
+#meklet {
+    background-color: #015224;
+    border: 2px solid black;
+}
+
+/* Skatās meklēt pogu paziņojuma filtrēšanas formā, ja uz tām pieliks kursoru */
+#meklet:hover {
+    border-color: #0a58ca;
+}
+
+/* Skatās par ziņojuma ikonu */
+.kluda {
+    display: flex;
+    max-height: 50px;
+    max-width: 50px;
+    height: auto;
+    width: auto;
+    justify-self: center;
+    margin-top: 30px;
+}
+
+/* Skatās par nav paziņojuma tekstu*/
+#navPazinojumi {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    color: white;
+    top: 40px;
+    margin-top: -20px;
+}
+
+/* Skatās daļu atgalīšanu paziņojumā */
+hr {
+    border: 2px solid black;
+}
+
+/* SKatās paziņojuma virsrakstu */
+.card-title {
+    text-align: center;
+}
+
+/* Skatās paziņojuma tekstu */
+.card-text{
+    text-align: justify;
+}

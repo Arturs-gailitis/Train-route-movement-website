@@ -4,56 +4,36 @@
 session_start();
 
 require_once __DIR__ . '/../../db/initializeDB.php';
-require_once __DIR__ . '/../../db/getingUsers.php';
-$database = __DIR__ . '/../../storage/database/Users.sqlite';
-$error = "";
+require_once __DIR__ . '/../../db/gettingNotifications.php';
+
+$notificationDatabase = __DIR__ . '/../../storage/database/Notifications.sqlite';
+$record = [];
 
 // izveido savienojumu ar datubāzi
 try {
-    $connection = getConnection($database);
+    $notificationsConnection = getConnection($notificationDatabase);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
 
 try {
-    
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // ja paziņojumus filtrēs ar atslēgvārdu
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atslegvards']) == true) {
 
-        // ieg;ut lietotājvārdu, epastu, paroli un otru paroli
-        $username = trim($_POST['lietotajvards']);
-        $email = trim($_POST['epasts']);
-        $password = $_POST['parole'];
-        $confirmPassword = $_POST['atkartotaParole'];
+        // iegūst paziņojumus, kas asociējās ar atslēgvārdu
+        $keyword = $_POST['atslegvards'];
+        $record = searchByKeyword($notificationsConnection, $keyword);
 
-        // pārbauda vai lietotājvārds, parole nav par mazu, vai abas paroles sakrīt, vai lietotājvārds un epasts jau tiek izmantots
-        if (strlen($username) < 5) {
-            $error = "Pārāk mazs lietotājvārds. Vajag vizmaz 5 rakstzīmju garumā.";
-        } else if (strlen($password) < 8) {
-            $error = "Pārāk maza parole. Vajag vizmaz 8 rakstzīmju garumā.";
-        } else if ($password != $confirmPassword) {
-            $error = "Abas paroles nav vienādas. Pamēģini vēlreiz.";
-        } else if (checkUserByParam($connection, $username, "username" ) != false) {
-            $error = "Šāds lietotājvārds jau pastāv. Izveido savādāku.";
-        } else if (checkUserByParam($connection, $email, "email" ) != false) {
-            $error = "Šāds epasts jau tiek izmantots. Ieliec citu epastu.";
-        }
-
-        if ($error == "") {
-            // nohasho paroli
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-            // izveido lietotāju
-            createUser($connection, $username, $email, $hashedPassword);
-
-            // nosūta uz sākumlapu
-            header("Location: sakumlapa.php");
-            exit;
-        }
+    } else {
+        // iegūst visus paziņojumus
+        $record = getAllNotifications($notificationsConnection);
     }
+
 } catch (Exception $e) {
     echo $e->getMessage();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="lv">
     <head>
@@ -62,7 +42,7 @@ try {
     <title>Latvijas vilcienu maršrutu kustības portāls</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style/global.css">
-    <link rel="stylesheet" href="/style/register.css">
+    <link rel="stylesheet" href="/style/notifications.css">
     <link rel="icon" type="image/svg+xml" href="/icons/website icons/websiteIconTab.svg">
 </head>
 <body>
@@ -138,29 +118,31 @@ try {
 
         </div>
     </div>
-    <div id="registresanas">
-        <h2>Reģistrēšanās forma</h2>
-        <span id="errors"><?php echo $error; ?></span>
-        <form method="POST">
-            <div class="mb-3">
-                <label for="lietotajvards">Lietotājvārds:</label>
-                <input type="text" name="lietotajvards" id="lietotajvards" required>
-            </div>
-            <div class="mb-3">
-                <label for="epasts">Epasts:</label>
-                <input type="email" name="epasts" id="epasts" required>
-            </div>
-            <div class="mb-3">
-                <label for="parole">Parole:</label>
-                <input type="password" name="parole" id="parole" required>
-            </div>
-            <div class="mb-3">
-                <label for="atkartotaParole">Apstiprini paroli:</label>
-                <input type="password" name="atkartotaParole" id="atkartotaParole" required>
-            </div>
-
-            <button type="submit" id="registracijasPoga">Reģistrējies</button>
+    <div class="container mt-4">
+        <h2 class="mt-4">Aktuālie paziņojumi</h2>
+        <form method="POST" class="form-inline mb-4">
+            <input type="text" name="atslegvards" class="form-control mr-2" placeholder="Meklēt paziņojumus pēc atslēgvārda">
+            <button id="meklet" type="submit" class="btn btn-primary">Meklēt</button>
         </form>
+        <?php if (empty($record)): ?>
+            <img src="/icons/error.svg" alt="Klūdas zīme" class="kluda">
+            <h3 id="navPazinojumi">Nav publicēti nekādi aktuālie paziņojumi.</h3>
+        <?php else: ?>
+            <div class="row">
+                <?php foreach ($record as $r): ?>
+                    <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <img src="/../../<?php echo $r['image'] ?>" class="card-img-top service-img" alt="Pieejamam paziņojumam nav bildes.">
+                            <div class="card-body">
+                                <h3 class="card-title"><?php echo $r['title'] ?></h3>
+                                <hr>
+                                <p class="card-text"><?php echo $r['info'] ?></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </div>
 </body>
 <footer class="mt-5 py-3">
@@ -171,5 +153,5 @@ try {
     </p>
 </footer>
 <script src="/javascript/global.js"></script>
-<script src="/javascript/register.js"></script>
+<script src="/javascript/notifications.js"></script>
 </html>
