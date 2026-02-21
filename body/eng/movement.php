@@ -478,7 +478,7 @@ try {
                                 <?php endif ?>
                                 <td id="infoPoga">
                                     <a class="infoPogas" 
-                                        href="info.php?id=<?php echo $trip['trip_id'] ?>&sakumstacija=<?php echo $trip['startStation'] ?>&beigustacija=<?php echo $trip['endStation'] ?>&datums=<?php echo $date ?>&marsruts=<?php echo $trip['routeName'] ?>&altstart=<?php echo $st ?>&altend=<?php echo $b ?>">
+                                        href="moreInfo.php?id=<?php echo $trip['trip_id'] ?>&sakumstacija=<?php echo $trip['startStation'] ?>&beigustacija=<?php echo $trip['endStation'] ?>&datums=<?php echo $date ?>&marsruts=<?php echo $trip['routeName'] ?>&altstart=<?php echo $st ?>&altend=<?php echo $b ?>">
                                         <img src="/icons/info.svg" alt="More info" id="infoIkona"></a>
                                 </td>
                             <?php else: ?>

@@ -129,53 +129,53 @@ try {
 }
 ?>
 <!DOCTYPE html>
-<html lang="lv">
+<html lang="eng">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latvijas vilcienu maršrutu kustības portāls</title>
+    <title>Latvia Train Route Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <link rel="stylesheet" href="/style/global.css">
     <link rel="stylesheet" href="/style/info.css">
+    <link rel="stylesheet" href="/style/global.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="icon" type="image/svg+xml" href="/icons/website icons/websiteIconTab.svg">
 </head>
 <body>
     <div class="galvene">
         <div class="nosaukums">
-            <img src="/icons/website icons/websiteIconLight.svg" alt="Portāla logo" id="logo">
-            <h3 id="portālaNosaukums">Latvijas vilcienu maršrutu kustības portāls</h3>
+            <img src="/icons/website icons/websiteIconLight.svg" alt="Portal logo" id="logo">
+            <h3 id="portālaNosaukums">Latvia Train Route Portal</h3>
         </div>
 
         <nav>
             <ul class="nav nav-pills" id="pogas">
                 <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
                     <li class="nav-item" id="datubaze">
-                        <a class="nav-link" href="datubaze.php">Datubāze</a>
+                        <a class="nav-link" href="datubaze.php">Database</a>
                     </li>
                 <?php endif ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="sakumlapa.php">Sākumlapa</a>
+                    <a class="nav-link" href="main.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pazinojumi.php">Paziņojumi</a>
+                    <a class="nav-link" href="pazinojumi.php">Notifications</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="kontakti.php">Kontakti</a>
+                    <a class="nav-link" href="kontakti.php">Contact</a>
                 </li>
-                <li class="nav-item" title="Profils">
+                <li class="nav-item" title="Profile">
                     <button class="nav-link" id="lietotajs">
                         <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "lietotajs"): ?>
-                            <img src="/icons/account icons/user.svg" alt="Lietotājs" class="lietotajaIcona">
+                            <img src="/icons/account icons/user.svg" alt="User" class="lietotajaIcona">
                         <?php elseif (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
-                            <img src="/icons/account icons/admin.svg" alt="Administrators" class="lietotajaIcona">
+                            <img src="/icons/account icons/admin.svg" alt="Administrator" class="lietotajaIcona">
                         <?php else: ?>
-                            <img src="/icons/account icons/noAccountLight.svg" alt="Bez lietotāja" class="lietotajaIcona">
+                            <img src="/icons/account icons/noAccountLight.svg" alt="No user" class="lietotajaIcona">
                         <?php endif ?>
                     </button>
                 </li>
-                <li class="nav-item" title="Opcijas">
-                    <button class="nav-link"><img src="/icons/settings.svg" alt="Opcijas" id="opcijas"></button>
+                <li class="nav-item" title="Options">
+                    <button class="nav-link"><img src="/icons/settings.svg" alt="Options" id="opcijas"></button>
                 </li>
             </ul>
         </nav>
@@ -183,14 +183,14 @@ try {
             <ul>
                 <?php if (isset($_SESSION['lietotajvards']) == false): ?>
                     <li>
-                        <a class = "profilaStatuss" href="pieteikties.php">Pieslēdzies savā kontā</a>
+                        <a class = "profilaStatuss" href="pieteikties.php">Log in</a>
                     </li>
                     <li>
-                        <a class = "profilaStatuss" href="registracija.php">Izveido jaunu kontu</a>
+                        <a class = "profilaStatuss" href="registracija.php">Create account</a>
                     </li>
                 <?php elseif (isset($_SESSION['lietotajvards'])): ?>
                     <li>
-                        <a class = "profilaStatuss" id="iziesana" href="iziet.php">Iziet ārā no sava konta</a>
+                        <a class = "profilaStatuss" id="iziesana" href="iziet.php">Log out</a>
                     </li>
                 <?php endif ?>
             </ul>
@@ -198,46 +198,45 @@ try {
         <div id="opcijuLaukums">
 
             <div class="fonaIzmaiņas">
-                <label for="fonaIzmaiņas">Izmainīt fonu -></label>
+                <label for="fonaIzmaiņas">Change light -></label>
                 <button type="button" id="fonaIzmaiņasPoga" class="btn btn-primary">
-                    <img src="/icons/lightTheme.svg" alt="Opcijas" id="themeIkona"></button>
+                    <img src="/icons/lightTheme.svg" alt="Options" id="themeIkona"></button>
             </div>
 
             <div class="fonaIzmaiņas" id="valodaIzmaiņas">
-                <label for="valoda">Valodas maiņa -></label>
+                <label for="valoda">Change language -></label>
                 <select name="valoda" id="valoda">
-                    <option value="http://localhost:8000/body/lv/info.php?id=<?php echo $_GET['id']?>&sakumstacija=<?php echo $_GET['sakumstacija']?>&beigustacija=<?php echo $_GET['beigustacija']?>&datums=<?php echo $_GET['datums']?>&marsruts=<?php echo $_GET['marsruts']?>&altstart=<?php echo $_GET['altstart']?>&altend=<?php echo $_GET['altend']?>">Latviešu</option>
-                    <option value="http://localhost:8000/body/eng/moreInfo.php?id=<?php echo $_GET['id']?>&sakumstacija=<?php echo $_GET['sakumstacija']?>&beigustacija=<?php echo $_GET['beigustacija']?>&datums=<?php echo $_GET['datums']?>&marsruts=<?php echo $_GET['marsruts']?>&altstart=<?php echo $_GET['altstart']?>&altend=<?php echo $_GET['altend']?>">Angļu</option>
+                    <option value="http://localhost:8000/body/eng/moreInfo.php?id=<?php echo $_GET['id']?>&sakumstacija=<?php echo $_GET['sakumstacija']?>&beigustacija=<?php echo $_GET['beigustacija']?>&datums=<?php echo $_GET['datums']?>&marsruts=<?php echo $_GET['marsruts']?>&altstart=<?php echo $_GET['altstart']?>&altend=<?php echo $_GET['altend']?>">English</option>
+                    <option value="http://localhost:8000/body/lv/info.php?id=<?php echo $_GET['id']?>&sakumstacija=<?php echo $_GET['sakumstacija']?>&beigustacija=<?php echo $_GET['beigustacija']?>&datums=<?php echo $_GET['datums']?>&marsruts=<?php echo $_GET['marsruts']?>&altstart=<?php echo $_GET['altstart']?>&altend=<?php echo $_GET['altend']?>">Latvian</option>
                 </select>
             </div>
-
         </div>
     </div>
     <div>
         <div id="virsrakstaLauks">
             <button id="iziet" class="btn btn-primary">
-                Iet atpakaļ
+                Go back
             </button>
-            <h1 id="infoNosaukums">Vairāk informācijas</h1>
+            <h1 id="infoNosaukums">More information</h1>
         </div>
         <div id="info">
-            <img src="/icons/train-station.svg" alt="Sākuma stacija" class="ikona" title="Sākuma stacija">
+            <img src="/icons/train-station.svg" alt="Start station" class="ikona" title="Start station">
             <span id="sakumaStacija"><?php echo $firstStation ?></span>
-            <img src="/icons/train-station.svg" alt="Beigu stacija" class="ikona" title="Beigu stacija">
+            <img src="/icons/train-station.svg" alt="End station" class="ikona" title="End station">
             <span id=beiguStacija><?php echo $lastStation ?></span>
-            <img src="/icons/date.svg" alt="Datums" class="ikona" title="Datums">
+            <img src="/icons/date.svg" alt="Date" class="ikona" title="Date">
             <span id=datums><?php echo $date ?></span>
         </div>
     </div>
     <div id="tabulaUnMape">
         <div id="Tabulas">
-            <h2 id="tabulasTituls">Vilciena ierašanās stacijās</h2>
+            <h2 id="tabulasTituls">Train arrivals at stations</h2>
             <table id="tabula">
                 <thead>
                     <tr>
-                        <th class=kollonuNosaukums><label>Stacija</label></th>
-                        <th class=kollonuNosaukums><label>Ierašanās laiks</label></th>
-                        <th class=kollonuNosaukums><label>Izbraukšanas laiks</label></th>
+                        <th class=kollonuNosaukums><label>Station</label></th>
+                        <th class=kollonuNosaukums><label>Arrival time</label></th>
+                        <th class=kollonuNosaukums><label>Departure time</label></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -251,15 +250,15 @@ try {
                 </tbody>
             </table>
         </div>
-        <h2 id="kartesTituls">Vizuālā karte</h2>
+        <h2 id="kartesTituls">Visual map</h2>
         <div id="karte"></div>
     </div>
 </body>
 <footer class="mt-5 py-3" id=footer>
-    <p class="mb-0">© Latvijas vilcienu maršrutu kustības portāls <span id=projektaGads></span></p>
+    <p class="mb-0">© Latvia Train Route Portal <span id=projektaGads></span></p>
     <p class="mb-4" id="dati">
-        Izmantotie dati: <a href="https://data.gov.lv/dati/lv/dataset/iekszemes-dzelzcela-vilcienu-kustibas-saraksts-gtfs-formata">
-            data.gov.lv </a> <br> Ielādēts: <span id="ielādesDatums"></span>
+        Data used: <a href="https://data.gov.lv/dati/lv/dataset/iekszemes-dzelzcela-vilcienu-kustibas-saraksts-gtfs-formata">
+            data.gov.lv </a> <br> Loaded: <span id="ielādesDatums"></span>
     </p>
 </footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

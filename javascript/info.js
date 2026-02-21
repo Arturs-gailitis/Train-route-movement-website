@@ -155,7 +155,15 @@ goBackButton.addEventListener("click", () => {
         lastUrlStation = lastStation;
     }
 
-    const url = "marsruti.php?sākumstacija="+ firstUrlStation + "&beigustacija=" + lastUrlStation + "&datums=" + date;
+    // izveido pareizu url
+    const urlGet = "?sākumstacija="+ firstUrlStation + "&beigustacija=" + lastUrlStation + "&datums=" + date;
+    let url = "";
+
+    if (window.location.href.includes("/lv/")) {
+        url = "marsruti.php" + urlGet;
+    } else {
+        url = "movement.php" + urlGet;
+    }
 
     // lietotājs tiek aizsūtīs uz šo url
     window.location.href = url;
