@@ -82,7 +82,7 @@ session_start();
             <div class="fonaIzmaiņas" id="valodaIzmaiņas">
                 <label for="valoda">Change language -></label>
                 <select name="valoda" id="valoda">
-                    <option value="http://localhost:8000/body/eng/mainPage.php">English</option>
+                    <option value="http://localhost:8000/body/eng/main.php">English</option>
                     <option value="http://localhost:8000/body/lv/sakumlapa.php">Latvian</option>
                 </select>
             </div>
