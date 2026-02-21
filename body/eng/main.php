@@ -9,7 +9,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latvia Train Route Portal</title>
+    <title>Latvian Train Route Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style/main.css">
     <link rel="stylesheet" href="/style/global.css">
@@ -20,7 +20,7 @@ session_start();
     <div class="galvene">
         <div class="nosaukums">
             <img src="/icons/website icons/websiteIconLight.svg" alt="Portal logo" id="logo">
-            <h3 id="portālaNosaukums">Latvia Train Route Portal</h3>
+            <h3 id="portālaNosaukums">Latvian Train Route Portal</h3>
         </div>
 
         <nav>
@@ -59,7 +59,7 @@ session_start();
             <ul>
                 <?php if (isset($_SESSION['lietotajvards']) == false): ?>
                     <li>
-                        <a class = "profilaStatuss" href="pieteikties.php">Log in</a>
+                        <a class = "profilaStatuss" href="login.php">Log in</a>
                     </li>
                     <li>
                         <a class = "profilaStatuss" href="registracija.php">Create account</a>
@@ -95,10 +95,10 @@ session_start();
 
             <img src="/icons/trainView.jpg" id="vilcienaSkats">
 
-            <h1 class="display-4" id="sveiciens">Welcome to the Latvia Train Route Portal</h1>
+            <h1 class="display-4" id="sveiciens">Welcome to the Latvian Train Route Portal</h1>
 
             <p class="mb-4" id="apraksts">
-                The Latvia Train Route Portal is an online solution where the required data is taken from
+                The Latvian Train Route Portal is an online solution where the required data is taken from
                 Latvia’s Open Data Portal. <br> See the source link in the footer.
             </p>
 
@@ -170,7 +170,7 @@ session_start();
     </div>
 </body>
 <footer class="mt-5 py-3">
-    <p class="mb-0">© Latvia Train Route Portal <span id=projektaGads></span></p>
+    <p class="mb-0">© Latvian Train Route Portal <span id=projektaGads></span></p>
     <p class="mb-4" id="dati">
         Data used: <a href="https://data.gov.lv/dati/lv/dataset/iekszemes-dzelzcela-vilcienu-kustibas-saraksts-gtfs-formata">
             data.gov.lv </a> <br> Loaded: <span id="ielādesDatums"></span>
