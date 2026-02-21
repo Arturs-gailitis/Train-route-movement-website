@@ -369,8 +369,8 @@ try {
             <div class="fonaIzmaiņas" id="valodaIzmaiņas">
                 <label for="valoda">Valodas maiņa -></label>
                 <select name="valoda" id="valoda">
-                <option value="http://localhost:8000/body/lv/marsruti.php?sākumstacija=<?php echo $_GET['sākumstacija']?>&beigustacija=<?php echo $_GET['beigustacija']?>&datums=<?php echo $_GET['datums']?>">Latviešu</option>
-                <option value="http://localhost:8000/body/eng/movement.php?sākumstacija=<?php echo $_GET['sākumstacija']?>&beigustacija=<?php echo $_GET['beigustacija']?>&datums=<?php echo $_GET['datums']?>">Angļu</option>
+                    <option value="http://localhost:8000/body/lv/marsruti.php?sākumstacija=<?php echo $_GET['sākumstacija']?>&beigustacija=<?php echo $_GET['beigustacija']?>&datums=<?php echo $_GET['datums']?>">Latviešu</option>
+                    <option value="http://localhost:8000/body/eng/movement.php?sākumstacija=<?php echo $_GET['sākumstacija']?>&beigustacija=<?php echo $_GET['beigustacija']?>&datums=<?php echo $_GET['datums']?>">Angļu</option>
                 </select>
             </div>
 
