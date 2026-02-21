@@ -73,7 +73,7 @@ try {
                         <a class = "profilaStatuss" href="login.php">Log in</a>
                     </li>
                     <li>
-                        <a class = "profilaStatuss" href="registracija.php">Create account</a>
+                        <a class = "profilaStatuss" href="register.php">Create account</a>
                     </li>
                 <?php elseif (isset($_SESSION['lietotajvards'])): ?>
                     <li>

@@ -16,35 +16,42 @@ try {
 }
 
 try {
-
+    
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        
-        // iegūst paroli, lietotājvārdu vai epastu no šīs lapas formas
-        $usernameOrEmail = trim($_POST['lietotajvardsEpasts']);
+
+        // ieg;ut lietotājvārdu, epastu, paroli un otru paroli
+        $username = trim($_POST['lietotajvards']);
+        $email = trim($_POST['epasts']);
         $password = $_POST['parole'];
+        $confirmPassword = $_POST['atkartotaParole'];
 
-        // no dotajiem formas parametriem iegūst infromāciju par lietotāju 
-        $user = getUser($connection, $usernameOrEmail);
+        // pārbauda vai lietotājvārds, parole nav par mazu, vai abas paroles sakrīt, vai lietotājvārds un epasts jau tiek izmantots
+        if (strlen($username) < 5) {
+            $error = "Username is too short. It must be at least 5 characters long.";
+        } else if (strlen($password) < 8) {
+            $error = "Password is too short. It needs to be at least 8 characters long.";
+        } else if ($password != $confirmPassword) {
+            $error = "The two passwords are not the same. Please try again.";
+        } else if (checkUserByParam($connection, $username, "username" ) != false) {
+            $error = "This username already exists. Please create a different one.";
+        } else if (checkUserByParam($connection, $email, "email" ) != false) {
+            $error = "This email is already in use. Please enter a different email.";
+        }
 
-        // validē vai lietotājs eksistē un pārbauda vai abas paroles sakrīt
-        if ($user == false) {
-            $error = "The username or email is incorrect. Please try again.";
-        } else if (password_verify($password, $user['password']) == false) {
-            $error = "The password is incorrect. Try again.";
-        } else {
-            // ieliek sesijā vajadzīgo informāciju
-            $_SESSION['lietotajvards'] = $user['username'];
-            $_SESSION['tiesibas'] = $user['rights'];
-            $_SESSION['epasts'] = $user['email'];
+        if ($error == "") {
+            // nohasho paroli
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            // izveido lietotāju
+            createUser($connection, $username, $email, $hashedPassword);
 
             // nosūta uz sākumlapu
             header("Location: main.php");
             exit;
         }
     }
-
 } catch (Exception $e) {
-    $e->getMessage();
+    echo $e->getMessage();
 }
 ?>
 <!DOCTYPE html>
@@ -54,7 +61,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latvian Train Route Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/style/login.css">
+    <link rel="stylesheet" href="/style/register.css">
     <link rel="stylesheet" href="/style/global.css">
     <link rel="icon" type="image/svg+xml" href="/icons/website icons/websiteIconTab.svg">
 </head>
@@ -124,27 +131,35 @@ try {
             <div class="fonaIzmaiņas" id="valodaIzmaiņas">
                 <label for="valoda">Change language -></label>
                 <select name="valoda" id="valoda">
-                    <option value="http://localhost:8000/body/eng/login.php">English</option>
-                    <option value="http://localhost:8000/body/lv/pieteikties.php">Latvian</option>
+                    <option value="http://localhost:8000/body/eng/register.php">English</option>
+                    <option value="http://localhost:8000/body/lv/registracija.php">Latvian</option>
                 </select>
             </div>
 
         </div>
     </div>
-    <div id="pieteiksanas">
-        <h2>Login form</h2>
+    <div id="registresanas">
+        <h2>Registration form</h2>
         <span id="errors"><?php echo $error; ?></span>
         <form method="POST">
             <div class="mb-3">
-                <label for="lietotajvardsEpasts">Username or email:</label>
-                <input type="text" name="lietotajvardsEpasts" id="lietotajvardsEpasts" required>
+                <label for="lietotajvards">Username:</label>
+                <input type="text" name="lietotajvards" id="lietotajvards" required>
+            </div>
+            <div class="mb-3">
+                <label for="epasts">Email:</label>
+                <input type="email" name="epasts" id="epasts" required>
             </div>
             <div class="mb-3">
                 <label for="parole">Password:</label>
                 <input type="password" name="parole" id="parole" required>
             </div>
+            <div class="mb-3">
+                <label for="atkartotaParole">Confirm password:</label>
+                <input type="password" name="atkartotaParole" id="atkartotaParole" required>
+            </div>
 
-            <button type="submit" id="pieteiksanasPoga">Login</button>
+            <button type="submit" id="registracijasPoga">Registration</button>
         </form>
     </div>
 </body>
@@ -155,6 +170,6 @@ try {
             data.gov.lv </a> <br> Loaded: <span id="ielādesDatums"></span>
     </p>
 </footer>
-<script src="/javascript/login.js"></script>
 <script src="/javascript/global.js"></script>
+<script src="/javascript/register.js"></script>
 </html>
