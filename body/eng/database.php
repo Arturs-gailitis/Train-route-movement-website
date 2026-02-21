@@ -23,9 +23,9 @@ $users = [];
 $messages = [];
 $notifications = [];
 
-// automātiski lietotāju aizmet uz sakumlapa.php ja nav iegājis savā profilā un ja tam profilam nav administrātora tiesības
+// automātiski lietotāju aizmet uz sakumlapu ja nav iegājis savā profilā un ja tam profilam nav administrātora tiesības
 if (isset($_SESSION['tiesibas']) == false || $_SESSION['tiesibas'] != "administrators") {
-    header("Location: sakumlapa.php");
+    header("Location: main.php");
     exit;
 }
 
@@ -71,7 +71,7 @@ try {
                 deleteNotification($notificationsConnection, $_GET['id']);
             }
 
-            header("Location: datubaze.php");
+            header("Location: datubase.php");
             exit();
 
         }
@@ -93,52 +93,52 @@ try {
 
 ?>
 <!DOCTYPE html>
-<html lang="lv">
-    <head>
+<html lang="eng">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latvijas vilcienu maršrutu kustības portāls</title>
+    <title>Latvian Train Route Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/style/global.css">
     <link rel="stylesheet" href="/style/database.css">
+    <link rel="stylesheet" href="/style/global.css">
     <link rel="icon" type="image/svg+xml" href="/icons/website icons/websiteIconTab.svg">
 </head>
 <body>
     <div class="galvene">
         <div class="nosaukums">
-            <img src="/icons/website icons/websiteIconLight.svg" alt="Portāla logo" id="logo">
-            <h3 id="portālaNosaukums">Latvijas vilcienu maršrutu kustības portāls</h3>
+            <img src="/icons/website icons/websiteIconLight.svg" alt="Portal logo" id="logo">
+            <h3 id="portālaNosaukums">Latvian Train Route Portal</h3>
         </div>
 
         <nav>
             <ul class="nav nav-pills" id="pogas">
                 <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
                     <li class="nav-item" id="datubaze">
-                        <a class="nav-link" href="datubaze.php">Datubāze</a>
+                        <a class="nav-link" href="database.php">Database</a>
                     </li>
                 <?php endif ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="sakumlapa.php">Sākumlapa</a>
+                    <a class="nav-link" href="main.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pazinojumi.php">Paziņojumi</a>
+                    <a class="nav-link" href="notifications.php">Notifications</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="kontakti.php">Kontakti</a>
+                    <a class="nav-link" href="contact.php">Contact</a>
                 </li>
-                <li class="nav-item" title="Profils">
+                <li class="nav-item" title="Profile">
                     <button class="nav-link" id="lietotajs">
                         <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "lietotajs"): ?>
-                            <img src="/icons/account icons/user.svg" alt="Lietotājs" class="lietotajaIcona">
+                            <img src="/icons/account icons/user.svg" alt="User" class="lietotajaIcona">
                         <?php elseif (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
-                            <img src="/icons/account icons/admin.svg" alt="Administrators" class="lietotajaIcona">
+                            <img src="/icons/account icons/admin.svg" alt="Administrator" class="lietotajaIcona">
                         <?php else: ?>
-                            <img src="/icons/account icons/noAccountLight.svg" alt="Bez lietotāja" class="lietotajaIcona">
+                            <img src="/icons/account icons/noAccountLight.svg" alt="No user" class="lietotajaIcona">
                         <?php endif ?>
                     </button>
                 </li>
-                <li class="nav-item" title="Opcijas">
-                    <button class="nav-link"><img src="/icons/settings.svg" alt="Opcijas" id="opcijas"></button>
+                <li class="nav-item" title="Options">
+                    <button class="nav-link"><img src="/icons/settings.svg" alt="Options" id="opcijas"></button>
                 </li>
             </ul>
         </nav>
@@ -146,14 +146,14 @@ try {
             <ul>
                 <?php if (isset($_SESSION['lietotajvards']) == false): ?>
                     <li>
-                        <a class = "profilaStatuss" href="pieteikties.php">Pieslēdzies savā kontā</a>
+                        <a class = "profilaStatuss" href="login.php">Log in</a>
                     </li>
                     <li>
-                        <a class = "profilaStatuss" href="registracija.php">Izveido jaunu kontu</a>
+                        <a class = "profilaStatuss" href="register.php">Create account</a>
                     </li>
                 <?php elseif (isset($_SESSION['lietotajvards'])): ?>
                     <li>
-                        <a class = "profilaStatuss" id="iziesana" href="iziet.php">Iziet ārā no sava konta</a>
+                        <a class = "profilaStatuss" id="iziesana" href="logout.php">Log out</a>
                     </li>
                 <?php endif ?>
             </ul>
@@ -161,80 +161,79 @@ try {
         <div id="opcijuLaukums">
 
             <div class="fonaIzmaiņas">
-                <label for="fonaIzmaiņas">Izmainīt fonu -></label>
+                <label for="fonaIzmaiņas">Change light -></label>
                 <button type="button" id="fonaIzmaiņasPoga" class="btn btn-primary">
-                    <img src="/icons/lightTheme.svg" alt="Opcijas" id="themeIkona"></button>
+                    <img src="/icons/lightTheme.svg" alt="Options" id="themeIkona"></button>
             </div>
 
             <div class="fonaIzmaiņas" id="valodaIzmaiņas">
-                <label for="valoda">Valodas maiņa -></label>
+                <label for="valoda">Change language -></label>
                 <select name="valoda" id="valoda">
-                    <option value="http://localhost:8000/body/lv/datubaze.php">Latviešu</option>
-                    <option value="http://localhost:8000/body/eng/database.php">Angļu</option>
+                    <option value="http://localhost:8000/body/eng/database.php">English</option>
+                    <option value="http://localhost:8000/body/lv/datubaze.php">Latvian</option>
                 </select>
             </div>
 
         </div>
     </div>
-    <div>
     <div id="paraditPoguSadalu">
-        <button type="button" id="atvertPoguSadaļasPoga" title="Parādīt pogas sadaļu">
-            <img src="/icons/arrow-down.svg" alt="Parādīt pogas sadaļu" id="atvērtPoguSadaļasIkona">
+        <button type="button" id="atvertPoguSadaļasPoga" title="Show button section">
+            <img src="/icons/arrow-down.svg" alt="Show button section" id="atvērtPoguSadaļasIkona">
         </button>
     </div>
     </div>
     <div id="poguLaukums">
         <div>
-            <h3 id="pirmais">Restartēt datubāzes datus</h3>
+            <h3 id="pirmais">Restart database data</h3>
             <ul id="restartet">
                 <li>
-                    <button class="btn btn-primary" id="vilcieni">Restartē vilciena datus</button>
+                    <button class="btn btn-primary" id="vilcieni">Restart train data</button>
                 </li>
                 <li>
                     <button class="btn btn-primary" id="lietotaja">Restartē lietotāja datus</button>
                 </li>
                 <li>
-                    <button class="btn btn-primary" id="kontakti">Restartē kontaktu datus</button>
+                    <button class="btn btn-primary" id="kontakti">Restarts user data</button>
                 </li>
                 <li>
-                    <button class="btn btn-primary" id="pazinojumi">Restartē ziņu datus</button>
+                    <button class="btn btn-primary" id="pazinojumi">Restarts message data</button>
                 </li>
             </ul>
             <hr>
         </div>
         <div>
-            <h3>Pārslēgties uz citām tabulām</h3>
+            <h3>Switch to other tables</h3>
             <ul id="tabuluPogas">
                 <li>
-                    <button class="btn btn-primary" id="kalendars">Kalendārs</button>
+                    <button class="btn btn-primary" id="kalendars">Calendar</button>
                 </li>
                 <li>
-                    <button class="btn btn-primary" id="marsruts">Maršruti</button>
+                    <button class="btn btn-primary" id="marsruts">Routes</button>
                 </li>
                 <li>
-                    <button class="btn btn-primary" id="stacija">Stacijas</button>
+                    <button class="btn btn-primary" id="stacija">Stations</button>
                 </li>
                 <li>
-                    <button class="btn btn-primary" id="apstasanas">Brauciena apstāšanās</button>
+                    <button class="btn btn-primary" id="apstasanas">Trip stop</button>
                 </li>
                 <li>
-                    <button class="btn btn-primary" id="braucieni">Braucieni</button>
+                    <button class="btn btn-primary" id="braucieni">Trips</button>
                 </li>
                 <li>
-                    <button class="btn btn-primary" id="lietotaji">Lietotāji</button>
+                    <button class="btn btn-primary" id="lietotaji">Users</button>
                 </li>
                 <li>
-                    <button class="btn btn-primary" id="zinojumi">Ziņojumi</button>
+                    <button class="btn btn-primary" id="zinojumi">Messages</button>
                 </li>
                 <li>
-                    <button class="btn btn-primary" id="paz">Paziņojumi</button>
+                    <button class="btn btn-primary" id="paz">Notifications</button>
                 </li>
             </ul>
             <hr>
         </div>
         <div>
-            <h3>Izveidot jaunu ierakstu</h3>
-            <a class="btn btn-primary" id="izveidot">Izveidot</a>
+            <h3>Create a new entry</h3>
+            <a class="btn btn-primary" id="izveidot">Create</a>
         </div>
     </div>
     <div class=tabulas>
@@ -243,16 +242,16 @@ try {
                 <tr>
                     <th class="kolonnuNosaukumi"><label>Id</label></th>
                     <th class="kolonnuNosaukumi"><label>Service id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Pirmdiena</label></th>
-                    <th class="kolonnuNosaukumi"><label>Otrdiena</label></th>
-                    <th class="kolonnuNosaukumi"><label>Trešdiena</label></th>
+                    <th class="kolonnuNosaukumi" ><label>Monday</label></th>
+                    <th class="kolonnuNosaukumi"><label>Tuesday</label></th>
+                    <th class="kolonnuNosaukumi"><label>Wednesday</label></th>
                     <th class="kolonnuNosaukumi" ><label>Ceturtdiena</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Piekdiena</label></th>
-                    <th class="kolonnuNosaukumi"><label>Sestdiena</label></th>
-                    <th class="kolonnuNosaukumi"><label>Svētdiena</label></th>
-                    <th class="kolonnuNosaukumi"><label>Sākuma datums</label></th>
-                    <th class="kolonnuNosaukumi"><label>Beigu datums</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
+                    <th class="kolonnuNosaukumi" ><label>Thursday</label></th>
+                    <th class="kolonnuNosaukumi"><label>Saturday</label></th>
+                    <th class="kolonnuNosaukumi"><label>Sunday</label></th>
+                    <th class="kolonnuNosaukumi"><label>Start date</label></th>
+                    <th class="kolonnuNosaukumi"><label>End date</label></th>
+                    <th class="kolonnuNosaukumi"><label>Activities</label></th>
                 </tr>
             </thead>
             <tbody>
@@ -271,10 +270,10 @@ try {
                         <td><?= $c['end_date'] ?></td>
                         <td class= darbibas>
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=calendar&id=<?php echo $c['id'] ?>">
-                                Rediģēt
+                                Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=calendar&id=<?php echo $c['id'] ?>">
-                                Dzēst
+                                Delete
                             </a>
                         </td>
                     </tr>
@@ -286,12 +285,12 @@ try {
                 <tr>
                     <th class="kolonnuNosaukumi"><label>Id</label></th>
                     <th class="kolonnuNosaukumi"><label>Route id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Aģentūra</label></th>
-                    <th class="kolonnuNosaukumi"><label>Maršruta Nosaukums</label></th>
-                    <th class="kolonnuNosaukumi"><label>Tips</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Krāsa</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Teksta Krāsa</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
+                    <th class="kolonnuNosaukumi" ><label>Agency</label></th>
+                    <th class="kolonnuNosaukumi"><label>Route Name</label></th>
+                    <th class="kolonnuNosaukumi"><label>Type</label></th>
+                    <th class="kolonnuNosaukumi" ><label>Color</label></th>
+                    <th class="kolonnuNosaukumi" ><label>Text color</label></th>
+                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
                 </tr>
             </thead>
             <tbody>
@@ -306,10 +305,10 @@ try {
                         <td><?= $r['text_color'] ?></td>
                         <td class= darbibas>
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=route&id=<?php echo $r['id'] ?>">
-                                Rediģēt
+                                Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=route&id=<?php echo $r['id'] ?>">
-                                Dzēst
+                                Delete
                             </a>
                         </td>
                     </tr>
@@ -321,10 +320,10 @@ try {
                 <tr>
                     <th class="kolonnuNosaukumi"><label>Id</label></th>
                     <th class="kolonnuNosaukumi"><label>Stop Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Stacijas Nosaukums</label></th>
-                    <th class="kolonnuNosaukumi"><label>Platuma Grādi</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Garuma Grādi</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
+                    <th class="kolonnuNosaukumi"><label>Station Name</label></th>
+                    <th class="kolonnuNosaukumi"><label>Latitude</label></th>
+                    <th class="kolonnuNosaukumi" ><label>Longitude</label></th>
+                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
                 </tr>
             </thead>
             <tbody>
@@ -337,10 +336,10 @@ try {
                         <td><?= $s['longitude'] ?></td>
                         <td class= darbibas>
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=stops&id=<?php echo $s['id'] ?>">
-                                Rediģēt
+                                Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=stops&id=<?php echo $s['id'] ?>">
-                                Dzēst
+                                Delete
                             </a>
                         </td>
                     </tr>
@@ -352,11 +351,11 @@ try {
                 <tr>
                     <th class="kolonnuNosaukumi"><label>Id</label></th>
                     <th class="kolonnuNosaukumi"><label>Trip Id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Ierašanās Laiks</label></th>
-                    <th class="kolonnuNosaukumi"><label>Izbraukšanas Laiks</label></th>
+                    <th class="kolonnuNosaukumi" ><label>Arrival Time</label></th>
+                    <th class="kolonnuNosaukumi"><label>Departure Time</label></th>
                     <th class="kolonnuNosaukumi"><label>Stop Id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Apstāšanās Sekvence</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
+                    <th class="kolonnuNosaukumi" ><label>Stopping Sequence</label></th>
+                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
                 </tr>
             </thead>
             <tbody>
@@ -370,10 +369,10 @@ try {
                         <td><?= $st['stop_sequence'] ?></td>
                         <td class= darbibas>
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
-                                Rediģēt
+                                Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
-                                Dzēst
+                                Delete
                             </a>
                         </td>
                     </tr>
@@ -387,8 +386,8 @@ try {
                     <th class="kolonnuNosaukumi"><label>Route Id</label></th>
                     <th class="kolonnuNosaukumi" ><label>Service Id</label></th>
                     <th class="kolonnuNosaukumi"><label>Trip Id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Maršruta Galamērķa Apzīmējums</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
+                    <th class="kolonnuNosaukumi" ><label>Route Destination Designation</label></th>
+                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
                 </tr>
             </thead>
             <tbody>
@@ -401,10 +400,10 @@ try {
                         <td><?= $t['headsign'] ?></td>
                         <td class= darbibas>
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=trips&id=<?php echo $t['id'] ?>">
-                                Rediģēt
+                                Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=trips&id=<?php echo $t['id'] ?>">
-                                Dzēst
+                                Delete
                             </a>
                         </td>
                     </tr>
@@ -415,11 +414,11 @@ try {
             <thead>
                 <tr>
                     <th class="kolonnuNosaukumi"><label>Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Lietotājvārds</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Epasts</label></th>
-                    <th class="kolonnuNosaukumi"><label>Tiesības</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Parole</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
+                    <th class="kolonnuNosaukumi"><label>Username</label></th>
+                    <th class="kolonnuNosaukumi" ><label>Email</label></th>
+                    <th class="kolonnuNosaukumi"><label>Rights</label></th>
+                    <th class="kolonnuNosaukumi" ><label>Password</label></th>
+                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
                 </tr>
             </thead>
             <tbody>
@@ -432,10 +431,10 @@ try {
                         <td><?= $u['password'] ?></td>
                         <td class= darbibas>
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=user&id=<?php echo $u['id'] ?>">
-                                Rediģēt
+                                Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=user&id=<?php echo $u['id'] ?>">
-                                Dzēst
+                                Delete
                             </a>
                         </td>
                     </tr>
@@ -446,9 +445,9 @@ try {
             <thead>
                 <tr>
                     <th class="kolonnuNosaukumi"><label>ID</label></th>
-                    <th class="kolonnuNosaukumi"><label>Epasts</label></th>
-                    <th class="kolonnuNosaukumi"><label>Ziņa</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
+                    <th class="kolonnuNosaukumi"><label>Email</label></th>
+                    <th class="kolonnuNosaukumi"><label>Message</label></th>
+                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
                 </tr>
             </thead>
             <tbody>
@@ -459,7 +458,7 @@ try {
                         <td><?= $m['message'] ?></td>
                         <td id="darbibas">
                             <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=message&id=<?php echo $m['id'] ?>">
-                                Dzēst
+                                Delete
                             </a>
                         </td>
                     </tr>
@@ -470,10 +469,10 @@ try {
             <thead>
                 <tr>
                     <th class="kolonnuNosaukumi"><label>ID</label></th>
-                    <th class="kolonnuNosaukumi"><label>Virsraksts</label></th>
-                    <th class="kolonnuNosaukumi"><label>Attēla atrašanās vieta</label></th>
-                    <th class="kolonnuNosaukumi"><label>Paziņojuma teksts</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
+                    <th class="kolonnuNosaukumi"><label>Title</label></th>
+                    <th class="kolonnuNosaukumi"><label>Image location</label></th>
+                    <th class="kolonnuNosaukumi"><label>Text</label></th>
+                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
                 </tr>
             </thead>
             <tbody>
@@ -485,10 +484,10 @@ try {
                         <td><?= $n['info'] ?></td>
                         <td id="darbibas">
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=notification&id=<?php echo $n['id'] ?>">
-                                Rediģēt
+                                Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=notification&id=<?php echo $n['id'] ?>">
-                                Dzēst
+                                Delete
                             </a>
                         </td>
                     </tr>
@@ -498,10 +497,10 @@ try {
     </div>
 </body>
 <footer class="mt-5 py-3">
-    <p class="mb-0">© Latvijas vilcienu maršrutu kustības portāls <span id=projektaGads></span></p>
+    <p class="mb-0">© Latvian Train Route Portal <span id=projektaGads></span></p>
     <p class="mb-4" id="dati">
-        Izmantotie dati: <a href="https://data.gov.lv/dati/lv/dataset/iekszemes-dzelzcela-vilcienu-kustibas-saraksts-gtfs-formata">
-            data.gov.lv </a> <br> Ielādēts: <span id="ielādesDatums"></span>
+        Data used: <a href="https://data.gov.lv/dati/lv/dataset/iekszemes-dzelzcela-vilcienu-kustibas-saraksts-gtfs-formata">
+            data.gov.lv </a> <br> Loaded: <span id="ielādesDatums"></span>
     </p>
 </footer>
 <script src="/javascript/global.js"></script>

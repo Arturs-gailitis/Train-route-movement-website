@@ -9,12 +9,20 @@ openButtons.addEventListener("click", () => {
         ButtonsArea.style.display = "block";
         buttonIcon.src = "http://localhost:8000/icons/arrow-up.svg";
         buttonStatuss = true;
-        openButtons.title = "Aizvērt pogas sadaļu";
+        if (window.location.href.includes("/lv/")) {
+            openButtons.title = "Aizvērt pogas sadaļu";
+        } else {
+            openButtons.title = "Close button section";
+        }
     } else {
         ButtonsArea.style.display = "none";
         buttonIcon.src = "http://localhost:8000/icons/arrow-down.svg";
         buttonStatuss = false;
-        openButtons.title = "Parādīt pogas sadaļu";
+        if (window.location.href.includes("/lv/")) {
+            openButtons.title = "Parādīt pogas sadaļu";
+        } else {
+            openButtons.title = "Show button section";
+        }
     }
 })
 

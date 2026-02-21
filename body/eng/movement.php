@@ -314,7 +314,7 @@ try {
             <ul class="nav nav-pills" id="pogas">
                 <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
                     <li class="nav-item" id="datubaze">
-                        <a class="nav-link" href="datubaze.php">Database</a>
+                        <a class="nav-link" href="database.php">Database</a>
                     </li>
                 <?php endif ?>
                 <li class="nav-item">
