@@ -269,7 +269,7 @@ try {
                         <td><?= $c['start_date'] ?></td>
                         <td><?= $c['end_date'] ?></td>
                         <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=calendar&id=<?php echo $c['id'] ?>">
+                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=calendar&id=<?php echo $c['id'] ?>">
                                 Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=calendar&id=<?php echo $c['id'] ?>">
@@ -304,7 +304,7 @@ try {
                         <td><?= $r['color'] ?></td>
                         <td><?= $r['text_color'] ?></td>
                         <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=route&id=<?php echo $r['id'] ?>">
+                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=route&id=<?php echo $r['id'] ?>">
                                 Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=route&id=<?php echo $r['id'] ?>">
@@ -335,7 +335,7 @@ try {
                         <td><?= $s['latitude'] ?></td>
                         <td><?= $s['longitude'] ?></td>
                         <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=stops&id=<?php echo $s['id'] ?>">
+                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=stops&id=<?php echo $s['id'] ?>">
                                 Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=stops&id=<?php echo $s['id'] ?>">
@@ -368,7 +368,7 @@ try {
                         <td><?= $st['stop_id'] ?></td>
                         <td><?= $st['stop_sequence'] ?></td>
                         <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
+                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
                                 Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
@@ -399,7 +399,7 @@ try {
                         <td><?= $t['trip_id'] ?></td>
                         <td><?= $t['headsign'] ?></td>
                         <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=trips&id=<?php echo $t['id'] ?>">
+                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=trips&id=<?php echo $t['id'] ?>">
                                 Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=trips&id=<?php echo $t['id'] ?>">
@@ -430,7 +430,7 @@ try {
                         <td><?= $u['rights'] ?></td>
                         <td><?= $u['password'] ?></td>
                         <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=user&id=<?php echo $u['id'] ?>">
+                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=user&id=<?php echo $u['id'] ?>">
                                 Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=user&id=<?php echo $u['id'] ?>">
@@ -483,7 +483,7 @@ try {
                         <td><?= $n['image'] ?></td>
                         <td><?= $n['info'] ?></td>
                         <td id="darbibas">
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=notification&id=<?php echo $n['id'] ?>">
+                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=notification&id=<?php echo $n['id'] ?>">
                                 Edit
                             </a>
                             <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=notification&id=<?php echo $n['id'] ?>">
