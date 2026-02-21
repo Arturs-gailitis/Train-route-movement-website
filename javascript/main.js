@@ -31,14 +31,26 @@ filterButton.addEventListener("click", () => {
         filterBox.style.display = "block";
         filterBox.style.height = "auto";
         filterButtonIcon.src = "http://localhost:8000/icons/arrow-up.svg";
-        filterButton.title = "Aizvērt maršrutu filtrēšanas sadaļu"
+
+        if (window.location.href.includes("/lv/")) {
+            filterButton.title = "Aizvērt maršrutu filtrēšanas sadaļu"
+        } else {
+            filterButton.title = "Close route filtering section"
+        }
+
         filterButton.style.marginBottom = "5px"
         statuss = true;
     } else {
         filterBox.style.display = "none";
         filterBox.style.height = "0px";
         filterButtonIcon.src = "http://localhost:8000/icons/arrow-down.svg";
-        filterButton.title = "Atvērt maršrutu filtrēšanas sadaļu";
+
+        if (window.location.href.includes("/lv/")) {
+            filterButton.title = "Atvērt maršrutu filtrēšanas sadaļu";
+        } else {
+            filterButton.title = "Open route filtering section";
+        }
+        
         filterButton.style.marginBottom = "20px"
         statuss = false;
     }

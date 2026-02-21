@@ -71,24 +71,45 @@ themeChanger.addEventListener("click", () => {
     }
 })
 
+const changeLanguage = document.getElementById("valoda");
+
+// nomaina failu pēc atbisltošās valodas
+changeLanguage.addEventListener("change", function() {
+    if (this.value) {
+        window.location.href = this.value;
+    }
+})
+
 // iegūst šī brīža datums
 const date = new Date();
 const day = date.getDate();
 const month = date.getMonth();
 const year = date.getFullYear();
 
-// saraksts ar mēnešiem
-const months = ["Janvārī", "Februārī", "Martā", "Aprīlī", "Maijā", "Jūnijā", "Jūlijā", "Augustā", "Septembrī", "Oktobrī", 
+// saraksts ar mēnešiem latviski un angliski
+const monthsLv = ["Janvārī", "Februārī", "Martā", "Aprīlī", "Maijā", "Jūnijā", "Jūlijā", "Augustā", "Septembrī", "Oktobrī", 
     "Novembrī", "Decembrī"
 ];
 
-// iegūst mēneša nosaukumu
-const monthName = months[month]; 
+const monthsEng = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", 
+    "November", "December"
+];
+
+// iegūst mēneša nosaukumu latviski un angliski
+const monthNameLv = monthsLv[month]; 
+const monthNameEng = monthsEng[month];
 
 // parāda kad tiek iegūts no atvērtajiem datiem informācija un kad tika izstrādāts šis darbs
 document.addEventListener("DOMContentLoaded", () => {
     const loadDate = document.getElementById("ielādesDatums");
     const projectDate = document.getElementById("projektaGads");
-    loadDate.textContent = year + ". gada " + day + ". " + monthName;
+
+    // respektīvi ieliek footerī atbisltošo tekstu skatoties pēc valodas
+    if (window.location.href.includes("/lv/")) {
+        loadDate.textContent = year + ". gada " + day + ". " + monthNameLv;
+    } else {
+        loadDate.textContent = year + ". year " + day + ". " + monthNameEng;
+    }
+
     projectDate.textContent = year;
 })

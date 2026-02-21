@@ -293,11 +293,11 @@ try {
 }
 ?>
 <!DOCTYPE html>
-<html lang="lv">
+<html lang="eng">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latvijas vilcienu maršrutu kustības portāls</title>
+    <title>Latvia Train Route Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style/global.css">
     <link rel="stylesheet" href="/style/movement.css">
@@ -306,39 +306,39 @@ try {
 <body>
     <div class="galvene">
         <div class="nosaukums">
-            <img src="/icons/website icons/websiteIconLight.svg" alt="Portāla logo" id="logo">
-            <h3 id="portālaNosaukums">Latvijas vilcienu maršrutu kustības portāls</h3>
+            <img src="/icons/website icons/websiteIconLight.svg" alt="Portal logo" id="logo">
+            <h3 id="portālaNosaukums">Latvia Train Route Portal</h3>
         </div>
 
         <nav>
             <ul class="nav nav-pills" id="pogas">
                 <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
                     <li class="nav-item" id="datubaze">
-                        <a class="nav-link" href="datubaze.php">Datubāze</a>
+                        <a class="nav-link" href="datubaze.php">Database</a>
                     </li>
                 <?php endif ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="sakumlapa.php">Sākumlapa</a>
+                    <a class="nav-link" href="main.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pazinojumi.php">Paziņojumi</a>
+                    <a class="nav-link" href="pazinojumi.php">Notifications</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="kontakti.php">Kontakti</a>
+                    <a class="nav-link" href="kontakti.php">Contact</a>
                 </li>
-                <li class="nav-item" title="Profils">
+                <li class="nav-item" title="Profile">
                     <button class="nav-link" id="lietotajs">
                         <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "lietotajs"): ?>
-                            <img src="/icons/account icons/user.svg" alt="Lietotājs" class="lietotajaIcona">
+                            <img src="/icons/account icons/user.svg" alt="User" class="lietotajaIcona">
                         <?php elseif (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
-                            <img src="/icons/account icons/admin.svg" alt="Administrators" class="lietotajaIcona">
+                            <img src="/icons/account icons/admin.svg" alt="Administrator" class="lietotajaIcona">
                         <?php else: ?>
-                            <img src="/icons/account icons/noAccountLight.svg" alt="Bez lietotāja" class="lietotajaIcona">
+                            <img src="/icons/account icons/noAccountLight.svg" alt="No user" class="lietotajaIcona">
                         <?php endif ?>
                     </button>
                 </li>
-                <li class="nav-item" title="Opcijas">
-                    <button class="nav-link"><img src="/icons/settings.svg" alt="Opcijas" id="opcijas"></button>
+                <li class="nav-item" title="Options">
+                    <button class="nav-link"><img src="/icons/settings.svg" alt="Options" id="opcijas"></button>
                 </li>
             </ul>
         </nav>
@@ -346,14 +346,14 @@ try {
             <ul>
                 <?php if (isset($_SESSION['lietotajvards']) == false): ?>
                     <li>
-                        <a class = "profilaStatuss" href="pieteikties.php">Pieslēdzies savā kontā</a>
+                        <a class = "profilaStatuss" href="pieteikties.php">Log in</a>
                     </li>
                     <li>
-                        <a class = "profilaStatuss" href="registracija.php">Izveido jaunu kontu</a>
+                        <a class = "profilaStatuss" href="registracija.php">Create account</a>
                     </li>
                 <?php elseif (isset($_SESSION['lietotajvards'])): ?>
                     <li>
-                        <a class = "profilaStatuss" id="iziesana" href="iziet.php">Iziet ārā no sava konta</a>
+                        <a class = "profilaStatuss" id="iziesana" href="iziet.php">Log out</a>
                     </li>
                 <?php endif ?>
             </ul>
@@ -361,83 +361,83 @@ try {
         <div id="opcijuLaukums">
 
             <div class="fonaIzmaiņas">
-                <label for="fonaIzmaiņas">Izmainīt fonu -></label>
+                <label for="fonaIzmaiņas">Change light -></label>
                 <button type="button" id="fonaIzmaiņasPoga" class="btn btn-primary">
-                    <img src="/icons/lightTheme.svg" alt="Opcijas" id="themeIkona"></button>
+                    <img src="/icons/lightTheme.svg" alt="Optional" id="themeIkona"></button>
             </div>
 
             <div class="fonaIzmaiņas" id="valodaIzmaiņas">
-                <label for="valoda">Valodas maiņa -></label>
+                <label for="valoda">Change language -></label>
                 <select name="valoda" id="valoda">
-                <option value="http://localhost:8000/body/lv/marsruti.php?sākumstacija=<?php echo $_GET['sākumstacija']?>&beigustacija=<?php echo $_GET['beigustacija']?>&datums=<?php echo $_GET['datums']?>">Latviešu</option>
-                <option value="http://localhost:8000/body/eng/movement.php?sākumstacija=<?php echo $_GET['sākumstacija']?>&beigustacija=<?php echo $_GET['beigustacija']?>&datums=<?php echo $_GET['datums']?>">Angļu</option>
+                    <option value="http://localhost:8000/body/eng/movement.php?sākumstacija=<?php echo $_GET['sākumstacija'] ?>&beigustacija=<?php echo $_GET['beigustacija'] ?>&datums=<?php echo $_GET['datums'] ?>">English</option>
+                    <option value="http://localhost:8000/body/lv/marsruti.php?sākumstacija=<?php echo $_GET['sākumstacija']?>&beigustacija=<?php echo $_GET['beigustacija']?>&datums=<?php echo $_GET['datums']?>">Latvian</option>
                 </select>
             </div>
 
         </div>
     </div>
     <div id="paradītMeklēšanasSadaļu">
-        <button type="button" id="atvērtMeklšanuPoga" title="Atvērt meklēšanas sadaļu">
-            <img src="/icons/arrow-down.svg" alt="Atvērt meklēšanas sadaļu" id="atvērtmeklēšanuIkona">
+        <button type="button" id="atvērtMeklšanuPoga" title="Open search section">
+            <img src="/icons/arrow-down.svg" alt="Open search section" id="atvērtmeklēšanuIkona">
         </button>
     </div>
     <div class= "p-2 mx-4" id="maršrutuMeklēšanasSadaļa">
-        <button type="button" class="btn btn-secondary" id="atcelt" title="Aizvērt meklēšanas sadaļu">
-            <img src="/icons/cross.svg" alt="Atcelt" id="atceltIcona">
+        <button type="button" class="btn btn-secondary" id="atcelt" title="Close search section">
+            <img src="/icons/cross.svg" alt="Cancel" id="atceltIcona">
         </button>
 
-        <h2 class="mb-4" id="meklesanasTituls">Meklēšana</h2>
+        <h2 class="mb-4" id="meklesanasTituls">Search</h2>
         <form id="meklesanasForma" method="get">
             <div class="mb-3">
-                <label for="sākumstacija">Sākuma stacija:</label>
+                <label for="sākumstacija">Start station:</label>
                 <input type="text" class="form-control" name="sākumstacija" id="sākumstacija" value= "<?php echo $st ?>" required>
             </div>
 
             <div class="mb-3">
                 <button id=apgriezt class="btn btn-primary" type="button">
-                    <img src="/icons/reverse.svg" alt="Apgriezt" id=apgireztIcona>
+                    <img src="/icons/reverse.svg" alt="Reverse" id=apgireztIcona>
                 </button>
             </div>
 
             <div class="mb-3">
-                <label for="beigustacija">Beigu stacija:</label>
+                <label for="beigustacija">End station:</label>
                 <input type="text" class="form-control" name="beigustacija" id="beigustacija" value= "<?php echo $b ?>" required>
             </div>
 
             <div class="mb-3">
-                <label for="datums">Datums:</label>
+                <label for="datums">Date:</label>
                 <input type="date" class="form-control" name="datums" id="datums" value= "<?php echo $date ?>" required>
             </div>
 
-            <input type="submit" value="Meklēt" class="btn btn-primary" id ="meklet">
+            <input type="submit" value="Search" class="btn btn-primary" id ="meklet">
         </form>
     </div>
     <div id="tabulasNosaukums">
-        <h1 id="marsrutuTabulasNosaukums">Vilcienu kustības grafiks</h1>
+        <h1 id="marsrutuTabulasNosaukums">Train schedule</h1>
         <div id="virsInfo">
-            <img src="/icons/train-station.svg" alt="Sākuma stacija" class="ikona" title="Sākuma stacija">
+            <img src="/icons/train-station.svg" alt="Start station" class="ikona" title="Start station">
             <span id="sakumaStacija"><?php echo $st ?></span>
-            <img src="/icons/train-station.svg" alt="Beigu stacija" class="ikona" title="Beigu stacija">
+            <img src="/icons/train-station.svg" alt="End station" class="ikona" title="End station">
             <span id=beiguStacija><?php echo $b ?></span>
-            <img src="/icons/date.svg" alt="Datums" class="ikona" title="Datums">
+            <img src="/icons/date.svg" alt="Date" class="ikona" title="Date">
             <span id=datumaInfo><?php echo $date ?></span>
         </div>
     </div>
     <?php if ($startStation == false || $endStation == false): ?>
         <div class="kluduZinojums">
-            <img src="/icons/error.svg" alt="Klūdas zīme" class="kluda">
+            <img src="/icons/error.svg" alt="Error sign" class="kluda">
             <p class="kluduTeksts">
-                Viena no ievadītās stacijām <b><?php echo $st ?> </b> un <b> <?php echo $b ?> </b> 
-                nav pieejama informācija vai arī tās neeksistē. <br> Pārbaudiet vai neesat uzrakstījuši nepareizi 
-                stacijas nosaukumu un mēģiniet vēlreiz.
+                One of the entered stations <b><?php echo $st ?> </b> and <b> <?php echo $b ?> </b> 
+                is not available in the data or does not exist. <br> Please check if you entered 
+                the station name correctly and try again.
             </p>
         </div>
     <?php elseif (empty($organisedTrips) == true): ?>
         <div class="kluduZinojums">
-            <img src="/icons/error.svg" alt="Klūdas zīme" class="kluda">
+            <img src="/icons/error.svg" alt="Error sign" class="kluda">
             <p class="kluduTeksts">
-                Jūsu izvēlētajā dienā vairs nav pieejami maršruti no <b><?php echo $st ?> </b> uz <b> <?php echo $b ?> </b> <br>
-                Mēģiniet izvēlēties citas dienas. Piemēram, nākošajā dienā vai pēc nedēļas utt.
+                There are no available routes on the selected day from <b><?php echo $st ?> </b> to <b> <?php echo $b ?> </b> <br>
+                Try selecting a different date, for example the next day or a week later.
             </p>
         </div>
     <?php else: ?>
@@ -445,15 +445,15 @@ try {
             <table id="marsrutuTabula">
                 <thead>
                     <tr>
-                        <th class="marsruti" id="sakums"><label id="sakumaTeksts">Atiešanas laiks</label></th>
-                        <th class="marsruti" id="beigas"><label id="beigasTeksts">Pienākšanas laiks</label></th>
-                        <th class="marsruti" id="nosaukums"><label id="nosaukumaTeksts">Maršruta nosaukums</label></th>
+                        <th class="marsruti" id="sakums"><label id="sakumaTeksts">Departure time</label></th>
+                        <th class="marsruti" id="beigas"><label id="beigasTeksts">Arrival time</label></th>
+                        <th class="marsruti" id="nosaukums"><label id="nosaukumaTeksts">Route name</label></th>
                         <th class="marsruti" id="marsrutaIdentifikators">
-                            <label id="identifikatorsTeksts">Maršruta nr.</label>
+                            <label id="identifikatorsTeksts">Route No.</label>
                         </th>
-                        <th class="marsruti" id="laiks"><label id="laikaTeksts">Maršruta laiks</label></th>
-                        <th class="marsruti" id="pirkt"><label id="pirktTeksts">Pirkt biļeti</label></th>
-                        <th class="marsruti" id="info"><label id="infoTeksts">Vairāk info</label></th>
+                        <th class="marsruti" id="laiks"><label id="laikaTeksts">Travel time</label></th>
+                        <th class="marsruti" id="pirkt"><label id="pirktTeksts">Buy ticket</label></th>
+                        <th class="marsruti" id="info"><label id="infoTeksts">More info</label></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -468,25 +468,25 @@ try {
                                 <?php if (strtotime($date) < strtotime($currentDate . "+10 days")): ?>
                                     <td id="pirktPoga">
                                         <a class=pirktPogas href="">
-                                            <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona">
+                                            <img src="/icons/buy.svg" alt="Buy" id="pirktIkona">
                                         </a>
                                     </td>
                                 <?php else: ?>
                                     <td id="pirktPoga">
-                                        <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona" title="Nav pašreiz vel iespēja nopirkt biļeti">
+                                        <img src="/icons/buy.svg" alt="Buy" id="pirktIkona" title="There is currently no option to buy a ticket.">
                                     </td>
                                 <?php endif ?>
                                 <td id="infoPoga">
                                     <a class="infoPogas" 
                                         href="info.php?id=<?php echo $trip['trip_id'] ?>&sakumstacija=<?php echo $trip['startStation'] ?>&beigustacija=<?php echo $trip['endStation'] ?>&datums=<?php echo $date ?>&marsruts=<?php echo $trip['routeName'] ?>&altstart=<?php echo $st ?>&altend=<?php echo $b ?>">
-                                        <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona"></a>
+                                        <img src="/icons/info.svg" alt="More info" id="infoIkona"></a>
                                 </td>
                             <?php else: ?>
                                 <td id="pirktPoga">
-                                    <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona" title="Tikai reģistrētiem lietotājiem">
+                                    <img src="/icons/buy.svg" alt="Buy" id="pirktIkona" title="For registered users only">
                                 </td>
                                 <td id="infoPoga">
-                                    <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona" title="Tikai reģistrētiem lietotājiem">
+                                    <img src="/icons/info.svg" alt="More info" id="infoIkona" title="For registered users only">
                                 </td>
                             <?php endif ?>
                         </tr>
@@ -497,10 +497,10 @@ try {
     <?php endif; ?>
 </body>
 <footer class="mt-5 py-3">
-    <p class="mb-0">© Latvijas vilcienu maršrutu kustības portāls <span id=projektaGads></span></p>
+    <p class="mb-0">© Latvia Train Route Portal <span id=projektaGads></span></p>
     <p class="mb-4" id="dati">
-        Izmantotie dati: <a href="https://data.gov.lv/dati/lv/dataset/iekszemes-dzelzcela-vilcienu-kustibas-saraksts-gtfs-formata">
-            data.gov.lv </a> <br> Ielādēts: <span id="ielādesDatums"></span>
+        Data used: <a href="https://data.gov.lv/dati/lv/dataset/iekszemes-dzelzcela-vilcienu-kustibas-saraksts-gtfs-formata">
+            data.gov.lv </a> <br> Loaded: <span id="ielādesDatums"></span>
     </p>
 </footer>
 <script src="/javascript/global.js"></script>

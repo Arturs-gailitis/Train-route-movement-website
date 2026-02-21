@@ -5,11 +5,11 @@ session_start();
 
 ?>
 <!DOCTYPE html>
-<html lang="lv">
+<html lang="eng">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latvijas vilcienu maršrutu kustības portāls</title>
+    <title>Latvia Train Route Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style/main.css">
     <link rel="stylesheet" href="/style/global.css">
@@ -19,39 +19,39 @@ session_start();
 <body>
     <div class="galvene">
         <div class="nosaukums">
-            <img src="/icons/website icons/websiteIconLight.svg" alt="Portāla logo" id="logo">
-            <h3 id="portālaNosaukums">Latvijas vilcienu maršrutu kustības portāls</h3>
+            <img src="/icons/website icons/websiteIconLight.svg" alt="Portal logo" id="logo">
+            <h3 id="portālaNosaukums">Latvia Train Route Portal</h3>
         </div>
 
         <nav>
             <ul class="nav nav-pills" id="pogas">
                 <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
                     <li class="nav-item" id="datubaze">
-                        <a class="nav-link" href="datubaze.php">Datubāze</a>
+                        <a class="nav-link" href="datubaze.php">Database</a>
                     </li>
                 <?php endif ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="sakumlapa.php">Sākumlapa</a>
+                    <a class="nav-link" href="main.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pazinojumi.php">Paziņojumi</a>
+                    <a class="nav-link" href="pazinojumi.php">Notifications</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="kontakti.php">Kontakti</a>
+                    <a class="nav-link" href="kontakti.php">Contact</a>
                 </li>
-                <li class="nav-item" title="Profils">
+                <li class="nav-item" title="Profile">
                     <button class="nav-link" id="lietotajs">
                         <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "lietotajs"): ?>
-                            <img src="/icons/account icons/user.svg" alt="Lietotājs" class="lietotajaIcona">
+                            <img src="/icons/account icons/user.svg" alt="User" class="lietotajaIcona">
                         <?php elseif (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
-                            <img src="/icons/account icons/admin.svg" alt="Administrators" class="lietotajaIcona">
+                            <img src="/icons/account icons/admin.svg" alt="Administrator" class="lietotajaIcona">
                         <?php else: ?>
-                            <img src="/icons/account icons/noAccountLight.svg" alt="Bez lietotāja" class="lietotajaIcona">
+                            <img src="/icons/account icons/noAccountLight.svg" alt="No user" class="lietotajaIcona">
                         <?php endif ?>
                     </button>
                 </li>
-                <li class="nav-item" title="Opcijas">
-                    <button class="nav-link"><img src="/icons/settings.svg" alt="Opcijas" id="opcijas"></button>
+                <li class="nav-item" title="Options">
+                    <button class="nav-link"><img src="/icons/settings.svg" alt="Options" id="opcijas"></button>
                 </li>
             </ul>
         </nav>
@@ -59,14 +59,14 @@ session_start();
             <ul>
                 <?php if (isset($_SESSION['lietotajvards']) == false): ?>
                     <li>
-                        <a class = "profilaStatuss" href="pieteikties.php">Pieslēdzies savā kontā</a>
+                        <a class = "profilaStatuss" href="pieteikties.php">Log in</a>
                     </li>
                     <li>
-                        <a class = "profilaStatuss" href="registracija.php">Izveido jaunu kontu</a>
+                        <a class = "profilaStatuss" href="registracija.php">Create account</a>
                     </li>
                 <?php elseif (isset($_SESSION['lietotajvards'])): ?>
                     <li>
-                        <a class = "profilaStatuss" id="iziesana" href="iziet.php">Iziet ārā no sava konta</a>
+                        <a class = "profilaStatuss" id="iziesana" href="iziet.php">Log out</a>
                     </li>
                 <?php endif ?>
             </ul>
@@ -74,16 +74,16 @@ session_start();
         <div id="opcijuLaukums">
 
             <div class="fonaIzmaiņas">
-                <label for="fonaIzmaiņas">Izmainīt fonu -></label>
+                <label for="fonaIzmaiņas">Change light -></label>
                 <button type="button" id="fonaIzmaiņasPoga" class="btn btn-primary">
-                    <img src="/icons/lightTheme.svg" alt="Opcijas" id="themeIkona"></button>
+                    <img src="/icons/lightTheme.svg" alt="Options" id="themeIkona"></button>
             </div>
 
             <div class="fonaIzmaiņas" id="valodaIzmaiņas">
-                <label for="valoda">Valodas maiņa -></label>
+                <label for="valoda">Change language -></label>
                 <select name="valoda" id="valoda">
-                    <option value="http://localhost:8000/body/lv/sakumlapa.php">Latviešu</option>
-                    <option value="http://localhost:8000/body/eng/main.php">Angļu</option>
+                    <option value="http://localhost:8000/body/eng/mainPage.php">English</option>
+                    <option value="http://localhost:8000/body/lv/sakumlapa.php">Latvian</option>
                 </select>
             </div>
 
@@ -95,25 +95,25 @@ session_start();
 
             <img src="/icons/trainView.jpg" id="vilcienaSkats">
 
-            <h1 class="display-4" id="sveiciens">Sveicināti Latvijas vilcienu maršrutu kustības portālā</h1>
+            <h1 class="display-4" id="sveiciens">Welcome to the Latvia Train Route Portal</h1>
 
             <p class="mb-4" id="apraksts">
-                Latvijas vilcienu maršrutu kustības portāls ir tiešsaistes risinājums, kur nepieciešamie dati tiek ņemti no
-                Latvijas atvērtā datu portāla. <br> Skatīt avotu lapas kājenē.
+                The Latvia Train Route Portal is an online solution where the required data is taken from
+                Latvia’s Open Data Portal. <br> See the source link in the footer.
             </p>
 
-            <h2 class="mt-4" id="funkcijuSākums">Šajā portālā lietotājs var:</h2>
+            <h2 class="mt-4" id="funkcijuSākums">On this portal, the user can:</h2>
 
             <ul class="mb-4" id ="funkcijas">
-                <li>Meklēt vilciena maršrutu pēc sākuma un beigu pieturām, norādot datumu;</li>
-                <li>Iegūt papildus informāciju par vilciena maršrutu;</li>
-                <li>Reāllaikā uzzināt maršruta statusu un paziņojumus;</li>
-                <li>Skatīt konkrētā maršruta ceļu un staciju vizualizāciju interaktīvā kartē;</li>
-                <li>Nopirkt konkrētā maršruta biļeti.</li>
+                <li>Search for a train route by start and end stops, specifying a date;</li>
+                <li>Get additional information about the train route;</li>
+                <li>View route status and notifications in real time;</li>
+                <li>See the route path and station visualization on an interactive map;</li>
+                <li>Buy a ticket for the selected route.</li>
             </ul>
 
             <p>
-                <a class="btn btn-primary" role="button" id="meklet">Sākt meklēt vilciena maršrutus</a>
+                <a class="btn btn-primary" role="button" id="meklet">Start searching for train routes</a>
             </p>
         </div>
 
@@ -122,40 +122,40 @@ session_start();
             <img src="/icons/trainView.jpg" id="vilcienaSkats">
 
             <div class= "p-2 mx-4" id="maršrutuMeklēšanasSadaļa">
-                <button type="button" class="btn btn-secondary" id="atcelt" title="Aizvērt meklēšanas sadaļu">
-                    <img src="/icons/cross.svg" alt="Atcelt" id="atceltIcona">
+                <button type="button" class="btn btn-secondary" id="atcelt" title="Close search section">
+                    <img src="/icons/cross.svg" alt="Cancel" id="atceltIcona">
                 </button>
 
-                <h2 class="mb-4" id="meklesanasTituls">Meklēšana</h2>
-                <form id="meklesanasForma" method="get" action="marsruti.php">
+                <h2 class="mb-4" id="meklesanasTituls">Search</h2>
+                <form id="meklesanasForma" method="get" action="movement.php">
                     <div class="mb-3">
-                        <label for="sākumstacija">Sākuma stacija:</label>
+                        <label for="sākumstacija">Start station:</label>
                         <input type="text" class="form-control" name="sākumstacija" id="sākumstacija" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="beigustacija">Beigu stacija:</label>
+                        <label for="beigustacija">End station:</label>
                         <input type="text" class="form-control" name="beigustacija" id="beigustacija" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="datums">Datums:</label>
+                        <label for="datums">Date:</label>
                         <input type="date" class="form-control" name="datums" id="datums" required>
                     </div>
 
-                    <input type="submit" value="Meklēt" class="btn btn-primary" id ="meklet">
+                    <input type="submit" value="Search" class="btn btn-primary" id ="meklet">
                 </form>
             </div>
         </div>
     </div>
     <div id="vizuālāMapesLaukums" class = "container-fluid">
-        <h1 id="vilcienaMapesVirsraksts">Vilcienu kustības interaktīva karte</h1>
+        <h1 id="vilcienaMapesVirsraksts">Interactive Train Traffic Map</h1>
         <div>
-            <button type="button" id="atvertFiltresanuPoga" title="Atvērt maršrutu filtrēšanas sadaļu">
-                <img src="/icons/arrow-down.svg" alt="Atvērt maršrtuta filtēšanas sadaļu" id="atvertFiltresanuIkona">
+            <button type="button" id="atvertFiltresanuPoga" title="Open route filtering section">
+                <img src="/icons/arrow-down.svg" alt="Open route filtering section" id="atvertFiltresanuIkona">
             </button>
             <div id=filtresanasSadala>
-                <h3 id="filtresanasTituls">Maršrutu ceļu filtrēšana</h3>
+                <h3 id="filtresanasTituls">Route path filtering</h3>
                 <ul>
                     <li><label><input type="checkbox" id="Tukums" checked> - Tukums II : Torņakalns</label></li>
                     <li><label><input type="checkbox" id="Liepaja" checked> - Liepāja : Torņakalns</label></li>
@@ -170,10 +170,10 @@ session_start();
     </div>
 </body>
 <footer class="mt-5 py-3">
-    <p class="mb-0">© Latvijas vilcienu maršrutu kustības portāls <span id=projektaGads></span></p>
+    <p class="mb-0">© Latvia Train Route Portal <span id=projektaGads></span></p>
     <p class="mb-4" id="dati">
-        Izmantotie dati: <a href="https://data.gov.lv/dati/lv/dataset/iekszemes-dzelzcela-vilcienu-kustibas-saraksts-gtfs-formata">
-            data.gov.lv </a> <br> Ielādēts: <span id="ielādesDatums"></span>
+        Data used: <a href="https://data.gov.lv/dati/lv/dataset/iekszemes-dzelzcela-vilcienu-kustibas-saraksts-gtfs-formata">
+            data.gov.lv </a> <br> Loaded: <span id="ielādesDatums"></span>
     </p>
 </footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
