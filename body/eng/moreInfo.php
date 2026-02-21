@@ -10,16 +10,16 @@ $lastIndex = null;
 $list = [];
 $orderedList = [];
 
-// automātiski leitotāju aizmet uz sakumlapa.php ja nav iegājis savā profilā
+// automātiski leitotāju aizmet uz sakumlapuu ja nav iegājis savā profilā
 if (isset($_SESSION['lietotajvards']) == false) {
-    header("Location: sakumlapa.php");
+    header("Location: main.php");
     exit;
 }
 
-// automātiski leitotāju aizmet uz sakumlapa.php ja nav visi vajadzīgie dati
+// automātiski leitotāju aizmet uz sakumlapu ja nav visi vajadzīgie dati
 if (isset($_GET['sakumstacija']) == false || isset($_GET['beigustacija']) == false || isset($_GET['datums']) == false || 
 isset($_GET['id']) == false || isset($_GET['marsruts']) == false) {
-    header("Location: sakumlapa.php");
+    header("Location: main.php");
     exit;
 }
 

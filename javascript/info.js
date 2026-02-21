@@ -4,6 +4,15 @@ import {
     liepajaRoutes, gulbeneStations, gulbeneRoute, indraStations, indraRoute, zilupeStations, zilupeRoute
 } from "../storage/visual data/railways/unite.js";
 
+// nomaina titula pozīciju angļu variantā
+if (window.location.href.includes("/eng/")) {
+    const title = document.getElementById("infoNosaukums");
+    const goBackButton = document.getElementById("iziet");
+    title.style.position = "relative";
+    title.style.marginLeft = "40px";
+    goBackButton.style.left = "20px";
+}
+
 const footer = document.getElementById("footer");
 const table = document.getElementById("tabula");
 const map = document.getElementById("karte");

@@ -1,3 +1,17 @@
+if (window.location.href.includes("/eng/")) {
+    const navigationButtonLocations = document.querySelectorAll(".nav-item");
+    let notification = null;
+
+    // izlabo ziņojuma navigācijas pogu novietojumu anglu versijā
+    if (navigationButtonLocations.length == 6) {
+        notification = navigationButtonLocations[2];
+    } else {
+        notification = navigationButtonLocations[1];
+    }
+
+    notification.style.marginRight = "20px";
+}
+
 const profilButton = document.getElementById("lietotajs");
 const profilArea = document.getElementById("profilaLaukums");
 const opcijas = document.getElementById("opcijuLaukums");
@@ -23,6 +37,22 @@ profilButton.addEventListener("click", () => {
         profilStatuss = false;
     }
 })
+
+// sakārto profila pogu dizainu angļu versijā
+if (window.location.href.includes("/eng/")) {
+    const profilButtons = document.querySelectorAll(".profilaStatuss");
+    if (profilButtons.length == 2) {
+        let loginButton = profilButtons[0];
+        loginButton.style.position = "relative";
+        loginButton.style.paddingLeft = "45px";
+        loginButton.style.paddingRight = "45px";
+    } else {
+        let logoutButton = profilButtons[0];
+        logoutButton.style.position = "relative";
+        logoutButton.style.paddingLeft = "20px";
+        logoutButton.style.paddingRight = "20px";
+    }
+}
 
 const profilLinks = document.querySelectorAll(".profilaStatuss");
 

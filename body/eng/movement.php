@@ -9,9 +9,9 @@ $database = __DIR__ . '/../../storage/database/LatvianTrains.sqlite';
 $trips = [];
 $organisedTrips = [];
 
-// automātiski leitotāju aizmet uz sakumlapa.php ja nav visi vajadzīgie dati
+// automātiski leitotāju aizmet uz sakumlapu ja nav visi vajadzīgie dati
 if (isset($_GET['sākumstacija']) == false || isset($_GET['beigustacija']) == false || isset($_GET['datums']) == false) {
-    header("Location: sakumlapa.php");
+    header("Location: main.php");
     exit;
 }
 

@@ -1,5 +1,12 @@
 import {stations} from "../storage/visual data/stations.js";
 
+// nomaina titula pozīciju angļu variantā
+if (window.location.href.includes("/eng/")) {
+    const title = document.getElementById("marsrutuTabulasNosaukums");
+    title.style.position = "relative";
+    title.style.left = "30px";
+}
+
 const button = document.getElementById("atvērtMeklšanuPoga");
 const box = document.getElementById("maršrutuMeklēšanasSadaļa");
 const boxButton = document.getElementById("atcelt");
