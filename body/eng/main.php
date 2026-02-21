@@ -34,7 +34,7 @@ session_start();
                     <a class="nav-link" href="main.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pazinojumi.php">Notifications</a>
+                    <a class="nav-link" href="notifications.php">Notifications</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="kontakti.php">Contact</a>
