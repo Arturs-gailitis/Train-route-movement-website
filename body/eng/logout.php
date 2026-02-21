@@ -48,7 +48,7 @@ try {
                     <a class="nav-link" href="notifications.php">Notifications</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="kontakti.php">Contact</a>
+                    <a class="nav-link" href="contact.php">Contact</a>
                 </li>
                 <li class="nav-item" title="Profile">
                     <button class="nav-link" id="lietotajs">

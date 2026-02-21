@@ -111,8 +111,8 @@ try {
             <div class="fonaIzmaiņas" id="valodaIzmaiņas">
                 <label for="valoda">Valodas maiņa -></label>
                 <select name="valoda" id="valoda">
-                    <option value="Latviešu">Latviešu</option>
-                    <option value="Angļu">Angļu</option>
+                    <option value="http://localhost:8000/body/lv/kontakti.php">Latviešu</option>
+                    <option value="http://localhost:8000/body/eng/contact.php">Angļu</option>
                 </select>
             </div>
 
