@@ -80,7 +80,11 @@ document.addEventListener("DOMContentLoaded", () => {
     usersTable.style.display = "none";
     messageTable.style.display = "none";
     notificationTable.style.display = "none";
-    newRecord.href = "izveidot.php?tabula=calendar";
+    if (window.location.href.includes("/lv/")) {
+        newRecord.href = "izveidot.php?tabula=calendar";
+    } else {
+        newRecord.href = "create.php?tabula=calendar";;
+    }
 })
 
 // kad nospiež pogu parāda tikai kalendāra tabulu
@@ -93,7 +97,11 @@ calendarButton.addEventListener("click", () => {
     usersTable.style.display = "none";
     messageTable.style.display = "none";
     notificationTable.style.display = "none";
-    newRecord.href = "izveidot.php?tabula=calendar";
+    if (window.location.href.includes("/lv/")) {
+        newRecord.href = "izveidot.php?tabula=calendar";
+    } else {
+        newRecord.href = "create.php?tabula=calendar";;
+    }
     newRecord.style.pointerEvents = "auto";
     newRecord.style.backgroundColor = "#1f7a1f";
 })
@@ -108,7 +116,11 @@ routeButton.addEventListener("click", () => {
     usersTable.style.display = "none";
     messageTable.style.display = "none";
     notificationTable.style.display = "none";
-    newRecord.href = "izveidot.php?tabula=routes";
+    if (window.location.href.includes("/lv/")) {
+        newRecord.href = "izveidot.php?tabula=routes";
+    } else {
+        newRecord.href = "create.php?tabula=routes";;
+    }
     newRecord.style.pointerEvents = "auto";
     newRecord.style.backgroundColor = "#1f7a1f";
 })
@@ -123,7 +135,11 @@ stationButton.addEventListener("click", () => {
     usersTable.style.display = "none";
     messageTable.style.display = "none";
     notificationTable.style.display = "none";
-    newRecord.href = "izveidot.php?tabula=stops";
+    if (window.location.href.includes("/lv/")) {
+        newRecord.href = "izveidot.php?tabula=stops";
+    } else {
+        newRecord.href = "create.php?tabula=stops";;
+    }
     newRecord.style.pointerEvents = "auto";
     newRecord.style.backgroundColor = "#1f7a1f";
 })
@@ -138,7 +154,11 @@ stopsButton.addEventListener("click", () => {
     usersTable.style.display = "none";
     messageTable.style.display = "none";
     notificationTable.style.display = "none";
-    newRecord.href = "izveidot.php?tabula=stop_times";
+    if (window.location.href.includes("/lv/")) {
+        newRecord.href = "izveidot.php?tabula=stop_times";
+    } else {
+        newRecord.href = "create.php?tabula=stop_times";;
+    }    
     newRecord.style.pointerEvents = "auto";
     newRecord.style.backgroundColor = "#1f7a1f";
 })
@@ -153,7 +173,11 @@ tripsButton.addEventListener("click", () => {
     usersTable.style.display = "none";
     messageTable.style.display = "none";
     notificationTable.style.display = "none";
-    newRecord.href = "izveidot.php?tabula=trips";
+    if (window.location.href.includes("/lv/")) {
+        newRecord.href = "izveidot.php?tabula=trips";
+    } else {
+        newRecord.href = "create.php?tabula=trips";;
+    }    
     newRecord.style.pointerEvents = "auto";
     newRecord.style.backgroundColor = "#1f7a1f";
 })
@@ -196,7 +220,11 @@ notificationButton.addEventListener("click", () => {
     tripsTable.style.display = "none";
     usersTable.style.display = "none";
     messageTable.style.display = "none";
-    newRecord.href = "izveidot.php?tabula=notifications";
+    if (window.location.href.includes("/lv/")) {
+        newRecord.href = "izveidot.php?tabula=notifications";
+    } else {
+        newRecord.href = "create.php?tabula=notifications";;
+    }  
     newRecord.style.pointerEvents = "auto";
     newRecord.style.backgroundColor = "#1f7a1f";
 })
