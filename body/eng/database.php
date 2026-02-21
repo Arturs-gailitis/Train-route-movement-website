@@ -71,7 +71,7 @@ try {
                 deleteNotification($notificationsConnection, $_GET['id']);
             }
 
-            header("Location: datubase.php");
+            header("Location: database.php");
             exit();
 
         }
@@ -272,7 +272,7 @@ try {
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=calendar&id=<?php echo $c['id'] ?>">
                                 Edit
                             </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=calendar&id=<?php echo $c['id'] ?>">
+                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=calendar&id=<?php echo $c['id'] ?>">
                                 Delete
                             </a>
                         </td>
@@ -307,7 +307,7 @@ try {
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=route&id=<?php echo $r['id'] ?>">
                                 Edit
                             </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=route&id=<?php echo $r['id'] ?>">
+                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=route&id=<?php echo $r['id'] ?>">
                                 Delete
                             </a>
                         </td>
@@ -338,7 +338,7 @@ try {
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=stops&id=<?php echo $s['id'] ?>">
                                 Edit
                             </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=stops&id=<?php echo $s['id'] ?>">
+                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=stops&id=<?php echo $s['id'] ?>">
                                 Delete
                             </a>
                         </td>
@@ -371,7 +371,7 @@ try {
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
                                 Edit
                             </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
+                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
                                 Delete
                             </a>
                         </td>
@@ -402,7 +402,7 @@ try {
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=trips&id=<?php echo $t['id'] ?>">
                                 Edit
                             </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=trips&id=<?php echo $t['id'] ?>">
+                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=trips&id=<?php echo $t['id'] ?>">
                                 Delete
                             </a>
                         </td>
@@ -433,7 +433,7 @@ try {
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=user&id=<?php echo $u['id'] ?>">
                                 Edit
                             </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=user&id=<?php echo $u['id'] ?>">
+                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=user&id=<?php echo $u['id'] ?>">
                                 Delete
                             </a>
                         </td>
@@ -457,7 +457,7 @@ try {
                         <td><?= $m['email'] ?></td>
                         <td><?= $m['message'] ?></td>
                         <td id="darbibas">
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=message&id=<?php echo $m['id'] ?>">
+                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=message&id=<?php echo $m['id'] ?>">
                                 Delete
                             </a>
                         </td>
@@ -486,7 +486,7 @@ try {
                             <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=notification&id=<?php echo $n['id'] ?>">
                                 Edit
                             </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=notification&id=<?php echo $n['id'] ?>">
+                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=notification&id=<?php echo $n['id'] ?>">
                                 Delete
                             </a>
                         </td>
