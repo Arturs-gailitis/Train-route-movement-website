@@ -66,7 +66,7 @@ session_start();
                     </li>
                 <?php elseif (isset($_SESSION['lietotajvards'])): ?>
                     <li>
-                        <a class = "profilaStatuss" id="iziesana" href="iziet.php">Log out</a>
+                        <a class = "profilaStatuss" id="iziesana" href="logout.php">Log out</a>
                     </li>
                 <?php endif ?>
             </ul>

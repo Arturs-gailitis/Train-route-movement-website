@@ -2,5 +2,9 @@ const goButton = document.getElementById("ietUzSakumu");
 
 // nospiežot pogu aizsūta uz sākumlapu
 goButton.addEventListener("click", () => {
-    window.location.href = "sakumlapa.php";
+    if (window.location.href.includes("/lv/")) {
+        window.location.href = "sakumlapa.php";
+    } else {
+        window.location.href = "main.php";
+    }
 })
