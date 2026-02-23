@@ -18,6 +18,12 @@
     margin-bottom: 150px;
 }
 
+/* Skatās izveidošanas formas laukumu gaišajā režīmā*/
+.light-mode #formasLaukums {
+    background-color: #0DCBCE;
+    color: black;
+}
+
 /* SKatās izveidošanas formas virsrakstu */
 #formasLaukums h2 {
     text-align: center;
@@ -62,7 +68,18 @@ textarea {
     border-color: black;
 }
 
+/* SKatās izveidošanas formas abas pogas gaišajā režīmā*/
+.light-mode #forma button, .light-mode #forma a {
+    background-color: white;
+    color: black;
+}
+
 /* SKatās izveidošanas formas abas pogas, ja uz tām pieliks kursoru */
 #forma button:hover, #forma a:hover {
     border-color: blue;
+}
+
+/* SKatās izveidošanas formas abas pogas, ja uz tām pieliks kursoru gaišajā režīmā*/
+.light-mode #forma button:hover, .light-mode #forma a:hover {
+    color: #073C8D;
 }

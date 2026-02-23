@@ -21,6 +21,12 @@
     color: white;
 }
 
+/* Skatās profila iziešanas laukumu gaišo režīmu*/
+.light-mode #iziesanasLaukums {
+    background-color: #0DCBCE;
+    color: black;
+}
+
 /* Skatās profila iziešanas abas pogas */
 #iziesanasPoga, #ietUzSakumu {
     display: flex;
@@ -32,9 +38,20 @@
     margin-top: 40px;
 }
 
+/* Skatās profila iziešanas abas pogas gaišo režīmu*/
+.light-mode #iziesanasPoga, .light-mode #ietUzSakumu {
+    background-color: white;
+    color: black;
+}
+
 /* Skatās profila iziešanas abas pogas, ja uz tām pieliks kursoru */
 #iziesanasPoga:hover, #ietUzSakumu:hover {
     border-color: #0a58ca;
+}
+
+/* Skatās profila iziešanas abas pogas, ja uz tām pieliks kursoru gaišo režīmu*/
+.light-mode #iziesanasPoga:hover, .light-mode #ietUzSakumu:hover {
+    color: #073C8D;
 }
 
 /* Skatās footer elementu šajā failā */

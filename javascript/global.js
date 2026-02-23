@@ -101,6 +101,22 @@ themeChanger.addEventListener("click", () => {
     }
 })
 
+const body = document.body;
+
+// pārslēdz no tumšā režīma uz gaišo un atpakaļ
+themeChanger.addEventListener("click", () => {
+    body.classList.toggle("light-mode");
+    localStorage.setItem("lightMode", body.classList.contains("light-mode"));
+})
+
+// saglabā gaišo režīmu
+if (localStorage.getItem("lightMode") === "true") {
+    body.classList.add("light-mode");
+    themeIcon.src = "http://localhost:8000/icons/lightTheme.svg";
+} else {
+    themeIcon.src = "http://localhost:8000/icons/darkTheme.svg";
+}
+
 const changeLanguage = document.getElementById("valoda");
 
 // nomaina failu pēc atbisltošās valodas

@@ -21,6 +21,12 @@
     color: white;
 }
 
+/* Skatās profila pieteikšanās laukumu gaišajā režīmā*/
+.light-mode #pieteiksanas {
+    background-color: #0DCBCE;
+    color: black;
+}
+
 /* Skatās kļūdas kas rodās profila pieteikšanā */
 #errors {
     text-align: center;
@@ -42,9 +48,20 @@
     border: 2px solid black;
 }
 
+/* Skatās profila pieteikšanās pogu gaišajā režīmā*/
+.light-mode #pieteiksanasPoga {
+    background-color: white;
+    color: black;
+}
+
 /* Skatās profila pieteikšanās pogu, ja uz tām pieliks kursoru */
 #pieteiksanasPoga:hover {
     border-color: #0a58ca;
+}
+
+/* Skatās profila pieteikšanās pogu, ja uz tām pieliks kursoru gaišajā režīmā*/
+.light-mode #pieteiksanasPoga:hover {
+    color: #073C8D;
 }
 
 /* Skatās footer elementu šajā failā */

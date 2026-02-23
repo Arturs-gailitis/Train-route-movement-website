@@ -7,6 +7,11 @@
     color: white;
 }
 
+/* Skatās gan mājaslapas ievada sadaļu, gan arī maršruta meklēšanas sadaļu gaišajā režīmā */
+.light-mode #galvenaSekcija, .light-mode #maršrutuMeklēšana {
+    color: black;
+}
+
 /* Skatās mājaslapas aizmugures bildi */
 #vilcienaSkats {
     position: absolute;
@@ -63,6 +68,18 @@
     border: 1px solid black;
 }
 
+/* Skatās par pogu, kas nomaina no sākuma sadaļas uz meklēšanas sadaļu gaišajā režīmā */
+.light-mode #meklet {
+    background-color: #0DCBCE;
+    color: black
+}
+
+/* Skatās par pogu, kas nomaina no sākuma sadaļas uz meklēšanas sadaļu, ja uzliek kursoru gaišajā režīmā */
+.light-mode #meklet:hover {
+    color: white;
+    border-color: black;
+}
+
 /* Skatās maršruta meklēšanas sadaļu */
 #maršrutuMeklēšana {
     display: none;
@@ -81,6 +98,12 @@
     top: 80px;
     max-height: 200px;
     height: auto;
+}
+
+/* Skatās maršruta meklēšanas sadaļu gaišajā režīmā*/
+.light-mode #maršrutuMeklēšanasSadaļa {
+    background-color: #0DCBCE;
+    border-color: white;
 }
 
 /* Skatās maršruta meklēšanas sadaļas atcelt pogu */
@@ -115,18 +138,35 @@
     padding-bottom: 5px;
 }
 
+/* Skatās maršruta meklēšanas formas labels gaišajā režīmā*/
+.light-mode #meklesanasForma label {
+    color: black;
+}
+
 /* Skatās maršruta meklēšanas formas pogu */
-#meklet {
+#Meklet {
     height: 100%;
     align-self: center;
     margin-top: 10px;
     background-color: #015224;
     border: black solid 1px;
+    color: white;
+}
+
+/* Skatās maršruta meklēšanas formas pogu gaišajā režīmā */
+.light-mode #Meklet {
+    background-color: white;
+    color: black;
 }
 
 /* Skatās maršruta meklēšanas formas pogu, ja uz tām pieliks kursoru */
-#meklet:hover {
+#Meklet:hover {
     border-color: #0a58ca;
+}
+
+/* Skatās maršruta meklēšanas formas pogu, ja uz tām pieliks kursoru gaišajā režīmā */
+.light-mode #Meklet:hover {
+    color: #073C8D;
 }
 
 /* Skatās vizualizācijas mapes sadaļu */
@@ -142,12 +182,22 @@
     right: 105px;
 }
 
+/* Skatās vizualizācijas mapes sadaļu gaišajā režīmā */
+.light-mode #vizuālāMapesLaukums {
+    background-color: #0DCBCE;
+}
+
 /* Skatās vizualizācijas mapes virsrakstu */
 #vilcienaMapesVirsraksts {
     display: flex;
     justify-self: center;
     text-align: center;
     color: white;
+}
+
+/* Skatās vizualizācijas mapes virsrakstu gaišajā režīmā */
+.light-mode #vilcienaMapesVirsraksts {
+    color: black;
 }
 
 /* Skatās uz pogas kura atver vai aizver dzelzceļa filtrēšanu */
@@ -187,6 +237,12 @@
     justify-items: center;
     margin-bottom: 10px;
     justify-self: center;
+}
+
+/* Skatās uz dzelzceļa filtrēšanas sadaļu gaišajā*/
+.light-mode #filtresanasSadala {
+    background-color: white;
+    color: black;
 }
 
 /* Skatās uz dzelzceļa filtrēšanas virsrakstu */

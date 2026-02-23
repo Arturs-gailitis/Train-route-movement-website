@@ -35,6 +35,12 @@
     margin-top: 20px;
 }
 
+/* Skatās maršruta meklēšanas sadaļu gaišajā režīmā */
+.light-mode #maršrutuMeklēšanasSadaļa {
+    background-color: #0DCBCE;
+    color: black;
+}
+
 /* Skatās meklēšanas sadaļas titulu */
 #meklesanasTituls {
     text-align: center;
@@ -79,6 +85,11 @@
     border: 2px solid black;
 }
 
+/* Skatās pogu ar kuru var apgriezt stacijas otrādāk gaišajā režīmā*/
+.light-mode #apgriezt {
+    background-color: white;
+}
+
 /* Skatās pogu ar kuru var apgriezt stacijas otrādāk, ja uz tām pieliks kursoru */
 #apgriezt:hover {
     border-color: #0a58ca;
@@ -104,9 +115,20 @@
     top: 23px;
 }
 
+/* Skatās meklēšanas formas meklēt pogu gaišajā režīmā */
+.light-mode #meklet {
+    background-color: white;
+    color: black;
+}
+
 /* Skatās meklēšanas formas meklēt pogu, ja uz tām pieliks kursoru */
 #meklet:hover {
     border-color: #0a58ca;
+}
+
+/* Skatās meklēšanas formas meklēt pogu, ja uz tām pieliks kursoru gaišajā režīmā*/
+.light-mode #meklet:hover {
+    color: #073C8D
 }
 
 /* Skatās vietu kurā ir sākuma un beigu stacijas, datums un to ikonas */
@@ -120,6 +142,11 @@
     white-space: nowrap;
     position: relative;
     right: 27px;
+}
+
+/* Skatās vietu kurā ir sākuma un beigu stacijas, datums un to ikonas gaišajā režīmā */
+.light-mode #virsInfo {
+    color: black;
 }
 
 /* Skatās sākuma, beigu staciju un datuma ikonas */
@@ -146,6 +173,12 @@
     text-align: center;
     margin-top: 50px;
     margin-bottom: 100px;
+}
+
+/* Skatās kļūdas ziņojumu gaišajā režīmā*/
+.light-mode .kluduZinojums {
+    color: black;
+    background-color: #0DCBCE;
 }
 
 /* Skatās par kļūdas ziņojuma ikonu */
@@ -182,6 +215,11 @@
     color: white;
 }
 
+/* Skatās vilciena kustības grafika nosaukumu gaišajā režīmā */
+.light-mode #marsrutuTabulasNosaukums {
+    color: black;
+}
+
 /* Skatās maršruta tabulas sadaļu */
 #marsrutuTabulasLaukums {
     display: flex;
@@ -195,6 +233,12 @@
     border: 3px solid black;
     background-color: #015224;
     color: white;
+}
+
+/* Skatās pašu maršruta tabulas gaišajā režīmā */
+.light-mode #marsrutuTabula {
+    background-color: #0DCBCE;
+    color: black;
 }
 
 /* Skatās maršruta tabulas kolonnu nosaukumus */

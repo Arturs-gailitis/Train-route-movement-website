@@ -35,6 +35,11 @@
     background-color: #015224;
 }
 
+.light-mode #poguLaukums {
+    color: black;
+    background-color: #0DCBCE;
+}
+
 /* Skatās pirmo pogu nodaļu virsrakstu */
 #pirmais {
     margin-top: 20px;
@@ -74,6 +79,11 @@
     border-color: black;
 }
 
+.light-mode #tabuluPogas li button, .light-mode #restartet li button {
+    background-color: white;
+    color: black;
+}
+
 /* Skatās pašu izveidot ieraksta pogu pogas sadaļā */
 #izveidot {
     background-color: #1f7a1f;
@@ -86,9 +96,18 @@
     margin-bottom: 30px;
 }
 
+.light-mode #izveidot {
+    background-color: white !important;
+    color: black;
+}
+
 /* Skatās pogas pogu sadaļā, ja uz tām pieliks kursoru */
 #tabuluPogas li button:hover, #restartet li button:hover,  #izveidot:hover{
     border-color: blue;
+}
+
+.light-mode #tabuluPogas li button:hover, .light-mode #restartet li button:hover, .light-mode #izveidot:hover {
+    color: #073C8D;
 }
 
 /* SKatās visas datubāžu datu tabulas */
@@ -105,6 +124,11 @@
     color: white;
     max-width: 1300px;
     width: auto;
+}
+
+.light-mode .tabulas {
+    background-color: #0DCBCE;
+    color: black;
 }
 
 /* SKatās visas datubāžu datu tabulas kolonnu nosaukumus un to vērtības */
@@ -131,9 +155,20 @@
     border-color: #1f7a1f;
 }
 
+.light-mode .rediget {
+    background-color: white;
+    border-color: black;
+    color: black;
+}
+
 /* Skatās rediģēt pogu tabulās, ja uz tām pieliks kursoru */
 .rediget:hover {
     background-color: #1f7a1f;
+}
+
+.light-mode .rediget:hover {
+    color: #073C8D;
+    background-color: white;
 }
 
 /* SKatās dzēst pogu tabulās */

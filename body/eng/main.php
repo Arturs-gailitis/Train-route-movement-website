@@ -143,7 +143,7 @@ session_start();
                         <input type="date" class="form-control" name="datums" id="datums" required>
                     </div>
 
-                    <input type="submit" value="Search" class="btn btn-primary" id ="meklet">
+                    <input type="submit" value="Search" class="btn btn-primary" id ="Meklet">
                 </form>
             </div>
         </div>

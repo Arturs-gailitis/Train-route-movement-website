@@ -27,9 +27,20 @@
     top: 50px;
 }
 
+/* Skatās pogu ar kuru var doties atpakaļ gaišajā režīmā */
+.light-mode #iziet {
+    color: black;
+    background-color: #0DCBCE;
+}
+
 /* Skatās pogu ar kuru var doties atpakaļ, ja uz tām pieliks kursoru */
 #iziet:hover {
     border-color: #0a58ca;
+}
+
+/* Skatās pogu ar kuru var doties atpakaļ, ja uz tām pieliks kursoru gaišajā režīmā*/
+.light-mode #iziet:hover {
+    color: white;
 }
 
 /* Skatās lapas nosaukumu */
@@ -40,6 +51,11 @@
     position: relative;
     margin-top: 50px;
     left: 60px;
+}
+
+/* Skatās lapas nosaukumu gaišajā režīmā*/
+.light-mode #infoNosaukums {
+    color: black;
 }
 
 /* Skatās vietu kurā ir sākuma un beigu stacijas, datums un to ikonas */
@@ -53,6 +69,11 @@
     white-space: nowrap;
     position: relative;
     right: 27px;
+}
+
+/* Skatās vietu kurā ir sākuma un beigu stacijas, datums un to ikonas gaišajā režīmā*/
+.light-mode #info {
+    color: black;
 }
 
 /* Skatās sākuma, beigu staciju undatuma ikonas */
@@ -84,6 +105,11 @@
     top: 30px;
 }
 
+/* Skatās maršruta staciju apstāšanās tabulas virsrakstu gaišajā režīmā */
+.light-mode #tabulasTituls {
+    color: black;
+}
+
 /* Skatās pašu tabulu */
 #tabula {
     position: relative;
@@ -97,6 +123,11 @@
     margin-bottom: 100px;
 }
 
+/* Skatās pašu tabulu gaišajā režīmā */
+.light-mode #tabula {
+    background-color: #0DCBCE;
+}
+
 /* Skatās tabulu kolonnu nosaukumus un to vērtības */
 .kollonuNosaukums, .vertibas {
     border: 2px solid black;
@@ -104,6 +135,11 @@
     text-align: center;
     padding-bottom: 10px;
     padding-top: 10px;
+}
+
+/* Skatās tabulu kolonnu nosaukumus un to vērtības gaišajā režīmā*/
+.light-mode .kollonuNosaukums, .light-mode .vertibas {
+    color: black;
 }
 
 /* Skatās tabulu kolonnu nosaukumus un konkrēti tikai staciju vērtības */
@@ -118,6 +154,11 @@
     left: 600px;
     color: white;
     top: 30px;
+}
+
+/* Skatās vizuālās kartes virsrakstu gaišajā režīmā*/
+.light-mode #kartesTituls {
+    color: black;
 }
 
 /* Skatās interaktīvu karti */

@@ -22,6 +22,12 @@
     color: white;
 }
 
+/* Skatās formas laukumu gaišajā režīmā*/
+.light-mode #formasLaukums {
+    background-color: #0DCBCE;
+    color: black;
+}
+
 /* SKatās ziņas kļūdu */
 #kluda {
     display: flex;
@@ -59,9 +65,20 @@
     padding-right: 10px;
 }
 
+/* Skatās ziņas izveidošanas formas sūtīšanas pogu gaišajā režīmā*/
+.light-mode #sutitZinu {
+    background-color: white;
+    color: black;
+}
+
 /* Skatās ziņas izveidošanas formas sūtīšanas pogu, ja uz tām pieliks kursoru */
 #sutitZinu:hover {
     border-color: #0a58ca;
+}
+
+/* Skatās ziņas izveidošanas formas sūtīšanas pogu, ja uz tām pieliks kursoru gaišajā režīmā */
+.light-mode #sutitZinu:hover {
+    color: #073C8D;
 }
 
 /* Skatās veiksmīgas ziņas nosūtīšanas laukumu */
@@ -87,6 +104,11 @@
     color: white;
 }
 
+.light-mode #nosutits {
+    background-color: #0DCBCE;
+    color: black;
+}
+
 /* Skatās veiksmīgas ziņas nosūtīšanas laukuma pogu */
 #atgriezties {
     display: flex;
@@ -101,7 +123,16 @@
     margin-bottom: 20px;
 }
 
+.light-mode #atgriezties {
+    background-color: white;
+    color: black;
+}
+
 /* Skatās veiksmīgas ziņas nosūtīšanas laukuma pogu, ja uz tām pieliks kursoru */
 #atgriezties:hover {
     border-color: #0a58ca;
+}
+
+.light-mode #atgriezties:hover {
+    color: #073C8D;
 }

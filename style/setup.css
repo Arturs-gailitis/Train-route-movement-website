@@ -21,6 +21,11 @@
     color: white;
 }
 
+.light-mode #laukums {
+    background-color: #0DCBCE;
+    color: black;
+}
+
 /* Skatās doties atpakaļ pogu */
 #laukums a {
     position: relative;
@@ -29,7 +34,16 @@
     border: 2px solid black; 
 }
 
+.light-mode #laukums a {
+    background-color: white;
+    color: black;
+}
+
 /* Skatās doties atpakaļ pogu, ja uz tām pieliks kursoru */
 #laukums a:hover {
     border-color: #0a58ca;
+}
+
+.light-mode #laukums a:hover {
+    color: #073C8D;
 }

@@ -3,6 +3,11 @@ body {
     background-color:#1f7a1f;
 }
 
+/* Skatās visu body elementu gaišajā režīmā*/
+.light-mode {
+    background-color: #fefae0;
+}
+
 /* Skatās visu header elementu */
 .galvene {
     display: flex;
@@ -11,6 +16,12 @@ body {
     border: 1px solid #015224;
     padding: 10px;
     width: auto;
+}
+
+/* Skatās visu header elementu gaišajā režīmā*/
+.light-mode .galvene {
+    background-color: #0DCBCE;
+    border: 1px solid #0DCBCE;
 }
 
 /* Skatās mājaslapas logo un nosaukumu, kā kopumu */
@@ -32,7 +43,12 @@ body {
 
 /* Skatās mājaslapas nosaukumu */
 #portālaNosaukums {
-    color: white; /* #6c757d white */
+    color: white;
+}
+
+/* Skatās mājaslapas nosaukumu gaišajā režīmā*/
+.light-mode #portālaNosaukums {
+    color: #000000;
 }
 
 /* Skatās visus navigācijas pogas kopumu */
@@ -55,6 +71,16 @@ ul {
     max-width: 100px;
     width: auto;
     margin-right: -18px;
+}
+
+/* Skatās navigācijas pogas gaišājā režīmā*/
+.light-mode .nav-link {
+    color: #000000;
+}
+
+/* Skatās navigācijas pogas ja uzliek kursoru gaišājā režīmā*/
+.light-mode .nav-link:hover {
+    color: white;
 }
 
 /* Skatās lietotāja un opciju ikonām navigācijā */
@@ -87,6 +113,13 @@ ul {
     z-index: 2;
 }
 
+/* Skatās profila sekciju gaišajā režīmā*/
+.light-mode #profilaLaukums {
+    background-color: #fefae0; 
+    border: 3px solid #0DCBCE;
+    border-top: 3px solid #0DCBCE;
+}
+
 /* Skatās profila sekcijā esošās pogas dizainu kopumu */
 #profilaLaukums ul {
     display: flex;
@@ -106,6 +139,17 @@ ul {
     padding-left: 15px;
     padding-right: 15px;
     background-color: #015224;
+}
+
+/* Skatās profila sekcijā esošās pogas dizainu individuāli gaišajā režīmā */
+.light-mode .profilaStatuss {
+    color: black !important;
+    background-color: #0DCBCE;
+}
+
+/* Skatās profila sekcijā esošās pogas dizainu individuāli, ja novieto kursoru gaišajā režīmā */
+.light-mode .profilaStatuss:hover {
+    color: white !important;
 }
 
 /* Skatās profila sekcijā esošās pogu kas ļauj izrakstīties no profila*/
@@ -128,6 +172,14 @@ ul {
     border-top: 3px solid #015224;
     transition: 0.4s;
     z-index: 2;
+}
+
+/* Skatās pašu opciju sadaļu gaišajā režīmā*/
+.light-mode #opcijuLaukums {
+    background-color: #fefae0;
+    color: black;
+    border: 3px solid #0DCBCE;
+    border-top: 3px solid #0DCBCE;
 }
 
 /* Skatās opcijas sadaļā fona izmaiņu daļu */
@@ -173,6 +225,12 @@ ul {
     border: 1px solid black;
 }
 
+/* Skatās opcijas sadaļā valoda izmaiņu selektoru gaišajā režīmā*/
+.light-mode #valoda {
+    background-color: #0DCBCE;
+    color: black;
+}
+
 /* Skatās visu footer elementu */
 footer {
     position: static;
@@ -180,8 +238,19 @@ footer {
     border: 1px, solid #015224;
 }
 
+/* Skatās visu footer elementu gaišajā režīmā */
+.light-mode footer {
+    background-color: #0DCBCE;
+    border: 1px, solid #0DCBCE;
+}
+
 /* Skatās footer tekstu */
 footer p {
     color: white;
     padding-left: 10px;
+}
+
+/* Skatās footer tekstu gaišajā režīmā */
+.light-mode footer p {
+    color: black;
 }

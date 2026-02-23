@@ -7,6 +7,11 @@ h2 {
     color: white;
 }
 
+/* Skatās lapas titulu gaišajā režīmā*/
+.light-mode h2 {
+    color: black;
+}
+
 /* Skatās paziņojuma filtrēšanas formu */
 form {
     display: flex;
@@ -21,9 +26,20 @@ form {
     border: 2px solid black;
 }
 
+/* Skatās meklēt pogu paziņojuma filtrēšanas formā gaišajā režīmā*/
+.light-mode #meklet {
+    background-color: #0DCBCE;
+    color: black;
+}
+
 /* Skatās meklēt pogu paziņojuma filtrēšanas formā, ja uz tām pieliks kursoru */
 #meklet:hover {
     border-color: #0a58ca;
+}
+
+/* Skatās meklēt pogu paziņojuma filtrēšanas formā, ja uz tām pieliks kursoru gaišajā režīmā*/
+.light-mode #meklet:hover {
+    color: white;
 }
 
 /* Skatās par ziņojuma ikonu */
@@ -45,6 +61,11 @@ form {
     color: white;
     top: 40px;
     margin-top: -20px;
+}
+
+/* Skatās par nav paziņojuma tekstu gaišajā režīmā*/
+.light-mode #navPazinojumi {
+    color: black;
 }
 
 /* Skatās daļu atgalīšanu paziņojumā */

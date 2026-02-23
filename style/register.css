@@ -21,6 +21,12 @@
     color: white;
 }
 
+/* Skatās profila reģistrēšanās laukumu gaišajā režīmā*/
+.light-mode #registresanas {
+    background-color: #0DCBCE;
+    color: black;
+}
+
 /* Skatās kļūdas kas rodās profila reģistrēšanā */
 #errors {
     text-align: center;
@@ -42,9 +48,20 @@
     border: 2px solid black;
 }
 
+/* Skatās profila reģistrēšanas pogu gaišajā režīmā*/
+.light-mode #registracijasPoga {
+    background-color: white;
+    color: black;
+}
+
 /* Skatās profila reģistrēšanas pogu, ja uz tām pieliks kursoru */
 #registracijasPoga:hover {
     border-color: #0a58ca;
+}
+
+/* Skatās profila reģistrēšanas pogu, ja uz tām pieliks kursoru gaišajā režīmā*/
+.light-mode #registracijasPoga:hover {
+    color: #073C8D;
 }
 
 /* Skatās footer elementu šajā failā */
