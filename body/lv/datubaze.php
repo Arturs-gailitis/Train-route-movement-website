@@ -77,18 +77,30 @@ try {
         }
     }
 
-    // iegūst visus datus no datubāzēm
-    $calendar = getAllCalendar($trainConnection);
-    $route = getAllRoutes($trainConnection);
-    $stopTimes = getAllStopTimes($trainConnection);
-    $stops = getAllStops($trainConnection);
-    $trips = getAllTrips($trainConnection);
-    $users = getAllUsers($userConnection);
-    $messages = getAllMessages($messagesConnection);
-    $notifications = getAllNotifications($notificationsConnection);
+    // nosaka kura tabula jāparāda
+    $activeTable = $_POST['tabula'] ?? 'calendar';
+
+    // ielādē tikai vajadzīgos datus
+    if ($activeTable === "calendar") {
+        $calendar = getAllCalendar($trainConnection);
+    } else if ($activeTable === "route") {
+        $route = getAllRoutes($trainConnection);
+    } else if ($activeTable === "stops") {
+        $stops = getAllStops($trainConnection);
+    } else if ($activeTable === "stop_time") {
+        $stopTimes = getAllStopTimes($trainConnection);
+    } else if ($activeTable === "trips") {
+        $trips = getAllTrips($trainConnection);
+    } else if ($activeTable === "user") {
+        $users = getAllUsers($userConnection);
+    } else if ($activeTable === "message") {
+        $messages = getAllMessages($messagesConnection);
+    } else if ($activeTable === "notification") {
+        $notifications = getAllNotifications($notificationsConnection);
+    } 
 
 } catch (Exception $e) {
-    $e->getMessage();
+    echo $e->getMessage();
 }
 
 ?>
@@ -204,297 +216,325 @@ try {
         </div>
         <div>
             <h3>Pārslēgties uz citām tabulām</h3>
-            <ul id="tabuluPogas">
-                <li>
-                    <button class="btn btn-primary" id="kalendars">Kalendārs</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="marsruts">Maršruti</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="stacija">Stacijas</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="apstasanas">Brauciena apstāšanās</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="braucieni">Braucieni</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="lietotaji">Lietotāji</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="zinojumi">Ziņojumi</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="paz">Paziņojumi</button>
-                </li>
-            </ul>
+            <form method="POST" action="datubaze.php">
+
+                <ul id="tabuluPogas">
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="calendar" id="kalendars">Kalendārs</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="route" id="marsruts">Maršruti</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="stops" id="stacija">Stacijas</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="stop_time" id="apstasanas">Brauciena apstāšanās</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="trips" id="braucieni">Braucieni</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="user" id="lietotaji">Lietotāji</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="message" id="zinojumi">Ziņojumi</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="notification" id="paz">Paziņojumi</button>
+                    </li>
+                </ul>
+            </form>
             <hr>
         </div>
         <div>
             <h3>Izveidot jaunu ierakstu</h3>
-            <a class="btn btn-primary" id="izveidot">Izveidot</a>
+            <?php if ($activeTable === "calendar"): ?>
+                <a class="btn btn-primary izveidot" href="izveidot.php?tabula=calendar">Izveidot</a>
+            <?php elseif ($activeTable === "route"): ?>
+                <a class="btn btn-primary izveidot" href="izveidot.php?tabula=routes">Izveidot</a>
+            <?php elseif ($activeTable === "stops"): ?> 
+                <a class="btn btn-primary izveidot" href="izveidot.php?tabula=stops">Izveidot</a>
+            <?php elseif ($activeTable === "stop_time"): ?>
+                <a class="btn btn-primary izveidot" href="izveidot.php?tabula=stop_times">Izveidot</a>
+            <?php elseif ($activeTable === "trips"): ?> 
+                <a class="btn btn-primary izveidot" href="izveidot.php?tabula=trips">Izveidot</a>
+            <?php elseif ($activeTable === "user"): ?>  
+                <a class="btn btn-primary neizveidot">Izveidot</a>
+            <?php elseif ($activeTable === "message"): ?>   
+                <a class="btn btn-primary neizveidot">Izveidot</a>
+            <?php elseif ($activeTable === "notification"): ?>
+                <a class="btn btn-primary izveidot" href="izveidot.php?tabula=notifications">Izveidot</a>
+            <?php endif ?>
         </div>
     </div>
     <div class=tabulas>
-        <table class="kalendaraTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Service id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Pirmdiena</label></th>
-                    <th class="kolonnuNosaukumi"><label>Otrdiena</label></th>
-                    <th class="kolonnuNosaukumi"><label>Trešdiena</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Ceturtdiena</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Piekdiena</label></th>
-                    <th class="kolonnuNosaukumi"><label>Sestdiena</label></th>
-                    <th class="kolonnuNosaukumi"><label>Svētdiena</label></th>
-                    <th class="kolonnuNosaukumi"><label>Sākuma datums</label></th>
-                    <th class="kolonnuNosaukumi"><label>Beigu datums</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($calendar as $c) : ?>
+        <?php if ($activeTable === "calendar"): ?>
+            <table class="kalendaraTabula">
+                <thead>
                     <tr>
-                        <td><?= $c['id'] ?></td>
-                        <td><?= $c['service_id'] ?></td>
-                        <td><?= $c['monday'] ?></td>
-                        <td><?= $c['tuesday'] ?></td>
-                        <td><?= $c['wednesday'] ?></td>
-                        <td><?= $c['thursday'] ?></td>
-                        <td><?= $c['friday'] ?></td>
-                        <td><?= $c['saturday'] ?></td>
-                        <td><?= $c['sunday'] ?></td>
-                        <td><?= $c['start_date'] ?></td>
-                        <td><?= $c['end_date'] ?></td>
-                        <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=calendar&id=<?php echo $c['id'] ?>">
-                                Rediģēt
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=calendar&id=<?php echo $c['id'] ?>">
-                                Dzēst
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Service id</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Pirmdiena</label></th>
+                        <th class="kolonnuNosaukumi"><label>Otrdiena</label></th>
+                        <th class="kolonnuNosaukumi"><label>Trešdiena</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Ceturtdiena</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Piekdiena</label></th>
+                        <th class="kolonnuNosaukumi"><label>Sestdiena</label></th>
+                        <th class="kolonnuNosaukumi"><label>Svētdiena</label></th>
+                        <th class="kolonnuNosaukumi"><label>Sākuma datums</label></th>
+                        <th class="kolonnuNosaukumi"><label>Beigu datums</label></th>
+                        <th class="kolonnuNosaukumi"><label>Darbības</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-        <table class="MarsrutaTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Route id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Aģentūra</label></th>
-                    <th class="kolonnuNosaukumi"><label>Maršruta Nosaukums</label></th>
-                    <th class="kolonnuNosaukumi"><label>Tips</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Krāsa</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Teksta Krāsa</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($route as $r) : ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($calendar as $c) : ?>
+                        <tr>
+                            <td><?= $c['id'] ?></td>
+                            <td><?= $c['service_id'] ?></td>
+                            <td><?= $c['monday'] ?></td>
+                            <td><?= $c['tuesday'] ?></td>
+                            <td><?= $c['wednesday'] ?></td>
+                            <td><?= $c['thursday'] ?></td>
+                            <td><?= $c['friday'] ?></td>
+                            <td><?= $c['saturday'] ?></td>
+                            <td><?= $c['sunday'] ?></td>
+                            <td><?= $c['start_date'] ?></td>
+                            <td><?= $c['end_date'] ?></td>
+                            <td class= darbibas>
+                                <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=calendar&id=<?php echo $c['id'] ?>">
+                                    Rediģēt
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=calendar&id=<?php echo $c['id'] ?>">
+                                    Dzēst
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "route"): ?>
+            <table class="MarsrutaTabula">
+                <thead>
                     <tr>
-                        <td><?= $r['id'] ?></td>
-                        <td><?= $r['route_id'] ?></td>
-                        <td><?= $r['agency'] ?></td>
-                        <td><?= $r['name'] ?></td>
-                        <td><?= $r['type'] ?></td>
-                        <td><?= $r['color'] ?></td>
-                        <td><?= $r['text_color'] ?></td>
-                        <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=route&id=<?php echo $r['id'] ?>">
-                                Rediģēt
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=route&id=<?php echo $r['id'] ?>">
-                                Dzēst
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Route id</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Aģentūra</label></th>
+                        <th class="kolonnuNosaukumi"><label>Maršruta Nosaukums</label></th>
+                        <th class="kolonnuNosaukumi"><label>Tips</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Krāsa</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Teksta Krāsa</label></th>
+                        <th class="kolonnuNosaukumi"><label>Darbības</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-        <table class="StacijasTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Stop Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Stacijas Nosaukums</label></th>
-                    <th class="kolonnuNosaukumi"><label>Platuma Grādi</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Garuma Grādi</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($stops as $s) : ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($route as $r) : ?>
+                        <tr>
+                            <td><?= $r['id'] ?></td>
+                            <td><?= $r['route_id'] ?></td>
+                            <td><?= $r['agency'] ?></td>
+                            <td><?= $r['name'] ?></td>
+                            <td><?= $r['type'] ?></td>
+                            <td><?= $r['color'] ?></td>
+                            <td><?= $r['text_color'] ?></td>
+                            <td class= darbibas>
+                                <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=route&id=<?php echo $r['id'] ?>">
+                                    Rediģēt
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=route&id=<?php echo $r['id'] ?>">
+                                    Dzēst
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "stops"): ?>
+            <table class="StacijasTabula">
+                <thead>
                     <tr>
-                        <td><?= $s['id'] ?></td>
-                        <td><?= $s['stop_id'] ?></td>
-                        <td><?= $s['name'] ?></td>
-                        <td><?= $s['latitude'] ?></td>
-                        <td><?= $s['longitude'] ?></td>
-                        <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=stops&id=<?php echo $s['id'] ?>">
-                                Rediģēt
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=stops&id=<?php echo $s['id'] ?>">
-                                Dzēst
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Stop Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Stacijas Nosaukums</label></th>
+                        <th class="kolonnuNosaukumi"><label>Platuma Grādi</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Garuma Grādi</label></th>
+                        <th class="kolonnuNosaukumi"><label>Darbības</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-       <table class="BraucienuApstasanasTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Trip Id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Ierašanās Laiks</label></th>
-                    <th class="kolonnuNosaukumi"><label>Izbraukšanas Laiks</label></th>
-                    <th class="kolonnuNosaukumi"><label>Stop Id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Apstāšanās Sekvence</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($stopTimes as $st) : ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($stops as $s) : ?>
+                        <tr>
+                            <td><?= $s['id'] ?></td>
+                            <td><?= $s['stop_id'] ?></td>
+                            <td><?= $s['name'] ?></td>
+                            <td><?= $s['latitude'] ?></td>
+                            <td><?= $s['longitude'] ?></td>
+                            <td class= darbibas>
+                                <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=stops&id=<?php echo $s['id'] ?>">
+                                    Rediģēt
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=stops&id=<?php echo $s['id'] ?>">
+                                    Dzēst
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "stop_time"): ?>
+            <table class="BraucienuApstasanasTabula">
+                <thead>
                     <tr>
-                        <td><?= $st['id'] ?></td>
-                        <td><?= $st['trip_id'] ?></td>
-                        <td><?= $st['arrival_time'] ?></td>
-                        <td><?= $st['departure_time'] ?></td>
-                        <td><?= $st['stop_id'] ?></td>
-                        <td><?= $st['stop_sequence'] ?></td>
-                        <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
-                                Rediģēt
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
-                                Dzēst
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Trip Id</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Ierašanās Laiks</label></th>
+                        <th class="kolonnuNosaukumi"><label>Izbraukšanas Laiks</label></th>
+                        <th class="kolonnuNosaukumi"><label>Stop Id</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Apstāšanās Sekvence</label></th>
+                        <th class="kolonnuNosaukumi"><label>Darbības</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-       <table class="BraucienuTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Route Id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Service Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Trip Id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Maršruta Galamērķa Apzīmējums</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($trips as $t) : ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($stopTimes as $st) : ?>
+                        <tr>
+                            <td><?= $st['id'] ?></td>
+                            <td><?= $st['trip_id'] ?></td>
+                            <td><?= $st['arrival_time'] ?></td>
+                            <td><?= $st['departure_time'] ?></td>
+                            <td><?= $st['stop_id'] ?></td>
+                            <td><?= $st['stop_sequence'] ?></td>
+                            <td class= darbibas>
+                                <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
+                                    Rediģēt
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
+                                    Dzēst
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "trips"): ?>
+            <table class="BraucienuTabula">
+                <thead>
                     <tr>
-                        <td><?= $t['id'] ?></td>
-                        <td><?= $t['route_id'] ?></td>
-                        <td><?= $t['service_id'] ?></td>
-                        <td><?= $t['trip_id'] ?></td>
-                        <td><?= $t['headsign'] ?></td>
-                        <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=trips&id=<?php echo $t['id'] ?>">
-                                Rediģēt
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=trips&id=<?php echo $t['id'] ?>">
-                                Dzēst
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Route Id</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Service Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Trip Id</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Maršruta Galamērķa Apzīmējums</label></th>
+                        <th class="kolonnuNosaukumi"><label>Darbības</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-       <table class="LietotajuTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Lietotājvārds</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Epasts</label></th>
-                    <th class="kolonnuNosaukumi"><label>Tiesības</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Parole</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($users as $u) : ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($trips as $t) : ?>
+                        <tr>
+                            <td><?= $t['id'] ?></td>
+                            <td><?= $t['route_id'] ?></td>
+                            <td><?= $t['service_id'] ?></td>
+                            <td><?= $t['trip_id'] ?></td>
+                            <td><?= $t['headsign'] ?></td>
+                            <td class= darbibas>
+                                <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=trips&id=<?php echo $t['id'] ?>">
+                                    Rediģēt
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=trips&id=<?php echo $t['id'] ?>">
+                                    Dzēst
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "user"): ?>
+            <table class="LietotajuTabula">
+                <thead>
                     <tr>
-                        <td><?= $u['id'] ?></td>
-                        <td><?= $u['username'] ?></td>
-                        <td><?= $u['email'] ?></td>
-                        <td><?= $u['rights'] ?></td>
-                        <td><?= $u['password'] ?></td>
-                        <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=user&id=<?php echo $u['id'] ?>">
-                                Rediģēt
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=user&id=<?php echo $u['id'] ?>">
-                                Dzēst
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Lietotājvārds</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Epasts</label></th>
+                        <th class="kolonnuNosaukumi"><label>Tiesības</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Parole</label></th>
+                        <th class="kolonnuNosaukumi"><label>Darbības</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-        <table class= "ZinuTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>ID</label></th>
-                    <th class="kolonnuNosaukumi"><label>Epasts</label></th>
-                    <th class="kolonnuNosaukumi"><label>Ziņa</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($messages as $m) :  ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($users as $u) : ?>
+                        <tr>
+                            <td><?= $u['id'] ?></td>
+                            <td><?= $u['username'] ?></td>
+                            <td><?= $u['email'] ?></td>
+                            <td><?= $u['rights'] ?></td>
+                            <td><?= $u['password'] ?></td>
+                            <td class= darbibas>
+                                <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=user&id=<?php echo $u['id'] ?>">
+                                    Rediģēt
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=user&id=<?php echo $u['id'] ?>">
+                                    Dzēst
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "message"): ?>
+            <table class= "ZinuTabula">
+                <thead>
                     <tr>
-                        <td><?= $m['id'] ?></td>
-                        <td><?= $m['email'] ?></td>
-                        <td><?= $m['message'] ?></td>
-                        <td id="darbibas">
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=message&id=<?php echo $m['id'] ?>">
-                                Dzēst
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>ID</label></th>
+                        <th class="kolonnuNosaukumi"><label>Epasts</label></th>
+                        <th class="kolonnuNosaukumi"><label>Ziņa</label></th>
+                        <th class="kolonnuNosaukumi"><label>Darbības</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-        <table class= "PazinojumuTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>ID</label></th>
-                    <th class="kolonnuNosaukumi"><label>Virsraksts</label></th>
-                    <th class="kolonnuNosaukumi"><label>Attēla atrašanās vieta</label></th>
-                    <th class="kolonnuNosaukumi"><label>Paziņojuma teksts</label></th>
-                    <th class="kolonnuNosaukumi"><label>Darbības</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($notifications as $n) :  ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($messages as $m) :  ?>
+                        <tr>
+                            <td><?= $m['id'] ?></td>
+                            <td><?= $m['email'] ?></td>
+                            <td><?= $m['message'] ?></td>
+                            <td id="darbibas">
+                                <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=message&id=<?php echo $m['id'] ?>">
+                                    Dzēst
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "notification"): ?>
+            <table class= "PazinojumuTabula">
+                <thead>
                     <tr>
-                        <td><?= $n['id'] ?></td>
-                        <td><?= $n['title'] ?></td>
-                        <td><?= $n['image'] ?></td>
-                        <td><?= $n['info'] ?></td>
-                        <td id="darbibas">
-                            <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=notification&id=<?php echo $n['id'] ?>">
-                                Rediģēt
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=notification&id=<?php echo $n['id'] ?>">
-                                Dzēst
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>ID</label></th>
+                        <th class="kolonnuNosaukumi"><label>Virsraksts</label></th>
+                        <th class="kolonnuNosaukumi"><label>Attēla atrašanās vieta</label></th>
+                        <th class="kolonnuNosaukumi"><label>Paziņojuma teksts</label></th>
+                        <th class="kolonnuNosaukumi"><label>Darbības</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($notifications as $n) :  ?>
+                        <tr>
+                            <td><?= $n['id'] ?></td>
+                            <td><?= $n['title'] ?></td>
+                            <td><?= $n['image'] ?></td>
+                            <td><?= $n['info'] ?></td>
+                            <td id="darbibas">
+                                <a class="btn btn-primary btn-sm rediget" href="rediget.php?tabula=notification&id=<?php echo $n['id'] ?>">
+                                    Rediģēt
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="datubaze.php?tabula=notification&id=<?php echo $n['id'] ?>">
+                                    Dzēst
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php endif ?>
     </div>
 </body>
 <footer class="mt-5 py-3">

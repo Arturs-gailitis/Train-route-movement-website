@@ -35,6 +35,7 @@
     background-color: #015224;
 }
 
+/* Skatās pašu pogas laukumu gaišajā režīmā */
 .light-mode #poguLaukums {
     color: black;
     background-color: #0DCBCE;
@@ -79,13 +80,14 @@
     border-color: black;
 }
 
+/* Skatāspogu sadaļas pašas pogas gaišajā režīmā*/
 .light-mode #tabuluPogas li button, .light-mode #restartet li button {
     background-color: white;
     color: black;
 }
 
 /* Skatās pašu izveidot ieraksta pogu pogas sadaļā */
-#izveidot {
+.izveidot {
     background-color: #1f7a1f;
     border-color: black;
     display: flex;
@@ -96,17 +98,34 @@
     margin-bottom: 30px;
 }
 
-.light-mode #izveidot {
+/* Skatās pašu izveidot ieraksta pogu pogas sadaļā gaišajā režīmā */
+.light-mode .izveidot {
     background-color: white !important;
     color: black;
 }
 
-/* Skatās pogas pogu sadaļā, ja uz tām pieliks kursoru */
-#tabuluPogas li button:hover, #restartet li button:hover,  #izveidot:hover{
-    border-color: blue;
+/* Skatās pašu neizveidot ieraksta pogu pogas sadaļā */
+.neizveidot {
+    background-color: grey;
+    border-color: black;
+    display: flex;
+    position: relative;
+    justify-self: center;
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    pointer-events: none;
 }
 
-.light-mode #tabuluPogas li button:hover, .light-mode #restartet li button:hover, .light-mode #izveidot:hover {
+/* Skatās pogas pogu sadaļā, ja uz tām pieliks kursoru */
+#tabuluPogas li button:hover, #restartet li button:hover,  .izveidot:hover{
+    border-color: blue;
+    background-color: #1f7a1f;
+}
+
+/* Skatās pogas pogu sadaļā, ja uz tām pieliks kursoru gaišajā režīmā*/
+.light-mode #tabuluPogas li button:hover, .light-mode #restartet li button:hover, .light-mode .izveidot:hover {
+    background-color: white;
     color: #073C8D;
 }
 
@@ -126,6 +145,7 @@
     width: auto;
 }
 
+/* SKatās visas datubāžu datu tabulas gaišajā režīmā*/
 .light-mode .tabulas {
     background-color: #0DCBCE;
     color: black;
@@ -155,6 +175,7 @@
     border-color: #1f7a1f;
 }
 
+/* Skatās rediģēt pogu tabulās gaišajā režīmā*/
 .light-mode .rediget {
     background-color: white;
     border-color: black;
@@ -166,6 +187,7 @@
     background-color: #1f7a1f;
 }
 
+/* Skatās rediģēt pogu tabulās, ja uz tām pieliks kursoru gaišajā režīmā*/
 .light-mode .rediget:hover {
     color: #073C8D;
     background-color: white;

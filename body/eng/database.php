@@ -77,15 +77,27 @@ try {
         }
     }
 
-    // iegūst visus datus no datubāzēm
-    $calendar = getAllCalendar($trainConnection);
-    $route = getAllRoutes($trainConnection);
-    $stopTimes = getAllStopTimes($trainConnection);
-    $stops = getAllStops($trainConnection);
-    $trips = getAllTrips($trainConnection);
-    $users = getAllUsers($userConnection);
-    $messages = getAllMessages($messagesConnection);
-    $notifications = getAllNotifications($notificationsConnection);
+    // nosaka kura tabula jāparāda
+    $activeTable = $_POST['tabula'] ?? 'calendar';
+
+    // ielādē tikai vajadzīgos datus
+    if ($activeTable === "calendar") {
+        $calendar = getAllCalendar($trainConnection);
+    } else if ($activeTable === "route") {
+        $route = getAllRoutes($trainConnection);
+    } else if ($activeTable === "stops") {
+        $stops = getAllStops($trainConnection);
+    } else if ($activeTable === "stop_time") {
+        $stopTimes = getAllStopTimes($trainConnection);
+    } else if ($activeTable === "trips") {
+        $trips = getAllTrips($trainConnection);
+    } else if ($activeTable === "user") {
+        $users = getAllUsers($userConnection);
+    } else if ($activeTable === "message") {
+        $messages = getAllMessages($messagesConnection);
+    } else if ($activeTable === "notification") {
+        $notifications = getAllNotifications($notificationsConnection);
+    } 
 
 } catch (Exception $e) {
     $e->getMessage();
@@ -203,297 +215,325 @@ try {
         </div>
         <div>
             <h3>Switch to other tables</h3>
-            <ul id="tabuluPogas">
-                <li>
-                    <button class="btn btn-primary" id="kalendars">Calendar</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="marsruts">Routes</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="stacija">Stations</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="apstasanas">Trip stop</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="braucieni">Trips</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="lietotaji">Users</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="zinojumi">Messages</button>
-                </li>
-                <li>
-                    <button class="btn btn-primary" id="paz">Notifications</button>
-                </li>
-            </ul>
+            <form method="POST" action="database.php">
+
+                <ul id="tabuluPogas">
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="calendar" id="kalendars">Calendar</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="route" id="marsruts">Routes</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="stops" id="stacija">Stations</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="stop_time" id="apstasanas">Trip stops</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="trips" id="braucieni">Trips</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="user" id="lietotaji">Users</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="message" id="zinojumi">Messages</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" type="submit" name="tabula" value="notification" id="paz">Notifications</button>
+                    </li>
+                </ul>
+            </form>
             <hr>
         </div>
         <div>
             <h3>Create a new entry</h3>
-            <a class="btn btn-primary" id="izveidot">Create</a>
+            <?php if ($activeTable === "calendar"): ?>
+                <a class="btn btn-primary izveidot" href="create.php?tabula=calendar">Create</a>
+            <?php elseif ($activeTable === "route"): ?>
+                <a class="btn btn-primary izveidot" href="create.php?tabula=routes">Create</a>
+            <?php elseif ($activeTable === "stops"): ?> 
+                <a class="btn btn-primary izveidot" href="create.php?tabula=stops">Create</a>
+            <?php elseif ($activeTable === "stop_time"): ?>
+                <a class="btn btn-primary izveidot" href="create.php?tabula=stop_times">Create</a>
+            <?php elseif ($activeTable === "trips"): ?> 
+                <a class="btn btn-primary izveidot" href="create.php?tabula=trips">Create</a>
+            <?php elseif ($activeTable === "user"): ?>  
+                <a class="btn btn-primary neizveidot">Create</a>
+            <?php elseif ($activeTable === "message"): ?>   
+                <a class="btn btn-primary neizveidot">Create</a>
+            <?php elseif ($activeTable === "notification"): ?>
+                <a class="btn btn-primary izveidot" href="create.php?tabula=notifications">Create</a>
+            <?php endif ?>
         </div>
     </div>
     <div class=tabulas>
-        <table class="kalendaraTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Service id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Monday</label></th>
-                    <th class="kolonnuNosaukumi"><label>Tuesday</label></th>
-                    <th class="kolonnuNosaukumi"><label>Wednesday</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Ceturtdiena</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Thursday</label></th>
-                    <th class="kolonnuNosaukumi"><label>Saturday</label></th>
-                    <th class="kolonnuNosaukumi"><label>Sunday</label></th>
-                    <th class="kolonnuNosaukumi"><label>Start date</label></th>
-                    <th class="kolonnuNosaukumi"><label>End date</label></th>
-                    <th class="kolonnuNosaukumi"><label>Activities</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($calendar as $c) : ?>
+        <?php if ($activeTable === "calendar"): ?>
+            <table class="kalendaraTabula">
+                <thead>
                     <tr>
-                        <td><?= $c['id'] ?></td>
-                        <td><?= $c['service_id'] ?></td>
-                        <td><?= $c['monday'] ?></td>
-                        <td><?= $c['tuesday'] ?></td>
-                        <td><?= $c['wednesday'] ?></td>
-                        <td><?= $c['thursday'] ?></td>
-                        <td><?= $c['friday'] ?></td>
-                        <td><?= $c['saturday'] ?></td>
-                        <td><?= $c['sunday'] ?></td>
-                        <td><?= $c['start_date'] ?></td>
-                        <td><?= $c['end_date'] ?></td>
-                        <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=calendar&id=<?php echo $c['id'] ?>">
-                                Edit
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=calendar&id=<?php echo $c['id'] ?>">
-                                Delete
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Service id</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Monday</label></th>
+                        <th class="kolonnuNosaukumi"><label>Tuesday</label></th>
+                        <th class="kolonnuNosaukumi"><label>Wednesday</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Ceturtdiena</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Thursday</label></th>
+                        <th class="kolonnuNosaukumi"><label>Saturday</label></th>
+                        <th class="kolonnuNosaukumi"><label>Sunday</label></th>
+                        <th class="kolonnuNosaukumi"><label>Start date</label></th>
+                        <th class="kolonnuNosaukumi"><label>End date</label></th>
+                        <th class="kolonnuNosaukumi"><label>Activities</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-        <table class="MarsrutaTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Route id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Agency</label></th>
-                    <th class="kolonnuNosaukumi"><label>Route Name</label></th>
-                    <th class="kolonnuNosaukumi"><label>Type</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Color</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Text color</label></th>
-                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($route as $r) : ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($calendar as $c) : ?>
+                        <tr>
+                            <td><?= $c['id'] ?></td>
+                            <td><?= $c['service_id'] ?></td>
+                            <td><?= $c['monday'] ?></td>
+                            <td><?= $c['tuesday'] ?></td>
+                            <td><?= $c['wednesday'] ?></td>
+                            <td><?= $c['thursday'] ?></td>
+                            <td><?= $c['friday'] ?></td>
+                            <td><?= $c['saturday'] ?></td>
+                            <td><?= $c['sunday'] ?></td>
+                            <td><?= $c['start_date'] ?></td>
+                            <td><?= $c['end_date'] ?></td>
+                            <td class= darbibas>
+                                <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=calendar&id=<?php echo $c['id'] ?>">
+                                    Edit
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=calendar&id=<?php echo $c['id'] ?>">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "route"): ?>
+            <table class="MarsrutaTabula">
+                <thead>
                     <tr>
-                        <td><?= $r['id'] ?></td>
-                        <td><?= $r['route_id'] ?></td>
-                        <td><?= $r['agency'] ?></td>
-                        <td><?= $r['name'] ?></td>
-                        <td><?= $r['type'] ?></td>
-                        <td><?= $r['color'] ?></td>
-                        <td><?= $r['text_color'] ?></td>
-                        <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=route&id=<?php echo $r['id'] ?>">
-                                Edit
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=route&id=<?php echo $r['id'] ?>">
-                                Delete
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Route id</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Agency</label></th>
+                        <th class="kolonnuNosaukumi"><label>Route Name</label></th>
+                        <th class="kolonnuNosaukumi"><label>Type</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Color</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Text color</label></th>
+                        <th class="kolonnuNosaukumi"><label>Actions</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-        <table class="StacijasTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Stop Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Station Name</label></th>
-                    <th class="kolonnuNosaukumi"><label>Latitude</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Longitude</label></th>
-                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($stops as $s) : ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($route as $r) : ?>
+                        <tr>
+                            <td><?= $r['id'] ?></td>
+                            <td><?= $r['route_id'] ?></td>
+                            <td><?= $r['agency'] ?></td>
+                            <td><?= $r['name'] ?></td>
+                            <td><?= $r['type'] ?></td>
+                            <td><?= $r['color'] ?></td>
+                            <td><?= $r['text_color'] ?></td>
+                            <td class= darbibas>
+                                <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=route&id=<?php echo $r['id'] ?>">
+                                    Edit
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=route&id=<?php echo $r['id'] ?>">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "stops"): ?>
+            <table class="StacijasTabula">
+                <thead>
                     <tr>
-                        <td><?= $s['id'] ?></td>
-                        <td><?= $s['stop_id'] ?></td>
-                        <td><?= $s['name'] ?></td>
-                        <td><?= $s['latitude'] ?></td>
-                        <td><?= $s['longitude'] ?></td>
-                        <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=stops&id=<?php echo $s['id'] ?>">
-                                Edit
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=stops&id=<?php echo $s['id'] ?>">
-                                Delete
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Stop Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Station Name</label></th>
+                        <th class="kolonnuNosaukumi"><label>Latitude</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Longitude</label></th>
+                        <th class="kolonnuNosaukumi"><label>Actions</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-       <table class="BraucienuApstasanasTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Trip Id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Arrival Time</label></th>
-                    <th class="kolonnuNosaukumi"><label>Departure Time</label></th>
-                    <th class="kolonnuNosaukumi"><label>Stop Id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Stopping Sequence</label></th>
-                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($stopTimes as $st) : ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($stops as $s) : ?>
+                        <tr>
+                            <td><?= $s['id'] ?></td>
+                            <td><?= $s['stop_id'] ?></td>
+                            <td><?= $s['name'] ?></td>
+                            <td><?= $s['latitude'] ?></td>
+                            <td><?= $s['longitude'] ?></td>
+                            <td class= darbibas>
+                                <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=stops&id=<?php echo $s['id'] ?>">
+                                    Edit
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=stops&id=<?php echo $s['id'] ?>">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "stop_time"): ?>
+            <table class="BraucienuApstasanasTabula">
+                <thead>
                     <tr>
-                        <td><?= $st['id'] ?></td>
-                        <td><?= $st['trip_id'] ?></td>
-                        <td><?= $st['arrival_time'] ?></td>
-                        <td><?= $st['departure_time'] ?></td>
-                        <td><?= $st['stop_id'] ?></td>
-                        <td><?= $st['stop_sequence'] ?></td>
-                        <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
-                                Edit
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
-                                Delete
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Trip Id</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Arrival Time</label></th>
+                        <th class="kolonnuNosaukumi"><label>Departure Time</label></th>
+                        <th class="kolonnuNosaukumi"><label>Stop Id</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Stopping Sequence</label></th>
+                        <th class="kolonnuNosaukumi"><label>Actions</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-       <table class="BraucienuTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Route Id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Service Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Trip Id</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Route Destination Designation</label></th>
-                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($trips as $t) : ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($stopTimes as $st) : ?>
+                        <tr>
+                            <td><?= $st['id'] ?></td>
+                            <td><?= $st['trip_id'] ?></td>
+                            <td><?= $st['arrival_time'] ?></td>
+                            <td><?= $st['departure_time'] ?></td>
+                            <td><?= $st['stop_id'] ?></td>
+                            <td><?= $st['stop_sequence'] ?></td>
+                            <td class= darbibas>
+                                <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
+                                    Edit
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=stop_time&id=<?php echo $st['id'] ?>">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "trips"): ?>
+            <table class="BraucienuTabula">
+                <thead>
                     <tr>
-                        <td><?= $t['id'] ?></td>
-                        <td><?= $t['route_id'] ?></td>
-                        <td><?= $t['service_id'] ?></td>
-                        <td><?= $t['trip_id'] ?></td>
-                        <td><?= $t['headsign'] ?></td>
-                        <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=trips&id=<?php echo $t['id'] ?>">
-                                Edit
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=trips&id=<?php echo $t['id'] ?>">
-                                Delete
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Route Id</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Service Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Trip Id</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Route Destination Designation</label></th>
+                        <th class="kolonnuNosaukumi"><label>Actions</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-       <table class="LietotajuTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>Id</label></th>
-                    <th class="kolonnuNosaukumi"><label>Username</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Email</label></th>
-                    <th class="kolonnuNosaukumi"><label>Rights</label></th>
-                    <th class="kolonnuNosaukumi" ><label>Password</label></th>
-                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($users as $u) : ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($trips as $t) : ?>
+                        <tr>
+                            <td><?= $t['id'] ?></td>
+                            <td><?= $t['route_id'] ?></td>
+                            <td><?= $t['service_id'] ?></td>
+                            <td><?= $t['trip_id'] ?></td>
+                            <td><?= $t['headsign'] ?></td>
+                            <td class= darbibas>
+                                <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=trips&id=<?php echo $t['id'] ?>">
+                                    Edit
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=trips&id=<?php echo $t['id'] ?>">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "user"): ?>
+            <table class="LietotajuTabula">
+                <thead>
                     <tr>
-                        <td><?= $u['id'] ?></td>
-                        <td><?= $u['username'] ?></td>
-                        <td><?= $u['email'] ?></td>
-                        <td><?= $u['rights'] ?></td>
-                        <td><?= $u['password'] ?></td>
-                        <td class= darbibas>
-                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=user&id=<?php echo $u['id'] ?>">
-                                Edit
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=user&id=<?php echo $u['id'] ?>">
-                                Delete
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>Id</label></th>
+                        <th class="kolonnuNosaukumi"><label>Username</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Email</label></th>
+                        <th class="kolonnuNosaukumi"><label>Rights</label></th>
+                        <th class="kolonnuNosaukumi" ><label>Password</label></th>
+                        <th class="kolonnuNosaukumi"><label>Actions</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-        <table class= "ZinuTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>ID</label></th>
-                    <th class="kolonnuNosaukumi"><label>Email</label></th>
-                    <th class="kolonnuNosaukumi"><label>Message</label></th>
-                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($messages as $m) :  ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($users as $u) : ?>
+                        <tr>
+                            <td><?= $u['id'] ?></td>
+                            <td><?= $u['username'] ?></td>
+                            <td><?= $u['email'] ?></td>
+                            <td><?= $u['rights'] ?></td>
+                            <td><?= $u['password'] ?></td>
+                            <td class= darbibas>
+                                <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=user&id=<?php echo $u['id'] ?>">
+                                    Edit
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=user&id=<?php echo $u['id'] ?>">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "message"): ?>
+            <table class= "ZinuTabula">
+                <thead>
                     <tr>
-                        <td><?= $m['id'] ?></td>
-                        <td><?= $m['email'] ?></td>
-                        <td><?= $m['message'] ?></td>
-                        <td id="darbibas">
-                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=message&id=<?php echo $m['id'] ?>">
-                                Delete
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>ID</label></th>
+                        <th class="kolonnuNosaukumi"><label>Email</label></th>
+                        <th class="kolonnuNosaukumi"><label>Message</label></th>
+                        <th class="kolonnuNosaukumi"><label>Actions</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
-        <table class= "PazinojumuTabula">
-            <thead>
-                <tr>
-                    <th class="kolonnuNosaukumi"><label>ID</label></th>
-                    <th class="kolonnuNosaukumi"><label>Title</label></th>
-                    <th class="kolonnuNosaukumi"><label>Image location</label></th>
-                    <th class="kolonnuNosaukumi"><label>Text</label></th>
-                    <th class="kolonnuNosaukumi"><label>Actions</label></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($notifications as $n) :  ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($messages as $m) :  ?>
+                        <tr>
+                            <td><?= $m['id'] ?></td>
+                            <td><?= $m['email'] ?></td>
+                            <td><?= $m['message'] ?></td>
+                            <td id="darbibas">
+                                <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=message&id=<?php echo $m['id'] ?>">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php elseif ($activeTable === "notification"): ?>
+            <table class= "PazinojumuTabula">
+                <thead>
                     <tr>
-                        <td><?= $n['id'] ?></td>
-                        <td><?= $n['title'] ?></td>
-                        <td><?= $n['image'] ?></td>
-                        <td><?= $n['info'] ?></td>
-                        <td id="darbibas">
-                            <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=notification&id=<?php echo $n['id'] ?>">
-                                Edit
-                            </a>
-                            <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=notification&id=<?php echo $n['id'] ?>">
-                                Delete
-                            </a>
-                        </td>
+                        <th class="kolonnuNosaukumi"><label>ID</label></th>
+                        <th class="kolonnuNosaukumi"><label>Title</label></th>
+                        <th class="kolonnuNosaukumi"><label>Image location</label></th>
+                        <th class="kolonnuNosaukumi"><label>Text</label></th>
+                        <th class="kolonnuNosaukumi"><label>Actions</label></th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($notifications as $n) :  ?>
+                        <tr>
+                            <td><?= $n['id'] ?></td>
+                            <td><?= $n['title'] ?></td>
+                            <td><?= $n['image'] ?></td>
+                            <td><?= $n['info'] ?></td>
+                            <td id="darbibas">
+                                <a class="btn btn-primary btn-sm rediget" href="edit.php?tabula=notification&id=<?php echo $n['id'] ?>">
+                                    Edit
+                                </a>
+                                <a class="btn btn-primary btn-sm dzest" href="database.php?tabula=notification&id=<?php echo $n['id'] ?>">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        <?php endif ?>
     </div>
 </body>
 <footer class="mt-5 py-3">
