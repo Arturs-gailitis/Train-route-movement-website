@@ -125,7 +125,7 @@ try {
             <button id="meklet" type="submit" class="btn btn-primary">Search</button>
         </form>
         <?php if (empty($record)): ?>
-            <img src="/icons/error.svg" alt="Error sign" class="kluda">
+            <img src="/icons/info.svg" alt="Error sign" class="kluda">
             <h3 id="navPazinojumi">No current notifications have been published.</h3>
         <?php else: ?>
             <div class="row">

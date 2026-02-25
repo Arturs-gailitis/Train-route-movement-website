@@ -5,6 +5,7 @@ const button = document.getElementById("meklet");
 const box = document.getElementById("galvenaSekcija");
 const meklesana = document.getElementById("maršrutuMeklēšana");
 const iziet = document.getElementById("atcelt");
+const izietIcon = document.getElementById("atceltIcona");
 const garums = box.offsetHeight;
 
 // Nomaina sākumlapas sākuma daļu uz meklēšanas sadaļu
@@ -12,6 +13,10 @@ button.addEventListener("click", () => {
     box.style.display = "none";
     meklesana.style.display = "flex";
     meklesana.style.height = `${garums}px`;
+
+    if (localStorage.getItem("lightMode") == "true") {
+        izietIcon.src = "http://localhost:8000/icons/crossDark.svg";
+    }
 });
 
 // Nomaina meklēšanas sadaļas daļu uz sākuma daļu
@@ -30,7 +35,12 @@ filterButton.addEventListener("click", () => {
     if (statuss == false) {
         filterBox.style.display = "block";
         filterBox.style.height = "auto";
-        filterButtonIcon.src = "http://localhost:8000/icons/arrow-up.svg";
+
+        if (localStorage.getItem("lightMode") == "true") {
+            filterButtonIcon.src = "http://localhost:8000/icons/arrow-upDark.svg";
+        } else {
+            filterButtonIcon.src = "http://localhost:8000/icons/arrow-up.svg";
+        }
 
         if (window.location.href.includes("/lv/")) {
             filterButton.title = "Aizvērt maršrutu filtrēšanas sadaļu"
@@ -43,7 +53,12 @@ filterButton.addEventListener("click", () => {
     } else {
         filterBox.style.display = "none";
         filterBox.style.height = "0px";
-        filterButtonIcon.src = "http://localhost:8000/icons/arrow-down.svg";
+
+        if (localStorage.getItem("lightMode") == "true") {
+            filterButtonIcon.src = "http://localhost:8000/icons/arrow-downDark.svg";
+        } else {
+            filterButtonIcon.src = "http://localhost:8000/icons/arrow-down.svg";
+        }
 
         if (window.location.href.includes("/lv/")) {
             filterButton.title = "Atvērt maršrutu filtrēšanas sadaļu";

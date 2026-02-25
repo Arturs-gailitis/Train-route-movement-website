@@ -7,7 +7,13 @@ let buttonStatuss = false
 openButtons.addEventListener("click", () => {
     if (buttonStatuss == false) {
         ButtonsArea.style.display = "block";
-        buttonIcon.src = "http://localhost:8000/icons/arrow-up.svg";
+
+        if (localStorage.getItem("lightMode") == "true") {
+            buttonIcon.src = "http://localhost:8000/icons/arrow-upDark.svg";
+        } else {
+            buttonIcon.src = "http://localhost:8000/icons/arrow-up.svg";
+        }
+
         buttonStatuss = true;
         if (window.location.href.includes("/lv/")) {
             openButtons.title = "Aizvērt pogas sadaļu";
@@ -16,7 +22,13 @@ openButtons.addEventListener("click", () => {
         }
     } else {
         ButtonsArea.style.display = "none";
-        buttonIcon.src = "http://localhost:8000/icons/arrow-down.svg";
+
+        if (localStorage.getItem("lightMode") == "true") {
+            buttonIcon.src = "http://localhost:8000/icons/arrow-downDark.svg";
+        } else {
+            buttonIcon.src = "http://localhost:8000/icons/arrow-down.svg";
+        }
+        
         buttonStatuss = false;
         if (window.location.href.includes("/lv/")) {
             openButtons.title = "Parādīt pogas sadaļu";

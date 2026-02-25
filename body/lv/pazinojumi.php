@@ -125,7 +125,7 @@ try {
             <button id="meklet" type="submit" class="btn btn-primary">Meklēt</button>
         </form>
         <?php if (empty($record)): ?>
-            <img src="/icons/error.svg" alt="Klūdas zīme" class="kluda">
+            <img src="/icons/info.svg" alt="Klūdas zīme" class="kluda">
             <h3 id="navPazinojumi">Nav publicēti nekādi aktuālie paziņojumi.</h3>
         <?php else: ?>
             <div class="row">

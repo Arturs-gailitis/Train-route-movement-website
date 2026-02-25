@@ -12,6 +12,8 @@ const box = document.getElementById("maršrutuMeklēšanasSadaļa");
 const boxButton = document.getElementById("atcelt");
 const footer = document.querySelector("footer");
 const table = document.getElementById("marsrutuTabula");
+const cancelIcon = document.getElementById("atceltIcona");
+const reverseIcon = document.getElementById("apgireztIcona");
 
 // Ielādē footer 250 pikseļus no maršruta tabulas
 document.addEventListener("DOMContentLoaded", () => {
@@ -25,6 +27,11 @@ button.addEventListener("click", () => {
     button.style.display = "none";
     table.style.marginBottom = "200px";
     footer.style.position = "relative";
+
+    if (localStorage.getItem("lightMode") == "true") {
+        cancelIcon.src = "http://localhost:8000/icons/crossDark.svg";
+        reverseIcon.src = "http://localhost:8000/icons/reverseDark.svg";
+    }
 });
 
 // Aizver maršruta meklēšanas sadaļu

@@ -425,7 +425,7 @@ try {
     </div>
     <?php if ($startStation == false || $endStation == false): ?>
         <div class="kluduZinojums">
-            <img src="/icons/error.svg" alt="Error sign" class="kluda">
+            <img src="/icons/info.svg" alt="Error sign" class="kluda">
             <p class="kluduTeksts">
                 One of the entered stations <b><?php echo $st ?> </b> and <b> <?php echo $b ?> </b> 
                 is not available in the data or does not exist. <br> Please check if you entered 
@@ -434,7 +434,7 @@ try {
         </div>
     <?php elseif (empty($organisedTrips) == true): ?>
         <div class="kluduZinojums">
-            <img src="/icons/error.svg" alt="Error sign" class="kluda">
+            <img src="/icons/info.svg" alt="Error sign" class="kluda">
             <p class="kluduTeksts">
                 There are no available routes on the selected day from <b><?php echo $st ?> </b> to <b> <?php echo $b ?> </b> <br>
                 Try selecting a different date, for example the next day or a week later.
@@ -468,25 +468,25 @@ try {
                                 <?php if (strtotime($date) < strtotime($currentDate . "+10 days")): ?>
                                     <td id="pirktPoga">
                                         <a class=pirktPogas href="">
-                                            <img src="/icons/buy.svg" alt="Buy" id="pirktIkona">
+                                            <img src="/icons/buy.svg" alt="Buy" id="pirktIkona" class="buy">
                                         </a>
                                     </td>
                                 <?php else: ?>
                                     <td id="pirktPoga">
-                                        <img src="/icons/buy.svg" alt="Buy" id="pirktIkona" title="There is currently no option to buy a ticket.">
+                                        <img src="/icons/buy.svg" alt="Buy" id="pirktIkona" class="buy" title="There is currently no option to buy a ticket.">
                                     </td>
                                 <?php endif ?>
                                 <td id="infoPoga">
                                     <a class="infoPogas" 
                                         href="moreInfo.php?id=<?php echo $trip['trip_id'] ?>&sakumstacija=<?php echo $trip['startStation'] ?>&beigustacija=<?php echo $trip['endStation'] ?>&datums=<?php echo $date ?>&marsruts=<?php echo $trip['routeName'] ?>&altstart=<?php echo $st ?>&altend=<?php echo $b ?>">
-                                        <img src="/icons/info.svg" alt="More info" id="infoIkona"></a>
+                                        <img src="/icons/info.svg" alt="More info" id="infoIkona" class="info"></a>
                                 </td>
                             <?php else: ?>
                                 <td id="pirktPoga">
-                                    <img src="/icons/buy.svg" alt="Buy" id="pirktIkona" title="For registered users only">
+                                    <img src="/icons/buy.svg" alt="Buy" id="pirktIkona" class="buy" title="For registered users only">
                                 </td>
                                 <td id="infoPoga">
-                                    <img src="/icons/info.svg" alt="More info" id="infoIkona" title="For registered users only">
+                                    <img src="/icons/info.svg" alt="More info" id="infoIkona" class="info" title="For registered users only">
                                 </td>
                             <?php endif ?>
                         </tr>

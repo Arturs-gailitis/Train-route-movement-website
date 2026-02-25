@@ -425,7 +425,7 @@ try {
     </div>
     <?php if ($startStation == false || $endStation == false): ?>
         <div class="kluduZinojums">
-            <img src="/icons/error.svg" alt="Klūdas zīme" class="kluda">
+            <img src="/icons/info.svg" alt="Klūdas zīme" class="kluda">
             <p class="kluduTeksts">
                 Viena no ievadītās stacijām <b><?php echo $st ?> </b> un <b> <?php echo $b ?> </b> 
                 nav pieejama informācija vai arī tās neeksistē. <br> Pārbaudiet vai neesat uzrakstījuši nepareizi 
@@ -434,7 +434,7 @@ try {
         </div>
     <?php elseif (empty($organisedTrips) == true): ?>
         <div class="kluduZinojums">
-            <img src="/icons/error.svg" alt="Klūdas zīme" class="kluda">
+            <img src="/icons/info.svg" alt="Klūdas zīme" class="kluda">
             <p class="kluduTeksts">
                 Jūsu izvēlētajā dienā vairs nav pieejami maršruti no <b><?php echo $st ?> </b> uz <b> <?php echo $b ?> </b> <br>
                 Mēģiniet izvēlēties citas dienas. Piemēram, nākošajā dienā vai pēc nedēļas utt.
@@ -468,25 +468,25 @@ try {
                                 <?php if (strtotime($date) < strtotime($currentDate . "+10 days")): ?>
                                     <td id="pirktPoga">
                                         <a class=pirktPogas href="">
-                                            <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona">
+                                            <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona" class="buy">
                                         </a>
                                     </td>
                                 <?php else: ?>
                                     <td id="pirktPoga">
-                                        <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona" title="Nav pašreiz vel iespēja nopirkt biļeti">
+                                        <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona" class="buy" title="Nav pašreiz vel iespēja nopirkt biļeti">
                                     </td>
                                 <?php endif ?>
                                 <td id="infoPoga">
                                     <a class="infoPogas" 
                                         href="info.php?id=<?php echo $trip['trip_id'] ?>&sakumstacija=<?php echo $trip['startStation'] ?>&beigustacija=<?php echo $trip['endStation'] ?>&datums=<?php echo $date ?>&marsruts=<?php echo $trip['routeName'] ?>&altstart=<?php echo $st ?>&altend=<?php echo $b ?>">
-                                        <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona"></a>
+                                        <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona" class="info"></a>
                                 </td>
                             <?php else: ?>
                                 <td id="pirktPoga">
-                                    <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona" title="Tikai reģistrētiem lietotājiem">
+                                    <img src="/icons/buy.svg" alt="Pirkt" id="pirktIkona" class="buy" title="Tikai reģistrētiem lietotājiem">
                                 </td>
                                 <td id="infoPoga">
-                                    <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona" title="Tikai reģistrētiem lietotājiem">
+                                    <img src="/icons/info.svg" alt="Vairāk info" id="infoIkona" class="info" title="Tikai reģistrētiem lietotājiem">
                                 </td>
                             <?php endif ?>
                         </tr>

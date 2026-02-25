@@ -89,33 +89,6 @@ opcijuPoga.addEventListener("click", () => {
     }
 });
 
-const themeChanger = document.getElementById("fonaIzmaiņasPoga");
-const themeIcon = document.getElementById("themeIkona");
-
-// nomaina theme ikonu ja lietotājs uz tās nospiež
-themeChanger.addEventListener("click", () => {
-    if (themeIcon.src == "http://localhost:8000/icons/lightTheme.svg") {
-        themeIcon.src = "http://localhost:8000/icons/darkTheme.svg";
-    } else {
-        themeIcon.src = "http://localhost:8000/icons/lightTheme.svg";
-    }
-})
-
-const body = document.body;
-
-// pārslēdz no tumšā režīma uz gaišo un atpakaļ
-themeChanger.addEventListener("click", () => {
-    body.classList.toggle("light-mode");
-    localStorage.setItem("lightMode", body.classList.contains("light-mode"));
-})
-
-// saglabā gaišo režīmu
-if (localStorage.getItem("lightMode") === "true") {
-    body.classList.add("light-mode");
-    themeIcon.src = "http://localhost:8000/icons/lightTheme.svg";
-} else {
-    themeIcon.src = "http://localhost:8000/icons/darkTheme.svg";
-}
 
 const changeLanguage = document.getElementById("valoda");
 
@@ -159,3 +132,241 @@ document.addEventListener("DOMContentLoaded", () => {
 
     projectDate.textContent = year;
 })
+
+const body = document.body;
+const logo = document.getElementById("logo");
+const themeChanger = document.getElementById("fonaIzmaiņasPoga");
+const themeIcon = document.getElementById("themeIkona");
+const ButtonAreaIcon = document.getElementById("atvērtPoguSadaļasIkona");
+const cancelIcon = document.getElementById("atceltIcona");
+const filterButtonIcon = document.getElementById("atvertFiltresanuIkona");
+const searchAreaButton = document.getElementById("atvērtmeklēšanuIkona");
+const reverseIcon = document.getElementById("apgireztIcona");
+const infoIcons = document.querySelectorAll(".ikona");
+const errorIcon = document.querySelectorAll(".kluda");
+const buy = document.querySelectorAll(".buy");
+const goLogo = document.querySelectorAll(".info");
+
+
+// pārslēdz no tumšā režīma uz gaišo un atpakaļ
+themeChanger.addEventListener("click", () => {
+    body.classList.toggle("light-mode");
+    localStorage.setItem("lightMode", body.classList.contains("light-mode"));
+
+    if (body.classList.contains("light-mode")) {
+        themeIcon.src = "http://localhost:8000/icons/lightTheme.svg";
+        logo.src = "http://localhost:8000/icons/website icons/websiteIconDark.svg";
+        
+        if (cancelIcon !== null) {
+            cancelIcon.src = "http://localhost:8000/icons/crossDark.svg";
+        }
+
+        if (ButtonAreaIcon !== null) {
+            if (ButtonAreaIcon.src == "http://localhost:8000/icons/arrow-up.svg") {
+                ButtonAreaIcon.src = "http://localhost:8000/icons/arrow-upDark.svg";
+            } else if (ButtonAreaIcon.src == "http://localhost:8000/icons/arrow-down.svg") {
+                ButtonAreaIcon.src = "http://localhost:8000/icons/arrow-downDark.svg";
+            }
+        }
+
+        if (filterButtonIcon !== null) {
+            if (filterButtonIcon.src == "http://localhost:8000/icons/arrow-up.svg") {
+                filterButtonIcon.src = "http://localhost:8000/icons/arrow-upDark.svg";
+            } else if (filterButtonIcon.src == "http://localhost:8000/icons/arrow-down.svg") {
+                filterButtonIcon.src = "http://localhost:8000/icons/arrow-downDark.svg";
+            }
+        }
+
+        if (searchAreaButton !== null) {
+            searchAreaButton.src = "http://localhost:8000/icons/arrow-downDark.svg";
+        }
+
+        if (reverseIcon !== null) {
+            reverseIcon.src = "http://localhost:8000/icons/reverseDark.svg";
+        }
+
+        if (infoIcons.length !== 0) {
+            for (let i = 0; i < infoIcons.length; i++) {
+                if (i == 0 || i == 1) {
+                    infoIcons[i].src = "http://localhost:8000/icons/train-stationDark.svg";
+                } else {
+                    infoIcons[i].src = "http://localhost:8000/icons/dateDark.svg";
+                }
+            }
+        }
+
+        if (errorIcon.length !== 0) {
+            for (let i = 0; i < errorIcon.length; i++) {
+                errorIcon[i].src = "http://localhost:8000/icons/infoDark.svg";
+            }
+        }
+
+        if (buy.length !== 0) {
+            for (let i = 0; i < buy.length; i++) {
+                buy[i].src = "http://localhost:8000/icons/buyDark.svg";
+            }
+        }
+
+        if (goLogo.length !== 0) {
+            for (let i = 0; i < goLogo.length; i++) {
+                goLogo[i].src = "http://localhost:8000/icons/infoDark.svg";
+            }
+        }
+
+    } else {
+        themeIcon.src = "http://localhost:8000/icons/darkTheme.svg";
+        logo.src = "http://localhost:8000/icons/website icons/websiteIconLight.svg";
+        
+        if (cancelIcon !== null) {
+            cancelIcon.src = "http://localhost:8000/icons/cross.svg";
+        }
+
+        if (ButtonAreaIcon !== null) {
+            if (ButtonAreaIcon.src == "http://localhost:8000/icons/arrow-upDark.svg") {
+                ButtonAreaIcon.src = "http://localhost:8000/icons/arrow-up.svg";
+            } else if (ButtonAreaIcon.src == "http://localhost:8000/icons/arrow-downDark.svg") {
+                ButtonAreaIcon.src = "http://localhost:8000/icons/arrow-down.svg";
+            }
+        }
+
+        if (filterButtonIcon !== null) {
+            if (filterButtonIcon.src == "http://localhost:8000/icons/arrow-upDark.svg") {
+                filterButtonIcon.src = "http://localhost:8000/icons/arrow-up.svg";
+            } else if (filterButtonIcon.src == "http://localhost:8000/icons/arrow-downDark.svg") {
+                filterButtonIcon.src = "http://localhost:8000/icons/arrow-down.svg";
+            }
+        }
+
+        if (searchAreaButton !== null) {
+            searchAreaButton.src = "http://localhost:8000/icons/arrow-down.svg";
+        }
+
+        if (reverseIcon !== null) {
+            reverseIcon.src = "http://localhost:8000/icons/reverse.svg";
+        }
+
+        if (infoIcons.length !== 0) {
+            for (let i = 0; i < infoIcons.length; i++) {
+                if (i == 0 || i == 1) {
+                    infoIcons[i].src = "http://localhost:8000/icons/train-station.svg";
+                } else {
+                    infoIcons[i].src = "http://localhost:8000/icons/date.svg";
+                }
+            }
+        }
+
+        if (errorIcon.length !== 0) {
+            for (let i = 0; i < errorIcon.length; i++) {
+                errorIcon[i].src = "http://localhost:8000/icons/info.svg";
+            }
+        }
+
+        if (buy.length !== 0) {
+            for (let i = 0; i < buy.length; i++) {
+                buy[i].src = "http://localhost:8000/icons/buy.svg";
+            }
+        }
+
+        if (goLogo.length !== 0) {
+            for (let i = 0; i < goLogo.length; i++) {
+                goLogo[i].src = "http://localhost:8000/icons/info.svg";
+            }
+        }
+    }
+})
+
+// saglabā gaišo režīmu
+if (localStorage.getItem("lightMode") === "true") {
+    body.classList.add("light-mode");
+    themeIcon.src = "http://localhost:8000/icons/lightTheme.svg";
+    logo.src = "http://localhost:8000/icons/website icons/websiteIconDark.svg";
+
+    if (cancelIcon !== null) {
+        cancelIcon.src = "http://localhost:8000/icons/crossDark.svg";
+    }    
+
+    if (ButtonAreaIcon != null) {
+        ButtonAreaIcon.src = "http://localhost:8000/icons/arrow-downDark.svg";
+    }
+
+    if (filterButtonIcon != null) {
+        filterButtonIcon.src = "http://localhost:8000/icons/arrow-downDark.svg";
+    }
+
+    if (searchAreaButton != null) {
+        searchAreaButton.src = "http://localhost:8000/icons/arrow-downDark.svg";
+    }
+
+    if (infoIcons.length !== 0) {
+        for (let i = 0; i < infoIcons.length; i++) {
+            if (i == 0 || i == 1) {
+                infoIcons[i].src = "http://localhost:8000/icons/train-stationDark.svg";
+            } else {
+                infoIcons[i].src = "http://localhost:8000/icons/dateDark.svg";
+            }
+        }
+    }
+
+    if (errorIcon.length !== 0) {
+        for (let i = 0; i < errorIcon.length; i++) {
+            errorIcon[i].src = "http://localhost:8000/icons/infoDark.svg";
+        }
+    }
+
+    if (reverseIcon !== null) {
+        reverseIcon.src = "http://localhost:8000/icons/reverseDark.svg";
+    }
+
+    if (buy.length !== 0) {
+        for (let i = 0; i < buy.length; i++) {
+            buy[i].src = "http://localhost:8000/icons/buyDark.svg";
+        }
+    }
+
+    if (goLogo.length !== 0) {
+        for (let i = 0; i < goLogo.length; i++) {
+            goLogo[i].src = "http://localhost:8000/icons/infoDark.svg";
+        }
+    }
+} else {
+    themeIcon.src = "http://localhost:8000/icons/darkTheme.svg";
+    logo.src = "http://localhost:8000/icons/website icons/websiteIconLight.svg";
+
+    if (cancelIcon !== null) {
+        cancelIcon.src = "http://localhost:8000/icons/cross.svg";
+    }
+
+    if (ButtonAreaIcon != null) {
+        ButtonAreaIcon.src = "http://localhost:8000/icons/arrow-down.svg";
+    }
+
+    if (filterButtonIcon != null) {
+        filterButtonIcon.src = "http://localhost:8000/icons/arrow-down.svg";
+    }
+
+    if (searchAreaButton != null) {
+        searchAreaButton.src = "http://localhost:8000/icons/arrow-down.svg";
+    }
+
+    if (errorIcon.length !== 0) {
+        for (let i = 0; i < errorIcon.length; i++) {
+            errorIcon[i].src = "http://localhost:8000/icons/info.svg";
+        }
+    }
+
+    if (reverseIcon !== null) {
+        reverseIcon.src = "http://localhost:8000/icons/reverse.svg";
+    }
+
+    if (buy.length !== 0) {
+        for (let i = 0; i < buy.length; i++) {
+            buy[i].src = "http://localhost:8000/icons/buy.svg";
+        }
+    }
+
+    if (goLogo.length !== 0) {
+        for (let i = 0; i < goLogo.length; i++) {
+            goLogo[i].src = "http://localhost:8000/icons/info.svg";
+        }
+    }
+}
