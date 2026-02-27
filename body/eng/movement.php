@@ -9,6 +9,8 @@ $database = __DIR__ . '/../../storage/database/LatvianTrains.sqlite';
 $trips = [];
 $organisedTrips = [];
 
+date_default_timezone_set('Europe/Riga');
+
 // automātiski leitotāju aizmet uz sakumlapu ja nav visi vajadzīgie dati
 if (isset($_GET['sākumstacija']) == false || isset($_GET['beigustacija']) == false || isset($_GET['datums']) == false) {
     header("Location: main.php");
@@ -249,7 +251,6 @@ try {
                     $tripTime = $hours . ' h ' . $minutes . ' min ' . $seconds . ' s';
 
                     // iegūst pašreizējo laiku un datumu
-                    date_default_timezone_set('Europe/Riga');
                     $currentTime = date('H:i:s');
                     $currentDate = date('Y-m-d');
 
