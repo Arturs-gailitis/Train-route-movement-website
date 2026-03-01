@@ -45,20 +45,36 @@ const resetNotifications = document.getElementById("pazinojumi");
 
 // ieliek vilciena informācijas skripta adresi
 resetTrains.addEventListener("click", () => {
-    window.location.href = "http://localhost:8000/setup/runAll.php";
+    if (window.location.href.includes("/lv/")) {
+        window.location.href = "http://localhost:8000/setup/izpildaVisu.php";
+    } else {
+        window.location.href = "http://localhost:8000/setup/runAll.php";
+    }
 })
 
 // ieliek lietotāja skripta adresi
 resetUsers.addEventListener("click", () => {
-    window.location.href = "http://localhost:8000/setup/users.php";
+    if (window.location.href.includes("/lv/")) {
+        window.location.href = "http://localhost:8000/setup/lietotajs.php";
+    } else {
+        window.location.href = "http://localhost:8000/setup/users.php";
+    }
 })
 
 // ieliek lietotāja ziņojuma skripta adresi
 resetMessages.addEventListener("click", () => {
-    window.location.href = "http://localhost:8000/setup/messages.php";
+    if (window.location.href.includes("/lv/")) {
+        window.location.href = "http://localhost:8000/setup/zinas.php";
+    } else {
+        window.location.href = "http://localhost:8000/setup/messages.php";
+    }
 })
 
 // ieliek paziņojuma skripta adresi
 resetNotifications.addEventListener("click", () => {
-    window.location.href = "http://localhost:8000/setup/notifications.php";
+    if (window.location.href.includes("/lv/")) {
+        window.location.href = "http://localhost:8000/setup/zinojumi.php";
+    } else {
+        window.location.href = "http://localhost:8000/setup/notifications.php";
+    }
 })

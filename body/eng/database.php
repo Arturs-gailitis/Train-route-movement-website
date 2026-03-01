@@ -202,13 +202,13 @@ try {
                     <button class="btn btn-primary" id="vilcieni">Restart train data</button>
                 </li>
                 <li>
-                    <button class="btn btn-primary" id="lietotaja">Restartē lietotāja datus</button>
+                    <button class="btn btn-primary" id="lietotaja">Restart user data</button>
                 </li>
                 <li>
-                    <button class="btn btn-primary" id="kontakti">Restarts user data</button>
+                    <button class="btn btn-primary" id="kontakti">Restart contact data</button>
                 </li>
                 <li>
-                    <button class="btn btn-primary" id="pazinojumi">Restarts message data</button>
+                    <button class="btn btn-primary" id="pazinojumi">Restart notification data</button>
                 </li>
             </ul>
             <hr>

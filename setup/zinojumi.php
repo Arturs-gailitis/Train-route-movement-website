@@ -24,11 +24,11 @@ $conection->exec($createNotificationQuerry);
 ?>
 
 <!DOCTYPE html>
-<html lang="eng">
-<head>
+<html lang="lv">
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latvian Train Route Portal</title>
+    <title>Latvijas vilcienu maršrutu kustības portāls</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style/global.css">
     <link rel="stylesheet" href="/style/setup.css">
@@ -37,39 +37,39 @@ $conection->exec($createNotificationQuerry);
 <body>
     <div class="galvene">
         <div class="nosaukums">
-            <img src="/icons/website icons/websiteIconLight.svg" alt="Portal logo" id="logo">
-            <h3 id="portālaNosaukums">Latvian Train Route Portal</h3>
+            <img src="/icons/website icons/websiteIconLight.svg" alt="Portāla logo" id="logo">
+            <h3 id="portālaNosaukums">Latvijas vilcienu maršrutu kustības portāls</h3>
         </div>
 
         <nav>
             <ul class="nav nav-pills" id="pogas">
                 <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
                     <li class="nav-item" id="datubaze">
-                        <a class="nav-link" href="/body/eng/database.php">Database</a>
+                        <a class="nav-link" href="/body/lv/datubaze.php">Datubāze</a>
                     </li>
                 <?php endif ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/body/eng/main.php">Home</a>
+                    <a class="nav-link" href="/body/lv/sakumlapa.php">Sākumlapa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/body/eng/notifications.php">Notifications</a>
+                    <a class="nav-link" href="/body/lv/pazinojumi.php">Paziņojumi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/body/eng/contact.php">Contact</a>
+                    <a class="nav-link" href="/body/lv/kontakti.php">Kontakti</a>
                 </li>
-                <li class="nav-item" title="Profile">
+                <li class="nav-item" title="Profils">
                     <button class="nav-link" id="lietotajs">
                         <?php if (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "lietotajs"): ?>
-                            <img src="/icons/account icons/user.svg" alt="User" class="lietotajaIcona">
+                            <img src="/icons/account icons/user.svg" alt="Lietotājs" class="lietotajaIcona">
                         <?php elseif (isset($_SESSION['tiesibas']) && $_SESSION['tiesibas'] == "administrators"): ?>
-                            <img src="/icons/account icons/admin.svg" alt="Administrator" class="lietotajaIcona">
+                            <img src="/icons/account icons/admin.svg" alt="Administrators" class="lietotajaIcona">
                         <?php else: ?>
-                            <img src="/icons/account icons/noAccountLight.svg" alt="No user" class="lietotajaIcona">
+                            <img src="/icons/account icons/noAccountLight.svg" alt="Bez lietotāja" class="lietotajaIcona">
                         <?php endif ?>
                     </button>
                 </li>
-                <li class="nav-item" title="Options">
-                    <button class="nav-link"><img src="/icons/settings.svg" alt="Options" id="opcijas"></button>
+                <li class="nav-item" title="Opcijas">
+                    <button class="nav-link"><img src="/icons/settings.svg" alt="Opcijas" id="opcijas"></button>
                 </li>
             </ul>
         </nav>
@@ -77,14 +77,14 @@ $conection->exec($createNotificationQuerry);
             <ul>
                 <?php if (isset($_SESSION['lietotajvards']) == false): ?>
                     <li>
-                        <a class = "profilaStatuss" href="/body/eng/login.php">Log in</a>
+                        <a class = "profilaStatuss" href="/body/lv/pieteikties.php">Pieslēdzies savā kontā</a>
                     </li>
                     <li>
-                        <a class = "profilaStatuss" href="/body/eng/register.php">Create account</a>
+                        <a class = "profilaStatuss" href="/body/lv/registracija.php">Izveido jaunu kontu</a>
                     </li>
                 <?php elseif (isset($_SESSION['lietotajvards'])): ?>
                     <li>
-                        <a class = "profilaStatuss" id="iziesana" href="/body/eng/logout.php">Log out</a>
+                        <a class = "profilaStatuss" id="iziesana" href="/body/lv/iziet.php">Iziet ārā no sava konta</a>
                     </li>
                 <?php endif ?>
             </ul>
@@ -92,31 +92,31 @@ $conection->exec($createNotificationQuerry);
         <div id="opcijuLaukums">
 
             <div class="fonaIzmaiņas">
-                <label for="fonaIzmaiņas">Change light -></label>
+                <label for="fonaIzmaiņas">Izmainīt fonu -></label>
                 <button type="button" id="fonaIzmaiņasPoga" class="btn btn-primary">
-                    <img src="/icons/lightTheme.svg" alt="Options" id="themeIkona"></button>
+                    <img src="/icons/lightTheme.svg" alt="Opcijas" id="themeIkona"></button>
             </div>
 
             <div class="fonaIzmaiņas" id="valodaIzmaiņas">
-                <label for="valoda">Change language -></label>
+                <label for="valoda">Valodas maiņa -></label>
                 <select name="valoda" id="valoda">
-                    <option value="http://localhost:8000/setup/notifications.php">English</option>
-                    <option value="http://localhost:8000/setup/zinojumi.php">Latvian</option>
+                    <option value="http://localhost:8000/setup/zinojumi.php">Latviešu</option>
+                    <option value="http://localhost:8000/setup/notifications.php">Angļu</option>
                 </select>
             </div>
 
         </div>
     </div>
     <div id="laukums">
-        <h2>The table has been created successfully.</h2>
-        <a class="btn btn-primary" href="/body/eng/database.php">Go back</a>
+        <h2>Tabula ir izveidotas veiksmīgi</h2>
+        <a class="btn btn-primary" href="/body/lv/datubaze.php">Doties atpakaļ</a>
     </div>
 </body>
 <footer class="mt-5 py-3">
-    <p class="mb-0">© Latvian Train Route Portal <span id=projektaGads></span></p>
+    <p class="mb-0">© Latvijas vilcienu maršrutu kustības portāls <span id=projektaGads></span></p>
     <p class="mb-4" id="dati">
-        Data used: <a href="https://www.vivi.lv/lv/sadarbiba/atvertie-dati/">
-            vivi.lv </a> <br> Loaded: <span id="ielādesDatums"></span>
+        Izmantotie dati: <a href="https://www.vivi.lv/lv/sadarbiba/atvertie-dati/">
+            vivi.lv </a> <br> Ielādēts: <span id="ielādesDatums"></span>
     </p>
 </footer>
 <script src="/javascript/global.js"></script>

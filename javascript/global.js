@@ -1,4 +1,4 @@
-if (window.location.href.includes("/eng/")) {
+if (window.location.href.includes("/eng/") || window.location.href.includes("runAll.php") || window.location.href.includes("users.php") || window.location.href.includes("messages.php") || window.location.href.includes("notifications.php")) {
     const navigationButtonLocations = document.querySelectorAll(".nav-item");
     let notification = null;
 
@@ -39,7 +39,7 @@ profilButton.addEventListener("click", () => {
 })
 
 // sakārto profila pogu dizainu angļu versijā
-if (window.location.href.includes("/eng/")) {
+if (window.location.href.includes("/eng/") || window.location.href.includes("runAll.php") || window.location.href.includes("users.php") || window.location.href.includes("messages.php") || window.location.href.includes("notifications.php")) {
     const profilButtons = document.querySelectorAll(".profilaStatuss");
     if (profilButtons.length == 2) {
         let loginButton = profilButtons[0];
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const projectDate = document.getElementById("projektaGads");
 
     // respektīvi ieliek footerī atbisltošo tekstu skatoties pēc valodas
-    if (window.location.href.includes("/lv/")) {
+    if (window.location.href.includes("/lv/") || window.location.href.includes("izpildaVisu.php") || window.location.href.includes("lietotajs.php") || window.location.href.includes("zinas.php") || window.location.href.includes("zinojumi.php")) {
         loadDate.textContent = year + ". gada " + day + ". " + monthNameLv;
     } else {
         loadDate.textContent = monthNameEng + " " + day + ", " + year;
