@@ -116,7 +116,9 @@ try {
             } else if ($_GET['tabula'] == "notifications") {
 
                 $title = trim($_POST['virsraksts']);
+                $titleEng = trim($_POST['virsrakstsAngliski']);
                 $text = trim($_POST['teksts']);
+                $textEng = trim($_POST['tekstsAngliski']);
                 $image = "";
 
                 $notificationError = null;
@@ -156,7 +158,7 @@ try {
 
                 // ja nav kļūdu, tad ieliek paziņojumu datubāzē
                 if ($notificationError == null) {
-                    insertNotification($notificationConnection, $title, $image, $text);
+                    insertNotification($notificationConnection, $title, $image, $text, $titleEng, $textEng);
                 } else {
                     $error = $notificationError;
                 }
@@ -388,16 +390,24 @@ try {
                 </div>
             <?php elseif ($_GET['tabula'] == "notifications"): ?> 
                 <div class="mb-3">
-                    <label for="virsraksts">Virsraksts:</label>
+                    <label for="virsraksts">Virsraksts latviski:</label>
                     <textarea name="virsraksts"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="virsrakstsAngliski">Virsraksts angliski:</label>
+                    <textarea name="virsrakstsAngliski"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="bilde">Bildes atrašanās vieta:</label>
                     <input type="file" name="bilde">
                 </div>
                 <div class="mb-3">
-                    <label for="teksts">Teksts:</label>
+                    <label for="teksts">Teksts latviski:</label>
                     <textarea name="teksts"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="tekstsAngliski">Teksts angliski:</label>
+                    <textarea name="tekstsAngliski"></textarea>
                 </div>
             <?php endif ?>
             <a class="btn btn-primary" href="datubaze.php">Atcelt</a>

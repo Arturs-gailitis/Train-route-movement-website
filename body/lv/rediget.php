@@ -137,9 +137,11 @@ try {
                 $title = $_POST['virsraksts'];
                 $image = $record['image'];
                 $text = $_POST['teksts'];
+                $titleEng = $_POST['virsrakstsEng'];
+                $textEng = $_POST['tekstsEng'];
 
                 // rediģē ierakstu Notifications tabulā skatoties pēc id
-                updateNotification($notificationsConnection, $_GET['id'], $title, $image, $text);
+                updateNotification($notificationsConnection, $_GET['id'], $title, $image, $text, $titleEng, $textEng);
             }
         }
         
@@ -381,16 +383,24 @@ try {
                 </div>
             <?php elseif ($_GET['tabula'] == "notification"): ?>
                 <div class="mb-3">
-                    <label for="virsraksts">Virsraksts:</label>
+                    <label for="virsraksts">Virsraksts latviski:</label>
                     <textarea name="virsraksts"><?php echo $record['title'] ?></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="virsrakstsEng">Virsraksts angliski:</label>
+                    <textarea name="virsrakstsEng"><?php echo $record['title_Eng'] ?></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="bilde">Faila atrašanās vieta:</label>
                     <label name="bilde"><?php echo $record['image'] ?></label>
                 </div>
                 <div class="mb-3">
-                    <label for="teksts">Teksts:</label>
+                    <label for="teksts">Teksts latviski:</label>
                     <textarea name="teksts"><?php echo $record['info'] ?></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="tekstsEng">Teksts angliski:</label>
+                    <textarea name="tekstsEng"><?php echo $record['info_Eng'] ?></textarea>
                 </div>
             <?php endif ?>
             <a class="btn btn-primary" href="datubaze.php">Atcelt</a>

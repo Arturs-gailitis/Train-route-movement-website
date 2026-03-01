@@ -18,7 +18,9 @@ $createNotificationQuerry = "CREATE TABLE IF NOT EXISTS Notifications (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     image TEXT NOT NULL,
-    info TEXT NOT NULL
+    info TEXT NOT NULL,
+    title_Eng TEXT NOT NULL,
+    info_Eng TEXT NOT NULL
 );";
 $conection->exec($createNotificationQuerry);
 ?>

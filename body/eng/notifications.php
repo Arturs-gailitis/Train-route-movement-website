@@ -134,9 +134,9 @@ try {
                         <div class="card">
                             <img src="/../../<?php echo $r['image'] ?>" class="card-img-top service-img" alt="There is no image available for the notification.">
                             <div class="card-body">
-                                <h3 class="card-title"><?php echo $r['title'] ?></h3>
+                                <h3 class="card-title"><?php echo $r['title_Eng'] ?></h3>
                                 <hr>
-                                <p class="card-text"><?php echo $r['info'] ?></p>
+                                <p class="card-text"><?php echo $r['info_Eng'] ?></p>
                             </div>
                         </div>
                     </div>

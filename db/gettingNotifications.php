@@ -7,15 +7,17 @@
     }
 
     // funkcija ar kuru var ielikt paziņojumu Notifications datubāzes tabulā
-    function insertNotification($conn, $title, $image, $text) {
-        $addNotification = "INSERT INTO Notifications (title, image, info) 
+    function insertNotification($conn, $title, $image, $text, $titleEng, $textEng) {
+        $addNotification = "INSERT INTO Notifications (title, image, info, title_Eng, info_Eng) 
             VALUES
-        (:title, :image, :info)";
+        (:title, :image, :info, :title_Eng, :info_Eng)";
         $add = $conn->prepare($addNotification);
         $add->execute([
             "title" => $title,
             "image" => $image,
-            "info" => $text
+            "info" => $text,
+            "title_Eng" => $titleEng,
+            "info_Eng" => $textEng
         ]);
     }
 
@@ -35,22 +37,24 @@
     }
 
     // Atjaunina konkrēto ierakstu Notifications tabulā
-    function updateNotification($conn, $id, $title, $image, $text) {
+    function updateNotification($conn, $id, $title, $image, $text, $titleEng, $textEng) {
         $querry = 'UPDATE Notifications
             SET
                 title = ?,
                 image = ?,
-                info = ?
+                info = ?,
+                title_Eng = ?,
+                info_Eng = ?
             WHERE id = ?';
         $statement = $conn->prepare($querry);
-        $statement->execute([$title, $image, $text, $id]);
+        $statement->execute([$title, $image, $text, $titleEng, $textEng, $id]);
     }
 
     // iegūst paziņojumus kur tituls vai teksts asociējās ar atslēgvārdu 
     function searchByKeyword($conn, $key) {
-        $querry = 'SELECT * FROM Notifications WHERE title LIKE ? OR info LIKE ?';
+        $querry = 'SELECT * FROM Notifications WHERE title LIKE ? OR info LIKE ? OR title_Eng LIKE ? OR info_Eng LIKE ?';
         $statement = $conn->prepare($querry);
-        $statement->execute(["%" . $key . "%", "%" . $key . "%"]);
+        $statement->execute(["%" . $key . "%", "%" . $key . "%" , "%" . $key . "%", "%" . $key . "%"]);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 ?>
