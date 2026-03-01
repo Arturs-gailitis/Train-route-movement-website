@@ -148,8 +148,8 @@ try {
 <footer class="mt-5 py-3">
     <p class="mb-0">© Latvijas vilcienu maršrutu kustības portāls <span id=projektaGads></span></p>
     <p class="mb-4" id="dati">
-        Izmantotie dati: <a href="https://data.gov.lv/dati/lv/dataset/iekszemes-dzelzcela-vilcienu-kustibas-saraksts-gtfs-formata">
-            data.gov.lv </a> <br> Ielādēts: <span id="ielādesDatums"></span>
+        Izmantotie dati: <a href="https://www.vivi.lv/lv/sadarbiba/atvertie-dati/">
+            vivi.lv </a> <br> Ielādēts: <span id="ielādesDatums"></span>
     </p>
 </footer>
 <script src="/javascript/global.js"></script>
