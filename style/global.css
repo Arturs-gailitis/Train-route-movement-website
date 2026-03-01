@@ -11,6 +11,7 @@ body {
 /* Skatās visu header elementu */
 .galvene {
     display: flex;
+    position: relative;
     align-items: center;
     background-color: #015224;
     border: 1px solid #015224;
@@ -100,8 +101,8 @@ ul {
 /* Skatās profila sekciju */
 #profilaLaukums {
     display: none;
-    position: fixed;
-    top: 55px;
+    position: absolute;
+    top: 100%;
     right: 35px;
     max-width: 250px;
     width: auto;
@@ -161,8 +162,8 @@ ul {
 /* Skatās pašu opciju sadaļu */
 #opcijuLaukums {
     display: none;
-    position: fixed;
-    top: 55px;
+    position: absolute;
+    top: 100%;
     right: 0;
     width: 250px;
     height: 0;
@@ -235,13 +236,13 @@ ul {
 footer {
     position: static;
     background-color: #015224;
-    border: 1px, solid #015224;
+    border: 1px solid #015224;
 }
 
 /* Skatās visu footer elementu gaišajā režīmā */
 .light-mode footer {
     background-color: #0DCBCE;
-    border: 1px, solid #0DCBCE;
+    border: 1px solid #0DCBCE;
 }
 
 /* Skatās footer tekstu */
