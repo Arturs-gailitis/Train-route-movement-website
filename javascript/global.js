@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.location.href.includes("/lv/")) {
         loadDate.textContent = year + ". gada " + day + ". " + monthNameLv;
     } else {
-        loadDate.textContent = year + ". year " + day + ". " + monthNameEng;
+        loadDate.textContent = monthNameEng + " " + day + ", " + year;
     }
 
     projectDate.textContent = year;
