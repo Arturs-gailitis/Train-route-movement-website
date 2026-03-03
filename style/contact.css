@@ -104,6 +104,7 @@
     color: white;
 }
 
+/* Skatās veiksmīgas ziņas nosūtīšanas laukumu gaišajā režīmā */
 .light-mode #nosutits {
     background-color: #0DCBCE;
     color: black;
@@ -123,6 +124,7 @@
     margin-bottom: 20px;
 }
 
+/* Skatās veiksmīgas ziņas nosūtīšanas laukuma pogu gaišajā režīmā */
 .light-mode #atgriezties {
     background-color: white;
     color: black;
@@ -133,6 +135,69 @@
     border-color: #0a58ca;
 }
 
+/* Skatās veiksmīgas ziņas nosūtīšanas laukuma pogu, ja uz tām pieliks kursoru gaišajā režīmā*/
 .light-mode #atgriezties:hover {
     color: #073C8D;
+}
+
+/* Skatās mobīlo stilu */
+@media (max-width: 786px) {
+
+    /* Skatās formas laukumu un veiksmīgas ziņas nosūtīšanas laukumu mobīlajā ekrānā */
+    #formasLaukums, #nosutits {
+        top: 30px;
+        width: 92%;
+        max-width: 92%;
+        min-height: auto;
+        margin: 20px auto 40px auto;
+        padding: 16px;
+        gap: 12px;
+    }
+
+    /* Skatās formas laukumu mobīlajā ekrānā */
+    #formasLaukums {
+        margin-top: 20%;
+        margin-bottom: 45%;
+    }
+
+    /* Skatās veiksmīgas ziņas nosūtīšanas laukumu mobīlajā ekrānā */
+    #nosutits {
+        margin-top: 30%;
+        margin-bottom: 85%;
+    }
+
+    /* Skatās formas laukuma un veiksmīgas ziņas nosūtīšanas laukuma virsrakstus mobīlajā ekrānā */
+    #formasLaukums h2, #nosutits h2 {
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 6px;
+    }
+
+    /* Skatās epasts un zinu ievades laukumi mobīlajā ekrānā */
+    #epasts, #zina {
+        width: 100%;
+        max-width: 100%;
+        font-size: 16px;
+    }
+
+    /* Skatās zinu ievades laukumu mobīlajā ekrānā */
+    #zina {
+        height: 140px;
+    }
+
+    /* Skatās ziņas izveidošanas formas sūtīšanas un veiksmīgas ziņas nosūtīšanas laukuma pogas mobīlajā ekrānā */
+    #sutitZinu, #atgriezties {
+        top: 0;
+        margin-top: 10px;
+        padding: 10px 12px;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    /* SKatās ziņas kļūdu mobīlajā ekrānā */
+    #kluda {
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 10px;
+    }
 }
