@@ -260,3 +260,92 @@
     height: 500px;
     width: 690px;
 }
+
+/* Skatās mobīlo stilu */
+@media (max-width: 768px) {
+
+    /* Skatās gan mājaslapas ievada sadaļu, gan arī maršruta meklēšanas sadaļu mobīlajā ekrānā */
+    #galvenaSekcija, #maršrutuMeklēšana {
+        padding: 20px 10px;
+        text-align: center;
+    }
+
+    /* Skatās mājaslapas sākuma tekstu mobīlajā ekrānā */
+    #sveiciens {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+
+    /* Skatās mājaslapas apraksta tekstu mobīlajā ekrānā */
+    #apraksts {
+        font-size: 16px;
+    }
+
+    /* Skatās mājaslapas funkciju tekstu mobīlajā ekrānā */
+    #funkcijas {
+        max-width: 100%;
+        padding-left: 20px;
+        text-align: left;
+    }
+
+    /* Skatās maršruta meklēšanas sadaļu mobīlajā ekrānā */
+    #maršrutuMeklēšanasSadaļa {
+        left: 0;
+        top: 0;
+        width: 100%;
+        max-width: 100%;
+        margin: 60px 0 auto auto;
+        padding: 15px;
+        max-height: 425px;
+    }
+
+    /* Skatās maršruta meklēšanas formu mobīlajā ekrānā */
+    #meklesanasForma {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    /* Skatās maršruta meklēšanas formas pogu mobīlajā ekrānā */
+    #Meklet {
+        width: 100%;
+        margin-top: 0;
+        padding: 10px;
+    }
+
+    /* Skatās vizualizācijas mapes sadaļu mobīlajā ekrānā */
+    #vizuālāMapesLaukums {
+        margin-left: 0;
+        right: 0;
+        max-width: 100%;
+        width: 100%;
+        padding: 15px;
+        border-width: 1px;
+    }
+
+    /* Skatās vizualizācijas mapes virsrakstu mobīlajā ekrānā */
+    #vilcienaMapesVirsraksts {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    /* Skatās uz dzelzceļa filtrēšanas sadaļu mobīlajā ekrānā */
+    #filtresanasSadala {
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    /* Skatās pašu leaflet vizualizācijas mapi mobīlajā ekrānā*/
+    #vilcienaMape {
+        width: 100%;
+        height: 350px;
+    }
+
+    /* Skatās maršruta meklēšanas sadaļas atcelt pogu mobīlajā ekrānā*/
+    #atcelt {
+        top: 8px;
+        right: 8px;
+    }
+}
