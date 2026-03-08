@@ -141,7 +141,7 @@
 }
 
 /* Skatās mobīlo stilu */
-@media (max-width: 786px) {
+@media (max-width: 768px) {
 
     /* Skatās formas laukumu un veiksmīgas ziņas nosūtīšanas laukumu mobīlajā ekrānā */
     #formasLaukums, #nosutits {

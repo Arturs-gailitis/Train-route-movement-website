@@ -255,3 +255,64 @@ footer p {
 .light-mode footer p {
     color: black;
 }
+
+/* Skatās mobīlo stilu */
+@media (max-width: 768px) {
+
+    /* Skatās visu header elementu mobīlajā ekrānā */
+    .galvene {
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+
+    /* Skatās mājaslapas logo un nosaukumu, kā kopumu mobīlajā ekrānā */
+    #portālaNosaukums {
+        font-size: 18px;
+        text-align: center;
+        margin-left: 20px;
+    }
+
+    /* Skatās visus navigācijas pogas kopumu mobīlajā ekrānā */
+    nav {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+        gap: 2px;
+    }
+
+    /* Skatās navigācijas pogas kopumu mobīlajā ekrānā */
+    ul #pogas {
+        display: flex;
+        flex-direction: row; 
+        flex-wrap: wrap;   
+        padding-left: 0;
+    }
+
+    /* Skatās navigācijas pogas mobīlajā ekrānā */
+    .nav-link {
+        position: static;
+        margin-right: 0;
+        right: 0;
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+
+    /* Skatās mājaslapas logo mobīlajā ekrānā */
+    #logo {
+        max-height: 40px;
+        max-width: 40px;
+        margin-left: 10px;
+    }
+
+    /* Skatās profila sekciju un opciju sekciju mobīlajā ekrānā */
+    #profilaLaukums, #opcijuLaukums {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    /* Skatās tikai profila sekciju mobīlajā ekrānā */
+    #profilaLaukums {
+        justify-items: center;
+    }
+}

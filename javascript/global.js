@@ -10,6 +10,11 @@ if (window.location.href.includes("/eng/") || window.location.href.includes("run
     }
 
     notification.style.marginRight = "20px";
+
+    // izlabo ziņojuma navigācijas pogu novietojumu ja ir uz mobīlā ekrāna
+    if (window.innerWidth < 768) {
+        notification.style.marginRight = "0px";
+    }
 }
 
 const profilButton = document.getElementById("lietotajs");
