@@ -68,3 +68,55 @@
 footer {
     position: relative;
 }
+
+/* Skatās mobīlo stilu */
+@media (max-width: 768px) {
+
+    /* Skatās profila pieteikšanās laukumu mobīlajā ekrānā */
+    #pieteiksanas {
+        top: 50px;
+        width: 90%;
+        max-width: 350px;
+        margin-top: 200px;
+        margin-bottom: 304px;
+        padding: 15px;
+    }
+
+    /* Skatās profila pieteikšanās laukuma virsrakstu mobīlajā ekrānā */
+    #pieteiksanas h2 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    /* Skatās profila pieteikšanās formu  mobīlajā ekrānā */
+    #pieteiksanas form {
+        width: 100%;
+    }
+
+    /* Skatās profila pieteikšanās formas saturu mobīlajā ekrānā */
+    #pieteiksanas form div {
+        width: 100%;
+        align-items: stretch;
+    }
+
+    /* Skatās profila pieteikšanās formas rakstīšanas vietu mobīlajā ekrānā */
+    #pieteiksanas input {
+        width: 100%;
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    /* Skatās profila pieteikšanās pogu mobīlajā ekrānā */
+    #pieteiksanasPoga {
+        width: 100%;
+        justify-content: center;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    /* Skatās kļūdas kas rodās profila pieteikšanā mobīlajā ekrānā */
+    #errors {
+        font-size: 14px;
+    }
+
+}
