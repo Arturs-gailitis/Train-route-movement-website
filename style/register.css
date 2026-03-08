@@ -68,3 +68,44 @@
 footer {
     position: relative;
 }
+
+/* Skatās mobīlo stilu */
+@media (max-width: 768px) {
+
+    /* Skatās profila reģistrēšanās laukumu mobīlajā ekrānā */
+    #registresanas {
+        top: 80px;
+        width: 90%;
+        max-width: 100%;
+        margin-top: 50px;
+        margin-bottom: 250px;
+        padding: 15px;
+    }
+
+    /* Skatās profila reģistrēšanās laukuma virsrakstu mobīlajā ekrānā */
+    #registresanas h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    /* Skatās profila reģistrēšanās formu mobīlajā ekrānā */
+    #registresanas form div {
+        width: 100%;
+        align-items: stretch;
+    }
+
+    /* Skatās profila reģistrēšanās formas ievades laukus mobīlajā ekrānā */
+    #registresanas input {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    /* Skatās profila reģistrēšanas pogu */
+    #registracijasPoga {
+        width: 100%;
+        justify-content: center;
+        padding: 10px;
+        margin-top: 10px;
+    }
+}
