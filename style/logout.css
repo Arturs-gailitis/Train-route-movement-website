@@ -58,3 +58,32 @@
 footer {
     position: relative;
 }
+
+/* Skatās mobīlo stilu */
+@media (max-width: 768px) {
+
+    /* Skatās profila iziešanas laukumu mobīlajā ekrānā */
+    #iziesanasLaukums {
+        top: 80px;
+        width: 90%;
+        max-width: 100%;
+        margin-top: 190px;
+        margin-bottom: 320px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    /* Skatās profila iziešanas laukuma virsrakstus mobīlajā ekrānā */
+    #iziesanasLaukums h2 {
+        font-size: 22px;
+    }
+
+    /* Skatās profila iziešanas abas pogas mobīlajā ekrānā */
+    #iziesanasPoga, #ietUzSakumu {
+        width: 100%;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 16px;
+    }
+}
