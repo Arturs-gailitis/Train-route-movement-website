@@ -21,6 +21,7 @@
     color: white;
 }
 
+/* Skatās centrālo lauku gaišajā režīmā */
 .light-mode #laukums {
     background-color: #0DCBCE;
     color: black;
@@ -34,6 +35,7 @@
     border: 2px solid black; 
 }
 
+/* Skatās doties atpakaļ pogu gaišajā režīmā */
 .light-mode #laukums a {
     background-color: white;
     color: black;
@@ -44,6 +46,37 @@
     border-color: #0a58ca;
 }
 
+/* Skatās doties atpakaļ pogu, ja uz tām pieliks kursoru gaišajā režīmā */
 .light-mode #laukums a:hover {
     color: #073C8D;
+}
+
+/* Skatās mobīlo stilu */
+@media (max-width: 768px) {
+
+    /* Skatās centrālo lauku mobīlo stilu */
+    #laukums {
+        top: 30px;
+        width: 90%;
+        max-width: 100%;
+        max-height: none;
+        margin-top: 170px;
+        margin-bottom: 300px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    /* Skatās virsrakstu mobīlo stilu */
+    #laukums h2 {
+        font-size: 22px;
+        line-height: 1.4;
+    }
+
+    /* Skatās doties atpakaļ pogu mobīlo stilu */
+    #laukums a {
+        width: 100%;
+        max-width: 250px;
+        padding: 10px;
+        text-align: center;
+    }
 }
