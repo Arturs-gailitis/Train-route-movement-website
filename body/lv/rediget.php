@@ -376,7 +376,7 @@ try {
                     <label for="tiesibas">Tiesības:</label>
                     <input type="text" name="tiesibas" value="<?php echo $record['rights'] ?>">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3" id="parole">
                     <label>
                         Parole: <span><?php echo $record['password'] ?></span>
                     </label>

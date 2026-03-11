@@ -77,3 +77,71 @@ textarea {
 .light-mode #forma button:hover, .light-mode #forma a:hover {
     color: #073C8D;
 }
+
+/* Skatās mobīlo stilu */
+@media (max-width: 768px) {
+
+    /* Skatās rediģēšans formas laukumu mobīlajā ekrānā */
+    #formasLaukums {
+        width: 95%;
+        min-width: unset;
+        top: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-top: 50px;
+        margin-bottom: 210px;
+    }
+
+    /* Skatās rediģēšanās formu mobīlajā ekrānā */
+    #forma {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    /* Skatās ierakstīšanas vietas nosaukumu un teksta ierakstīšanās vietu rediģēšanas formā mobīlajā ekrānā */
+    #forma div {
+        width: 100%;
+    }
+
+    /* Skatās teksta ierakstīšanās vietu rediģēšanas formā mobīlajā ekrānā */
+    #forma input, #forma textarea {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Skatās textarea elementus formā mobīlajā ekrānā */
+    textarea {
+        height: 140px;
+    }
+
+    /* Skatās rediģēšanās formas abas pogas mobīlajā ekrānā */
+    #forma button, #forma a {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    /* Skatās rediģēšans formas virsrakstu mobīlajā ekrānā */
+    #formasLaukums h2 {
+        font-size: 24px;
+    }
+
+    /* Skatās lietotāja paroles vietu rediģēšanas formā mobīlajā ekrānā */
+    #parole {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    /* Skatās lietotāja paroles vērtības vietu rediģēšanas formā mobīlajā ekrānā */
+    #parole span {
+        display: inline-block;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+}
