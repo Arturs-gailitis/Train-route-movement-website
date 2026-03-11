@@ -208,3 +208,110 @@
 footer {
     position: relative;
 }
+
+/* Skatās mobīlo stilu */
+@media (max-width: 768px) {
+    
+    /* Skatās pogu ar kuru var atvērt vai aizvērt pogu sadaļu mobīlajā ekrānā */
+    #atvertPoguSadaļasPoga {
+        max-width: 60px;
+        max-height: 40px;
+    }
+
+    /* Skatās pogas ikonu ar kuru var atvērt vai aizvērt pogu sadaļu mobīlajā ekrānā */
+    #atvērtPoguSadaļasIkona {
+        max-width: 60px;
+        max-height: 40px;
+    }
+
+    /* Skatās pašu pogas laukumu mobīlajā ekrānā */
+    #poguLaukums {
+        width: 95%;
+        max-height: 200%;
+        padding: 15px 10px;
+    }
+
+    /* Skatās pogu sadaļas nodaļu virsrakstus mobīlajā ekrānā */
+    #poguLaukums h3 {
+        text-align: center;
+        font-size: 20px;
+        padding: 0 10px;
+    }
+
+    /* Skatās pogu sadaļas pašus laukumus kur atrodās tās pogas mobīlajā ekrānā */
+    #tabuluPogas, #restartet {
+        flex-direction: column;
+        align-items: center;
+        top: 0;
+        margin-right: 0;
+        margin-bottom: 25px;
+        padding-left: 0;
+    }
+
+    /* Skatās pogu sadaļas visas pogu elementus mobīlajā ekrānā */
+    #tabuluPogas li, #restartet li {
+        list-style: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Skatās pogu sadaļas pašas pogas mobīlajā ekrānā */
+    #tabuluPogas li button, #restartet li button {
+        width: 100%;
+        max-width: 320px;
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center;
+    }
+
+    /* Skatās pašas izveidot vai neizveidot ierakstu pogas pogu sadaļā mobīlajā ekrānā */
+    .izveidot, .neizveidot {
+        width: 45%;
+        max-width: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Skatās visas datubāžu datu tabulas mobīlajā ekrānā */
+    .tabulas {
+        width: 95%;
+        overflow-x: auto;
+        margin-top: 30px;
+        margin-bottom: 320px;
+        max-width: 200%;
+    }
+
+    /* Skatās visas datubāžu datu tabulas struktūru mobīlajā ekrānā */
+    .tabulas table {
+        min-width: 700px;
+        width: max-content;
+    }
+
+    /* Skatās visas datubāžu datu tabulas kolonnu nosaukumus un to vērtības mobīlajā ekrānā */
+    .tabulas table thead tr th, .tabulas table tbody tr td {
+        padding: 8px 10px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    /* Skatās darbības kolonnu tabulās mobīlajā ekrānā */
+    .darbibas, #darbibas {
+        display: flex;
+        flex-direction: column;
+        min-width: 110px;
+    }
+
+    /* Skatās rediģēt un dzēst pogas tabulās mobīlajā ekrānā */
+    .rediget, .dzest {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    /* Skatās footer elementu šajā failā mobīlajā ekrānā */
+    footer {
+        top: 240px;
+    }
+}
