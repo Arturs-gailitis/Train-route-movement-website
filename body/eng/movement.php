@@ -8,6 +8,7 @@ require_once __DIR__ . '/../../db/initializeDB.php';
 $database = __DIR__ . '/../../storage/database/LatvianTrains.sqlite';
 $trips = [];
 $organisedTrips = [];
+$currentDate = null;
 
 date_default_timezone_set('Europe/Riga');
 
@@ -21,7 +22,7 @@ if (isset($_GET['sākumstacija']) == false || isset($_GET['beigustacija']) == fa
 try {
     $connection = getConnection($database);
 } catch (Exception $e) {
-    echo $e->getMessage();
+    die($e->getMessage());
 }
 
 try {

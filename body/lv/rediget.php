@@ -26,7 +26,7 @@ try {
     $userConnection = getConnection($userDatabase);
     $notificationsConnection = getConnection($notificationDatabase);
 } catch (Exception $e) {
-    echo $e->getMessage();
+    die($e->getMessage());
 }
 
 try {

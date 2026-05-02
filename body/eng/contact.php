@@ -12,7 +12,7 @@ $statuss = false;
 try {
     $connection = getConnection($database);
 } catch (Exception $e) {
-    echo $e->getMessage();
+    die($e->getMessage());
 }
 
 try {

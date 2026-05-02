@@ -23,7 +23,7 @@ try {
     $trainConnection = getConnection($trainDatabase);
     $notificationConnection = getConnection($notificationDatabase);
 } catch (Exception $e) {
-    echo $e->getMessage();
+    die($e->getMessage());
 }
 
 try {
